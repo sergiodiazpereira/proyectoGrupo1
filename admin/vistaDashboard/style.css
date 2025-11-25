@@ -1,0 +1,102 @@
+:root {
+  --azul-marino: #0b285b;
+  --azul-celeste: #3e7bfe;
+  --azul-borde-header: #c2d4ff;
+  --blanco-texto-boton: #fafcff;
+  --blanco-fondo-header: rgba(245, 247, 252, 0.7);
+  --blanco-fondo-main: #e6edff;
+  --gris-titulo-nav: #b2bcce;
+  --gris-subtitulo-main: #636d83;
+  --fuente-header: "Space Grotesk", sans-serif;
+  --fuente-titulo-nav: "PT Sans", sans-serif;
+}
+
+body {
+  max-width: 1024px;
+  margin: 0px;
+}
+
+header {
+  width: 768px;
+  height: 64px;
+  background-color: var(--blanco-fondo-header, #eff3fc);
+  position: fixed;
+  left: 256px;
+  font-family: var(--fuente-header);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--azul-celeste, #3e7bfe);
+  border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
+  text-align: center;
+  line-height: 64px;
+  backdrop-filter: blur(5px);
+}
+
+nav {
+  width: 256px;
+  height: 100vh;
+  float: left;
+  position: fixed;
+  background-color: var(--azul-marino, #0b285b);
+  font-family: var(--fuente-titulo-nav);
+  h3{
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gris-titulo-nav, #b2bcce);
+    margin-top: 32px;
+  }
+  button {
+    background-color: var(--azul-marino, #0b285b);
+    color: var(--blanco-texto-boton, #fafcff);
+    width: 231px;
+    padding: 8px 0px 8px 8px;
+    text-align: left;
+    border: none;
+    border-radius: 14px;
+  }
+  button:hover{
+    cursor: hand;
+    background-color: var(--blanco-texto-boton, #fafcff);
+    color: var(--azul-marino, #0b285b);
+  }
+  .paginaSeleccionada {
+    background-color: var(--blanco-texto-boton, #fafcff);
+    color: var(--azul-marino, #0b285b);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    margin: 2px auto;
+    }
+  .ul-inferior{
+    position: absolute;
+    bottom: 8px;
+  }
+  i{
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+  }
+}
+
+main {
+  width: 748px;
+  height: 200vh;
+  background-color: var(--blanco-fondo-main, #e6edff);
+  float: left;
+  padding: 10px;
+  margin-left: 256px; 
+  margin-top: 64px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
