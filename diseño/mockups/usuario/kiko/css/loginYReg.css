@@ -1,0 +1,197 @@
+:root{
+    --colorFondo:#e6edff;
+    --colorTitulo:#4B7BFC;
+    --colorTituloFormulario:#102E59;
+    --colorFondoFormulario:#FCFDFF;
+    --colorBotonInicioYRegistro:#f4f6fa;
+    --colorBotonInicioYCrearCuenta:#4B7BFC;
+    --colorP:#6A6F81;
+    --bordeRadius:10px;
+    --colorLabel:#102E59;
+    --fuenteTitulo:Space Grotesk;
+    --fueteP:PT Sans;
+    --blanco-fondo-header: rgba(245, 247, 252, 0.7);
+    --azul-borde-header: #c2d4ff;
+}
+body{
+    width: 1024px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--colorFondo);
+    text-align: center;
+}
+header {
+    width: 1004px;
+    height: 64px;
+    padding: 0 10px;
+    background-color: var(--blanco-fondo-header, #eff3fc);
+    position: fixed;
+    top:0px;
+    left: 0px;
+    border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
+    text-align: center;
+    line-height: 64px;
+    backdrop-filter: blur(5px);
+}
+header>span{
+    font-size: 1.125px;
+    font-weight: 700;
+    font-family: var(--fuenteTitulo);
+    color: var(--azul-celeste, #3e7bfe);
+}
+p{
+    color: var(--colorP);
+    font-size: 0.75em;
+    font-family: var(--fueteP);
+}
+header{
+
+    #flecha{
+        float: left;
+    }
+    #usuario{
+        float: right;
+    }
+}
+/*Para que salga la mano al pasar el cursor por encima*/
+input[type=submit]{
+    cursor: pointer;
+}
+/*Caja padre para tenerlo todo en uno*/
+#contenedorLogin{
+    width: 500px;
+    margin: 40px auto;
+}
+/*le doy estilo a los item dentro del padre pero fuera del formulario*/
+#contenedorLogin{
+    h1{
+        color: var(--colorTitulo);
+        font-family: var(--fuenteTitulo);
+    }
+    #cajaBotonesIniYReg>input{
+        display: inline-block;
+    }
+    img{
+        border-radius: 50%;
+        width: 80px;
+    };
+}
+/*Le doy estilo a la caja donde tengo los botones de registro e inicio*/
+#cajaBotonesIniYReg{
+    a{
+        display: inline-block;
+        text-decoration: none;
+        padding-top: 5px;
+        margin: 20px 0; 
+        border: none;
+        height: 25px;
+        width: 248px; /*deberia estar al pixel a 250px por no tener padding pero me esta pillando 2 px por defecto y no encuentro donde*/
+        background-color: var(--colorFondo);
+        color: var(--colorP);
+        border-radius: var(--bordeRadius);
+    }
+    #iniciar,#registro{
+        color: var(--colorTituloFormulario);
+        background-color: var(--colorBotonInicioYRegistro);
+    }
+}
+/*Le doy estilo al formulario*/
+#formLoginRegis{
+    text-align: left;
+    padding: 20px;
+    background-color: var(--colorFondoFormulario);
+    border-radius: var(--bordeRadius);
+    border: 1px solid rgb(180, 180, 247);
+}
+/*le doy estilo a los items del formulario*/
+#formLoginRegis{
+    p{
+        display: block;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    h2{
+        font-family: var(--fuenteTitulo);
+        color: var(--colorTituloFormulario);
+        margin-bottom: 0;
+    }
+    label{
+        display: block;
+        width: 100px;
+        font-family: var(--fueteP);
+        font-size: 0.75em;
+        color: var(--colorLabel);
+        margin-bottom: 5px;
+    }
+    input[type=submit]{
+        margin: auto;
+        width: 460px; /*460px + 40px de padding que tiene el form los 500 del form*/
+        color: #ffffff;
+        background-color: var(--colorBotonInicioYCrearCuenta);
+    }
+    input{
+        margin-bottom: 20px;
+        width: 438px;   /*438px + 20 px de padding left + 2 de padding right por defecto*/
+        height: 35px;
+        border-radius: var(--bordeRadius);
+        border: none;
+        background-color: var(--colorFondo);
+        padding-left: 20px;
+    }
+}
+/*Le doy estilo al formulario del cambio*/
+#formCambio{
+    margin-top: 94px; /*64 del alto del header mas 30px para que se separe*/
+    text-align: left;
+    padding: 20px;
+    background-color: var(--colorFondoFormulario);
+    border-radius: var(--bordeRadius);
+    border: 1px solid rgb(180, 180, 247);
+}
+#formCambio{
+    p{
+        display: block;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    h2{
+        font-family: var(--fuenteTitulo);
+        color: var(--colorTituloFormulario);
+        margin-bottom: 0;
+    }
+    label{
+        display: block;
+        width: 100px;
+        font-family: var(--fueteP);
+        font-size: 0.75em;
+        color: var(--colorLabel);
+        margin-bottom: 5px;
+    }
+    input[type=submit]{
+        padding: 0px;
+        width: 140px; /*140px*/
+        color: #ffffff;
+        background-color: var(--colorBotonInicioYCrearCuenta);
+    }
+    input{
+        margin-bottom: 20px;
+        width: 438px;   /*438px + 20 px de padding left + 2 de padding right por defecto*/
+        height: 35px;
+        border-radius: var(--bordeRadius);
+        border: none;
+        background-color: var(--colorFondo);
+        padding-left: 20px;
+    }
+    a{  
+        padding: 7px 25px;
+        width: 55px; /*55px + 50 de padding 105px*/
+        height: 20px; /*20 +14px =34px*/
+        display: inline-block;
+        text-decoration: none;
+        color: var(--colorLabel);
+        border-radius: var(--bordeRadius);
+    }
+    a:hover{
+        background-color: var(--azul-borde-header);
+    }
+}
