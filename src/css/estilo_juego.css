@@ -1,0 +1,116 @@
+
+/*Estilo del body*/
+body{
+    background-color: #DFE9F7;
+    width: 1540px;
+    margin: 0px;
+    padding: 0px; 
+    color : #386EF7;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Estilo header*/
+header{
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 100px;
+    margin: 0px;
+    padding-top: 16px;
+}
+
+.div-img{
+    position: absolute;
+    left: 1450px;
+}
+
+/*Estilo nav*/
+nav{
+    text-align: left;
+}
+
+button{
+    margin-top: 16px;
+    border-radius: 16px;
+}
+
+p{
+    text-align: right;
+    margin-right: 16px;
+}
+
+.negro{
+    color: black;
+}
+
+.gris{
+    color: gray;
+}
+
+.tam-img{
+    width: 30px;
+    height: 30px;
+}
+
+/*Estilo main*/
+main{
+    margin-top: 96px;
+}
+
+.azul{
+    background-color: #1C07FF;
+    color: white;
+}
+
+.amarillo{
+    background-color: #FFC527;
+    color: #FFFFFF;
+}
+
+input[list]{
+    width: 176px;
+    border-radius: 16px;
+    border-color: #1C07FF;
+}
+
+#contenedor-tabla {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 16px;
+    margin: 48px auto;
+    width: 1200px; 
+    padding: 0px;
+    border-radius: 8px;
+}
+
+.encabezado {
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    color: #333; 
+}
+
+.celda {
+    display: grid; 
+    justify-items: center;
+    align-items: center; 
+    text-align: center;
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-size: 14.4px;
+    color: white;
+}
+
+/*Colores extra*/
+.rojo {
+    background-color: #ff3333;
+}
+
+.verde {
+    background-color: #00cc00;
+}
+
+.amarillo {
+    background-color: #ffc527;
+    color: #333; 
+}

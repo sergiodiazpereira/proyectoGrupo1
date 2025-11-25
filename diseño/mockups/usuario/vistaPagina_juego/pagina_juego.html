@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../../src/css/estilo_juego.css">
+        <title>Mockup Jugando Partida</title>
+    </head>
+    <body>
+        <header>
+            <div class="div-img">
+                <img src="../../../../src/img/perfil.png" alt="" class="clase-img">
+            </div>
+            <h2>Asociaciondle</h2>
+        </header>
+        <nav>
+            <button class="azul"><img src="../../../../src/img/informacion.png" alt="" class="tam-img"></button>
+            <button class="amarillo"><img src="../../../../src/img/bombilla.png" alt="" class="tam-img"></button>
+            <p class="gris">CRONO</p>
+            <p class="negro">00:00</p>
+        </nav>
+        <main>
+            <h1>Adivina la asociación</h1>
+            <h4 class="gris">Intento 1 de 10</h4>
+            <input list="lista-de-ejemplo" name="opcion-usuario" placeholder="Introduce una Asociación">
+            <datalist id="lista-de-ejemplo">
+                <option value="Fundación Loyola"></option>
+                <option value="Cáritas"></option>
+                <option value="Cruz Roja"></option>
+                <option value="Unicef"></option>
+            </datalist>
+            <div id="contenedor-tabla">
+                <div class="encabezado">Asociación</div>
+                <div class="encabezado">Dirigido a</div>
+                <div class="encabezado">Año Fund.</div>
+                <div class="encabezado">Alcance GEO.</div>
+                <div class="encabezado">Contribuciones</div>
+
+                <div class="celda rojo">Cruz Roja</div>
+                <div class="celda rojo">Personas</div>
+                <div class="celda verde">1998</div>
+                <div class="celda rojo">Local</div>
+                <div class="celda rojo">Educación, Inclusión</div>
+
+                <div class="celda rojo">Cáritas</div>
+                <div class="celda rojo">Jóvenes</div>
+                <div class="celda rojo">1863</div>
+                <div class="celda rojo">Internacional</div>
+                <div class="celda amarillo">Salud, Educación</div>
+            </div>
+        </main>
+    </body>
+</html>
