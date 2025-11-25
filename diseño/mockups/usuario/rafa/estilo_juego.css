@@ -1,4 +1,4 @@
-/*El archivo pagina_juego.html está en píxeles*/
+/*--ESTILO PÁGINA PRINCIPAL Y DE JUEGO--*/
 
 /*Estilo del body*/
 body{
@@ -115,3 +115,5 @@ input[list]{
     background-color: #ffc527;
     color: #333; 
 }
+
+/*--ESTILOS BOTÓN INFORMACIÓN--*/
