@@ -3,7 +3,8 @@
     <head>
         <title>Asociaciondle</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/loginYReg.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estiloAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
@@ -14,19 +15,18 @@
         <header>
             <a href="pagina_principal.html" id="flecha"><i class="fa-solid fa-arrow-left"></i></a>
             <span>Asociaciondle</span>
-            <button id="usuario"><i class="fa-solid fa-user"></i></button>
         </header>
-        <nav id="desplegable">
+        <nav id="navAdmin">
             <ul>
-                <p id="nombreDes">Usuario</p>
-                <p>usuario@hotmail.com</p>
-                <hr>
-                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_principal.html"></a>Jugar</li>
-                <li><i class="fa-solid fa-book"></i> <a href="coleccion.html">Colección</a></li>
-                <li><i class="fa-solid fa-trophy"></i><a href="ranking.html">Ranking</a></li>
-                <hr>
-                <li><i class="fa-solid fa-key"></i> <a href="cambio.html">Cambiar Contraseña</a></li>
-                <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="login.html">Cerrar sesión</a></li>
+                <p>Menú Principal</p>
+                <li><i class="fa-solid fa-chart-line" style="color: #ffffff;"></i><a href="">Dashboard</a></li>
+                <li><i class="fa-regular fa-building" style="color: #ffffff;"></i><a href="">Asociaciones</a></li>
+                <li><i class="fa-solid fa-users" style="color: #ffffff;"></i><a href="">Usuarios</a></li>
+                <li><i class="fa-solid fa-hand-holding-heart" style="color: #ffffff;"></i></i><a href="ranking.html">Contribuciones</a></li>
+            </ul>
+            <ul id="ulCerrar">
+                <li><i class="fa-solid fa-key" style="color: #ffffff;"></i><a href="cambioAdmin.html">Cambiar Contraseña</a></li>
+                <li><i class="fa-solid fa-arrow-right-from-bracket" style="color: #ffffff;"></i><a href="">Cerrar sesión</a></li>
             </ul>
         </nav>
         <div id="contenedorLogin">
