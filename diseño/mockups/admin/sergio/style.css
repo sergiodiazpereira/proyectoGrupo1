@@ -94,7 +94,6 @@ nav {
 
 main {
   width: 704px;
-  height: 200vh;
   background-color: var(--blanco-fondo-main, #e6edff);
   float: left;
   padding: 32px;
@@ -116,29 +115,37 @@ main {
   }
   .grid-secciones{
     margin-top: 32px;
-    display: grid;
+    display: grid; /* Todas las secciones van dentro de este div, que hace que se reparta el espacio equitativamente entre las 4 columnas (especificado en linea de abajo) */
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "asociaciones usuarios contribuciones vistas";
     gap: 16px;
-      section{
-        padding: 24px;
-        background-color: var(--blanco-fondo-sections, #fbfcfd);
-        border-radius: 16px;
-        border: 1px solid var(--azul-borde-header, #c2d4ff);       
-      }                          
-      .seccion-asociaciones{
-        grid-area: asociaciones;
-      }
-      .seccion-usuarios{
-        grid-area: usuarios;
-      }
-      .seccion-contribuciones{
-        grid-area: contribuciones;
-      }
-      .seccion-vistas{
-        grid-area: vistas;
-      }
+    section{
+      display: grid; /* Los sections se dividen en 3 filas (titulo del section, relleno de espacio sobrante y estadística), así se consigue que la estadística quede abajo del todo */
+      grid-template-rows: auto 1fr auto;
+      padding: 24px;
+      background-color: var(--blanco-fondo-sections, #fbfcfd);
+      border-radius: 16px;
+      border: 1px solid var(--azul-borde-header, #c2d4ff);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);    /* sombra leve para dar el toque */
+    }                          
+    .seccion-asociaciones{
+      grid-area: asociaciones;
+    }
+    .seccion-usuarios{
+      grid-area: usuarios;
+    }
+    .seccion-contribuciones{
+      grid-area: contribuciones;
+    }
+    .seccion-vistas{
+      grid-area: vistas;
+    }
+    div{
+      display: flex;
+      align-items: center;     /* alinea verticalmente */
+      justify-content: space-between; /* separa el h3 y el icono */
+      margin-bottom: 8px;
       h3{
         margin: 0px;
         font-family: var(--fuente-regular);
@@ -146,13 +153,62 @@ main {
         font-weight: 500;
         color: var(--azul-marino);
       }
-      div{
-        margin-top: 8px;
+      i{
+        color: var(--gris-subtitulo-main, #636d83);
+      }
+    }
+    p{
+      margin: 0px;
+      margin-top: auto;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: var(--fuente-regular);
+      color: var(--azul-marino, #0b285b);
+    }
+  }
+  .seccion-regular{
+    margin-top: 32px;
+    padding: 24px;
+    background-color: var(--blanco-fondo-sections, #fbfcfd);
+    border-radius: 16px;
+    border: 1px solid var(--azul-borde-header, #c2d4ff);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);    /* sombra leve para dar el toque */
+    h2{
+      margin: 0;
+      font-family: var(--fuente-regular);
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--azul-marino, #0b285b);
+    }
+    ul{
+      margin: 0px;
+      li{
+        display: grid;
+        grid-template-columns: 24px 1fr auto;  /* icono – nombre – fecha */
+        align-items: center;
+        gap: 12px;
+        margin-top: 50px;
+        i{
+          color: var(--azul-marino);
+        }
+        span{
+          font-family: var(--fuente-regular);
+          color: var(--azul-marino, #0b285b);
+          font-weight: 300;
+          font-size: 0.875rem;
+        }
         p{
           margin: 0px;
-
+          font-family: var(--fuente-regular);
+          color: var(--gris-subtitulo-main, #b2bcce);
+          font-weight: 500;
+          font-size: 0.875rem;
         }
       }
+      .primer-usuario{
+        margin-top: 24px;
+      }
+    }
   }
 }
 
