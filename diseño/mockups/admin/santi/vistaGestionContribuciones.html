@@ -70,10 +70,11 @@
         </ul>
     </nav>
     <main>
-        <div id="bloque1">
+        <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
+        <div id="bloqueGestionContribuciones">
             <h1>Gestionar Contribuciones</h1>
             <p>Añadir, editar o eliminar los tipos de contribucion.</p>
-            <a href="./vistaAgregarContribucion.html">
+            <a href="">
                 <button>
                     <i class="fa-solid fa-circle-plus"></i>
                     <span>Añadir contribución</span>
@@ -86,18 +87,95 @@
                 </button>
             </a>
         </div>
-        <div id="bloque2">
-            <span>Nombre</span>
-            <span>Acciones</span>
-            <input type="text" name="nombreContribucion" id="nombreContribucion">
-            <a href="">
-                <button>
-                    <i class="fa-solid fa-trash-can"></i>
-                    <span>Eliminar</span>
-                </button>
-            </a>
+
+        <!-- Lista de Contribuciones -->
+        <div id="bloqueListaContribucions">
+
+            <h2>Lista de Contribuciones</h2>
+
+            <div class="fila encabezado">
+                <span>Nombre</span>
+                <span>Acciones</span>
+            </div>
+
+            <div class="fila">
+                <input type="text" value="Educación">
+                <a href="">
+                    <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </a>
+            </div>
+
+            <div class="fila">
+                <input type="text" value="Salud">
+                <a href="">
+                    <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </a>
+            </div>
+
+            <div class="fila">
+                <input type="text" value="Protección Infantil">
+                <a href="">
+                    <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </a>
+            </div>
+
+            <div class="fila">
+                <input type="text" value="Asistencia Sanitaria">
+                <a href="">
+                    <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </a>
+            </div>
+
+            <div class="fila">
+                <input type="text" value="Conservación">
+                <a href="">
+                    <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </a>
+            </div>
+
+            <div class="fila">
+                <input type="text" value="Activismo">
+                <a href="">
+                    <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </a>
+            </div>
 
         </div>
+
+        <!-- Modal para agregar Contribuciones -->
+        <div id="modal-contribuciones" class="overlay oculto">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Añadir Nueva Contribución</h2>
+                    <button class="close-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div class="modal-content">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" placeholder="Ej: Apoyo escolar">
+                </div>
+
+                <div class="modal-footer">
+                    <button class="cancelar">Cancelar</button>
+                    <button class="aniadir">Añadir</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 </body>
 
