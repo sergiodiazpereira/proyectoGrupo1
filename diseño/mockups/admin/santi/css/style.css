@@ -1,3 +1,4 @@
+/* Variables */
 :root {
   --azul-marino: #0b285b;
   --azul-celeste: #3e7bfe;
@@ -39,10 +40,9 @@ nav {
   position: fixed;
   background-color: var(--azul-marino, #0b285b);
   font-family: var(--fuente-titulo-nav);
+}
 
-  * {
-    font-family: inherit;
-  }
+nav{
 
   h3 {
     display: inline-block;
@@ -61,6 +61,7 @@ nav {
     text-align: left;
     border: none;
     border-radius: 14px;
+    font-family: inherit;
   }
 
   button:hover {
@@ -96,6 +97,7 @@ nav {
     width: 20px;
     text-align: center;
   }
+
 }
 
 main {
@@ -108,14 +110,15 @@ main {
   margin-top: 64px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
 
+
+/* Div informacion contribuciones + botones */
 #bloqueGestionContribuciones {
   font-family: var(--fuente-titulo-nav);
   border: var(--azul-marino);
+}
+
+#bloqueGestionContribuciones {
 
   h1 {
     display: inline-block;
@@ -151,13 +154,18 @@ ul {
 
 }
 
+/* Div lista de contribuciones */
 #bloqueListaContribucions {
   width: 640px;
   background: white;
   padding: 25px;
+  border: 1px solid var(--azul-borde-header, #c2d4ff);
   border-radius: 14px;
   margin-top: 30px;
   font-family: var(--fuente-titulo-nav);
+}
+
+#bloqueListaContribucions{
 
   h2 {
     font-size: 1.8rem;
@@ -180,9 +188,10 @@ ul {
       font-weight: bold;
       color: var(--gris-subtitulo-main);
     }
+
   }
 
-  input[type="text"] {
+  input {
     border: none;
     border-radius: 14px;
     background-color: #f4f6ff;
@@ -191,6 +200,11 @@ ul {
     outline: none;
     padding: 12px 16px;
     margin-right: 20px;
+    border: 1px solid #ffffff;;
+  }
+
+  input:focus {
+    border: 1px solid var(--azul-borde-header);
   }
 
   .btn-eliminar {
@@ -209,8 +223,19 @@ ul {
 
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 /* MODAL */
-.overlay {
+/* Clase para mostrar u ocultar el modal+fondo */
+.oculto {
+  display: none !important;
+}
+
+/* Fondo del modal */
+.fondo {
   position: fixed;
   top: 0;
   left: 0;
@@ -222,42 +247,46 @@ ul {
   align-items: center;
 }
 
-.oculto {
-  display: none !important;
-}
-
+/* Ventana del modal */
 .modal {
   width: 450px;
-  background: #e6edff;
+  background: var(--blanco-fondo-main);
   padding: 25px;
-  border-radius: 20px;
-  font-family: "PT Sans", sans-serif;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  font-family: var(--fuente-titulo-nav);
 }
 
+/* Cabecera del modal (titulo + ico-cerrar) */
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.modal-header {
 
   h2 {
     font-size: 1.4rem;
-    color: #0b285b;
+    color: var(--azul-marino);
     margin: 0;
   }
 
-  .close-btn {
+  .ico-cerrar {
     background: transparent;
     border: none;
     font-size: 1.3rem;
-    cursor: pointer;
+    cursor: hand;
     color: #0b285b;
   }
 
 }
 
+/* Cuerpo del modal (label + imput text) */
 .modal-main {
   margin-top: 20px;
+}
+
+.modal-main {
 
   label {
     display: block;
@@ -266,11 +295,11 @@ ul {
     margin-bottom: 6px;
   }
 
-  input {
+  input[type="text"] {
     width: 100%;
     padding: 10px 14px;
     font-size: 1rem;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 2px solid #c2d4ff;
     outline: none;
     background: white;
@@ -282,18 +311,22 @@ ul {
 
 }
 
+/* Pie del modal (botones cancelar y añadir) */
 .modal-footer {
   margin-top: 30px;
   display: flex;
   justify-content: center;
   gap: 30px;
+}
+
+.modal-footer {
 
   .cancelar {
     background: transparent;
     border: none;
     color: #0b285b;
     font-size: 1rem;
-    cursor: pointer;
+    cursor: hand;
   }
 
   .aniadir {
@@ -303,7 +336,7 @@ ul {
     border: none;
     border-radius: 14px;
     font-size: 1rem;
-    cursor: pointer;
+    cursor: hand;
   }
 
   .aniadir:hover {
