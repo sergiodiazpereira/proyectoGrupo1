@@ -72,7 +72,7 @@ input[type=submit]{
 /*Le doy estilo al formulario*/
 #formCambio{
     text-align: left;
-    padding: 2.60vh 1.95% ; /*20px*/
+    padding: 2.60vh 6% ; /*20px*/
     background-color: var(--colorFondoFormulario);
     border-radius: var(--bordeRadius);
     border: 1px solid rgb(180, 180, 247);
@@ -101,7 +101,7 @@ input[type=submit]{
         background-color: var(--colorBotonInicioYCrearCuenta);
     }
     input{
-        width: 87.6%;  /*438 sobre 500 del tamaño de la caja padre*/ /*438px + 20 px de padding left + 2 de padding right por defecto*/
+        width: 97%;  /*438 sobre 500 del tamaño de la caja padre*/ /*438px + 20 px de padding left + 2 de padding right por defecto*/
         height: 4.6vh; /*35px*/
         border-radius: var(--bordeRadius);
         border: none;
@@ -115,6 +115,7 @@ input[type=submit]{
         height: 20px; /*20 +14px =34px*/
         text-decoration: none;
         color: var(--colorLabel);
+        font-family: var(--fueteP);
         border-radius: var(--bordeRadius);
     }
     a:hover{
@@ -164,7 +165,9 @@ input[type=submit]{
         margin-right: 0.65vh; /*5*/
     }
     #ulCerrar{
+        width: 100%;
         position: absolute;
         bottom: 13.02vh; /*50px*/
     }
+    
 }

@@ -208,12 +208,13 @@ input[type=submit]{
 /*Le doy estilo al menu desplegable*/
 #desplegable{
     text-align: left;
-    position: relative;
+    position: fixed;
     width: 230px;
+    top:10px;
+    left :760px;
     background-color: var(--colorFondoFormulario);
     border-radius: var(--bordeRadius);
     font-family: var(--fueteP);
-    float: right;
     margin-right: 30px;
     margin-top: 50px;
     border: 1px solid var(--azul-borde-header);
