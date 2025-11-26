@@ -121,9 +121,13 @@ main {
 #bloqueGestionContribuciones {
 
   h1 {
-    display: inline-block;
     font-size: 2rem;
     color: var(--azul-marino, #b2bcce);
+    margin: 0px;
+  }
+
+  p {
+    margin-top: 0px;
   }
 
   button {
@@ -132,7 +136,7 @@ main {
     width: 231px;
     padding: 8px 0px 8px 8px;
     text-align: left;
-    border: none;
+    border: 1px solid var(--azul-marino);
     border-radius: 14px;
   }
 
@@ -140,6 +144,7 @@ main {
     cursor: hand;
     background-color: var(--blanco-texto-boton, #fafcff);
     color: var(--azul-marino, #0b285b);
+    border: 1px solid var(--azul-borde-header);
   }
 
   i {
