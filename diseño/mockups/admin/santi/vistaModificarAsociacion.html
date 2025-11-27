@@ -70,6 +70,129 @@
         </ul>
     </nav>
     <main>
+        <!-- Gestión de Asociaciones -->
+        <div id="bloqueGestionAsociaciones">
+            <div id="volver">
+                <a href="">
+                    <button>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </a>
+            </div>
+            <div id="tituloSubtitulo">
+                <h1>Editar Asociación</h1>
+                <p>Modifica los detalles de "Cruz Roja"</p>
+            </div>
+        </div>
+
+        <!-- Formulario Asociaciones-->
+        <div id="bloqueFormularioAsociaciones">
+            <div id="formulario-head">
+                <h2>Detalles de la Asociación</h2>
+                <p>Asegurese de que la información sea correcta antes de guardar.</p>
+            </div>
+            <div id="formulario-main">
+                <div id="formAsociacion">
+
+                    <!-- Nombre + Año -->
+                    <div class="fila">
+                        <div class="campo">
+                            <label>Nombre:</label><br>
+                            <input type="text" value="Cruz Roja">
+                        </div>
+
+                        <div class="campo">
+                            <label>Año de fundación:</label><br>
+                            <input type="text" value="1863">
+                        </div>
+                    </div>
+
+                    <!-- Dedicada a + Alcance -->
+                    <div class="fila">
+                        <div class="campo">
+                            <label>Dedicada a:</label><br>
+                            <select name="categoria" id="categoriaDedicacion">
+                                <option value="1">Personas con discapacidad</option>
+                                <option value="2">Refugiados y migrantes</option>
+                                <option value="3">Estudiantes y jóvenes</option>
+                                <option value="4" selected="selected">Personas de bajos recursos</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label>Alcance Geográfico:</label><br>
+                            <select name="alcanceGeografico" id="alcanceGeografico">
+                                <option value="1">Global</option>
+                                <option value="2">Continental</option>
+                                <option value="2" selected="selected">Internacional</option>
+                                <option value="3">Nacional</option>
+                                <option value="4">Autonómico</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Imagen -->
+                    <div class="fila">
+                        <div class="campo-grande">
+                            <label>Imagen:</label><br>
+                            <input type="file">
+                        </div>
+                    </div>
+
+                    <!-- Pista difícil -->
+                    <div class="fila">
+                        <div class="campo-grande">
+                            <label>Pista Difícil:</label><br>
+                            <textarea>Su fundador ganó el primer premio Nobel de la paz.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Pista media -->
+                    <div class="fila">
+                        <div class="campo-grande">
+                            <label>Pista Media:</label><br>
+                            <textarea>Su emblema es un símbolo de protección reconocido mundialmente en las zonas de conflicto.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Pista fácil -->
+                    <div class="fila">
+                        <div class="campo-grande">
+                            <label>Pista Fácil:</label><br>
+                            <textarea>Se asocia con el color rojo y la ayuda médica de emergencia.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Contribuciones -->
+                    <div class="fila">
+                        <label>Contribuciones:</label><br>
+                        <div id="cuadroContribuciones">
+                            <div class="tag"><input type="checkbox" value="Salud" checked>Salud</div>
+                            <div class="tag"><input type="checkbox" value="Protección Infantil">Protección Infantil
+                            </div>
+                            <div class="tag"><input type="checkbox" value="Asistencia Sanitaria" checked>Asistencia
+                                sanitaria</div>
+                            <div class="tag"><input type="checkbox" value="Conservación">Conservación</div>
+                            <div class="tag"><input type="checkbox" value="Activismo">Activismo</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="formulario-footer">
+                <a href="">
+                    <button>
+                        <span>Cancelar</span>
+                    </button>
+                </a>
+                <a href="">
+                    <button>
+                        <i class="fa-regular fa-floppy-disk"></i>
+                        <span>Guardar</span>
+                    </button>
+                </a>
+            </div>
+        </div>
     </main>
 </body>
 
