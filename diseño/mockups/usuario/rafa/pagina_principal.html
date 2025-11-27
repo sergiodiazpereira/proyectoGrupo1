@@ -4,20 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="estilo_juego.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <title>Mockup Página Principal</title>
     </head>
-    <body>
+    <body class="textoCentrado">
         <header>
-            <div class="div-img">
-                <img src="img/perfil.png" alt="" class="clase-img">
-            </div>
             <h2>Asociaciondle</h2>
+            <button class="div-img"><i class="fa-solid fa-user"></i></button>
         </header>
         <nav>
-            <button class="azul"><img src="img/informacion.png" alt="" class="tam-img"></button>
-            <button class="amarillo"><img src="img/bombilla.png" alt="" class="tam-img"></button>
-            <p class="gris">CRONO</p>
-            <p class="negro">00:00</p>
+            <button class="azul"><i class="fa-solid fa-info tam-img"></i></button>
+            <button class="amarillo"><i class="fa-regular fa-lightbulb tam-img"></i></button>
+            <div id="crono" class="textoCentrado">
+                <i class="fa-solid fa-stopwatch gris estiloCrono"></i>
+                <br><br><span class="negro">00:00</span>
+            </div>
         </nav>
         <main>
             <h1>Adivina la asociación</h1>
