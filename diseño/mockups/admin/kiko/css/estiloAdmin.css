@@ -19,10 +19,10 @@ body{
     padding: 0;
     background-color: var(--colorFondo);
     display: grid;
-    /*Le indico que las columnas mediran de ancho 250px*/
-    grid-template-columns: 24.4140% 1fr;
-    /*Le indico que las filas seran de 64px*/
-    grid-template-rows: 8.33% 1fr; /*sobre 768px de alto*/
+    /*Le indico que las columnas mediran 250px de ancho y la segunda el restante de la pantalla*/
+    grid-template-columns: 24.414% 75.586%;
+    /*Le indico que una fila medira 64 y la otra se adaptara*/
+    grid-template-rows: 8.33vh 1fr ; /*64px sobre 768px de alto*/
     grid-template-areas:
         "navAdmin header"
         "navAdmin contenido";
@@ -65,7 +65,7 @@ input[type=submit]{
 #contenedorLogin{
     grid-area: contenido;
     width: 48.82%;    /*500px*/
-    height: 78vh;  /*600px*/
+    height: 58.59vh;  /*450px*/
     text-align: center;
     margin: 3.33vh auto 0 auto; /*  30px baja por el header */
 }
@@ -73,9 +73,11 @@ input[type=submit]{
 #formCambio{
     text-align: left;
     padding: 2.60vh 6% ; /*20px*/
+    margin-top: 5.20vh;
     background-color: var(--colorFondoFormulario);
     border-radius: var(--bordeRadius);
     border: 1px solid rgb(180, 180, 247);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
 }
 #formCambio{
     p{
@@ -125,7 +127,7 @@ input[type=submit]{
 #navAdmin{
     grid-area: navAdmin;
     background-color: var(--colorTituloFormulario);
-    padding-top: 8.33vh; /*64px*/
+    padding-top: 20px; /*64px*/
     position: fixed;
     left: 0;
     top: 0;
@@ -162,12 +164,16 @@ input[type=submit]{
         border-radius: var(--bordeRadius);   
     }
     i{
-        margin-right: 0.65vh; /*5*/
+        margin-right: 5%; /*5*/
     }
     #ulCerrar{
         width: 100%;
         position: absolute;
-        bottom: 13.02vh; /*50px*/
+        bottom: 5.208vh; /*50px*/
     }
-    
+    #pestaña{
+        background-color: var(--colorBotonInicioYRegistro);
+        color: var(--colorLabel);
+        border-radius: var(--bordeRadius);
+    }
 }
