@@ -1,257 +1,321 @@
 /*--ESTILOS PÁGINA PRINCIPAL Y DE JUEGO--*/
 
-/*Estilo del body*/
-body {
-    background-color: #DFE9F7;
-    width: 768px;
-    margin: 0px;
-    padding: 0px;
-    color: #386EF7;
-    font-family: Arial, Helvetica, sans-serif;
+/* box-sizing a todos los elementos para evitar desbordes */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --colorFondo: #e6edff;
+    --colorTitulo: #4B7BFC;
+    --colorTituloFormulario: #102E59;
+    --colorFondoFormulario: #FCFDFF;
+    --colorBotonInicioYRegistro: #f4f6fa;
+    --colorBotonInicioYCrearCuenta: #4B7BFC;
+    --colorP: #6A6F81;
+    --bordeRadius: 0.625rem; /* 10px */
+    --colorLabel: #102E59;
+    --fuenteTitulo: Space Grotesk;
+    --fueteP: PT Sans;
 }
 
 .textoCentrado {
     text-align: center;
 }
 
-/*Estilo header*/
-header {
-    background-color: #FFFFFF;
-    width: 768px;
-    height: 100px;
-    margin: 0px;
-    padding-top: 16px;
-    position: relative;
+/* Estilos de Tipografía General */
+p {
+    color: var(--colorP);
+    font-size: 0.75em;
+    font-family: var(--fueteP);
+}
+#desplegable ul p {
+    color: var(--colorP);
+    margin-top: 0;
+}
+.celda p {
+    color: var(--colorFondo);
+    font-family: var(--fuenteTitulo);
 }
 
-.div-img {
-    position: absolute;
-    font-size: 40px;
-    right: 30px;
-    top: 20px;
-    background: none;
+/* Estilos de Botones Generales */
+button {
+    margin-top: 1rem; /* 16px */
+    border-radius: 1rem; /* 16px */
+    width: 3.125rem; /* 50px */
+    height: 3.125rem; /* 50px */
+    border: none;
+    cursor: pointer;
 }
 
-/*Estilo nav*/
+button.azul {
+    background-color: #1C07FF;
+    color: white;
+}
+
+button.amarillo {
+    background-color: #FFC527;
+    color: white;
+}
+
+/* Estilos de Iconos/Imágenes */
+.estiloCrono {
+    font-size: 1.875rem; /* 30px */
+}
+.negro {
+    color: black;
+}
+.gris {
+    color: gray;
+}
+.tam-img {
+    font-size: 1.875rem; /* 30px */
+    width: 1.875rem; /* 30px */
+    height: 1.875rem; /* 30px */
+}
+
+/* Estilos Comunes de Nav y Desplegable */
 nav {
     text-align: left;
     position: relative;
 }
-
-button {
-    margin-top: 16px;
-    border-radius: 16px;
-    width: 50px;
-    height: 50px;
-    border: none;
+#desplegable {
+    text-align: left;
+    position: fixed;
+    width: 14.375rem; /* 230px */
+    display: none; 
+    z-index: 999;
+    background-color: var(--colorFondoFormulario);
+    border-radius: var(--bordeRadius);
+    font-family: var(--fueteP);
+    border: 1px solid var(--azul-borde-header, #c2d4ff);
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.15); 
+}
+.mostrar-menu {
+    display: block !important;
+}
+#desplegable ul {
+    padding: 0.625rem; /* 10px */
+    margin: 0;
+    list-style-type: none;
+}
+#desplegable ul #nombreDes {
+    margin: 0;
+    font-size: 1em;
+    font-family: var(--fueteP);
+    color: var(--colorLabel);
+}
+#desplegable a {
+    text-decoration: none;
+    color: var(--colorLabel);
+}
+#desplegable li {
+    padding: 0.9375rem; /* 15px */
+    height: 0.9375rem; /* 15px */
+    border-radius: var(--bordeRadius);
+}
+#desplegable i {
+    margin-right: 1.25rem; /* 20px */
+}
+#desplegable li:hover {
+    background-color: var(--azul-borde-header, #c2d4ff);
+}
+#desplegable hr {
+    margin: 0;
 }
 
-button:hover {
-    cursor: pointer;
-}
-
-#crono {
-    position: absolute;
-    right: 40px;
-    top: 10px;
-}
-
-.estiloCrono {
-    font-size: 30px;
-}
-
-.negro {
-    color: black;
-}
-
-.gris {
-    color: gray;
-}
-
-.tam-img {
-    font-size: 30px;
-    width: 30px;
-    height: 30px;
-}
-
-/*Estilo main*/
-main {
-    margin-top: 96px;
-}
-
-button {
-    &.azul {
-        background-color: #1C07FF;
-        color: white;
-    }
-
-    &.amarillo {
-        background-color: #FFC527;
-        color: white;
-    }
-}
-
-input[list] {
-    width: 176px;
-    border-radius: 16px;
-    border-color: #1C07FF;
-}
-
+/* Estilos de la tabla de juego (parte inferior) */
 #contenedor-tabla {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    width: 720px;
-    padding: 0px;
-    border-radius: 8px;
-    margin: 48px auto;
+    gap: 1rem; /* 16px */
+    padding: 0;
+    border-radius: 0.5rem; /* 8px */
+    margin: 3rem auto; /* 48px */
 }
-
 .encabezado {
     font-weight: bold;
-    padding: 0px;
+    padding: 0;
     color: #333;
 }
-
 .celda {
     display: grid;
     justify-items: center;
     align-items: center;
-    padding: 8px 0px;
-    border-radius: 16px;
-    font-size: 14.4px;
+    padding: 0.5rem 0; /* 8px */
+    border-radius: 1rem; /* 16px */
+    font-size: 0.9rem; /* 14.4px */
     color: white;
 }
+.rojo { background-color: #ff3333; }
+.verde { background-color: #00cc00; }
+.amarillo { background-color: #ffc527; color: #333; }
 
-/*Colores extra*/
-.rojo {
-    background-color: #ff3333;
-}
-
-.verde {
-    background-color: #00cc00;
-}
-
-.amarillo {
-    background-color: #ffc527;
-    color: #333;
-}
-
-/*--ESTILOS BOTÓN INFORMACIÓN Y BOTÓN PISTAS--*/
+/* Estilos de Modal/Guía (Info) */
 .guia-modal {
     background-color: #386EF7;
     color: white;
     text-align: center;
-    /* padding: 50px/16 = 3.125rem, 30px/16 = 1.875rem */
     padding: 3.125rem 1.875rem 1.875rem;
     width: 80%;
-    /* max-width: 700px/16 = 43.75rem */
     max-width: 43.75rem;
-    /* margin: 50px/16 = 3.125rem */
     margin: 3.125rem auto;
-    /* border-radius: 5px/16 = 0.3125rem */
     border-radius: 0.3125rem;
     position: relative;
 }
-
 .guia-modal h2 {
-    /* margin-bottom: 25px/16 = 1.5625rem */
     margin-bottom: 1.5625rem;
 }
-
 .x-cerrar {
     position: absolute;
-    /* top: 10px/16 = 0.625rem */
     top: 0.625rem;
-    /* right: 10px/16 = 0.625rem */
     right: 0.625rem;
     background-color: #ff3333;
-    /* border-radius: 10px/16 = 0.625rem */
     border-radius: 0.625rem;
     color: white;
-    /* font-size: 24px/16 = 1.5rem */
     font-size: 1.5rem;
 }
-
-/* Estilos de los indicadores (correcto, parcial, incorrecto) */
 .fila-top {
     display: flex;
     justify-content: space-between;
-    /* gap: 15px/16 = 0.9375rem */
     gap: 0.9375rem;
-    /* margin-bottom: 30px/16 = 1.875rem */
     margin-bottom: 1.875rem;
 }
-
 .indicador-box {
     flex: 1;
     border: 1px solid white;
-    /* padding: 15px/16 = 0.9375rem */
     padding: 0.9375rem;
-    /* border-radius: 5px/16 = 0.3125rem */
     border-radius: 0.3125rem;
     font-size: 0.9rem;
 }
-
 .circulo {
-    /* width/height: 30px/16 = 1.875rem */
     width: 1.875rem;
     height: 1.875rem;
-    /* border-radius: 5px/16 = 0.3125rem */
     border-radius: 0.3125rem;
-    /* margin: 10px/16 = 0.625rem */
     margin: 0 auto 0.625rem;
 }
-
 .indicador-box p {
-    /* margin: 5px/16 = 0.3125rem */
     margin: 0.3125rem 0;
 }
-
-/* Caja inferior (Año de Fundación) */
 .box-inferior {
     border: 1px solid white;
-    /* padding: 20px/16 = 1.25rem */
     padding: 1.25rem;
-    /* border-radius: 5px/16 = 0.3125rem */
     border-radius: 0.3125rem;
 }
-
 .flechas {
     font-size: 2rem;
-    /* margin-bottom: 10px/16 = 0.625rem */
     margin-bottom: 0.625rem;
 }
-
 .flecha-up {
     color: #00cc00;
-    /* margin-right: 10px/16 = 0.625rem */
     margin-right: 0.625rem;
 }
-
 .flecha-down {
     color: #ff3333;
 }
-
 .desc-menor {
     font-size: 0.9rem;
     margin: 0;
 }
-
-/*--ESTILOS OPCIONES GANAR Y PERDER--*/
-
 .estiloFundacion {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem; /* 100px */
+    height: 6.25rem; /* 100px */
 }
-
 #jugar {
-    width: 170px;
-    height: 80px;
+    width: 10.625rem; /* 170px */
+    height: 5rem; /* 80px */
     color: #1C07FF;
     font-weight: bold;
 }
-
 .quitarBorde {
     border: none;
+}
+
+/* MEDIA QUERY para PC y Portátiles (Ancho ≥ 768px) */
+@media (min-width: 48rem) { /* 768px */
+    
+    /* Estilo del body */
+    body {
+        background-color: #DFE9F7;
+        width: 48rem; /* 768px */
+        margin: 0 auto;
+        padding: 0;
+        color: #386EF7;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-x: hidden; 
+    }
+    
+    /* Estilo header */
+    header {
+        width: 48rem; /* 768px */
+        height: 4rem; /* 64px */
+        padding: 0 1.875rem; /* 30px */
+        background-color: var(--blanco-fondo-header, #eff3fc);
+        position: fixed;
+        top: 0;
+        
+        /* Centrado Sin Transform */
+        left: 0;
+        right: 0;
+        margin: auto; 
+        
+        border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
+        text-align: center;
+        line-height: 4rem; /* 64px */
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+    }
+
+    header>span {
+        font-size: 1.125em;
+        font-weight: 700;
+        font-family: var(--fuenteTitulo);
+        color: var(--azul-celeste, #3e7bfe);
+    }
+
+    header #usuario {
+        width: 2.8125rem; /* 45px */
+        height: 2.8125rem; /* 45px */
+        float: right;
+        border: none;
+        margin-top: 0.625rem; /* 10px */
+        background-color: var(--colorFondo);
+        border-radius: 50%;
+    }
+
+    /* NAV de los botones de INFO/PISTAS: Empuje hacia abajo */
+    nav:not(#desplegable) {
+        margin-top: 4rem; /* 64px */
+    }
+
+    /* Menú Desplegable: Posición al borde derecho del header (768px) */
+    #desplegable {
+        top: 4rem; /* 64px */
+        right: 1.875rem; /* 30px desde el borde derecho del header */
+        margin-right: 0;
+        margin-top: 0;
+    }
+    
+    /* Cronómetro */
+    #crono {
+        position: absolute;
+        right: 2.5rem; /* 40px */
+        top: 0.625rem; /* 10px */
+    }
+
+    /* Estilo main y tabla */
+    main {
+        margin-top: 6rem; /* 96px */
+    }
+
+    #contenedor-tabla {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        width: 45rem; /* 720px */
+    }
+    
+    input[list] {
+        width: 11rem; /* 176px */
+        border-radius: 1rem; /* 16px */
+        border-color: #1C07FF;
+    }
+
 }
