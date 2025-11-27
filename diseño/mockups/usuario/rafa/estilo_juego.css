@@ -17,7 +17,6 @@ body {
 /*Estilo header*/
 header {
     background-color: #FFFFFF;
-    /* ANTES: width: 1540px; */
     width: 768px;
     height: 100px;
     margin: 0px;
@@ -102,13 +101,10 @@ input[list] {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
-    /* Ajuste el ancho del contenedor para que encaje mejor en 768px */
-    /* ANTES: width: 1200px; */
     width: 720px;
     padding: 0px;
     border-radius: 8px;
     margin: 48px auto;
-    /* Centrar después de reducir el ancho */
 }
 
 .encabezado {
@@ -121,7 +117,7 @@ input[list] {
     display: grid;
     justify-items: center;
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px 0px;
     border-radius: 16px;
     font-size: 14.4px;
     color: white;
