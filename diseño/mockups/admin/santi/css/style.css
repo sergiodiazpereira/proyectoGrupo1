@@ -42,7 +42,7 @@ nav {
   font-family: var(--fuente-titulo-nav);
 }
 
-nav{
+nav {
 
   h3 {
     display: inline-block;
@@ -110,8 +110,6 @@ main {
   margin-top: 64px;
 }
 
-
-
 /* Div informacion contribuciones + botones */
 #bloqueGestionContribuciones {
   font-family: var(--fuente-titulo-nav);
@@ -159,9 +157,9 @@ main {
 
 }
 
-/* Div lista de contribuciones */
+/* Div lista de contribuciones (676 + 25 + 25 + 1 + 1 = 728 ) */
 #bloqueListaContribucions {
-  width: 640px;
+  width: 676px;
   background: white;
   padding: 25px;
   border: 1px solid var(--azul-borde-header, #c2d4ff);
@@ -170,7 +168,7 @@ main {
   font-family: var(--fuente-titulo-nav);
 }
 
-#bloqueListaContribucions{
+#bloqueListaContribucions {
 
   h2 {
     font-size: 1.8rem;
@@ -205,7 +203,8 @@ main {
     outline: none;
     padding: 12px 16px;
     margin-right: 20px;
-    border: 1px solid #ffffff;;
+    border: 1px solid #ffffff;
+    ;
   }
 
   input:focus {
@@ -346,6 +345,257 @@ ul {
 
   .aniadir:hover {
     background: #2f67e3;
+  }
+
+}
+
+/* Div informacion asociaciones */
+#bloqueGestionAsociaciones {
+  font-family: var(--fuente-titulo-nav);
+  border: var(--azul-marino);
+}
+
+#bloqueGestionAsociaciones {
+
+  #volver {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #volver {
+
+    button {
+      background-color: var(--azul-marino, #0b285b);
+      color: var(--blanco-texto-boton, #fafcff);
+      width: 40px;
+      padding: 8px;
+      text-align: left;
+      border: 1px solid var(--azul-marino);
+      border-radius: 14px;
+    }
+
+    button:hover {
+      cursor: hand;
+      background-color: var(--blanco-texto-boton, #fafcff);
+      color: var(--azul-marino, #0b285b);
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    i {
+      width: 20px;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+  }
+
+  #tituloSubtitulo {
+    margin-left: 25px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #tituloSubtitulo {
+
+    h1 {
+      font-size: 2rem;
+      color: var(--azul-marino, #b2bcce);
+      margin: 0px;
+    }
+
+    p {
+      margin: 0px;
+    }
+
+  }
+
+}
+
+/* Div formulario asociaciones  (676 + 25 + 25 + 1 + 1 = 728 ) */
+#bloqueFormularioAsociaciones {
+  width: 676px;
+  background: white;
+  padding: 25px;
+  border: 1px solid var(--azul-borde-header, #c2d4ff);
+  border-radius: 14px;
+  margin-top: 30px;
+  font-family: var(--fuente-titulo-nav);
+}
+
+#bloqueFormularioAsociaciones {
+
+  #formulario-head {
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--azul-marino);
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+  }
+
+  #formulario-main {
+    margin-top: 25px;
+  }
+
+  #formulario-main {
+
+    input {
+      border: none;
+      border-radius: 14px;
+      background-color: #f4f6ff;
+      font-size: 1rem;
+      color: var(--azul-marino);
+      outline: none;
+      padding: 12px 16px;
+      border: 1px solid #ffffff;
+    }
+
+    input:focus {
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    input[type="text"] {
+      width: 320px;
+    }
+
+    input[type="file"] {
+      width: 672px;
+    }
+
+    input[type="checkbox"] {
+      width: 100px;
+    }
+
+    textarea {
+      border: none;
+      border-radius: 14px;
+      background-color: #f4f6ff;
+      font-size: 1rem;
+      color: var(--azul-marino);
+      outline: none;
+      padding: 12px 16px;
+      border: 1px solid #ffffff;
+      resize: none;
+      display: inline-block;
+      width: 672px;
+    }
+
+    textarea:focus {
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    select {
+      border: none;
+      border-radius: 14px;
+      background-color: #f4f6ff;
+      font-size: 1rem;
+      color: var(--azul-marino);
+      outline: none;
+      padding: 12px 16px;
+      margin-right: 20px;
+      border: 1px solid #ffffff;
+      width: 320px;
+    }
+
+    /* Cada fila ocupa el ancho completo */
+    .fila {
+      margin-bottom: 25px;
+    }
+
+    .fila {
+
+      /* Campos normales (input y select) */
+      .campo {
+        display: inline-block;
+        vertical-align: top;
+        width: 320px;
+      }
+
+      .campo:first-child {
+        margin-right: 31px;
+      }
+
+      /* Campos grandes (textarea, document) */
+      .campo-grande {
+        display: inline-block;
+        width: 676px;
+      }
+
+    }
+
+    /* Contribuciones (644 + 15 + 15 + 1 + 1 = 676)*/
+    #cuadroContribuciones {
+      display: inline-block;
+      width: 644px;
+      border: 1px solid #b4c2e0;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    /* Cada etiqueta es un bloque pequeño */
+    .tag {
+      display: inline-block;
+      margin-right: 25px;
+      margin-bottom: 10px;
+      vertical-align: middle;
+    }
+
+    /* El checkbox debe ser pequeño */
+    .tag {
+
+      input[type="checkbox"] {
+        width: 15px;
+        /* o simplemente eliminar la regla */
+        height: 15px;
+        margin-right: 6px;
+        vertical-align: middle;
+        accent-color: var(--azul-borde-header);
+      }
+
+      span {
+        vertical-align: middle;
+      }
+
+    }
+
+  }
+
+  #formulario-footer {
+    margin-top: 25px;
+    text-align: right;
+  }
+
+  #formulario-footer {
+
+    button {
+      background-color: var(--azul-marino, #0b285b);
+      color: var(--blanco-texto-boton, #fafcff);
+      width: 120px;
+      padding: 8px;
+      text-align: left;
+      border: 1px solid var(--azul-marino);
+      border-radius: 14px;
+    }
+
+    button:hover {
+      cursor: hand;
+      background-color: var(--blanco-texto-boton, #fafcff);
+      color: var(--azul-marino, #0b285b);
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    span {
+      padding-left: 10px;
+    }
+
   }
 
 }
