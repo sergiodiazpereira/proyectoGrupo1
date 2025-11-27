@@ -1,30 +1,32 @@
 /*--ESTILOS PÁGINA PRINCIPAL Y DE JUEGO--*/
 
 /*Estilo del body*/
-body{
+body {
     background-color: #DFE9F7;
-    width: 1540px;
+    /* ANTES: width: 1540px; */
+    width: 768px;
     margin: 0px;
-    padding: 0px; 
-    color : #386EF7;
+    padding: 0px;
+    color: #386EF7;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.textoCentrado{
+.textoCentrado {
     text-align: center;
 }
 
 /*Estilo header*/
-header{
+header {
     background-color: #FFFFFF;
-    width: 1540px;
+    /* ANTES: width: 1540px; */
+    width: 768px;
     height: 100px;
     margin: 0px;
     padding-top: 16px;
     position: relative;
 }
 
-.div-img{
+.div-img {
     position: absolute;
     font-size: 40px;
     right: 30px;
@@ -33,12 +35,12 @@ header{
 }
 
 /*Estilo nav*/
-nav{
+nav {
     text-align: left;
     position: relative;
 }
 
-button{
+button {
     margin-top: 16px;
     border-radius: 16px;
     width: 50px;
@@ -46,52 +48,52 @@ button{
     border: none;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
 }
 
-#crono{
+#crono {
     position: absolute;
     right: 40px;
     top: 10px;
 }
 
-.estiloCrono{
+.estiloCrono {
     font-size: 30px;
 }
 
-.negro{
+.negro {
     color: black;
 }
 
-.gris{
+.gris {
     color: gray;
 }
 
-.tam-img{
+.tam-img {
     font-size: 30px;
     width: 30px;
     height: 30px;
 }
 
 /*Estilo main*/
-main{
+main {
     margin-top: 96px;
 }
 
-button{
-    &.azul{
+button {
+    &.azul {
         background-color: #1C07FF;
         color: white;
     }
 
-    &.amarillo{
+    &.amarillo {
         background-color: #FFC527;
         color: white;
     }
 }
 
-input[list]{
+input[list] {
     width: 176px;
     border-radius: 16px;
     border-color: #1C07FF;
@@ -99,22 +101,25 @@ input[list]{
 
 #contenedor-tabla {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); 
+    grid-template-columns: repeat(5, 1fr);
     gap: 16px;
-    margin: 48px auto;
-    width: 1200px; 
+    /* Ajuste el ancho del contenedor para que encaje mejor en 768px */
+    /* ANTES: width: 1200px; */
+    width: 720px;
     padding: 0px;
     border-radius: 8px;
+    margin: 48px auto;
+    /* Centrar después de reducir el ancho */
 }
 
 .encabezado {
     font-weight: bold;
     padding: 0px;
-    color: #333; 
+    color: #333;
 }
 
 .celda {
-    display: grid; 
+    display: grid;
     justify-items: center;
     align-items: center;
     padding: 8px 16px;
@@ -134,7 +139,7 @@ input[list]{
 
 .amarillo {
     background-color: #ffc527;
-    color: #333; 
+    color: #333;
 }
 
 /*--ESTILOS BOTÓN INFORMACIÓN Y BOTÓN PISTAS--*/
@@ -144,11 +149,11 @@ input[list]{
     text-align: center;
     /* padding: 50px/16 = 3.125rem, 30px/16 = 1.875rem */
     padding: 3.125rem 1.875rem 1.875rem;
-    width: 80%; 
+    width: 80%;
     /* max-width: 700px/16 = 43.75rem */
-    max-width: 43.75rem; 
+    max-width: 43.75rem;
     /* margin: 50px/16 = 3.125rem */
-    margin: 3.125rem auto; 
+    margin: 3.125rem auto;
     /* border-radius: 5px/16 = 0.3125rem */
     border-radius: 0.3125rem;
     position: relative;
@@ -162,7 +167,7 @@ input[list]{
 .x-cerrar {
     position: absolute;
     /* top: 10px/16 = 0.625rem */
-    top: 0.625rem; 
+    top: 0.625rem;
     /* right: 10px/16 = 0.625rem */
     right: 0.625rem;
     background-color: #ff3333;
@@ -170,7 +175,7 @@ input[list]{
     border-radius: 0.625rem;
     color: white;
     /* font-size: 24px/16 = 1.5rem */
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
 /* Estilos de los indicadores (correcto, parcial, incorrecto) */
@@ -178,7 +183,7 @@ input[list]{
     display: flex;
     justify-content: space-between;
     /* gap: 15px/16 = 0.9375rem */
-    gap: 0.9375rem; 
+    gap: 0.9375rem;
     /* margin-bottom: 30px/16 = 1.875rem */
     margin-bottom: 1.875rem;
 }
@@ -187,40 +192,40 @@ input[list]{
     flex: 1;
     border: 1px solid white;
     /* padding: 15px/16 = 0.9375rem */
-    padding: 0.9375rem; 
+    padding: 0.9375rem;
     /* border-radius: 5px/16 = 0.3125rem */
-    border-radius: 0.3125rem; 
+    border-radius: 0.3125rem;
     font-size: 0.9rem;
 }
 
 .circulo {
     /* width/height: 30px/16 = 1.875rem */
-    width: 1.875rem; 
+    width: 1.875rem;
     height: 1.875rem;
     /* border-radius: 5px/16 = 0.3125rem */
-    border-radius: 0.3125rem; 
+    border-radius: 0.3125rem;
     /* margin: 10px/16 = 0.625rem */
-    margin: 0 auto 0.625rem; 
+    margin: 0 auto 0.625rem;
 }
 
 .indicador-box p {
     /* margin: 5px/16 = 0.3125rem */
-    margin: 0.3125rem 0; 
+    margin: 0.3125rem 0;
 }
 
 /* Caja inferior (Año de Fundación) */
 .box-inferior {
     border: 1px solid white;
     /* padding: 20px/16 = 1.25rem */
-    padding: 1.25rem; 
+    padding: 1.25rem;
     /* border-radius: 5px/16 = 0.3125rem */
-    border-radius: 0.3125rem; 
+    border-radius: 0.3125rem;
 }
 
 .flechas {
     font-size: 2rem;
     /* margin-bottom: 10px/16 = 0.625rem */
-    margin-bottom: 0.625rem; 
+    margin-bottom: 0.625rem;
 }
 
 .flecha-up {
@@ -240,18 +245,18 @@ input[list]{
 
 /*--ESTILOS OPCIONES GANAR Y PERDER--*/
 
-.estiloFundacion{
+.estiloFundacion {
     width: 100px;
     height: 100px;
 }
 
-#jugar{
+#jugar {
     width: 170px;
     height: 80px;
     color: #1C07FF;
     font-weight: bold;
 }
 
-.quitarBorde{
+.quitarBorde {
     border: none;
 }
