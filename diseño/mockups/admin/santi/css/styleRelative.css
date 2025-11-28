@@ -1,0 +1,898 @@
+/* Variables */
+/* Variables globales */
+:root {
+  --azul-marino: #0b285b;
+  --azul-celeste: #3e7bfe;
+  --azul-borde-header: #c2d4ff;
+  --blanco-texto-boton: #fafcff;
+  --blanco-fondo-header: rgba(245, 247, 252, 0.7);
+  --blanco-fondo-main: #e6edff;
+  --gris-titulo-nav: #b2bcce;
+  --gris-subtitulo-main: #636d83;
+  --fuente-header: "Space Grotesk", sans-serif;
+  --fuente-titulo-nav: "PT Sans", sans-serif;
+}
+
+/* Configuración general del body */
+body {
+  max-width: 1024px;
+  margin: 0px;
+  padding-left: 25%;
+  /* Reserva el 25% de espacio a la izquierda para el nav fijo */
+}
+
+/* Header fijo superior */
+header {
+  width: 75%;
+  /* Ajustado a 75% */
+  height: 64px;
+  background-color: var(--blanco-fondo-header, #eff3fc);
+  position: fixed;
+  left: 25%;
+  /* Ajustado a 25% (ancho de nav) */
+  font-family: var(--fuente-header);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--azul-celeste, #3e7bfe);
+  border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
+  text-align: center;
+  line-height: 64px;
+  backdrop-filter: blur(5px);
+  top: 0;
+  /* Asegura que esté pegado arriba */
+  z-index: 10;
+  /* Para que esté por encima del main */
+}
+
+/* Barra lateral de navegación */
+nav {
+  width: 25%;
+  /* Ajustado a 25% */
+  height: 100vh;
+  position: fixed;
+  background-color: var(--azul-marino, #0b285b);
+  font-family: var(--fuente-titulo-nav);
+  left: 0;
+  /* Asegura que esté pegado a la izquierda */
+  top: 0;
+  /* Asegura que esté pegado arriba */
+  z-index: 10;
+  /* Para que esté por encima de todo */
+}
+
+/* Elementos internos dentro de nav */
+nav {
+
+  /* Título de sección */
+  h3 {
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gris-titulo-nav, #b2bcce);
+    margin-top: 32px;
+  }
+
+  /* Botones de navegación */
+  button {
+    background-color: var(--azul-marino, #0b285b);
+    color: var(--blanco-texto-boton, #fafcff);
+    width: 100%;
+    /* Ocupa todo el ancho disponible del li (que es 100% del nav) */
+    padding: 8px 0px 8px 8px;
+    text-align: left;
+    border: none;
+    border-radius: 14px;
+    font-family: inherit;
+  }
+
+  /* Hover de botones */
+  button:hover {
+    cursor: hand;
+    background-color: var(--blanco-texto-boton, #fafcff);
+    color: var(--azul-marino, #0b285b);
+  }
+
+  /* Página seleccionada */
+  .paginaSeleccionada {
+    background-color: var(--blanco-texto-boton, #fafcff);
+    color: var(--azul-marino, #0b285b);
+  }
+
+  /* Listas del menú */
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* Elementos de lista */
+  li {
+    display: block;
+    /* Hace que el li ocupe el 100% del ancho del nav */
+    margin: 2px auto;
+  }
+
+  /* Lista inferior fija */
+  .ul-inferior {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    /* Asegura que ocupe todo el ancho para centrar los li */
+  }
+
+  /* Iconos dentro de nav */
+  i {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+  }
+
+}
+
+/* Contenido principal */
+main {
+  width: calc(100% - 40px);
+  background-color: var(--blanco-fondo-main, #e6edff);
+  padding: 20px;
+  padding-top: calc(20px + 64px);
+  /* Altura del header (64px) al padding superior (20px) */
+  margin-left: 0;
+}
+
+/* Div informacion contribuciones + botones */
+#bloqueGestionContribuciones {
+  font-family: var(--fuente-titulo-nav);
+  border: var(--azul-marino);
+}
+
+/* Elementos internos del bloque de gestion de contribuciones */
+#bloqueGestionContribuciones {
+
+  /* Título principal */
+  h1 {
+    font-size: 2rem;
+    color: var(--azul-marino, #b2bcce);
+    margin: 0px;
+  }
+
+  /* Subtítulo */
+  p {
+    margin-top: 0px;
+  }
+
+  /* Botón principal */
+  button {
+    background-color: var(--azul-marino, #0b285b);
+    color: var(--blanco-texto-boton, #fafcff);
+    width: 30%;
+    /* Ajustado a 30% para ser responsive */
+    padding: 8px 0px 8px 8px;
+    text-align: left;
+    border: 1px solid var(--azul-marino);
+    border-radius: 14px;
+  }
+
+  /* Hover botón */
+  button:hover {
+    cursor: hand;
+    background-color: var(--blanco-texto-boton, #fafcff);
+    color: var(--azul-marino, #0b285b);
+    border: 1px solid var(--azul-borde-header);
+  }
+
+  /* Iconos */
+  i {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+  }
+
+  /* Enlaces sin subrayado */
+  a {
+    text-decoration: none;
+  }
+
+}
+
+/* Div lista de contribuciones (676 + 25 + 25 + 1 + 1 = 728 ) */
+#bloqueListaContribucions {
+  width: calc(100% - 52px);
+  /* 50px padding y  2px borde */
+  background: white;
+  padding: 25px;
+  border: 1px solid var(--azul-borde-header, #c2d4ff);
+  border-radius: 14px;
+  margin-top: 30px;
+  font-family: var(--fuente-titulo-nav);
+}
+
+/* Elementos internos dentro de lista de contribuciones */
+#bloqueListaContribucions {
+
+  /* Título del bloque */
+  h2 {
+    font-size: 1.8rem;
+    color: var(--azul-marino);
+    margin-bottom: 20px;
+  }
+
+  /* Fila con grid */
+  .fila {
+    display: grid;
+    grid-template-columns: 75% 15%;
+    /*  */
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  /* Encabezado de la lista */
+  .encabezado {
+    background: transparent;
+    padding: 0;
+
+    /* Texto dentro del encabezado */
+    span {
+      font-weight: bold;
+      color: var(--gris-subtitulo-main);
+    }
+
+  }
+
+  /* Inputs de texto */
+  input {
+    border: none;
+    border-radius: 14px;
+    background-color: #f4f6ff;
+    font-size: 1rem;
+    color: var(--azul-marino);
+    outline: none;
+    padding: 12px 16px;
+    margin-right: 20px;
+    border: 1px solid #ffffff;
+    width: calc(100% - 32px);
+    /* Ajuste del ancho para input dentro de grid */
+  }
+
+  /* Focus input */
+  input:focus {
+    border: 1px solid var(--azul-borde-header);
+  }
+
+  /* Botón eliminar */
+  .btn-eliminar {
+    background: #ff5757;
+    border: none;
+    border-radius: 14px;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Hover eliminar */
+  .btn-eliminar:hover {
+    background: #ff3030;
+  }
+
+}
+
+/* Listas generales */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* MODAL */
+/* Clase para mostrar u ocultar el modal+fondo */
+.oculto {
+  display: none !important;
+}
+
+/* Fondo del modal */
+.fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ventana del modal */
+.modal {
+  width: 40%;
+  /*  */
+  background: var(--blanco-fondo-main);
+  padding: 25px;
+  border-radius: 14px;
+  font-family: var(--fuente-titulo-nav);
+}
+
+/* Cabecera del modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Elementos internos de la cabecera */
+.modal-header {
+
+  /* Título del modal */
+  h2 {
+    font-size: 1.4rem;
+    color: var(--azul-marino);
+    margin: 0;
+  }
+
+  /* Icono cerrar */
+  .ico-cerrar {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: hand;
+    color: #0b285b;
+  }
+
+}
+
+/* Cuerpo del modal */
+.modal-main {
+  margin-top: 20px;
+}
+
+/* Elementos internos del modal-main */
+.modal-main {
+
+  /* Etiquetas */
+  label {
+    display: inline-block;
+    font-size: 1rem;
+    color: #0b285b;
+    margin-bottom: 6px;
+  }
+
+  /* Input texto */
+  input[type="text"] {
+    width: calc(100% - 28px);
+    /* 28px Padding y 4px borde */
+    padding: 10px 14px;
+    font-size: 1rem;
+    border-radius: 14px;
+    border: 2px solid #c2d4ff;
+    outline: none;
+    background: white;
+  }
+
+  /* Focus */
+  input:focus {
+    border-color: #3e7bfe;
+  }
+
+}
+
+/* Pie del modal */
+.modal-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Elementos internos del footer */
+.modal-footer {
+
+  /* Botón cancelar */
+  .cancelar {
+    background: transparent;
+    border: none;
+    color: #0b285b;
+    font-size: 1rem;
+    cursor: hand;
+  }
+
+  /* Botón añadir */
+  .aniadir {
+    background: #3e7bfe;
+    color: white;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    cursor: hand;
+  }
+
+  /* Hover añadir */
+  .aniadir:hover {
+    background: #2f67e3;
+  }
+
+}
+
+/* Div informacion asociaciones */
+#bloqueGestionAsociaciones {
+  font-family: var(--fuente-titulo-nav);
+  border: var(--azul-marino);
+}
+
+/* Elementos internos de asociaciones */
+#bloqueGestionAsociaciones {
+
+  /* Botón volver */
+  #volver {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #volver {
+
+    /* Botón volver */
+    button {
+      background-color: var(--azul-marino, #0b285b);
+      color: var(--blanco-texto-boton, #fafcff);
+      width: 40px;
+      padding: 8px;
+      text-align: left;
+      border: 1px solid var(--azul-marino);
+      border-radius: 14px;
+    }
+
+    button:hover {
+      cursor: hand;
+      background-color: var(--blanco-texto-boton, #fafcff);
+      color: var(--azul-marino, #0b285b);
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    /* Icono */
+    i {
+      width: 20px;
+      text-align: center;
+    }
+
+    /* Enlaces */
+    a {
+      text-decoration: none;
+    }
+
+  }
+
+  /* Título y subtítulo */
+  #tituloSubtitulo {
+    margin-left: 25px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #tituloSubtitulo {
+
+    /* Título */
+    h1 {
+      font-size: 2rem;
+      color: var(--azul-marino, #b2bcce);
+      margin: 0px;
+    }
+
+    /* Subtítulo */
+    p {
+      margin: 0px;
+    }
+
+  }
+
+}
+
+/* Div formulario asociaciones (676 width + (25+25) padding + (1+1) border = 728px*/
+#bloqueFormularioAsociaciones {
+  width: calc(100% - 52px);
+  /* 50px padding y 2px borde */
+  background: white;
+  padding: 25px;
+  border: 1px solid var(--azul-borde-header, #c2d4ff);
+  border-radius: 14px;
+  margin-top: 30px;
+  font-family: var(--fuente-titulo-nav);
+}
+
+/* Elementos internos del formulario */
+#bloqueFormularioAsociaciones {
+
+  /* Encabezado del formulario */
+  #formulario-head {
+
+    /* Título */
+    h2 {
+      font-size: 1.8rem;
+      color: var(--azul-marino);
+      margin: 0;
+    }
+
+    /* Subtítulo */
+    p {
+      margin: 0;
+    }
+
+  }
+
+  /* Contenedor principal del formulario */
+  #formulario-main {
+    margin-top: 25px;
+  }
+
+  /* Estilos del contenedor principal del formulario */
+  #formulario-main {
+
+    /* Estilos base para inputs */
+    input {
+      border: none;
+      border-radius: 14px;
+      background-color: #f4f6ff;
+      font-size: 1rem;
+      color: var(--azul-marino);
+      outline: none;
+      padding: 12px 16px;
+      border: 1px solid #ffffff;
+    }
+
+    /* Borde al enfocar un input */
+    input:focus {
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    /* Tamaño específico para inputs de texto */
+    input[type="text"] {
+      width: calc(100% - 34px);
+      /* 32px padding + 2px border */
+    }
+
+    /* Tamaño para input de archivo */
+    input[type="file"] {
+      width: calc(100% - 34px);
+      /* 32px padding + 2px border */
+    }
+
+    /* Tamaño genérico para checkbox (si no está en .tag) */
+    input[type="checkbox"] {
+      width: 100px;
+    }
+
+    /* Estilos para textarea del formulario */
+    textarea {
+      border: none;
+      border-radius: 14px;
+      background-color: #f4f6ff;
+      font-size: 1rem;
+      color: var(--azul-marino);
+      outline: none;
+      padding: 12px 16px;
+      border: 1px solid #ffffff;
+      resize: none;
+      display: inline-block;
+      width: calc(100% - 34px);
+      /* 32px padding + 2px border */
+    }
+
+    /* Borde al enfocar textarea */
+    textarea:focus {
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    /* Estilos para los selects */
+    select {
+      border: none;
+      border-radius: 14px;
+      background-color: #f4f6ff;
+      font-size: 1rem;
+      color: var(--azul-marino);
+      outline: none;
+      padding: 12px 16px;
+      margin-right: 20px;
+      border: 1px solid #ffffff;
+      width: calc(100% - 34px);
+      /* Padding (32px) y el borde (2px) */
+    }
+
+    /* Cada fila ocupa ancho completo y separa elementos */
+    .fila {
+      margin-bottom: 25px;
+      display: flex;
+      /* Usar Flexbox para un layout de columnas fiable */
+      justify-content: space-between;
+      /* Distribuye los dos campos */
+      align-items: flex-start;
+      /* Alinea campos arriba */
+    }
+
+    .fila {
+
+      /* Campos estándar dentro de una fila */
+      .campo {
+        display: inline-block;
+        vertical-align: top;
+        width: 47%;
+        /* Se mantiene 47% para dejar espacio para justify-content: space-between */
+      }
+
+      /* Separación para el primer campo */
+      .campo:first-child {
+        margin-right: 0;
+        /* Flexbox se encarga de la separación */
+      }
+
+      /* Campos grandes como textarea o contenedores amplios */
+      .campo-grande {
+        display: inline-block;
+        width: 100%;
+        /* Ajustado a 100% */
+      }
+
+    }
+
+    /* Cuadro de contribuciones (644 width + (15+15) padding + (1+1) border = 676 ) */
+    #cuadroContribuciones {
+      display: inline-block;
+      width: calc(100% - 32px);
+      /* Ajustado a 100% menos el padding y borde */
+      border: 1px solid #b4c2e0;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    /* Cada etiqueta dentro de las contribuciones */
+    .tag {
+      display: inline-block;
+      margin-right: 25px;
+      margin-bottom: 10px;
+      vertical-align: middle;
+    }
+
+    /* Ajustes para checkbox dentro de .tag */
+    .tag {
+
+      input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin-right: 6px;
+        vertical-align: middle;
+        accent-color: var(--azul-borde-header);
+      }
+
+      span {
+        vertical-align: middle;
+      }
+
+    }
+
+  }
+
+  /* Pie del formulario */
+  #formulario-footer {
+    margin-top: 25px;
+    text-align: right;
+  }
+
+  #formulario-footer {
+
+    /* Botón principal */
+    button {
+      background-color: var(--azul-marino, #0b285b);
+      color: var(--blanco-texto-boton, #fafcff);
+      width: 15%;
+      /* Ajustado a un porcentaje para ser responsive */
+      padding: 8px;
+      text-align: left;
+      border: 1px solid var(--azul-marino);
+      border-radius: 14px;
+    }
+
+    /* Hover del botón */
+    button:hover {
+      cursor: hand;
+      background-color: var(--blanco-texto-boton, #fafcff);
+      color: var(--azul-marino, #0b285b);
+      border: 1px solid var(--azul-borde-header);
+    }
+
+    /* Espaciado entre el botón y el texto */
+    span {
+      padding-left: 10px;
+    }
+
+    /* Enlaces sin subrayado */
+    a {
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+/* MEDIA QUERY MÓVIL (Max-width: 768px) */
+@media screen and (max-width: 768px) {
+
+  body {
+    padding-left: 0;
+    max-width: 100%;
+  }
+
+  nav {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  header {
+    width: 100%;
+    left: 0;
+    position: static;
+  }
+
+  main {
+    width: calc(100% - 40px);
+    padding: 20px;
+    padding-top: 20px;
+    margin-left: 0;
+  }
+
+  #bloqueGestionContribuciones button {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0px;
+  }
+
+  /* Bloque Lista de Contribuciones */
+  #bloqueListaContribucions {
+
+    /* Fila: Uso Flexbox para colocar input y botón al lado */
+    .fila {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    /* Ajuste para que el input */
+    input {
+      flex-grow: 1;
+      margin-right: 0;
+      width: initial;
+    }
+
+    /* Botón eliminar */
+    .btn-eliminar {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      margin-top: 0;
+    }
+  }
+
+  .modal {
+    width: 90%;
+    margin: 20px;
+  }
+
+  #bloqueFormularioAsociaciones {
+
+    #formulario-main {
+
+      .fila {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .fila .campo {
+        width: 100%;
+      }
+
+    }
+
+    #formulario-footer {
+
+      button {
+        width: 100%;
+        text-align: center;
+      }
+
+      span {
+        display: block;
+        padding-left: 0;
+        padding-top: 10px;
+        text-align: right;
+      }
+
+    }
+
+  }
+
+  /* Barra lateral de navegación (NAV)*/
+  nav {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  /* Lista inferior dentro de NAV */
+  nav .ul-inferior {
+    position: static;
+    margin-bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+}
+
+
+/* MEDIA QUERY PC (Min-width: 769px) */
+@media screen and (min-width: 769px) {
+
+  body {
+    max-width: 1024px;
+    padding-left: 25%;
+  }
+
+  nav {
+    width: 25%;
+    height: 100vh;
+    position: fixed;
+  }
+
+  header {
+    width: 75%;
+    left: 25%;
+    position: fixed;
+  }
+
+  main {
+    padding-top: calc(20px + 64px);
+  }
+
+  #bloqueGestionContribuciones button {
+    width: 30%;
+    text-align: left;
+  }
+
+  #bloqueListaContribucions .fila {
+    grid-template-columns: 75% 15%;
+    gap: initial;
+    display: grid;
+  }
+
+  #bloqueListaContribucions input {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  #bloqueListaContribucions .btn-eliminar {
+    margin-top: 0;
+  }
+
+  .modal {
+    width: 40%;
+  }
+
+  #bloqueFormularioAsociaciones #formulario-main .fila {
+    flex-direction: row;
+    gap: initial;
+  }
+
+  #bloqueFormularioAsociaciones #formulario-main .fila .campo {
+    width: 47%;
+  }
+
+  #bloqueFormularioAsociaciones #formulario-footer button {
+    width: 15%;
+    text-align: left;
+  }
+
+  #bloqueFormularioAsociaciones #formulario-footer span {
+    display: initial;
+    padding-left: 10px;
+    padding-top: 0;
+  }
+}
