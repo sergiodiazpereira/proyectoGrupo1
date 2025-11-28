@@ -18,18 +18,16 @@ body {
   max-width: 1024px;
   margin: 0px;
   padding-left: 25%;
-  /* Reserva el 25% de espacio a la izquierda para el nav fijo */
+  background-color: var(--blanco-fondo-main);
 }
 
 /* Header fijo superior */
 header {
   width: 75%;
-  /* Ajustado a 75% */
   height: 64px;
   background-color: var(--blanco-fondo-header, #eff3fc);
   position: fixed;
   left: 25%;
-  /* Ajustado a 25% (ancho de nav) */
   font-family: var(--fuente-header);
   font-size: 1.125rem;
   font-weight: 700;
@@ -39,25 +37,19 @@ header {
   line-height: 64px;
   backdrop-filter: blur(5px);
   top: 0;
-  /* Asegura que esté pegado arriba */
   z-index: 10;
-  /* Para que esté por encima del main */
 }
 
 /* Barra lateral de navegación */
 nav {
   width: 25%;
-  /* Ajustado a 25% */
   height: 100vh;
   position: fixed;
   background-color: var(--azul-marino, #0b285b);
   font-family: var(--fuente-titulo-nav);
   left: 0;
-  /* Asegura que esté pegado a la izquierda */
   top: 0;
-  /* Asegura que esté pegado arriba */
   z-index: 10;
-  /* Para que esté por encima de todo */
 }
 
 /* Elementos internos dentro de nav */
@@ -65,7 +57,7 @@ nav {
 
   /* Título de sección */
   h3 {
-    display: inline-block;
+    display: block;
     padding: 0px 20px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -77,8 +69,7 @@ nav {
   button {
     background-color: var(--azul-marino, #0b285b);
     color: var(--blanco-texto-boton, #fafcff);
-    width: 100%;
-    /* Ocupa todo el ancho disponible del li (que es 100% del nav) */
+    width: 90%;
     padding: 8px 0px 8px 8px;
     text-align: left;
     border: none;
@@ -110,7 +101,6 @@ nav {
   /* Elementos de lista */
   li {
     display: block;
-    /* Hace que el li ocupe el 100% del ancho del nav */
     margin: 2px auto;
   }
 
@@ -119,7 +109,6 @@ nav {
     position: absolute;
     bottom: 8px;
     width: 100%;
-    /* Asegura que ocupe todo el ancho para centrar los li */
   }
 
   /* Iconos dentro de nav */
@@ -133,12 +122,9 @@ nav {
 
 /* Contenido principal */
 main {
-  width: calc(100% - 40px);
+  width: 100%;
   background-color: var(--blanco-fondo-main, #e6edff);
   padding: 20px;
-  padding-top: calc(20px + 64px);
-  /* Altura del header (64px) al padding superior (20px) */
-  margin-left: 0;
 }
 
 /* Div informacion contribuciones + botones */
@@ -167,7 +153,6 @@ main {
     background-color: var(--azul-marino, #0b285b);
     color: var(--blanco-texto-boton, #fafcff);
     width: 30%;
-    /* Ajustado a 30% para ser responsive */
     padding: 8px 0px 8px 8px;
     text-align: left;
     border: 1px solid var(--azul-marino);
@@ -198,8 +183,7 @@ main {
 
 /* Div lista de contribuciones (676 + 25 + 25 + 1 + 1 = 728 ) */
 #bloqueListaContribucions {
-  width: calc(100% - 52px);
-  /* 50px padding y  2px borde */
+  width: 100%;
   background: white;
   padding: 25px;
   border: 1px solid var(--azul-borde-header, #c2d4ff);
@@ -222,7 +206,6 @@ main {
   .fila {
     display: grid;
     grid-template-columns: 75% 15%;
-    /*  */
     align-items: center;
     margin-bottom: 12px;
   }
@@ -251,8 +234,7 @@ main {
     padding: 12px 16px;
     margin-right: 20px;
     border: 1px solid #ffffff;
-    width: calc(100% - 32px);
-    /* Ajuste del ancho para input dentro de grid */
+    width: 100%;
   }
 
   /* Focus input */
@@ -306,7 +288,6 @@ ul {
 /* Ventana del modal */
 .modal {
   width: 40%;
-  /*  */
   background: var(--blanco-fondo-main);
   padding: 25px;
   border-radius: 14px;
@@ -359,8 +340,7 @@ ul {
 
   /* Input texto */
   input[type="text"] {
-    width: calc(100% - 28px);
-    /* 28px Padding y 4px borde */
+    width: 100%;
     padding: 10px 14px;
     font-size: 1rem;
     border-radius: 14px;
@@ -489,8 +469,7 @@ ul {
 
 /* Div formulario asociaciones (676 width + (25+25) padding + (1+1) border = 728px*/
 #bloqueFormularioAsociaciones {
-  width: calc(100% - 52px);
-  /* 50px padding y 2px borde */
+  width: 100%;
   background: white;
   padding: 25px;
   border: 1px solid var(--azul-borde-header, #c2d4ff);
@@ -546,14 +525,12 @@ ul {
 
     /* Tamaño específico para inputs de texto */
     input[type="text"] {
-      width: calc(100% - 34px);
-      /* 32px padding + 2px border */
+      width: 100%;
     }
 
     /* Tamaño para input de archivo */
     input[type="file"] {
-      width: calc(100% - 34px);
-      /* 32px padding + 2px border */
+      width: 100%;
     }
 
     /* Tamaño genérico para checkbox (si no está en .tag) */
@@ -572,9 +549,8 @@ ul {
       padding: 12px 16px;
       border: 1px solid #ffffff;
       resize: none;
-      display: inline-block;
-      width: calc(100% - 34px);
-      /* 32px padding + 2px border */
+      display: block;
+      width: 100%;
     }
 
     /* Borde al enfocar textarea */
@@ -593,19 +569,15 @@ ul {
       padding: 12px 16px;
       margin-right: 20px;
       border: 1px solid #ffffff;
-      width: calc(100% - 34px);
-      /* Padding (32px) y el borde (2px) */
+      width: 100%;
     }
 
     /* Cada fila ocupa ancho completo y separa elementos */
     .fila {
       margin-bottom: 25px;
       display: flex;
-      /* Usar Flexbox para un layout de columnas fiable */
       justify-content: space-between;
-      /* Distribuye los dos campos */
       align-items: flex-start;
-      /* Alinea campos arriba */
     }
 
     .fila {
@@ -615,29 +587,25 @@ ul {
         display: inline-block;
         vertical-align: top;
         width: 47%;
-        /* Se mantiene 47% para dejar espacio para justify-content: space-between */
       }
 
       /* Separación para el primer campo */
       .campo:first-child {
         margin-right: 0;
-        /* Flexbox se encarga de la separación */
       }
 
       /* Campos grandes como textarea o contenedores amplios */
       .campo-grande {
-        display: inline-block;
+        display: block;
         width: 100%;
-        /* Ajustado a 100% */
       }
 
     }
 
     /* Cuadro de contribuciones (644 width + (15+15) padding + (1+1) border = 676 ) */
     #cuadroContribuciones {
-      display: inline-block;
-      width: calc(100% - 32px);
-      /* Ajustado a 100% menos el padding y borde */
+      display: block;
+      width: 100%;
       border: 1px solid #b4c2e0;
       padding: 15px;
       border-radius: 10px;
@@ -668,6 +636,11 @@ ul {
 
     }
 
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
   }
 
   /* Pie del formulario */
@@ -683,7 +656,6 @@ ul {
       background-color: var(--azul-marino, #0b285b);
       color: var(--blanco-texto-boton, #fafcff);
       width: 15%;
-      /* Ajustado a un porcentaje para ser responsive */
       padding: 8px;
       text-align: left;
       border: 1px solid var(--azul-marino);
@@ -733,9 +705,8 @@ ul {
   }
 
   main {
-    width: calc(100% - 40px);
+    width: 90%;
     padding: 20px;
-    padding-top: 20px;
     margin-left: 0;
   }
 
@@ -743,6 +714,7 @@ ul {
     width: 100%;
     text-align: center;
     padding: 12px 0px;
+    margin-bottom: 2%;
   }
 
   /* Bloque Lista de Contribuciones */
@@ -777,6 +749,7 @@ ul {
     margin: 20px;
   }
 
+  /* Bloque Formulario de Asociaciones */
   #bloqueFormularioAsociaciones {
 
     #formulario-main {
@@ -797,13 +770,17 @@ ul {
       button {
         width: 100%;
         text-align: center;
+        margin-bottom: 2%;
       }
 
       span {
-        display: block;
+        display: inline-block;
         padding-left: 0;
-        padding-top: 10px;
-        text-align: right;
+        text-align: center;
+      }
+
+      i {
+        display: inline-block;
       }
 
     }
@@ -849,7 +826,7 @@ ul {
   }
 
   main {
-    padding-top: calc(20px + 64px);
+    padding-top: 64px;
   }
 
   #bloqueGestionContribuciones button {
