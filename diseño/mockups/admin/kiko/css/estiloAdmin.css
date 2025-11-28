@@ -131,43 +131,47 @@ input[type=submit]{
     position: fixed;
     left: 0;
     top: 0;
-    width: 24.41%; /* 250px de 1024px */
+    width: 25%; /* 250px de 1024px */
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 #navAdmin{
-    p{
-        color:rgb(177, 175, 175);
-    }
     ul{
-        padding: 2.6vh 7,69%; /*20px*/
         margin: 0;
+        padding: 0 10px;
         text-align: left;
         list-style-type: none;
     }
     li{
         margin-bottom: 10px;
     }
-    a{  
-        text-decoration: none;
+    i{
+        margin-right: 2.5%; /*5*/
+    }
+    i:hover{
+        color: var(--colorLabel);
+    }
+    button{  
+        text-align: left;
+        border: none;
         color: var(--colorFondoFormulario);
+        background-color: var(--colorLabel);
         font-family: var(--fueteP);
         padding-left: 4%; /*35px*/
-        width: 55%; /*139px*/
+        width: 100%; /*139px*/
         height: 3.9vh; /*30px*/
         display: inline-block;
+        border-radius: var(--bordeRadius);
     }
-    a:hover{
+    button:hover{
         background-color: var(--colorFondoFormulario);
+        border-radius: var(--bordeRadius); 
         color: var(--colorLabel);
-        border-radius: var(--bordeRadius);   
-    }
-    i{
-        margin-right: 5%; /*5*/
     }
     #ulCerrar{
-        width: 100%;
+        padding: 0 10px;
+        width: 91%;
         position: absolute;
         bottom: 5.208vh; /*50px*/
     }
