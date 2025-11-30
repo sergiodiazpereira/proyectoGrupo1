@@ -149,7 +149,7 @@ nav {
 .verde { background-color: #00cc00; }
 .amarillo { background-color: #ffc527; color: #333; }
 
-/* Estilos de Modal/Guía (Info) */
+/* Estilos de Info y botones (popups de info, pistas y otros botones) */
 .guia-modal {
     background-color: #386EF7;
     color: white;
