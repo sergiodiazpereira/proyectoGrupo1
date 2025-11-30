@@ -16,9 +16,9 @@
 
 /* Configuración general del body */
 body {
-  max-width: 1024px;
+  max-width: 100%; /* %> 1024px/1024px*/
   margin: 0;
-  padding-left: 25%;
+  padding-left: 25%; /* %> 256px/1024px*/
   background-color: var(--blanco-fondo-main);
 }
 
@@ -26,18 +26,18 @@ body {
 
 /* Header fijo superior */
 header {
-  width: 75%;
-  height: 64px;
+  width: 75%; /* %> 768px/1024px */
+  height: 8.33vh; /* vh> 64px/768px */
   background-color: var(--blanco-fondo-header, #eff3fc);
   position: fixed;
-  left: 25%;
+  left: 25%; /* %> 256px/1024px */
   font-family: var(--fuente-header);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--azul-celeste, #3e7bfe);
   border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
   text-align: center;
-  line-height: 64px;
+  line-height: 8.33vh; /* vh> 64px/768px */
   backdrop-filter: blur(5px);
   top: 0;
   z-index: 10;
@@ -47,8 +47,8 @@ header {
 
 /* Barra lateral de navegación */
 nav {
-  width: 25%;
-  height: 100vh;
+  width: 25%;  /* %> 256px/1024px */
+  height: 100vh; /* vh> 768px/768px */
   position: fixed;
   background-color: var(--azul-marino, #0b285b);
   font-family: var(--fuente-titulo-nav);
@@ -63,19 +63,19 @@ nav {
   /* Título de sección */
   h3 {
     display: block;
-    padding: 0px 20px;
+    padding: 0 7.81%; /* %> 20px/256px */
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--gris-titulo-nav, #b2bcce);
-    margin-top: 32px; /**/
+    margin-top: 4.16vh; /* vh> 32px/768px */
   }
 
   /* Botones de navegación */
   button {
     background-color: var(--azul-marino, #0b285b);
     color: var(--blanco-texto-boton, #fafcff);
-    width: 90%;
-    padding: 8px 0px 8px 8px;
+    width: 89.84%; /* %> 230px/256px */
+    padding: 1.04vh 3.12%; /* vh> 8px/768px %> 8px/256px */
     text-align: left;
     border: none;
     border-radius: 14px;
@@ -106,20 +106,20 @@ nav {
   /* Elementos de lista */
   li {
     display: block;
-    margin: 2px auto;
+    margin: 0.26vh auto; /* vh> 2px/768px */
   }
 
   /* Lista inferior fija */
   .ul-inferior {
     position: absolute;
-    bottom: 8px;
-    width: 100%;
+    bottom: 1.04vh; /* vh> 8px/768px */
+    width: 100%; /* %> 256px/256px */
   }
 
   /* Iconos dentro de nav */
   i {
-    margin-right: 8px;
-    width: 20px;
+    margin-right: 3.47%; /* %> 8px/230px */
+    width: 8.69%; /* %> 20px/230px */
     text-align: center;
   }
 
@@ -129,9 +129,9 @@ nav {
 
 /* Contenido principal */
 main {
-  width: 100%;
+  width: 71.09%; /* 728px/1024px */
   background-color: var(--blanco-fondo-main, #e6edff);
-  padding: 20px;
+  padding: 2.60vh 2.74%; /* vh> 20px/768px %> 20px/728px*/
 }
 
 /* ================================================[ CONTRIBUCIONES ]======================================================== */
@@ -140,6 +140,7 @@ main {
 #bloqueGestionContribuciones {
   font-family: var(--fuente-titulo-nav);
   border: var(--azul-marino);
+  width: 100%; /* %> 728px/728px */
 }
 
 /* Elementos internos del bloque de gestion de contribuciones */
@@ -154,15 +155,21 @@ main {
 
   /* Subtítulo */
   p {
-    margin-top: 0px;
+    margin-top: 0;
+  }
+
+  /* Enlaces sin subrayado */
+  a {
+    text-decoration: none;
+    width: 15.62%; /* %> 120px/728px */
   }
 
   /* Botón principal */
   button {
     background-color: var(--azul-marino, #0b285b);
     color: var(--blanco-texto-boton, #fafcff);
-    width: 30%;
-    padding: 8px 0px 8px 8px;
+    width: 100%; /* %> 120px/120px */
+    padding: 1.04vh 1.09%; /* vh> 8px/768px %> 8px/728px */
     text-align: left;
     border: 1px solid var(--azul-marino);
     border-radius: 14px;
@@ -176,28 +183,21 @@ main {
     border: 1px solid var(--azul-borde-header);
   }
 
-  /* Iconos */
-  i {
-    margin-right: 8px;
-    width: 20px;
-    text-align: center;
-  }
-
-  /* Enlaces sin subrayado */
-  a {
-    text-decoration: none;
+  /* Espaciado entre el botón y el texto */
+  span {
+    padding-left: 8.33%; /* %> 10px/120px */
   }
 
 }
 
 /* Div lista de contribuciones (676 width + (25+25) padding + (1+1) border = 728px) */
 #bloqueListaContribuciones {
-  width: 100%;
+  width: 92.85%; /* %> 676px/728px */
   background: white;
-  padding: 25px;
+  padding: 3.25vh 3.43%; /* vh> 25px/768px %> 25px/728px */
   border: 1px solid var(--azul-borde-header, #c2d4ff);
   border-radius: 14px;
-  margin-top: 30px;
+  margin-top: 3.90vh; /* vh> 30px/768px */
   font-family: var(--fuente-titulo-nav);
 }
 
@@ -208,15 +208,15 @@ main {
   h2 {
     font-size: 1.8rem;
     color: var(--azul-marino);
-    margin-bottom: 20px;
+    margin-bottom: 2.60vh; /* vh> 20px/768px */
   }
 
   /* Fila con grid */
   .fila {
     display: grid;
-    grid-template-columns: 75% 15%;
+    grid-template-columns: 1fr 1fr; /* %> 338px/676px %> 338px/676px Prefiero usar 1 fr para ambas*/
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 1.56vh; /* vh> 12px/768px */
   }
 
   /* Encabezado de la lista */
@@ -240,10 +240,10 @@ main {
     font-size: 1rem;
     color: var(--azul-marino);
     outline: none;
-    padding: 12px 16px;
-    margin-right: 20px;
+    padding: 1.56vh 4.73%; /* vh> 12px/768px %> 16px/338px */
+    margin-right: 5.91%; /* %> 20px/338px */
     border: 1px solid #ffffff;
-    width: 100%;
+    width: 88.75%; /* %> 300px/338px */
   }
 
   /* Focus input */
@@ -251,13 +251,19 @@ main {
     border: 1px solid var(--azul-borde-header);
   }
 
+  /* Enlace del boton */
+  a{
+    text-decoration: none;
+    width: 11.83%; /* %> 40px/338px */
+  }
+
   /* Botón eliminar */
   .btn-eliminar {
     background: #ff5757;
     border: none;
     border-radius: 14px;
-    width: 40px;
-    height: 40px;
+    width: 100%; /* %> 40px/40px */
+    height: 5.20vh; /* vh> 40px/768px */
     color: white;
     cursor: pointer;
   }
@@ -282,7 +288,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -291,9 +297,9 @@ main {
 
 /* Ventana del modal */
 .modal {
-  width: 40%;
+  width: 43.94%; /* %> 450px/1024px */
   background: var(--blanco-fondo-main);
-  padding: 25px;
+  padding: 3.25vh 2.44%; /* vh> 25px/768px %> 25px/1024px */
   border-radius: 14px;
   font-family: var(--fuente-titulo-nav);
 }
@@ -328,7 +334,7 @@ main {
 
 /* Cuerpo del modal */
 .modal-main {
-  margin-top: 20px;
+  margin-top: 2.60vh; /* vh> 20px/768px */
 }
 
 /* Elementos internos del modal-main */
@@ -339,13 +345,13 @@ main {
     display: inline-block;
     font-size: 1rem;
     color: #0b285b;
-    margin-bottom: 6px;
+    margin-bottom: 6px; /* vh> 6px/768px */
   }
 
   /* Input texto */
   input[type="text"] {
-    width: 100%;
-    padding: 10px 14px;
+    width: 100%; /* %> 450px/450px */
+    padding: 1.30vh 3.11%; /* vh> 10px/768px %> 14px/450px */
     font-size: 1rem;
     border-radius: 14px;
     border: 2px solid #c2d4ff;
@@ -362,10 +368,10 @@ main {
 
 /* Pie del modal */
 .modal-footer {
-  margin-top: 30px;
+  margin-top: 3.90vh; /* vh> 30px/768px */
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 6.66%; /* %> 30px/450px */
 }
 
 /* Elementos internos del footer */
@@ -384,7 +390,7 @@ main {
   .aniadir {
     background: #3e7bfe;
     color: white;
-    padding: 8px 30px;
+    padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
     border: none;
     border-radius: 14px;
     font-size: 1rem;
@@ -409,10 +415,11 @@ main {
 /* Elementos internos de asociaciones */
 #bloqueGestionAsociaciones {
 
-  /* Botón volver */
+  /* Div volver */
   #volver {
     display: inline-block;
     vertical-align: middle;
+    width: 5.49%; /* %> 40px/728px */
   }
 
   #volver {
@@ -421,9 +428,9 @@ main {
     button {
       background-color: var(--azul-marino, #0b285b);
       color: var(--blanco-texto-boton, #fafcff);
-      width: 40px;
-      padding: 8px;
-      text-align: left;
+      width: 100%; /* %> 40px/40px */
+      padding: 1.04vh 1.04%; /* vh> 8px/768px %> 8px/768px */
+      text-align: center;
       border: 1px solid var(--azul-marino);
       border-radius: 14px;
     }
@@ -437,7 +444,7 @@ main {
 
     /* Icono */
     i {
-      width: 20px;
+      width: 50%; /* %> 20px/40px */
       text-align: center;
     }
 
@@ -450,7 +457,8 @@ main {
 
   /* Título y subtítulo */
   #tituloSubtitulo {
-    margin-left: 25px;
+    width: 91.07%; /* %> 663px/728px */
+    margin-left: 2.93%; /* %> 25px/728px ?? */
     display: inline-block;
     vertical-align: middle;
   }
@@ -475,12 +483,12 @@ main {
 
 /* Div formulario asociaciones (676 width + (25+25) padding + (1+1) border = 728px) */
 #bloqueFormularioAsociaciones {
-  width: 100%;
+  width: 92.85%; /* %> 676px/728px */
   background: white;
-  padding: 25px;
+  padding: 3.25vh 3.43%; /* vh> 25px/768px %> 25px/728px */
   border: 1px solid var(--azul-borde-header, #c2d4ff);
   border-radius: 14px;
-  margin-top: 30px;
+  margin-top: 3.90vh; /* vh> 30px/768px */
   font-family: var(--fuente-titulo-nav);
 }
 
@@ -506,7 +514,7 @@ main {
 
   /* Contenedor principal del formulario */
   #formulario-main {
-    margin-top: 25px;
+    margin-top: 3.26vh; /* vh> 25px/768px */
   }
 
   /* Estilos del contenedor principal del formulario */
@@ -520,7 +528,7 @@ main {
       font-size: 1rem;
       color: var(--azul-marino);
       outline: none;
-      padding: 12px 16px;
+      padding: 1.56vh 2.36%; /* vh> 12px/768px %> 16px/676px */
       border: 1px solid #ffffff;
     }
 
@@ -552,7 +560,7 @@ main {
       font-size: 1rem;
       color: var(--azul-marino);
       outline: none;
-      padding: 12px 16px;
+      padding: 1.56vh 2.19%; /* vh> 12px/768px %> 16px/728px */
       border: 1px solid #ffffff;
       resize: none;
       display: block;
@@ -572,15 +580,15 @@ main {
       font-size: 1rem;
       color: var(--azul-marino);
       outline: none;
-      padding: 12px 16px;
-      margin-right: 20px;
+      padding: 1.56vh 2.19%; /* vh> 12px/768px %> 16px/728px */
+      margin-right: 2.74%; /* %> 20px/728px */
       border: 1px solid #ffffff;
       width: 100%;
     }
 
     /* Cada fila ocupa ancho completo y separa elementos */
     .fila {
-      margin-bottom: 25px;
+      margin-bottom: 3.25vh; /* vh> 25px/768px */
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -592,7 +600,7 @@ main {
       .campo {
         display: inline-block;
         vertical-align: top;
-        width: 47%;
+        width: 100%;
       }
 
       /* Separación para el primer campo */
@@ -611,17 +619,17 @@ main {
     /* Cuadro de contribuciones (646 width + (15+15) padding + (1+1) border = 676 ) */
     #cuadroContribuciones {
       display: block;
-      width: 84,11%;
+      width: 88,73%; /* %> 646px/728px */
       border: 1px solid #b4c2e0;
-      padding: 1.95vh 1.95%; /*15px / 768*/
+      padding: 1.95vh 2.06%; /* vh> 15px/768px %> 15px/728px */
       border-radius: 10px;
     }
 
     /* Cada etiqueta dentro de las contribuciones */
     .tag {
       display: inline-block;
-      margin-right: 25px;
-      margin-bottom: 10px;
+      margin-right: 3.86%; /* %> 25px/646px */
+      margin-bottom: 1.30vh; /* vh> 10px/768px */
       vertical-align: middle;
     }
 
@@ -629,8 +637,8 @@ main {
     .tag {
 
       input[type="checkbox"] {
-        width: 15px;
-        height: 15px;
+        width: 15px; /* %> 15px/646px ?? */
+        height: 15px; /* vh> 15px/768px ?? */
         margin-right: 6px;
         vertical-align: middle;
         accent-color: var(--azul-borde-header);
@@ -644,14 +652,14 @@ main {
 
     label {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 1.30vh; /* vh> 10px/768px */
     }
 
   }
 
   /* Pie del formulario */
   #formulario-footer {
-    margin-top: 25px;
+    margin-top: 3.25vh; /* vh> 25px/768px */
     text-align: right;
   }
 
@@ -661,8 +669,8 @@ main {
     button {
       background-color: var(--azul-marino, #0b285b);
       color: var(--blanco-texto-boton, #fafcff);
-      width: 15%;
-      padding: 8px;
+      width: 16.48%; /* %> 120px/728px */
+      padding: 1.04vh 1.09%; /* vh> 8px/768px %> 8px/728px */
       text-align: left;
       border: 1px solid var(--azul-marino);
       border-radius: 14px;
@@ -678,7 +686,7 @@ main {
 
     /* Espaciado entre el botón y el texto */
     span {
-      padding-left: 10px;
+      padding-left: 8.33%; /* %> 10px/120px */
     }
 
     /* Enlaces sin subrayado */
@@ -726,11 +734,15 @@ ul {
     margin-left: 0;
   }
 
-  #bloqueGestionContribuciones button {
-    width: 100%;
-    text-align: center;
-    padding: 12px 0px;
-    margin-bottom: 2%;
+  #bloqueGestionContribuciones{
+
+    button {
+      width: 100%;
+      text-align: center;
+      padding: 12px 0px;
+      margin-bottom: 2%;
+
+    }
   }
 
   /* Bloque Lista de Contribuciones */
@@ -758,6 +770,7 @@ ul {
       height: 40px;
       margin-top: 0;
     }
+
   }
 
   .modal {
@@ -845,47 +858,67 @@ ul {
     padding-top: 64px;
   }
 
-  #bloqueGestionContribuciones button {
-    width: 30%;
-    text-align: left;
+  #bloqueGestionContribuciones {
+
+    button {
+      width: 30%;
+      text-align: left;
+    }
+
   }
 
-  #bloqueListaContribucions .fila {
-    grid-template-columns: 75% 15%;
-    gap: initial;
-    display: grid;
-  }
+  #bloqueListaContribucions { 
+    .fila {
+      grid-template-columns: 75% 15%;
+      gap: initial;
+      display: grid;
+    }
 
-  #bloqueListaContribucions input {
-    margin-right: 20px;
-    margin-bottom: 0;
-  }
+    input {
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
 
-  #bloqueListaContribucions .btn-eliminar {
-    margin-top: 0;
+    .btn-eliminar {
+      margin-top: 0;
+    }
+
   }
 
   .modal {
     width: 40%;
   }
 
-  #bloqueFormularioAsociaciones #formulario-main .fila {
-    flex-direction: row;
-    gap: initial;
+  #bloqueFormularioAsociaciones {
+
+    #formulario-main {
+
+      .fila {
+        flex-direction: row;
+        gap: initial;
+      }
+
+      .fila .campo {
+        width: 47%;
+      }
+
+    }
+
+    #formulario-footer {
+
+      button {
+        width: 15%;
+        text-align: left;
+      }
+
+      span {
+        display: initial;
+        padding-left: 10px;
+        padding-top: 0;
+      }
+
+    }
+
   }
 
-  #bloqueFormularioAsociaciones #formulario-main .fila .campo {
-    width: 47%;
-  }
-
-  #bloqueFormularioAsociaciones #formulario-footer button {
-    width: 15%;
-    text-align: left;
-  }
-
-  #bloqueFormularioAsociaciones #formulario-footer span {
-    display: initial;
-    padding-left: 10px;
-    padding-top: 0;
-  }
 }
