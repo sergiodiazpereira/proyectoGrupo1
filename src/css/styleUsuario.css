@@ -537,7 +537,7 @@ main {
 /* Cronómetro */
 #crono {
     position: absolute;
-    right: 0.9375rem; /* 15px */
+    right: 0.2; /* 15px */
     top: 0.3125rem; /* 5px */
     font-size: 0.8em;
 }
@@ -566,7 +566,6 @@ main {
 
 /* Estilo del SELECT */
 select {
-    width: 90%; 
     margin: 0 auto;
     border: 1px solid #1C07FF; 
     border-radius: 1rem; /* 16px */
@@ -641,10 +640,10 @@ button.amarillo {
         margin: 0;
     }
     
-    /* El header fijo se extiende al 100% */
+    /* El header fijo se extiende al 95% */
     .header_rafa{
         max-width: none; /* Quitamos el límite de 768px */
-        width: 100%; 
+        width: 95%; 
         height: 4rem; /* 64px */
         
         /* Usamos flex para centrar el contenido interno */
@@ -686,14 +685,13 @@ button.amarillo {
     /* Menú Desplegable */
     #desplegable {
         width: 14.375rem; /* 230px */
-        top: 4rem; /* 64px */
-        right: 1.875rem; /* 30px */
+        top: 1rem; /* 16px */
     }
     
     /* Cronómetro */
     #crono {
         position: absolute;
-        right: 5rem; 
+        right: 0.2rem; 
         top: 0.625rem; 
         font-size: 1em; 
     }
