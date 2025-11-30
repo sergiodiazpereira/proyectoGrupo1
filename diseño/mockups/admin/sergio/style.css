@@ -297,6 +297,8 @@ body {
     }
     ul{
       margin: 0;
+      list-style: none;
+      padding: 0;
       li{
         display: grid;
         grid-template-columns: 3.669724770642202% 1fr auto;  /* icono – nombre – fecha */
@@ -325,11 +327,6 @@ body {
       }
     }
   }
-}
-
-ul {
-  list-style: none;
-  padding: 0;
 }
 
 button{
