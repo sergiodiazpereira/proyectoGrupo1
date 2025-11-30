@@ -311,7 +311,7 @@ nav {
         width: 45rem; /* 720px */
     }
     
-    input[list] {
+    select {
         width: 11rem; /* 176px */
         border-radius: 1rem; /* 16px */
         border-color: #1C07FF;
