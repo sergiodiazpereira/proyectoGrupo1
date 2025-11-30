@@ -1,4 +1,3 @@
-/* Variables */
 /* Variables globales */
 :root {
   --azul-marino: #0b285b;
@@ -13,11 +12,15 @@
   --fuente-titulo-nav: "PT Sans", sans-serif;
 }
 
+/* =====================================================[ BODY ]============================================================= */
+
 /* Configuración general del body */
 body {
   max-width: 1024px;
   margin: 0px;
 }
+
+/* ===================================================[ HEADER ]============================================================= */
 
 /* Header fijo superior */
 header {
@@ -35,6 +38,8 @@ header {
   line-height: 64px;
   backdrop-filter: blur(5px);
 }
+
+/* =====================================================[ NAV ]============================================================== */
 
 /* Barra lateral de navegación */
 nav {
@@ -113,6 +118,8 @@ nav {
 
 }
 
+/* ====================================================[ MAIN ]============================================================== */
+
 /* Contenido principal */
 main {
   width: 728px;
@@ -123,6 +130,8 @@ main {
   margin-left: 256px;
   margin-top: 64px;
 }
+
+/* ================================================[ CONTRIBUCIONES ]======================================================== */
 
 /* Div informacion contribuciones + botones */
 #bloqueGestionContribuciones {
@@ -178,8 +187,8 @@ main {
 
 }
 
-/* Div lista de contribuciones (676 + 25 + 25 + 1 + 1 = 728 ) */
-#bloqueListaContribucions {
+/* Div lista de contribuciones (676 width + (25+25) padding + (1+1) border = 728px) */
+#bloqueListaContribuciones {
   width: 676px;
   background: white;
   padding: 25px;
@@ -190,7 +199,7 @@ main {
 }
 
 /* Elementos internos dentro de lista de contribuciones */
-#bloqueListaContribucions {
+#bloqueListaContribuciones {
 
   /* Título del bloque */
   h2 {
@@ -256,13 +265,8 @@ main {
 
 }
 
-/* Listas generales */
-ul {
-  list-style: none;
-  padding: 0;
-}
+/* =======================================================[ MODAL ]========================================================== */
 
-/* MODAL */
 /* Clase para mostrar u ocultar el modal+fondo */
 .oculto {
   display: none !important;
@@ -390,6 +394,8 @@ ul {
 
 }
 
+/* ====================================================[ ASOCIACIONES ]====================================================== */
+
 /* Div informacion asociaciones */
 #bloqueGestionAsociaciones {
   font-family: var(--fuente-titulo-nav);
@@ -463,7 +469,7 @@ ul {
 
 }
 
-/* Div formulario asociaciones (676 width + (25+25) padding + (1+1) border = 728px*/
+/* Div formulario asociaciones (676 width + (25+25) padding + (1+1) border = 728px) */
 #bloqueFormularioAsociaciones {
   width: 676px;
   background: white;
@@ -595,10 +601,10 @@ ul {
 
     }
 
-    /* Cuadro de contribuciones (644 width + (15+15) padding + (1+1) border = 676 ) */
+    /* Cuadro de contribuciones (646 width + (15+15) padding + (1+1) border = 676 ) */
     #cuadroContribuciones {
       display: inline-block;
-      width: 644px;
+      width: 646px;
       border: 1px solid #b4c2e0;
       padding: 15px;
       border-radius: 10px;
@@ -670,4 +676,12 @@ ul {
 
   }
 
+}
+
+/* ======================================================[ GENERAL ]========================================================= */
+
+/* Listas generales */
+ul {
+  list-style: none;
+  padding: 0;
 }
