@@ -415,50 +415,9 @@ main {
 /* Elementos internos de asociaciones */
 #bloqueGestionAsociaciones {
 
-  /* Div volver */
-  #volver {
-    display: inline-block;
-    vertical-align: middle;
-    width: 5.49%; /* %> 40px/728px */
-  }
-
-  #volver {
-
-    /* Botón volver */
-    button {
-      background-color: var(--azul-marino, #0b285b);
-      color: var(--blanco-texto-boton, #fafcff);
-      width: 100%; /* %> 40px/40px */
-      padding: 1.04vh 1.04%; /* vh> 8px/768px %> 8px/768px */
-      text-align: center;
-      border: 1px solid var(--azul-marino);
-      border-radius: 14px;
-    }
-
-    button:hover {
-      cursor: hand;
-      background-color: var(--blanco-texto-boton, #fafcff);
-      color: var(--azul-marino, #0b285b);
-      border: 1px solid var(--azul-borde-header);
-    }
-
-    /* Icono */
-    i {
-      width: 50%; /* %> 20px/40px */
-      text-align: center;
-    }
-
-    /* Enlaces */
-    a {
-      text-decoration: none;
-    }
-
-  }
-
   /* Título y subtítulo */
   #tituloSubtitulo {
-    width: 91.07%; /* %> 663px/728px */
-    margin-left: 2.93%; /* %> 25px/728px ?? */
+    width: 100%; /* %> 728px/728px */
     display: inline-block;
     vertical-align: middle;
   }
@@ -696,14 +655,6 @@ main {
 
   }
 
-}
-
-/* ======================================================[ GENERAL ]========================================================= */
-
-/* Listas generales */
-ul {
-  list-style: none;
-  padding: 0;
 }
 
 /* ====================================================[ MEDIA QUERY ]======================================================= */
