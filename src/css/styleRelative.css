@@ -15,7 +15,7 @@
 /* =====================================================[ BODY ]============================================================= */
 
 /* Configuración general del body */
-body {
+.asociacionContribucion {
   max-width: 100%; /* %> 1024px/1024px*/
   margin: 0;
   padding-left: 25%; /* %> 256px/1024px*/
@@ -25,7 +25,7 @@ body {
 /* ===================================================[ HEADER ]============================================================= */
 
 /* Header fijo superior */
-header {
+.asociacionContribucion header {
   width: 75%; /* %> 768px/1024px */
   height: 8.33vh; /* vh> 64px/768px */
   background-color: var(--blanco-fondo-header, #eff3fc);
@@ -46,7 +46,7 @@ header {
 /* =====================================================[ NAV ]============================================================== */
 
 /* Barra lateral de navegación */
-nav {
+.asociacionContribucion nav {
   width: 25%;  /* %> 256px/1024px */
   height: 100vh; /* vh> 768px/768px */
   position: fixed;
@@ -58,7 +58,7 @@ nav {
 }
 
 /* Elementos internos dentro de nav */
-nav {
+.asociacionContribucion nav {
 
   /* Título de sección */
   h3 {
@@ -128,7 +128,7 @@ nav {
 /* ====================================================[ MAIN ]============================================================== */
 
 /* Contenido principal */
-main {
+.asociacionContribucion main {
   width: 71.09%; /* 728px/1024px */
   background-color: var(--blanco-fondo-main, #e6edff);
   padding: 2.60vh 2.74%; /* vh> 20px/768px %> 20px/728px*/
@@ -662,24 +662,31 @@ main {
 /* MEDIA QUERY MÓVIL (Max-width: 768px) */
 @media screen and (max-width: 768px) {
 
-  body {
+  .asociacionContribucion {
     padding-left: 0;
     max-width: 100%;
   }
 
-  nav {
+  .asociacionContribucion nav {
     width: 100%;
     height: auto;
     position: static;
   }
 
-  header {
+  .asociacionContribucion nav .ul-inferior {
+    position: static;
+    margin-bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .asociacionContribucion header {
     width: 100%;
     left: 0;
     position: static;
   }
 
-  main {
+  .asociacionContribucion main {
     width: 90%;
     padding: 20px;
     margin-left: 0;
@@ -767,45 +774,30 @@ main {
 
   }
 
-  /* Barra lateral de navegación (NAV)*/
-  nav {
-    width: 100%;
-    height: auto;
-    position: static;
-  }
-
-  /* Lista inferior dentro de NAV */
-  nav .ul-inferior {
-    position: static;
-    margin-bottom: 0;
-    width: 100%;
-    margin-top: 20px;
-  }
-
 }
 
 
 /* MEDIA QUERY PC (Min-width: 769px) */
 @media screen and (min-width: 769px) {
 
-  body {
+  .asociacionContribucion {
     max-width: 1024px;
     padding-left: 25%;
   }
 
-  nav {
+  .asociacionContribucion nav {
     width: 25%;
     height: 100vh;
     position: fixed;
   }
 
-  header {
+  .asociacionContribucion header {
     width: 75%;
     left: 25%;
     position: fixed;
   }
 
-  main {
+  .asociacionContribucion main {
     padding-top: 64px;
   }
 
