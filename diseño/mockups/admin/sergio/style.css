@@ -24,26 +24,25 @@ body {
   min-height: 100vh;
 }
 
-header {
+.header-admin{
   width: 75%; /* 768px */
-  height: 8.333333333333333%; /* 64px */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 64px; /* siempre serán 64px, las medidas en % serían 8.33333% */
+  text-align: center;
+  line-height: 64px;
   background-color: var(--blanco-fondo-header, #eff3fc);
   position: fixed;
-  left: 25%; /* 256px */
+  left: min(25%, 256px); /* no dejará un margen a la izquierda mayor a 256px (acorde al nav) */
   font-family: var(--fuente-header);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--azul-celeste, #3e7bfe);
   border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
-  text-align: center;
   backdrop-filter: blur(5px);
 }
 
-nav {
-  width: 25%; /* 256px */
+.nav-admin{
+  width: 25%;
+  max-width: 256px; /* el menú nunca sobrepasará los 256px */
   height: 100vh;
   float: left;
   position: fixed;
@@ -103,14 +102,15 @@ nav {
   }
 }
 
-main {
+.main-admin{
   width: 68.75%; /* 704px */
   min-height: 100vh;
   background-color: var(--blanco-fondo-main, #e6edff);
   float: left;
+  position: top;
   padding: 3.125%; /* 32px */
-  margin-left: 25%; /* 256px */ 
-  margin-top: 6.25%; /* 64px */
+  margin-top: 64px; /* siempre serán 64px */
+  margin-left: min(25%, 256px); /* no dejará un margen a la izquierda mayor a 256px (acorde al nav) */
   .h1-admin{
     font-family: var(--fuente-titulos);
     font-size: 1.875rem;
@@ -126,7 +126,7 @@ main {
     margin: 0;
   }
   .grid-titulo-botón{
-    width: 704px;
+    width: 100%; /* 704px */
     display: grid;
     grid-template-columns: 1fr auto; /* izquierda ocupa todo, derecha tamaño del botón */
     align-items: center;             /* alinea verticalmente */
@@ -302,7 +302,7 @@ main {
         grid-template-columns: 3.669724770642202% 1fr auto;  /* icono – nombre – fecha */
         align-items: center;
         gap: 1.834862385321101%; /* 12px */
-        margin-top: 7.64525993883792%; /* 50px */
+        margin-top: min(40px, 5.64525993883792%); /* 50px */
         i{
           color: var(--azul-marino);
         }
@@ -332,7 +332,13 @@ ul {
   padding: 0;
 }
 
+button{
+  cursor: pointer;
+}
 
+a{
+  cursor: pointer;
+}
 
 @media (min-width: 1025px) { /* Los comentarios de medidas en px son los px que debería ocupar cada atributo en una pantalla de 1607x1205 */
   body {
@@ -340,17 +346,18 @@ ul {
     margin: 0;
     min-height: 100vh; /* 1205px */
   }
-  main{
+  .main-admin{
     width: 80.08711885500933%; /* 1287px */
     .grid-titulo-botón{
-      width: 54.7008547008547%; /* 704px */
+      width: 65%; /* 654px */
     }
   }
-  header{
-    width: 84.06969508400747%; /* 1351px */
+  .header-admin{
+    width: 86.1%; /* 1351px */
     z-index: 2;
   }
   .query{
-    width: 50.81585081585082%; /* 654px */
+    box-sizing: border-box;
+    width: 65%; /* 654px */
   }
 }
