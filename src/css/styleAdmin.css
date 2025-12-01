@@ -56,7 +56,6 @@
 
     .nav-admin{
         width: 25%;
-        max-width: 256px; /* el menú nunca sobrepasará los 256px */
         height: 100vh;
         float: left;
         position: fixed;
@@ -889,8 +888,6 @@
     /* Elementos internos del footer */
     .modal-footer {
 
-    .modal-footer {
-
     /* Botón cancelar */
     .cancelar {
         background: transparent;
@@ -1313,12 +1310,18 @@
         }
     }
     .header-admin{
-        width: 86.1%; /* 1351px */
+        width: 82%; /* 1351px */
         z-index: 2;
     }
     .query{
         box-sizing: border-box;
         width: 65%; /* 654px */
+    }
+    .nav-admin{
+        width: 256px;
+    }
+    .main-admin{
+        width: 77%;
     }
   }
 }
