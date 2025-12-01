@@ -13,7 +13,7 @@
     --blanco-fondo-header: rgba(245, 247, 252, 0.7);
     --azul-borde-header: #c2d4ff;
 }
-body{
+.body-kiko{
     width: 100%;
     margin: 0;
     padding: 0;
@@ -28,156 +28,159 @@ body{
         "navAdmin contenido";
     height: 100vh;
 }
-header {
-    grid-area: header;
-    width: 69.73%; /*714px*//*El ancho que son 1024 menos 60px de padding -250px*/
-    padding: 0 2.93%; /*30px*/
-    position: fixed;
-    top:0;
-    left: 24.41%;
-    background-color: var(--blanco-fondo-header, #eff3fc);
-    border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
-    text-align: center;
-    line-height: 8.33vh; /*64px*/
-    backdrop-filter: blur(5px);
-}
-header>span{
-    font-size: 1.125em;
-    font-weight: 700;
-    font-family: var(--fuenteTitulo);
-    color: var(--azul-celeste, #3e7bfe);
-}
-p{
-    color: var(--colorP);
-    font-size: 0.75em;
-    font-family: var(--fueteP);
-}
-header{
-    #flecha{
-        float: left;
+
+.body-kiko{
+    header {
+        grid-area: header;
+        width: 69.73%; /*714px*//*El ancho que son 1024 menos 60px de padding -250px*/
+        padding: 0 2.93%; /*30px*/
+        position: fixed;
+        top:0;
+        left: 24.41%;
+        background-color: var(--blanco-fondo-header, #eff3fc);
+        border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
+        text-align: center;
+        line-height: 8.33vh; /*64px*/
+        backdrop-filter: blur(5px);
     }
-}
-/*Para que salga la mano al pasar el cursor por encima*/
-input[type=submit]{
-    cursor: pointer;
-}
-/*Caja padre para tenerlo todo en uno*/
-#contenedorLogin{
-    grid-area: contenido;
-    width: 48.82%;    /*500px*/
-    height: 58.59vh;  /*450px*/
-    text-align: center;
-    margin: 3.33vh auto 0 auto; /*  30px baja por el header */
-}
-/*Le doy estilo al formulario*/
-#formCambio{
-    text-align: left;
-    padding: 2.60vh 6% ; /*20px*/
-    margin-top: 5.20vh;
-    background-color: var(--colorFondoFormulario);
-    border-radius: var(--bordeRadius);
-    border: 1px solid rgb(180, 180, 247);
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-}
-#formCambio{
-    p{
-        margin-top: 0;
-        margin-bottom: 3.33vh; /*30px*/
-    }
-    h2{
+    header>span{
+        font-size: 1.125em;
+        font-weight: 700;
         font-family: var(--fuenteTitulo);
-        color: var(--colorTituloFormulario);
-        margin-bottom: 0;
+        color: var(--azul-celeste, #3e7bfe);
     }
-    label{
-        display: block;
-        font-family: var(--fueteP);
+    p{
+        color: var(--colorP);
         font-size: 0.75em;
-        color: var(--colorLabel);
-        margin-bottom: 0.651vh;
+        font-family: var(--fueteP);
     }
+    header{
+        #flecha{
+            float: left;
+        }
+    }
+    /*Para que salga la mano al pasar el cursor por encima*/
     input[type=submit]{
-        padding: 0;
-        width: 40%;
-        color: #ffffff;
-        background-color: var(--colorBotonInicioYCrearCuenta);
+        cursor: pointer;
     }
-    input{
-        width: 97%;  /*438 sobre 500 del tamaño de la caja padre*/ /*438px + 20 px de padding left + 2 de padding right por defecto*/
-        height: 4.6vh; /*35px*/
-        border-radius: var(--bordeRadius);
-        border: none;
-        background-color: var(--colorFondo);
-        padding-left: 3.4%; /*20px*/
-        margin-bottom: 2.6vh;    /*20px*/
+    /*Caja padre para tenerlo todo en uno*/
+    #contenedorLogin{
+        grid-area: contenido;
+        width: 48.82%;    /*500px*/
+        height: 58.59vh;  /*450px*/
+        text-align: center;
+        margin: 3.33vh auto 0 auto; /*  30px baja por el header */
     }
-    a{  
-        display: inline-block;
-        padding: 0.9vh 2.44%; /*7px 25px*/
-        height: 20px; /*20 +14px =34px*/
-        text-decoration: none;
-        color: var(--colorLabel);
-        font-family: var(--fueteP);
-        border-radius: var(--bordeRadius);
-    }
-    a:hover{
-        background-color: var(--azul-borde-header);
-    }
-}
-#navAdmin{
-    grid-area: navAdmin;
-    background-color: var(--colorTituloFormulario);
-    padding-top: 20px; /*64px*/
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 24.414%; /* 250px de 1024px */
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-#navAdmin{
-    ul{
-        margin: 0;
-        padding: 0 10px;
+    /*Le doy estilo al formulario*/
+    #formCambio{
         text-align: left;
-        list-style-type: none;
-    }
-    li{
-        margin-bottom: 10px;
-    }
-    i{
-        margin-right: 2.5%; /*5*/
-    }
-    i:hover{
-        color: var(--colorLabel);
-    }
-    button{  
-        text-align: left;
-        border: none;
-        color: var(--colorFondoFormulario);
-        background-color: var(--colorLabel);
-        font-family: var(--fueteP);
-        padding-left: 4%; /*35px*/
-        width: 100%; /*139px*/
-        height: 3.9vh; /*30px*/
-        display: inline-block;
-        border-radius: var(--bordeRadius);
-    }
-    button:hover{
+        padding: 2.60vh 6% ; /*20px*/
+        margin-top: 5.20vh;
         background-color: var(--colorFondoFormulario);
-        border-radius: var(--bordeRadius); 
-        color: var(--colorLabel);
-    }
-    #ulCerrar{
-        padding: 0 10px;
-        width: 91%;
-        position: absolute;
-        bottom: 5.208vh; /*50px*/
-    }
-    #pestaña{
-        background-color: var(--colorBotonInicioYRegistro);
-        color: var(--colorLabel);
         border-radius: var(--bordeRadius);
+        border: 1px solid rgb(180, 180, 247);
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    }
+    #formCambio{
+        p{
+            margin-top: 0;
+            margin-bottom: 3.33vh; /*30px*/
+        }
+        h2{
+            font-family: var(--fuenteTitulo);
+            color: var(--colorTituloFormulario);
+            margin-bottom: 0;
+        }
+        label{
+            display: block;
+            font-family: var(--fueteP);
+            font-size: 0.75em;
+            color: var(--colorLabel);
+            margin-bottom: 0.651vh;
+        }
+        input[type=submit]{
+            padding: 0;
+            width: 40%;
+            color: #ffffff;
+            background-color: var(--colorBotonInicioYCrearCuenta);
+        }
+        input{
+            width: 97%;  /*438 sobre 500 del tamaño de la caja padre*/ /*438px + 20 px de padding left + 2 de padding right por defecto*/
+            height: 4.6vh; /*35px*/
+            border-radius: var(--bordeRadius);
+            border: none;
+            background-color: var(--colorFondo);
+            padding-left: 3.4%; /*20px*/
+            margin-bottom: 2.6vh;    /*20px*/
+        }
+        a{  
+            display: inline-block;
+            padding: 0.9vh 2.44%; /*7px 25px*/
+            height: 20px; /*20 +14px =34px*/
+            text-decoration: none;
+            color: var(--colorLabel);
+            font-family: var(--fueteP);
+            border-radius: var(--bordeRadius);
+        }
+        a:hover{
+            background-color: var(--azul-borde-header);
+        }
+    }
+    #navAdmin{
+        grid-area: navAdmin;
+        background-color: var(--colorTituloFormulario);
+        padding-top: 20px; /*64px*/
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 24.414%; /* 250px de 1024px */
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    #navAdmin{
+        ul{
+            margin: 0;
+            padding: 0 10px;
+            text-align: left;
+            list-style-type: none;
+        }
+        li{
+            margin-bottom: 10px;
+        }
+        i{
+            margin-right: 2.5%; /*5*/
+        }
+        i:hover{
+            color: var(--colorLabel);
+        }
+        button{  
+            text-align: left;
+            border: none;
+            color: var(--colorFondoFormulario);
+            background-color: var(--colorLabel);
+            font-family: var(--fueteP);
+            padding-left: 4%; /*35px*/
+            width: 100%; /*139px*/
+            height: 3.9vh; /*30px*/
+            display: inline-block;
+            border-radius: var(--bordeRadius);
+        }
+        button:hover{
+            background-color: var(--colorFondoFormulario);
+            border-radius: var(--bordeRadius); 
+            color: var(--colorLabel);
+        }
+        #ulCerrar{
+            padding: 0 10px;
+            width: 91%;
+            position: absolute;
+            bottom: 5.208vh; /*50px*/
+        }
+        #pestaña{
+            background-color: var(--colorBotonInicioYRegistro);
+            color: var(--colorLabel);
+            border-radius: var(--bordeRadius);
+        }
     }
 }
