@@ -229,6 +229,7 @@ input[type=submit]{
     margin-top: 6.51vh; /*50/768*/
     border: 1px solid var(--azul-borde-header);
     box-shadow: 0 0.52vh 1.3vh rgba(0,0,0,0.15);
+    z-index: 10;
 }
 #desplegable{
     ul{
@@ -537,7 +538,7 @@ main {
 /* Cronómetro */
 #crono {
     position: absolute;
-    right: 0.2; /* 15px */
+    right: 0.2rem; /* 15px */
     top: 0.3125rem; /* 5px */
     font-size: 0.8em;
 }
@@ -589,14 +590,19 @@ button {
     border: none;
     cursor: pointer;
 }
+
 button.azul {
     background-color: #1C07FF;
+}
+
+.colorBlanco{
     color: white;
 }
+
 button.amarillo { 
     background-color: #FFC527;
-    color: white;
 }
+    
 @media (max-width: 450px) {
     .main_kiko{
         padding: 2.66% 1.49vh; /*10/375 y 10/667*/
@@ -686,6 +692,7 @@ button.amarillo {
     #desplegable {
         width: 14.375rem; /* 230px */
         top: 1rem; /* 16px */
+        z-index: 10;
     }
     
     /* Cronómetro */
@@ -694,6 +701,11 @@ button.amarillo {
         right: 0.2rem; 
         top: 0.625rem; 
         font-size: 1em; 
+    }
+
+    #nav_crono {
+        text-align: left;
+        position: relative;
     }
 
     /* Estilo main y tabla */
@@ -705,13 +717,10 @@ button.amarillo {
     }
 
     #contenedor-tabla {
-        /* Revertimos a 5 columnas y el ancho */
         gap: 1rem; 
         width: 45rem; 
-        
         grid-template-columns: repeat(5, 1fr); 
     }
-    /* Revertimos el font-size de celda y encabezado */
     .encabezado {
         font-size: 1em; 
     }
