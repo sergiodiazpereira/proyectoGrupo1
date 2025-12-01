@@ -889,11 +889,12 @@
     /* Elementos internos del footer */
     .modal-footer {
 
+    .modal-footer {
+
     /* Botón cancelar */
     .cancelar {
         background: transparent;
         border: none;
-        color: #0b285b;
         font-size: 1rem;
         cursor: hand;
     }
@@ -901,7 +902,6 @@
     /* Botón añadir */
     .aniadir {
         background: #3e7bfe;
-        color: white;
         padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
         border: none;
         border-radius: 14px;
@@ -912,6 +912,17 @@
     /* Hover añadir */
     .aniadir:hover {
         background: #2f67e3;
+    }
+
+    /* Quitar subrayado a los enlaces */
+    #enlace-cancelar{
+        text-decoration: none;
+        color: #0b285b;
+    }
+
+    #enlace-añadir{
+        text-decoration: none;
+        color: white;
     }
 
     }
