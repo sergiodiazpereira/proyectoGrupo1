@@ -91,7 +91,7 @@ input[type=submit]{
     img{
         border-radius: 50%;
         width: 16%; /*80/500*/
-    };
+    }
 }
 /*Le doy estilo a la caja donde tengo los botones de registro e inicio*/
 #cajaBotonesIniYReg{
@@ -221,7 +221,7 @@ input[type=submit]{
     position: fixed;
     width: 22.46%; /*230/1024*/
     top:1.3vh; /* 10/768*/
-    left: 74.22%; /* 760/1024*/
+    right: 0.5%; /* 760/1024*/
     background-color: var(--colorFondoFormulario);
     border-radius: var(--bordeRadius);
     font-family: var(--fueteP);
@@ -498,10 +498,6 @@ input[type=submit]{
 .quitarBorde {
     border: none;
 }
-main {
-    margin-top: 5rem; /* 80px */
-}
-
 /* Estilos de la tabla de juego (parte inferior)*/
 #contenedor-tabla {
     gap: 0.5rem; /* gap (8px) */
