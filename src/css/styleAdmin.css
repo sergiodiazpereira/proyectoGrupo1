@@ -640,9 +640,9 @@
 
     /* Contenido principal */
     .asociacionContribucion main {
-    width: 71.09%; /* 728px/1024px */
+    width: 94.79%; /* 728px/768px */
     background-color: var(--blanco-fondo-main, #e6edff);
-    padding: 2.60vh 2.74%; /* vh> 20px/768px %> 20px/728px*/
+    padding: 2.60vh 2.60%; /* vh> 20px/768px %> 20px/768px*/
     }
 
     /* ================================================[ CONTRIBUCIONES ]======================================================== */
