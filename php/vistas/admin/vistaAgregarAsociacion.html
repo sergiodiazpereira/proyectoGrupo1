@@ -80,7 +80,7 @@
         </div>
 
         <!-- Formulario Asociaciones-->
-        <div id="bloqueFormularioAsociaciones">
+        <form action="" id="bloqueFormularioAsociaciones">
             <div id="formulario-head">
                 <h2>Detalles de la Asociación</h2>
                 <p>Asegurese de que la información sea correcta antes de añadir.</p>
@@ -181,7 +181,7 @@
                     </button>
                 </a>
             </div>
-        </div>
+        </form>
     </main>
 </body>
 

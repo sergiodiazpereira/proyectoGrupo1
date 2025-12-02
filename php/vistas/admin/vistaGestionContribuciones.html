@@ -184,7 +184,7 @@
 
         <!-- Modal para agregar Contribuciones -->
         <div class="fondo oculto" id="modal-contribuciones">
-            <div class="modal">
+            <form class="modal">
                 <div class="modal-header">
                     <h2>Añadir Nueva Contribución</h2>
                     <button class="ico-cerrar">
@@ -201,7 +201,7 @@
                     <button class="cancelar">Cancelar</button>
                     <button class="aniadir">Añadir</button>
                 </div>
-            </div>
+            </form>
         </div>
 
     </main>
