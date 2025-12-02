@@ -725,7 +725,7 @@
     /* Fila con grid */
     .fila {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* %> 338px/676px %> 338px/676px Prefiero usar 1 fr para ambas*/
+        grid-template-columns: 1fr 0.2fr; /* %> 338px/676px %> 338px/676px Prefiero usar 1 fr para ambas*/
         align-items: center;
         margin-bottom: 1.56vh; /* vh> 12px/768px */
     }
@@ -765,7 +765,7 @@
     /* Enlace del boton */
     a{
         text-decoration: none;
-        width: 11.83%; /* %> 40px/338px */
+        width: 100%; /* %> 338px/338px 0.2fr */
     }
 
     /* Botón eliminar */
