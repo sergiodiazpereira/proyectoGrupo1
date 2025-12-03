@@ -3,5 +3,11 @@
     define('CONTROLADOR','controladores/');
 
     define('CONDEF','Asociacion');
-    define('METDEF','inicio');
+    define('METDEF','cargarPaginaAsoc');
+
+    /*rutas para el archivo*/
+
+    $ruta=__DIR__."/../../src/img/";
+
+    define('RUTAIMG',$ruta);
 ?>

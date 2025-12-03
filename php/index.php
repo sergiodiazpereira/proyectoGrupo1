@@ -21,10 +21,14 @@
      */
     $instanciaControlador = "Con".$controlador;
 
-    
+    /**
+     * @var object $objContro crea un objeto instanciado al controlador necesario
+     */
     $objContro = new $instanciaControlador();
 
-    
+    /**
+     * @var $datos recibe un objeto ,un array o un mensaje para despues utilizarlo en las vistas
+     */
     $datos=$objContro->$metodo();
     include VISTAS.$objContro->vista;
 ?>

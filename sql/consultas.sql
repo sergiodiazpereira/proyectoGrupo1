@@ -7,7 +7,7 @@ CREATE TABLE usuario(
     contrasenia varchar(50) NOT NULL,
     permiso char(1) NOT NULL DEFAULT 'U',
     correo varchar(100) NOT NULL UNIQUE,
-	fecha_registro date DEFAULT NOW();
+	fecha_registro date DEFAULT NOW()
 );
 
 -- Tabla Tipo-Asoc
@@ -26,11 +26,11 @@ CREATE TABLE contribucion(
 CREATE TABLE asociacion(
 	idAsoc smallint unsigned PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(50) NOT NULL UNIQUE,
-    fecha_fun date NOT NULL,
+    fecha_fun SMALLINT NOT NULL,
     pista_facil varchar(120) NOT NULL,
     pista_media varchar(120) NOT NULL,
     pista_dificil varchar(120) NOT NULL,
-    imagen varchar(200) NOT NULL,
+    imagen varchar(200) NOT NULL UNIQUE,
     idTipoAsoc smallint unsigned,
     alcance char(1) NOT NULL CHECK (alcance IN ('I','N','L')),
     CONSTRAINT fk_tipo_asoc FOREIGN KEY (idTipoAsoc) REFERENCES tipo_asoc(idTipoAsoc)
@@ -80,23 +80,23 @@ INSERT INTO tipo_asoc (nombre) VALUES ("Jóvenes"),
 -- Inserción Tabla Contribución
 
 -- Insertamos 4 filas de contribuciones
-INSERT INTO contribucion (descripcion) VALUES ("Eduación, Salud"),
-("Eduación, Protección Infantil, Salud"),
-("Inclusión, Autonomía"),
-("Eduación, Formación");
+INSERT INTO contribucion (descripcion) VALUES ("Eduación"),
+("Protección Infantil"),
+("Inclusión"),
+("Formación");
 
 
 -- Inserción Tabla Asociación
 
 -- Insertamos 4 filas de asociaciones
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Cruz Roja", '1938-11-27',"Se fundó en el año 1938", "Es una asociación Nacional", "Va dirigida a Jóvenes","https://www.ejemplo.com/imagenes/cruz_roja.jpg",1,'I');
+VALUES ("Cruz Roja", '1938',"Se fundó en el año 1938", "Es una asociación Nacional", "Va dirigida a Jóvenes","https://www.ejemplo.com/imagenes/cruz_roja.jpg",1,'I');
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Fundación Loyola", '1948-11-27',"Se fundó en el año 1948", "Es una asociación Internacional", "Va dirigida a Jóvenes","https://www.ejemplo.com/imagenes/fundacion.jpg",2,'N');
+VALUES ("Fundación Loyola", '1948',"Se fundó en el año 1948", "Es una asociación Internacional", "Va dirigida a Jóvenes","https://www.ejemplo.com/imagenes/fundacion.jpg",2,'N');
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Unicef", '2002-08-10',"Se fundó en el año 2002", "Es una asociación Internacional", "Va dirigida a Personas","https://www.ejemplo.com/imagenes/unicef.jpg",3,'N');
+VALUES ("Unicef", '2002',"Se fundó en el año 2002", "Es una asociación Internacional", "Va dirigida a Personas","https://www.ejemplo.com/imagenes/unicef.jpg",3,'N');
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Fundación Once", '2000-10-14',"Se fundó en el año 2000", "Es una asociación Local", "Va dirigida a Discapacitados","https://www.ejemplo.com/imagenes/fundacion_once.jpg",2,'L');
+VALUES ("Fundación Once", '2000',"Se fundó en el año 2000", "Es una asociación Local", "Va dirigida a Discapacitados","https://www.ejemplo.com/imagenes/fundacion_once.jpg",2,'L');

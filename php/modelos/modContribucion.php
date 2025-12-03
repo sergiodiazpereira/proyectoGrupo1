@@ -18,5 +18,12 @@
         public function borrar(){
         
         }
+
+        public function obtenerContribuciones(){
+            $sql="SELECT * FROM contribucion;";
+            $stmt=$this->conexion->prepare($sql);
+            $stmt->execute();
+            return $stmt;
+        }
     }
 ?>
