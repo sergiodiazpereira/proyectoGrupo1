@@ -1,0 +1,731 @@
+:root{
+    --colorFondo:#e6edff;
+    --colorTitulo:#4B7BFC;
+    --colorTituloFormulario:#102E59;
+    --colorFondoFormulario:#FCFDFF;
+    --colorBotonInicioYRegistro:#f4f6fa;
+    --colorBotonInicioYCrearCuenta:#4B7BFC;
+    --colorP:#6A6F81;
+    --bordeRadius:10px;
+    --colorLabel:#102E59;
+    --fuenteTitulo:Space Grotesk;
+    --fueteP:PT Sans;
+    --blanco-fondo-header: rgba(245, 247, 252, 0.7);
+    --azul-borde-header: #c2d4ff;
+}
+
+.body_kiko{
+    margin: 0;
+    padding: 0;
+    background-color: var(--colorFondo);
+    text-align: center;
+}
+p{
+    color: var(--colorP);
+    font-size: 0.75em;
+    font-family: var(--fueteP);
+}
+header {
+    width: 94.14%; /*El ancho que son 1024 menos 60px de padding ->>>964/1024*/
+    height: 8.33vh; /*64/768*/
+    padding: 0 2.93%; /*30/1024*/
+    background-color: var(--blanco-fondo-header, #eff3fc);
+    position: fixed;
+    top:0px;
+    left: 0px;
+    border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
+    text-align: center;
+    line-height: 8.33vh; /*64/768*/
+    backdrop-filter: blur(5px);
+}
+header>span{
+    font-size: 1.125em;
+    font-weight: 700;
+    font-family: var(--fuenteTitulo);
+    color: var(--azul-celeste, #3e7bfe);
+}
+header{
+    #flecha{
+        float: left;
+    }
+    #usuario{
+        width: 4.39%; /*45/1024*/
+        height: 5.86vh; /*45/768*/
+        float: right;
+        border: none;
+        margin-top: 1.3vh; /*10/768*/
+        cursor: pointer;
+        background-color: var(--colorFondo);
+        border-radius: 50%;
+    }
+}
+/*Para que salga la mano al pasar el cursor por encima*/
+input[type=submit]{
+    cursor: pointer;
+}
+.body_rafa {
+    text-align: center;
+    background-color: #DFE9F7;
+    max-width: 48rem; /* 768px */
+    width: 100%; /* Permite que se encoja si la pantalla es menor a 768px */
+    margin: 0 auto;
+    padding: 0;
+    color: #386EF7;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden; 
+}
+/*Caja padre para tenerlo todo en uno*/
+#contenedorLogin{
+    width: 48.83%; /*500/1024*/
+    margin: 5.2vh auto; /*40/768*/
+}
+/*le doy estilo a los item dentro del padre pero fuera del formulario*/
+#contenedorLogin{
+    h1{
+        color: var(--colorTitulo);
+        font-family: var(--fuenteTitulo);
+    }
+    #cajaBotonesIniYReg>input{
+        display: inline-block;
+    }
+    img{
+        border-radius: 50%;
+        width: 16%; /*80/500*/
+    }
+}
+/*Le doy estilo a la caja donde tengo los botones de registro e inicio*/
+#cajaBotonesIniYReg{
+    a{
+        display: inline-block;
+        text-decoration: none;
+        padding-top: 0.65vh; /*5/768*/
+        margin: 2.6vh 0; /*20/768*/
+        border: none;
+        height: 3.26vh; /*25/768*/
+        width: 49.6%; /*248/500*/ /*deberia estar al pixel a 250px por no tener padding pero me esta pillando 2 px por defecto y no encuentro donde*/
+        background-color: var(--colorFondo);
+        color: var(--colorP);
+        border-radius: var(--bordeRadius);
+    }
+    #iniciar,#registro{
+        color: var(--colorTituloFormulario);
+        background-color: var(--colorBotonInicioYRegistro);
+    }
+}
+/*Le doy estilo al formulario*/
+#formLoginRegis{
+    text-align: left;
+    padding: 2.6vh; /*20/768*/
+    background-color: var(--colorFondoFormulario);
+    border-radius: var(--bordeRadius);
+    border: 1px solid rgb(180, 180, 247);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+/*le doy estilo a los items del formulario*/
+#formLoginRegis{
+    p{
+        display: block;
+        margin-top: 0;
+        margin-bottom: 3.9vh; /*30/768*/
+    }
+    h2{
+        font-family: var(--fuenteTitulo);
+        color: var(--colorTituloFormulario);
+        margin-bottom: 0;
+    }
+    label{
+        display: block;
+        width: 30%; /*150/500*/
+        font-family: var(--fueteP);
+        font-size: 0.75em;
+        color: var(--colorLabel);
+        margin-bottom: 0.65vh; /*5/768*/
+    }
+    input[type=submit]{
+        margin: auto;
+        width: 100%; /*460/500*/ /*460px + 40px de padding que tiene el form los 500 del form*/
+        color: #ffffff;
+        background-color: var(--colorBotonInicioYCrearCuenta);
+    }
+    input{
+        margin-bottom: 2.6vh; /*20/768*/
+        width: 95%; /*438/500*/   /*438px + 20 px de padding left + 2 de padding right por defecto*/
+        height: 4.55vh; /*35/768*/
+        border-radius: var(--bordeRadius);
+        border: none;
+        background-color: var(--colorFondo);
+        padding-left: 4%; /*20/500*/
+    }
+}
+/*---------------------------------------------------pantalla de cambio de contraseña usuario----------------------------------------------*/
+/*Le doy estilo al formulario del cambio*/
+#formCambio{
+    margin-top: 19.53vh; /*150/768*/ /*64 del alto del header mas 30px para que se separe*/
+    text-align: left;
+    padding: 2.6vh; /*20/768*/
+    background-color: var(--colorFondoFormulario);
+    border-radius: var(--bordeRadius);
+    border: 1px solid rgb(180, 180, 247);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+#formCambio{
+    p{
+        display: block;
+        margin-top: 0;
+        margin-bottom: 3.9vh; /*30/768*/
+    }
+    h2{
+        font-family: var(--fuenteTitulo);
+        color: var(--colorTituloFormulario);
+        margin-bottom: 0;
+    }
+    label{
+        display: block;
+        width: 30%; /*150/500*/
+        font-family: var(--fueteP);
+        font-size: 0.75em;
+        color: var(--colorLabel);
+        margin-bottom: 0.65vh; /*5/768*/
+    }
+    input[type=submit]{
+        padding: 0;
+        width: 28%; /*140/500*/ 
+        color: #ffffff;
+        background-color: var(--colorBotonInicioYCrearCuenta);
+    }
+    input{
+        margin-bottom: 2.6vh; /*20/768*/
+        width: 95%; /*438/500*/   /*438px + 20 px de padding left + 2 de padding right por defecto*/
+        height: 4.55vh; /*35/768*/
+        border-radius: var(--bordeRadius);
+        border: none;
+        background-color: var(--colorFondo);
+        padding-left: 4%; /*20/500*/
+    }
+    a{  
+        padding: 0.91vh 4.88%; /*7px/768 y 25px/500*/
+        width: 11%; /*55/500*/ /*55px + 50 de padding 105px*/
+        height: 4.43vh; /*20/768*/ /*20 + 14px =34px*/
+        display: inline-block;
+        text-decoration: none;
+        color: var(--colorLabel);
+        border-radius: var(--bordeRadius);
+    }
+    a:hover{
+        background-color: var(--azul-borde-header);
+    }
+}
+/*Le doy estilo al menu desplegable*/
+#desplegable{
+    text-align: left;
+    position: fixed;
+    width: 22.46%; /*230/1024*/
+    top:1.3vh; /* 10/768*/
+    right: 0.5%; /* 760/1024*/
+    background-color: var(--colorFondoFormulario);
+    border-radius: var(--bordeRadius);
+    font-family: var(--fueteP);
+    margin-right: 2.93%; /*30/1024*/
+    margin-top: 6.51vh; /*50/768*/
+    border: 1px solid var(--azul-borde-header);
+    box-shadow: 0 0.52vh 1.3vh rgba(0,0,0,0.15);
+    z-index: 10;
+}
+#desplegable{
+    ul{
+        padding: 1.3vh 2.93%; /*10px/768 y 30px/1024 */
+        margin: 0;
+        list-style-type: none;
+        #nombreDes{
+            margin: 0;
+            font-size: 1em;
+            font-family: var(--fueteP);
+            color: var(--colorLabel);
+        }
+        p{
+            margin-top: 0px;
+        }
+    }
+    a{
+        text-decoration: none;
+        color: var(--colorLabel);
+    }
+    li{ 
+        padding: 1.95vh; /*15px/768*/
+        height: 1.95vh; /*15px/768*/
+        border-radius: var(--bordeRadius);
+    }
+    i{
+        margin-right: 1.95%; /*20px/1024*/
+    }
+    li:hover{
+        background-color: var(--azul-borde-header);
+    }
+    hr{
+        margin: 0px;
+    }
+}
+/*---------------------------------------------------pantalla de ranking----------------------------------------------*/
+#rankingPadre{
+    width: 80%;
+    margin: 13vh auto; /*100px/768*/
+}
+#rankingPadre{
+    h1{
+        margin-bottom: 0;
+        font-family: var(--fuenteTitulo);
+        color: var(--colorLabel);
+    }
+    p{
+        margin-top: 0;
+        margin-bottom: 6.51vh; /*50px/768*/
+        color: var(--colorP);
+        font-size: 1em;
+    }
+    
+    h2{
+        font-family: var(--fuenteTitulo);
+        color: var(--colorLabel);
+        text-align: left;
+    }
+}
+/*caja top10*/
+#top{
+    height: 78.13vh; /*600/768*/
+    border-radius: var(--bordeRadius);
+    background-color: var(--colorFondoFormulario);
+    border: 1px solid var(--azul-borde-header);
+    padding: 0px 3.9% 2.6vh 3.9%; /* 20px/768, 20px/1064 */
+    overflow: scroll;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+#top{
+    /*Esta es la caja del h2 del top 10 para poder hacerle el position sticky*/
+    #h2top{
+        position: sticky;
+        height: 7.81vh; /*60/768*/
+        top:0;
+        padding: 2.6vh 0; /*20px/768*/
+        background-color: var(--colorFondoFormulario);
+        h2{
+            margin: 0;
+            font-size: 2em;
+        }
+        border-radius: var(--bordeRadius);
+    }
+
+    #cajaRanking{
+        display: grid;
+        grid-column: (5 , 1fr);
+        grid-row: (11 ,1fr);
+        grid-template-areas:
+        "puesto jugador asociacion fecha tiempo";
+        column-gap: 4.88%; /*50px/1024*/
+        row-gap: 3.9vh; /*30px/768*/
+    }
+}
+/*caja con el grid*/
+#cajaRanking{
+    p{
+        font-size: 0.75em;
+        margin-bottom: 0;
+    }
+    .tiempo{
+        color: var(--colorTitulo);
+        font-family: var(--fuenteTitulo);
+    }
+    .fecha{
+        font-family: var(--fueteP);
+        color: var(--colorP);
+    }
+    .asociacion{
+        font-family: var(--fueteP);
+        color: var(--colorP);
+    }
+    .jugador{
+        font-family: var(--fueteP);
+        color: var(--colorLabel);
+    }
+    .posicion{
+        font-family: var(--fueteP);
+        color: var(--colorLabel);
+    }
+}
+/*---------------------------------------------------pantalla de coleccionables Solo pixeles----------------------------------------------*/
+#coleccionPadre{
+    width: 840px; 
+    margin: 100px auto;
+}
+#coleccionPadre{
+
+    h1{
+        font-family: var(--fuenteTitulo);
+        color: var(--colorLabel);
+    }
+    p{
+        font-family: var(--fueteP);
+        color: var(--colorP);
+    }
+}
+#gridColec{
+    padding: 20px;
+    text-align: left;
+    display: grid;
+    /*
+        El ancho del padre son 840px menos 40 de padding me dejan 800px para utilizar 
+        mi idea era poner 4 columnas pero condicionado por los items del interior lo deje en 3 columnas de 250px
+        que serian 750px a los que tendria que sumar los dos huecos de separacion entre las 3 cajas
+        que suman 50px lo que me daria un total de 800px que son de los que dispongo
+    */
+    grid-template-columns: repeat(3, 250px); 
+    grid-template-rows: auto;
+    column-gap: 25px;
+    row-gap: 25px;
+}
+.cajaAsoc{
+    padding: 10px;
+    border-radius: var(--bordeRadius);
+    border: 1px solid var(--azul-borde-header);
+}
+#gridColec>.cajaAsoc{
+    h3{
+        display: inline-block;
+        margin-top: 0;
+        color: var(--colorLabel);
+        font-family: var(--fuenteTitulo);
+    }
+    a{
+        display: block;
+        margin-left: 10px;
+        margin-top: 10px;
+        text-decoration: none;
+        color: var(--colorTitulo);
+    }
+    p{  
+        margin: 0 10px;
+        color: var(--colorP);
+        font-family: var(--fueteP);
+    }
+    img{
+        display: inline-block;
+        width:40px;
+    }
+    #datosColec{
+        /*Esto se quitara al descubrir un a asociacion y podra verse todo el  texto*/
+        filter: blur(5px);
+    }
+    #imgAsoc{
+        display: flex;
+        justify-content: space-around;
+    }
+}
+/* Estilos de Info y botones (popups de info, pistas y otros botones) */
+.guia-modal {
+    background-color: #386EF7;
+    color: white;
+    text-align: center;
+    padding: 3.125rem 1.875rem 1.875rem;
+    width: 80%;
+    max-width: 43.75rem;
+    margin: 3.125rem auto;
+    border-radius: 0.3125rem;
+    position: relative;
+}
+.guia-modal h2 {
+    margin-bottom: 1.5625rem;
+}
+.x-cerrar {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    background-color: #ff3333;
+    border-radius: 0.625rem;
+    color: white;
+    font-size: 1.5rem;
+}
+.fila-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.9375rem;
+    margin-bottom: 1.875rem;
+}
+.indicador-box {
+    flex: 1;
+    border: 1px solid white;
+    padding: 0.9375rem;
+    border-radius: 0.3125rem;
+    font-size: 0.9rem;
+}
+.circulo {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 0.3125rem;
+    margin: 0 auto 0.625rem;
+}
+.indicador-box p {
+    margin: 0.3125rem 0;
+}
+.box-inferior {
+    border: 1px solid white;
+    padding: 1.25rem;
+    border-radius: 0.3125rem;
+}
+.flechas {
+    font-size: 2rem;
+    margin-bottom: 0.625rem;
+}
+.flecha-up {
+    color: #00cc00;
+    margin-right: 0.625rem;
+}
+.flecha-down {
+    color: #ff3333;
+}
+.desc-menor {
+    font-size: 0.9rem;
+    margin: 0;
+}
+.estiloFundacion {
+    width: 6.25rem; /* 100px */
+    height: 6.25rem; /* 100px */
+}
+#jugar {
+    width: 10.625rem; /* 170px */
+    height: 5rem; /* 80px */
+    color: #1C07FF;
+    font-weight: bold;
+}
+.quitarBorde {
+    border: none;
+}
+/* Estilos de la tabla de juego (parte inferior)*/
+#contenedor-tabla {
+    gap: 0.5rem; /* gap (8px) */
+    padding: 0;
+    border-radius: 0.5rem; 
+    margin: 3rem auto; 
+    display: grid;
+    width: 95%; /* Usamos el 95% del max-width de 768px */
+    max-width: 45rem; /* 720px */
+    grid-template-columns: repeat(5, 1fr); 
+}
+.encabezado {
+    font-weight: bold;
+    padding: 0;
+    color: #333;
+    font-size: 0.9em;
+}
+.celda {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 0.3rem 0;
+    border-radius: 1rem; 
+    font-size: 0.8rem;
+    color: white;
+    line-height: 1.2; 
+}
+.rojo { background-color: #ff3333; }
+.verde { background-color: #00cc00; }
+.celda.amarillo { 
+    background-color: #ffc527; 
+    color: #333; 
+}
+/* Cronómetro */
+#crono {
+    position: absolute;
+    right: 0.2rem; /* 15px */
+    top: 0.3125rem; /* 5px */
+    font-size: 0.8em;
+}
+/* Estilos de Iconos/Imágenes */
+.estiloCrono {
+    font-size: 1.875rem; /* 30px */
+}
+.negro {
+    color: black;
+}
+.gris {
+    color: gray;
+}
+.tam-img {
+    font-size: 1.875rem; /* 30px */
+    width: 1.875rem; /* 30px */
+    height: 1.875rem; /* 30px */
+}
+.celda p {
+    color: var(--colorFondo);
+    font-family: var(--fuenteTitulo);
+}
+.mostrar-menu {
+    display: block !important;
+}
+
+/* Estilo del SELECT */
+select {
+    margin: 0 auto;
+    border: 1px solid #1C07FF; 
+    border-radius: 1rem; /* 16px */
+}
+/* Estilos de Nav y Desplegable */
+#nav_crono {
+    text-align: left;
+    position: relative;
+}
+/* NAV de los botones de INFO/PISTAS: Empuje hacia abajo */
+#nav_crono:not(#desplegable) {
+    margin-top: 3.4375rem; /* 55px */
+    padding: 0 0.625rem; /* 10px */
+}
+/* Estilos de Botones Generales */
+button {
+    margin-top: 1rem; /* 16px */
+    border-radius: 1rem; /* 16px */
+    width: 3.125rem; /* 50px */
+    height: 3.125rem; /* 50px */
+    border: none;
+    cursor: pointer;
+}
+
+button.azul {
+    background-color: #1C07FF;
+}
+
+.colorBlanco{
+    color: white;
+}
+
+button.amarillo { 
+    background-color: #FFC527;
+}
+    
+@media (max-width: 450px) {
+    .main_kiko{
+        padding: 2.66% 1.49vh; /*10/375 y 10/667*/
+    }
+    #contenedorLogin{
+        margin-top: 4.49vh; 
+        width: 94.66%;  /*355/375*/
+    }
+    #cajaBotonesIniYReg{
+        a{
+            width: 49.4%; /*175.5/375*/
+        }
+    }
+    #formLoginRegis>label{
+        width: 33.80%; /*120px/355*/
+    }
+    #rankingPadre{
+        width: 100%;  
+        margin: 10.49vh 0; /*70px/667*/
+    }
+    #desplegable{
+        width: 56%; /*210/375*/
+        top: 0; 
+        left: 40%;
+    }
+    #coleccionPadre{
+        width: 100%; 
+        margin: 14.99vh auto; /*100/667*/
+    }
+    #gridColec{
+        grid-template-columns: repeat(1, 1fr); /*Pasaran a tener una unica columna*/ 
+    }
+}
+/* query ordenador (Ancho ≥ 64rem / 1024px)*/
+@media (min-width: 64rem) {
+    
+    /* El body se vuelve el 100% */
+    .body_rafa {
+        max-width: 100%; 
+        width: 100%; 
+        margin: 0;
+    }
+    
+    /* El header fijo se extiende al 95% */
+    .header_rafa{
+        max-width: none; /* Quitamos el límite de 768px */
+        width: 95%; 
+        height: 4rem; /* 64px */
+        
+        /* Usamos flex para centrar el contenido interno */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        right: 0;
+        margin: 0;
+    }
+
+    /* El contenido interno del header se limita y se centra */
+    .header_rafa > span {
+        max-width: 75rem; /* 1200px */
+        flex-grow: 1; 
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: normal;
+    }
+
+    .header_rafa #usuario {
+        position: absolute; 
+        right: 1.875rem; 
+        top: 0.625rem;
+        width: 2.8125rem; 
+        height: 2.8125rem;
+        margin-top: 0;
+    }
+
+    /* NAV de los botones de INFO/PISTAS: Empuje hacia abajo */
+    nav:not(#desplegable) {
+        margin-top: 4rem; /* 64px */
+        max-width: 75rem; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Menú Desplegable */
+    #desplegable {
+        width: 14.375rem; /* 230px */
+        top: 1rem; /* 16px */
+        z-index: 10;
+    }
+    
+    /* Cronómetro */
+    #crono {
+        position: absolute;
+        right: 0.2rem; 
+        top: 0.625rem; 
+        font-size: 1em; 
+    }
+
+    #nav_crono {
+        text-align: left;
+        position: relative;
+    }
+
+    /* Estilo main y tabla */
+    .main_rafa {
+        margin-top: 6rem; 
+        max-width: 75rem; /* 1200px */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #contenedor-tabla {
+        gap: 1rem; 
+        width: 45rem; 
+        grid-template-columns: repeat(5, 1fr); 
+    }
+    .encabezado {
+        font-size: 1em; 
+    }
+    .celda {
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
+    }
+    
+    select {
+        width: 11rem; 
+    }
+}
