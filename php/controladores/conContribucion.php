@@ -15,16 +15,11 @@
 
         public function borrar(){
             $idContribucion = $_POST['idContribucion'];
-            $fila = $this->modelo->borrar($idContribucion);
-
-            $datos = [
-                'idProfesor' => $fila['idContribucion'],
-                'descipcion' => $fila['descripcion']
-            ];
+            $this->modelo->borrar($idContribucion);
 
             $this->vista="vistaGesionContribuciones.php";
 
-            return $datos;
+            return true;
         }
 
         public function listar(){

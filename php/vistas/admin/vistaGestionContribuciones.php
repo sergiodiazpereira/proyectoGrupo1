@@ -71,115 +71,115 @@
         </ul>
     </nav>
     <main>
-        <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
-        <div id="bloqueGestionContribuciones">
-            <h1>Gestionar Contribuciones</h1>
-            <p>Añadir, editar o eliminar los tipos de contribucion.</p>
-            <a href="./vistaAgregarContribucion.html">
-                <button>
-                    <i class="fa-solid fa-circle-plus"></i>
-                    <span>Añadir contribución</span>
-                </button>
-            </a>
-            <a href="./vistaGestionContribuciones.html">
-                <button>
+        <form action="index.php?c=Contribucion&m=procesarModificar" method="POST" enctype="multipart/form-data">
+            <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
+            <div id="bloqueGestionContribuciones">
+                <h1>Gestionar Contribuciones</h1>
+                <p>Añadir, editar o eliminar los tipos de contribucion.</p>
+                <a href="">
+                    <button>
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <span>Añadir contribución</span>
+                    </button>
+                </a>
+                <button type="submit">
                     <i class="fa-regular fa-floppy-disk"></i>
                     <span>Guardar cambios</span>
                 </button>
-            </a>
-        </div>
-
-        <!-- Lista de Contribuciones -->
-        <form id="bloqueListaContribuciones">
-
-            <h2>Lista de Contribuciones</h2>
-
-            <div class="fila encabezado">
-                <span>Nombre</span>
-                <span>Acciones</span>
             </div>
 
-            <div class="fila">
-                <input type="text" value="Educación">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+            <!-- Lista de Contribuciones -->
+            <div id="bloqueListaContribuciones">
 
-            <div class="fila">
-                <input type="text" value="Salud">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <h2>Lista de Contribuciones</h2>
 
-            <div class="fila">
-                <input type="text" value="Protección Infantil">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <div class="fila encabezado">
+                    <span>Nombre</span>
+                    <span>Acciones</span>
+                </div>
 
-            <div class="fila">
-                <input type="text" value="Asistencia Sanitaria">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <div class="fila">
+                    <input type="text" value="Educación" name="<?php echo $descripcion ?>">
+                    <a href="index.php?c=Contribucion&m=eliminar&id=<?php echo $id ?>">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
 
-            <div class="fila">
-                <input type="text" value="Conservación">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <div class="fila">
+                    <input type="text" value="Salud">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
 
-            <div class="fila">
-                <input type="text" value="Activismo">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <div class="fila">
+                    <input type="text" value="Protección Infantil">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
 
-            <div class="fila">
-                <input type="text" value="Derechos Humanos">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <div class="fila">
+                    <input type="text" value="Asistencia Sanitaria">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
 
-            <div class="fila">
-                <input type="text" value="Ayuda Humanitaria">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
-            </div>
+                <div class="fila">
+                    <input type="text" value="Conservación">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
 
-            <div class="fila">
-                <input type="text" value="Inclusión">
-                <a href="">
-                    <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </a>
+                <div class="fila">
+                    <input type="text" value="Activismo">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
+
+                <div class="fila">
+                    <input type="text" value="Derechos Humanos">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
+
+                <div class="fila">
+                    <input type="text" value="Ayuda Humanitaria">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
+
+                <div class="fila">
+                    <input type="text" value="Inclusión">
+                    <a href="">
+                        <button class="btn-eliminar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </a>
+                </div>
+
             </div>
-            
         </form>
 
         <!-- Modal para agregar Contribuciones -->
