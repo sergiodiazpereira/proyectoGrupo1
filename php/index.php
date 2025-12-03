@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__.'/config/configIndex.php';
+    require_once __DIR__.'/config/rutas.php';
     /**
      * @var $controlador Recibe el controlador al que queremos ir mediante el metodo get
      * @var $metodo  Recibe el metodo del controladore al que queremos ir mediante el metodo get
@@ -21,15 +21,10 @@
      */
     $instanciaControlador = "Con".$controlador;
 
-    /**
-     * @var $objContro es la variable de la instancia creada por $instanciaControlador este se utilizara para llamar a la vista correspondiente
-     */
+    
     $objContro = new $instanciaControlador();
-    /**
-     * @var $datos recibira los datos o el mensaje desde el controlador
-     * @var string VISTA tendra parte de la ruta del directorio donde se encuentran todas las vistas
-     */
 
+    
     $datos=$objContro->$metodo();
     include VISTAS.$objContro->vista;
 ?>

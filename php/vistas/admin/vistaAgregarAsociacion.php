@@ -2,7 +2,7 @@
 
 <head>
     <title>Asociaciones</title>
-    <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+    <link rel="stylesheet" href="../src/css/styleAdmin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,12 +92,12 @@
                     <div class="fila">
                         <div class="campo">
                             <label>Nombre:</label>
-                            <input type="text">
+                            <input type="text" name="nombre">
                         </div>
 
                         <div class="campo">
                             <label>Año de fundación:</label>
-                            <input type="text">
+                            <input type="text" name="anio">
                         </div>
                     </div>
 
@@ -128,7 +128,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Imagen:</label>
-                            <input type="file">
+                            <input type="file" name="logo">
                         </div>
                     </div>
 
@@ -136,7 +136,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Difícil:</label>
-                            <textarea></textarea>
+                            <textarea name="pistaD"></textarea>
                         </div>
                     </div>
 
@@ -144,7 +144,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Media:</label>
-                            <textarea></textarea>
+                            <textarea name="pistaM"></textarea>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Fácil:</label>
-                            <textarea></textarea>
+                            <textarea name="pistaF"></textarea>
                         </div>
                     </div>
 
@@ -160,7 +160,7 @@
                     <div>
                         <label>Contribuciones:</label>
                         <div id="cuadroContribuciones">
-                            <div class="tag"><input type="checkbox" value="Salud" checked>Salud</div>
+                            <div class="tag"><input type="checkbox" name=contribucion[] value="Salud" checked>Salud</div>
                             <div class="tag"><input type="checkbox" value="Protección Infantil">Protección Infantil</div>
                             <div class="tag"><input type="checkbox" value="Asistencia Sanitaria" checked>Asistencia sanitaria</div>
                             <div class="tag"><input type="checkbox" value="Conservación">Conservación</div>

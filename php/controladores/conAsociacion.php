@@ -3,6 +3,13 @@
     require_once __DIR__.'/../modelos/modAsociacion.php';
     class ConAsociacion{
         public $vista;
+        public $modelo;
+        function __construct(){
+            $this->modelo= new ModAsociacion();
+        }
+        public function inicio(){
+            $this->vista="vistaAgregarAsociacion.php";
+        }
         public function insertar(){
         
         }
@@ -15,8 +22,9 @@
         
         }
 
-        public function listar(){
-            $this->vista="listarAsociaciones.php";
+        public function cargarPaginaAsoc(){
+            $tipos=$this->modelo->obtenerTipos();
+            
         }
     }
 ?>

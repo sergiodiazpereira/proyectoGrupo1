@@ -18,5 +18,11 @@
         public function borrar(){
         
         }
+
+        public function obtenerTipos(){
+            $sql="SELECT * FROM tipo_asoc";
+            $tipos=$this->conexion->query($sql);
+            return $tipos;
+        }
     }
 ?>
