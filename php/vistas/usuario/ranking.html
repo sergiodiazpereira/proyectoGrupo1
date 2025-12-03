@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Asociaciondle</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../src/css/styleUsuario.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        </style>
+    </head>
+    <body class="body_kiko">
+        <header>
+            <a href="pagina_principal.html" id="flecha"><i class="fa-solid fa-arrow-left"></i></a>
+            <span>Asociaciondle</span>
+            <button id="usuario"><i class="fa-solid fa-user"></i></button>
+        </header>
+        <main class="main_kiko">
+            <div id="rankingPadre">
+                <h1>Ranking de Jugadores</h1>
+                <p>¿Quienes son los más rápidos en adivinar?</p>
+                <div id="top">
+                    <div id="h2top">
+                        <h2>Top 10 jugadores</h2>
+                    </div>
+                    <div id="cajaRanking">
+                        <p id="puesto">Puesto</p><p id="jugador">Jugador</p><p id="asociación">Asociación</p><p id="fecha">Fecha</p><p id="tiempo">Tiempo</p>
+                        <!-----Esta parte  es de prueba de visualizacion esto se generara mediante php-->
+                        <h4 class="posicion">1</h4><h4 class="jugador">Player1</h4><h4 class="asociacion">Asociacion</h4><h4 class="fecha">1/01/00</h4><h4 class="tiempo">00:45</h4>
+                        <h4>2</h4><h4>Player2</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>01:45</h4>
+                        <h4>3</h4><h4>Player3</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>00:35</h4>
+                        <h4>4</h4><h4>Player4</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>01:55</h4>
+                        <h4>5</h4><h4>Player5</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>00:05</h4>
+                        <h4>6</h4><h4>Player6</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>02:45</h4>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--Esta parte debe activarse cuando utilicemos javscript para que al darle al boton se despligue-->
+        <nav id="desplegable">
+            <ul>
+                <p id="nombreDes">Usuario</p>
+                <p>usuario@hotmail.com</p>
+                <hr>
+                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.html">Jugar</a></li>
+                <li><i class="fa-solid fa-book"></i> <a href="colecciones.html">Colección</a></li>
+                <li><i class="fa-solid fa-trophy"></i><a href="ranking.html">Ranking</a></li>
+                <hr>
+                <li><i class="fa-solid fa-key"></i> <a href="cambio.html">Cambiar Contraseña</a></li>
+                <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="login.html">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+        <script src="../../../src/app.js"></script>
+    </body>
+</html>
