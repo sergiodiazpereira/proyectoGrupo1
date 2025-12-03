@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Gestionar asociaciones</title>
-        <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+        <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
             <h3>Menú Principal</h3>
             <ul>
                 <li>
-                    <a href="./dashboard.html">
+                    <a href="./dashboard.php">
                         <button>
                             <i class="fa-solid fa-chart-line"></i>
                             <span>Dashboard</span>
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarAsociaciones.html">
+                    <a href="./listarAsociaciones.php">
                         <button class="paginaSeleccionada">
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarUsuarios.html">
+                    <a href="./listarUsuarios.php">
                         <button>
                             <i class="fa-solid fa-users"></i>
                             <span>Usuarios</span>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./vistaGestionContribuciones.html">
+                    <a href="./vistaGestionContribuciones.php">
                         <button>
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../usuario/login.html">
+                    <a href="../usuario/login.php">
                         <button>
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             <span>Cerrar sesión</span>
@@ -90,7 +90,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <img src="../../../img/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -105,7 +105,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz azul
                             </td>
                             <td>
@@ -120,7 +120,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Crus roja
                             </td>
                             <td>
@@ -135,7 +135,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -165,7 +165,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -180,7 +180,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -195,7 +195,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -210,7 +210,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -225,7 +225,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -240,7 +240,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -255,7 +255,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
@@ -270,7 +270,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../src/img/cruzRoja.webp">
                                 Prueba
                             </td>
                             <td>

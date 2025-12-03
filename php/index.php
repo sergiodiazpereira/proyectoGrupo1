@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__.'/config/configIndex.php';
+    require_once __DIR__.'/config/rutas.php';
     /**
      * @var $controlador Recibe el controlador al que queremos ir mediante el metodo get
      * @var $metodo  Recibe el metodo del controladore al que queremos ir mediante el metodo get
