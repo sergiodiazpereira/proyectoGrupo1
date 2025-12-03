@@ -6,15 +6,29 @@
         public $vista;
         
         public function insertar(){
-        
+            $this->vista="vistaGesionContribuciones.php";
         }
 
         public function modificar(){
-            //mio
+            $this->vista="vistaGesionContribuciones.php";
         }
 
         public function borrar(){
-            //mio
+            $idContribucion = $_POST['idContribucion'];
+            $fila = $this->modelo->borrar($idContribucion);
+
+            $datos = [
+                'idProfesor' => $fila['idContribucion'],
+                'descipcion' => $fila['descripcion']
+            ];
+
+            $this->vista="vistaGesionContribuciones.php";
+
+            return $datos;
+        }
+
+        public function listar(){
+            $this->vista="vistaGesionContribuciones.php";
         }
     }
 ?>

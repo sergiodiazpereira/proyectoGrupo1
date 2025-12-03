@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarAsociaciones.html">
+                    <a href="index.php?c=Asociacion&m=listar">
                         <button>
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./vistaGestionContribuciones.html">
+                    <a href="index.php?c=Contribucion&m=listar">
                         <button class="paginaSeleccionada">
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
@@ -80,24 +80,24 @@
         </div>
 
         <!-- Formulario Asociaciones-->
-        <form action="" id="bloqueFormularioAsociaciones">
+        <form action="index.php?c=Asociacion&m=procesarModificar" method="POST" enctype="multipart/form-data" id="bloqueFormularioAsociaciones">
             <div id="formulario-head">
                 <h2>Detalles de la Asociación</h2>
                 <p>Asegurese de que la información sea correcta antes de guardar.</p>
             </div>
             <div id="formulario-main">
                 <div id="formAsociacion">
-
+                    <input type="hidden" name="idAsoc" value="<?= $datos['idAsoc'] ?>">
                     <!-- Nombre + Año -->
                     <div class="fila">
                         <div class="campo">
                             <label>Nombre:</label>
-                            <input type="text" value="Cruz Roja">
+                            <input type="text" name="nombre" value="<?= $datos['nombre'] ?>">
                         </div>
 
                         <div class="campo">
                             <label>Año de fundación:</label>
-                            <input type="text" value="1863">
+                            <input type="date" name="fecha_fun" value="<?= $datos['fecha_fun'] ?>">
                         </div>
                     </div>
 
@@ -105,22 +105,21 @@
                     <div class="fila">
                         <div class="campo">
                             <label>Dirigida a:</label>
-                            <select name="categoria" id="categoriaDedicacion">
-                                <option value="1">Personas con discapacidad</option>
-                                <option value="2">Refugiados y migrantes</option>
-                                <option value="3">Estudiantes y jóvenes</option>
-                                <option value="4" selected="selected">Personas de bajos recursos</option>
+                            <select name="tipo_asoc" id="categoriaDedicacion">
+                                <?php
+                                    foreach ($tipo_asoc as $idTipoAsoc => $nombre) {
+                                        echo "<option value='".$idTipoAsoc."'>".$nombre."</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
 
                         <div class="campo">
                             <label>Alcance Geográfico:</label>
                             <select name="alcanceGeografico" id="alcanceGeografico">
-                                <option value="1">Global</option>
-                                <option value="2">Continental</option>
-                                <option value="2" selected="selected">Internacional</option>
-                                <option value="3">Nacional</option>
-                                <option value="4">Autonómico</option>
+                                <option value="I">Internacional</option>
+                                <option value="N">Nacional</option>
+                                <option value="L">Local</option>
                             </select>
                         </div>
                     </div>
@@ -129,7 +128,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Imagen:</label>
-                            <input type="file">
+                            <input type="file" name="imagen">
                         </div>
                     </div>
 
@@ -137,7 +136,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Difícil:</label>
-                            <textarea>Su fundador ganó el primer premio Nobel de la paz.</textarea>
+                            <textarea name="pista_dificil">Su fundador ganó el primer premio Nobel de la paz.</textarea>
                         </div>
                     </div>
 
@@ -145,7 +144,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Media:</label>
-                            <textarea>Su emblema es un símbolo de protección reconocido mundialmente en las zonas de conflicto.</textarea>
+                            <textarea name="pista_media">Su emblema es un símbolo de protección reconocido mundialmente en las zonas de conflicto.</textarea>
                         </div>
                     </div>
 
@@ -153,7 +152,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Fácil:</label>
-                            <textarea>Se asocia con el color rojo y la ayuda médica de emergencia.</textarea>
+                            <textarea name="pista_facil">Se asocia con el color rojo y la ayuda médica de emergencia.</textarea>
                         </div>
                     </div>
 
@@ -161,6 +160,9 @@
                     <div>
                         <label>Contribuciones:</label>
                         <div id="cuadroContribuciones">
+                            <?php 
+                                echo "<div class='tag'><input type='checkbox' name='contribuciones[]' value='".$idContribucion."'>".$descripcion."</div>";
+                            ?>
                             <div class="tag"><input type="checkbox" value="Salud" checked>Salud</div>
                             <div class="tag"><input type="checkbox" value="Protección Infantil">Protección Infantil</div>
                             <div class="tag"><input type="checkbox" value="Asistencia Sanitaria" checked>Asistencia sanitaria</div>
@@ -175,17 +177,15 @@
                 </div>
             </div>
             <div id="formulario-footer">
-                <a href="./vistaGestionContribuciones.html">
+                <a href="index.php?c=Contribucion&m=listar">
                     <button>
                         <span>Cancelar</span>
                     </button>
                 </a>
-                <a href="./vistaGestionContribuciones.html">
-                    <button>
-                        <i class="fa-regular fa-floppy-disk"></i>
-                        <span>Guardar</span>
-                    </button>
-                </a>
+                <button type="submit">
+                    <i class="fa-regular fa-floppy-disk"></i>
+                    <span>Guardar</span>
+                </button>
             </div>
         </form>
     </main>

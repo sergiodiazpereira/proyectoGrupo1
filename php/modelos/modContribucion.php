@@ -12,39 +12,59 @@
         }
 
         public function modificar(){
-            $sql = "UPDATE contribucion
-                    SET descripcion = :desc
-                    WHERE idContribucion = :id";
 
-            $stmt = $pdo->prepare($sql);
+            try {
 
-            $desc = $_POST['descripcion'];
-            $id   = $_POST['idContribucion'];
+                $sql = "UPDATE contribucion
+                        SET descripcion = :desc
+                        WHERE idContribucion = :id";
 
-            $stmt->bindParam(':desc', $desc, PDO::PARAM_STR);
-            $stmt->bindParam(':id',   $id,   PDO::PARAM_INT);
+                $stmt = $pdo->prepare($sql);
 
-            return $stmt->execute();
+                $desc = $_POST['descripcion'];
+                $id   = $_POST['idContribucion'];
+
+                $stmt->bindParam(':desc', $desc, PDO::PARAM_STR);
+                $stmt->bindParam(':id',   $id,   PDO::PARAM_INT);
+                $stmt->execute();
+
+                return true;
+
+             } catch (Exception $e) {
+
+                $pdo->rollBack();
+                return false;
+
+            }
+
         }
 
-        public function borrar(){
-            $sql = "DELETE FROM asoc_contribucion WHERE idContribucion = :id";
-            $stmt = $pdo->prepare($sql);
+        public function borrar($idContribucion){
+            $pdo->beginTransaction();
 
-            $id = $_POST['idContribucion'];
+            try {
 
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $sql = "DELETE FROM asoc_contribucion WHERE idContribucion = :id";
+                $stmt = $pdo->prepare($sql);
 
-            $stmt->execute();
+                $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
+                $stmt->execute();
 
-            $sql = "DELETE FROM contribucion WHERE idContribucion = :id";
-            $stmt = $pdo->prepare($sql);
+                $sql = "DELETE FROM contribucion WHERE idContribucion = :id";
+                $stmt = $pdo->prepare($sql);
 
-            $id = $_POST['idContribucion'];
+                $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
+                $stmt->execute();
 
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            
-            return $stmt->execute();
+                $pdo->commit();
+                return true;
+
+            } catch (Exception $e) {
+
+                $pdo->rollBack();
+                return false;
+
+            }
         }
     }
 ?>
