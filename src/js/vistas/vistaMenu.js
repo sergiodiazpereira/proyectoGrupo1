@@ -1,4 +1,4 @@
-class VistaGanarPerder{
+class VistaMenu{
     constructor(){
         // elementos del html
         // event listeners que llamarán al controlador
