@@ -13,7 +13,7 @@
     </head>
     <body class="body_kiko">
         <header>
-            <a href="pagina_juego.html" id="flecha"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="pagina_juego.php" id="flecha"><i class="fa-solid fa-arrow-left"></i></a>
             <span>Asociaciondle</span>
             <button id="usuario"><i class="fa-solid fa-user"></i></button>
         </header>
