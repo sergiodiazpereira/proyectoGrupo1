@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./index.php">
+                        <a href="./index.php?c=Contribucion&m=obtenerContribucion">
                             <button>
                                 <i class="fa-solid fa-hand-holding-heart"></i>
                                 <span>Contribuciones</span>

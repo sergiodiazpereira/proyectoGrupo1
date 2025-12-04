@@ -15,7 +15,7 @@
         public function obtenerContribucion(){
             $this->vista="vistaGestionContribuciones.php";
             $datos=$this->modeloC->obtenerContribuciones();
-            return ['datos' => $datos];
+            return  $datos;
         }
     }
 ?>

@@ -21,8 +21,8 @@
             $sql="SELECT * FROM contribucion;";
             $stmt=$this->conexion->prepare($sql);
             $stmt->execute();
-            $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $resultado;
+            $datos=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datos;
         }
     }
 ?>

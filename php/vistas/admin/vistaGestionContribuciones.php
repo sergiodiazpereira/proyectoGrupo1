@@ -98,10 +98,10 @@
                     <span>Acciones</span>
                 </div>
                 <?php
-                    for($datos in $value) {
+                    foreach($datos as $value) {
                         echo'<div class="fila">
-                            <input type="hidden" name="contribucion" value="'.$value->idContribucion.'" >
-                            <input type="text" value="'.$value->descripcion.'" >
+                            <input type="hidden" name="contribucion" value="'.$value['idContribucion'].'" >
+                            <input type="text" value="'.$value['descripcion'].'" >
                             <a href="">
                                 <button class="btn-eliminar">
                                     <i class="fa-solid fa-trash-can"></i>
