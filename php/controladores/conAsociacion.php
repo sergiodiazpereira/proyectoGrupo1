@@ -26,19 +26,33 @@ class ConAsociacion {
         }
 
         // Obtenemos los datos de la asociación
-        $datos = $this->modelo->obtenerPorId();
+        $asociacion  = $this->modelo->obtenerPorId();
+        $tipo_asoc = $this->modelo->listarTipos();
+        $contribuciones = $this->modelo->listarContribuciones();
+        $contribucionesAsoc = $this->modelo->listarContribucionesAsociacion($_GET['idAsoc']);
 
         // Establecemos la vista y devolvemos el array de datos
         $this->vista = "vistaModificarAsociacion.php";
+
+        // Aplano el array antes de devolverlo
+        $datos = array_merge(
+            $asociacion,
+            [
+                'tipo_asoc'          => $tipo_asoc,
+                'contribuciones'     => $contribuciones,
+                'contribucionesAsoc' => $contribucionesAsoc
+            ]
+        );
+
         return $datos;
     }
 
     public function procesarModificar() {
         // Actualizamos lso datos en la base de datos
-        $this->modelo->actualizar();
+        $this->modelo->modificar();
 
         // Actualizamos la tabla contribuciones
-        $this->modelo->actualizarContribuciones();
+        $this->modelo->modificarContribuciones();
 
         // Redirigimos a la lista de asociaciones
         header("Location: index.php?c=Asociacion&m=listar");
@@ -56,14 +70,11 @@ class ConAsociacion {
         $datos = $this->modelo->obtenerPorId();
 
         // Establecemos la vista y devolvemos el array de datos
-        $this->vista = "vistaEliminarAsociacion.php";
+        $this->vista = "vistaBorrarAsociacion.php";
         return $datos;
     }
 
     public function procesarBorrar() {
-        // Primero eliminamos las contribuciones asociadas
-        $this->modelo->borrarContribuciones();
-
         // Luego eliminamos la asociación
         $this->modelo->borrar();
 

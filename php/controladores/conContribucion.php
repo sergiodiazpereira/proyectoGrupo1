@@ -12,7 +12,7 @@
         }
 
         public function listar(){
-            $this->vista="vistaGesionContribuciones.php";
+            $this->vista="vistaGestionContribuciones.php";
         }
         
         public function insertar(){

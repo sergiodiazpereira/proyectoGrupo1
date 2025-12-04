@@ -103,3 +103,25 @@ VALUES ("Unicef", '2002',"Va dirigida a Personas", "Es una asociación Internaci
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
 VALUES ("Fundación Once", '2000',"Va dirigida a Discapacitados", "Es una asociación Local","Se fundó en el año 2000","https://www.ejemplo.com/imagenes/fundacion_once.jpg",2,'L');
+
+-- Relaciones Cruz Roja (1)
+INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
+(1, 1), -- Salud
+(1, 2), -- Protección Infantil
+(1, 4); -- Eduación
+
+-- Relaciones Fundación Loyola (2)
+INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
+(2, 1), -- Salud
+(2, 4); -- Eduación
+
+-- Relaciones UNICEF (3)
+INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
+(3, 1), -- Salud
+(3, 2), -- Protección Infantil
+(3, 3); -- Inclusión
+
+-- Relaciones Fundación Once (4)
+INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
+(4, 3), -- Inclusión
+(4, 4); -- Eduación

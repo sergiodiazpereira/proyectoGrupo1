@@ -101,7 +101,7 @@
                             </td>
                             <td>
                                 <a href="index.php?c=Asociacion&m=modificar&idAsoc=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=1"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=1"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -117,7 +117,7 @@
                             </td>
                             <td>
                                 <a href="index.php?c=Asociacion&m=modificar&idAsoc=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=2"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=2"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -133,7 +133,7 @@
                             </td>
                             <td>
                                 <a href="index.php?c=Asociacion&m=modificar&idAsoc=3"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=3"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=3"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -149,7 +149,7 @@
                             </td>
                             <td>
                                 <a href="index.php?c=Asociacion&m=modificar&idAsoc=4"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=4"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=4"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     </tbody>

@@ -6,8 +6,8 @@
      * @const  string CONDEF Tiene el controladores por defecto si no se recibe ningun parametro por get
      * @const  string METDEF Tiene el metodo por defecto si no se recibe ningun parametro por get
      */
-    $controlador = $_GET["c"] ?? $_POST["c"] ?? CONDEF;
-    $metodo = $_GET["m"] ?? $_POST["c"] ?? METDEF;
+    $controlador = $_GET["c"] ?? CONDEF;
+    $metodo = $_GET["m"] ?? METDEF;
     
     /**
      * @var $rutaControlador formara la ruta del controlador necesario

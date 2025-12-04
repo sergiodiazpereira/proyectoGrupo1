@@ -911,6 +911,21 @@
         background: #2f67e3;
     }
 
+    /* Botón borrar */
+    .borrar {
+        background: #ff5757;
+        padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
+        border: none;
+        border-radius: 14px;
+        font-size: 1rem;
+        cursor: hand;
+    }
+
+    /* Hover borrar */
+    .borrar:hover {
+        background: #ff3030;
+    }
+
     /* Quitar subrayado a los enlaces */
     #enlace-cancelar{
         text-decoration: none;

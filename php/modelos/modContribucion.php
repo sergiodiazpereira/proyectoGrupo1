@@ -23,7 +23,7 @@
                         SET descripcion = :desc
                         WHERE idContribucion = :id";
 
-                $stmt = $pdo->prepare($sql);
+                $stmt = $this->conexion->prepare($sql);
 
                 $desc = $_POST['descripcion'];
                 $id   = $_POST['idContribucion'];
@@ -41,28 +41,28 @@
         }
 
         public function borrar($idContribucion){
-            $pdo->beginTransaction();
+            $this->conexion->beginTransaction();
 
             try {
 
                 $sql = "DELETE FROM asoc_contribucion WHERE idContribucion = :id";
-                $stmt = $pdo->prepare($sql);
+                $stmt = $this->conexion->prepare($sql);
 
                 $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
                 $stmt->execute();
 
                 $sql = "DELETE FROM contribucion WHERE idContribucion = :id";
-                $stmt = $pdo->prepare($sql);
+                $stmt = $this->conexion->prepare($sql);
 
                 $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
                 $stmt->execute();
 
-                $pdo->commit();
+                $this->conexion->commit();
                 return true;
 
             } catch (Exception $e) {
 
-                $pdo->rollBack();
+                $this->conexion->rollBack();
                 return false;
 
             }

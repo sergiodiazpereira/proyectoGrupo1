@@ -104,10 +104,10 @@
                     <div class="fila">
                         <div class="campo">
                             <label>Dirigida a:</label>
-                            <select name="tipo_asoc" id="categoriaDedicacion">
+                            <select name="idTipoAsoc" id="categoriaDedicacion">
                                 <?php
-                                    foreach ($tipo_asoc as $idTipoAsoc => $nombre) {
-                                        echo "<option value='".$idTipoAsoc."'>".$nombre."</option>";
+                                    foreach ($datos['tipo_asoc'] as $t) {
+                                        echo "<option value='".$t['idTipoAsoc']."' ".(($t['idTipoAsoc'] == $datos['idTipoAsoc']) ? "selected" : "").">".$t['nombre']."</option>";
                                     }
                                 ?>
                             </select>
@@ -115,10 +115,10 @@
 
                         <div class="campo">
                             <label>Alcance Geográfico:</label>
-                            <select name="alcanceGeografico" id="alcanceGeografico">
-                                <option value="I">Internacional</option>
-                                <option value="N">Nacional</option>
-                                <option value="L">Local</option>
+                            <select name="alcance" id="alcanceGeografico">
+                                <option value="I" <?= $datos['alcance'] == 'I' ? 'selected' : '' ?>>Internacional</option>
+                                <option value="N" <?= $datos['alcance'] == 'N' ? 'selected' : '' ?>>Nacional</option>
+                                <option value="L" <?= $datos['alcance'] == 'L' ? 'selected' : '' ?>>Local</option>
                             </select>
                         </div>
                     </div>
@@ -160,17 +160,17 @@
                     <div>
                         <label>Contribuciones:</label>
                         <div id="cuadroContribuciones">
-                            <?php 
-                                echo "<div class='tag'><input type='checkbox' name='contribuciones[]' value='".$idContribucion."'>".$descripcion."</div>";
+                            <?php
+                            foreach ($datos['contribuciones'] as $c) {
+
+                                $checked = in_array($c['idContribucion'], $datos['contribucionesAsoc']) ? 'checked' : '';
+
+                                echo "<div class='tag'>";
+                                echo "<input type='checkbox' name='contribuciones[]' value='".$c['idContribucion']."' $checked>";
+                                echo $c['descripcion'];
+                                echo "</div>";
+                            }
                             ?>
-                            <div class="tag"><input type="checkbox" value="Salud" checked>Salud</div>
-                            <div class="tag"><input type="checkbox" value="Protección Infantil">Protección Infantil</div>
-                            <div class="tag"><input type="checkbox" value="Asistencia Sanitaria" checked>Asistencia sanitaria</div>
-                            <div class="tag"><input type="checkbox" value="Conservación">Conservación</div>
-                            <div class="tag"><input type="checkbox" value="Activismo">Activismo</div>
-                            <div class="tag"><input type="checkbox" value="Derechos Humanos">Derechos Humanos</div>
-                            <div class="tag"><input type="checkbox" value="Ayuda Humanitaria">Ayuda Humanitaria</div>
-                            <div class="tag"><input type="checkbox" value="Inclusión">Inclusión</div>
                         </div>
                     </div>
 
