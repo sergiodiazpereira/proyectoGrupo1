@@ -10,6 +10,7 @@ import "./vistas/vistaPistas.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    prompt("holasaa");
     const vistaMenu = new VistaMenu();
     if (window.location.pathname == "../../php/vistas/usuario/pagina_juego") {
         const modeloGanarPerder = new ModeloGanarPerder();

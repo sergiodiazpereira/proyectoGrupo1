@@ -216,7 +216,9 @@ input[type=submit]{
     }
 }
 /*Le doy estilo al menu desplegable*/
+
 #desplegable{
+    visibility: hidden;
     text-align: left;
     position: fixed;
     width: 22.46%; /*230/1024*/

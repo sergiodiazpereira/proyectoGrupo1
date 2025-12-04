@@ -1,7 +1,11 @@
 class VistaMenu{
     constructor(){
-        // elementos del html
-        // event listeners que llamarán al controlador
+        this.botonUsuario = document.getElementById("usuario");
+        prompt("holas");
+        this.botonUsuario.addEventListener('click', () => {
+            this.mostrarMenu();
+            prompt("hola");
+        });
     }
 
     // funciones de mostrar/ocultar elementos
