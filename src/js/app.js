@@ -1,16 +1,15 @@
-import "./modelos/modeloPistas.js";
-import "./modelos/modeloGanarPerder.js";
-import "./servicios/servicioGanarPerder.js";
-import "./servicios/servicioPistas.js";
-import "./vistas/vistaGanarPerder.js";
-import "./vistas/vistaInformacion.js";
-import "./vistas/vistaMenu.js";
-import "./vistas/vistaPistas.js";
+import ModeloPistas from "./modelos/modeloPistas.js";
+import ModeloGanarPerder from "./modelos/modeloGanarPerder.js";
+import ServicioGanarPerder from "./servicios/servicioGanarPerder.js";
+import ServicioPistas from "./servicios/servicioPistas.js";
+import VistaGanarPerder from "./vistas/vistaGanarPerder.js";
+import VistaInformacion from "./vistas/vistaInformacion.js";
+import VistaMenu from "./vistas/vistaMenu.js";
+import VistaPistas from "./vistas/vistaPistas.js";
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    prompt("holasaa");
     const vistaMenu = new VistaMenu();
     if (window.location.pathname == "../../php/vistas/usuario/pagina_juego") {
         const modeloGanarPerder = new ModeloGanarPerder();

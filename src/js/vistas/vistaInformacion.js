@@ -6,3 +6,5 @@ class VistaInformacion{
 
     // funciones de mostrar/ocultar elementos
 }
+
+export default VistaInformacion;

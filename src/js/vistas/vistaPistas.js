@@ -6,3 +6,5 @@ class VistaPistas{
 
     // funciones de mostrar/ocultar elementos
 }
+
+export default VistaPistas;

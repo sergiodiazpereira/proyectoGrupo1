@@ -1,4 +1,4 @@
-class ServicioInformacion{
+class ServicioPistas{
     constructor(vista, modelo){
         this.vista = vista;
         this.modelo = modelo;
@@ -7,3 +7,5 @@ class ServicioInformacion{
     // funciones que comprueben datos traidos por las vistas
     // funciones que llevan datos comprobados del modelo a la vista
 }
+
+export default ServicioPistas;

@@ -6,3 +6,5 @@ class VistaGanarPerder{
 
     // funciones de mostrar/ocultar elementos
 }
+
+export default VistaGanarPerder;

@@ -218,7 +218,7 @@ input[type=submit]{
 /*Le doy estilo al menu desplegable*/
 
 #desplegable{
-    visibility: hidden;
+    opacity: 0;
     text-align: left;
     position: fixed;
     width: 22.46%; /*230/1024*/
@@ -233,6 +233,7 @@ input[type=submit]{
     box-shadow: 0 0.52vh 1.3vh rgba(0,0,0,0.15);
     z-index: 10;
 }
+
 #desplegable{
     ul{
         padding: 1.3vh 2.93%; /*10px/768 y 30px/1024 */
