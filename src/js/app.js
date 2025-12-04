@@ -1,10 +1,10 @@
 import { ModeloJuego } from './modelos/modeloJuego.js';
-import { VistaJuego } from './vistas/VistaJuego.js';
-import { ControladorJuego } from './controladores/ControladorJuego.js';
+import { VistaJuego } from './vistas/vistaJuego.js';
+import { ControladorJuego } from './servicios/controladorJuego.js';
 
-import { ModeloColeccion } from './modelos/ModeloColeccion.js';
-import { VistaColeccion } from './vistas/VistaColeccion.js';
-import { ControladorColeccion } from './controladores/ControladorColeccion.js';
+import { ModeloColeccion } from './modelos/modeloColeccion.js';
+import { VistaColeccion } from './vistas/vistaColeccion.js';
+import { ControladorColeccion } from './servicios/controladorColeccion.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {

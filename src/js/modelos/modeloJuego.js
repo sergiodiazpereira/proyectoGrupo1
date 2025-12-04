@@ -1,142 +1,172 @@
-// js/modelos/ModeloJuego.js
-
 export class ModeloJuego {
     constructor() {
-        // Estado del cronómetro
+        this.asociacionObjetivo = {
+            nombre: 'Médicos Sin Fronteras',
+            dirigidoA: 'Personas en conflicto',
+            anioFundacion: 1971,
+            alcanceGeografico: 'I',
+            contribuciones: ['Salud', 'Emergencias']
+        };
+
+        this.listaMaestraAsociaciones = [
+            { 
+                nombre: 'Cruz Roja', 
+                dirigidoA: 'Jóvenes',
+                anioFundacion: 1863, 
+                alcanceGeografico: 'I', 
+                contribuciones: ['Eduación', 'Salud'] 
+            },
+            { 
+                nombre: 'Unicef', 
+                dirigidoA: 'Personas',
+                anioFundacion: 2002, 
+                alcanceGeografico: 'N', 
+                contribuciones: ['Eduación', 'Protección Infantil', 'Salud'] 
+            },
+            { 
+                nombre: 'Fundación Loyola', 
+                dirigidoA: 'Personas',
+                anioFundacion: 2000, 
+                alcanceGeografico: 'I', 
+                contribuciones: ['Eduación', 'Protección Infantil'] 
+            },
+            { 
+                nombre: 'Cáritas', 
+                dirigidoA: 'Discapacitados',
+                anioFundacion: 1988, 
+                alcanceGeografico: 'L', 
+                contribuciones: ['Protección Infantil', 'Salud'] 
+            },
+            this.asociacionObjetivo 
+        ];
+        
+        this.juegoGanado = false;
         this.cronometro = { 
             estaCorriendo: false,
             tiempoInicio: 0,
             tiempoTranscurrido: 0,
-            idIntervalo: null // ID para poder detener el setInterval
+            idIntervalo: null
         };
-        this.intentosRealizados = []; // Almacena las filas de la tabla
+        this.intentosRealizados = []; 
         this.intentoActual = 1;
-        
-        // Método para notificar a la Vista (Patrón Observador)
         this.alCambiarModelo = () => {}; 
     }
 
-    // --- LÓGICA DEL CRONÓMETRO ---
     iniciarCrono() {
         if (this.cronometro.estaCorriendo) return;
-
         this.cronometro.estaCorriendo = true;
-        this.cronometro.tiempoInicio = Date.now();
+        this.cronometro.tiempoInicio = Date.now() - this.cronometro.tiempoTranscurrido;
         
         this.cronometro.idIntervalo = setInterval(() => {
             this.cronometro.tiempoTranscurrido = Date.now() - this.cronometro.tiempoInicio;
-            this.alCambiarModelo(); // Notifica a la Vista para actualizar el tiempo
+            this.alCambiarModelo();
         }, 1000);
     }
     
     obtenerTiempoFormateado() {
-        const totalSegundos = Math.floor(this.cronometro.tiempoTranscurrido / 1000);
-        const minutos = Math.floor(totalSegundos / 60).toString().padStart(2, '0');
+        const totalMilisegundos = this.cronometro.tiempoTranscurrido || 0; 
+        const totalSegundos = Math.floor(totalMilisegundos / 1000);
+        //El padstart se utiliza para dar formato al crono, el 2 se utiliza para indicar la longitud total de la cadena en el crono,
+        //y el 0 es para darle un valor inicial
+        const minutos = Math.floor(totalSegundos / 60).toString().padStart(2, '0'); 
         const segundos = (totalSegundos % 60).toString().padStart(2, '0');
+
         return `${minutos}:${segundos}`;
     }
 
-    // --- LÓGICA DE JUEGO (Botón Introducir) ---
-    registrarIntento(intentoAsociacion) {
-        // 1. Activar Cronómetro (si es el primer intento)
-        this.iniciarCrono();
+    detenerCrono()
+    {
+        if (this.cronometro.idIntervalo)
+        {
+            clearInterval(this.cronometro.idIntervalo);
+            this.cronometro.estaCorriendo = false;
+            console.log("Se terminó el juego.");
+        }
+    }
 
-        // 2. Simular lógica de comparación de la asociación adivinada
+    registrarIntento(intentoAsociacion) {
+        this.iniciarCrono();
         const resultados = this._compararAsociacion(intentoAsociacion);
-        
-        // 3. Insertar Fila con colores de celda
+        const victoria = resultados.every(celda => celda.color === 'verde');
+
+        if (victoria)
+        {
+            this.juegoGanado = true;
+            this.detenerCrono();
+        }
+
         this.intentosRealizados.push({
             id: this.intentoActual++,
             asociacion: intentoAsociacion,
-            celdas: resultados // Contiene los colores (verde, rojo, amarillo)
+            celdas: resultados 
         });
 
-        // 4. Notificar a la Vista para que dibuje la nueva fila y el cronómetro
         this.alCambiarModelo();
     }
-
+    
     _compararAsociacion(nombreIntento) {
-        // 1. **RECOGIDA DINÁMICA DE DATOS**
         const datosIntento = this.listaMaestraAsociaciones.find(a => a.nombre === nombreIntento);
-
         if (!datosIntento) {
-            // Manejar el caso de que la asociación no exista (aunque no debería si viene del select)
-            return []; 
+            console.warn(`ModeloJuego: No se encontró la asociación con nombre: ${nombreIntento}`);
+            return [];
         }
         
         const objetivo = this.asociacionObjetivo;
         const resultados = [];
 
-        // --- Criterios de Comparación por Columna ---
-        
-        // COLUMNA 1: Asociación
-        let colorAsociacion = 'rojo';
-        if (nombreIntento === objetivo.nombre) {
-            colorAsociacion = 'verde';
-            // Si es verde, el juego ha terminado.
-        } else if (this._esSimilar(nombreIntento, objetivo.nombre)) { 
-            colorAsociacion = 'amarillo';
-        }
+        let colorAsociacion = nombreIntento === objetivo.nombre ? 'verde' : 'rojo';
         resultados.push({ valor: nombreIntento, color: colorAsociacion });
 
-
-        // COLUMNA 2: Dirigido a
-        const valorDirigido = `Dirigido a: ${datosIntento.dirigidoA}`;
+        const valorDirigido = `${datosIntento.dirigidoA}`;
         if (datosIntento.dirigidoA === objetivo.dirigidoA) {
             resultados.push({ valor: valorDirigido, color: 'verde' });
-        } else if (datosIntento.dirigidoA.includes(objetivo.dirigidoA.split(' ')[0])) {
-            // Ejemplo de Amarillo: Si el público objetivo es de la misma "familia"
-            resultados.push({ valor: valorDirigido, color: 'amarillo' });
         } else {
-            resultados.push({ valor: valorDirigido, color: 'rojo' });
+            const objetivoPalabra = objetivo.dirigidoA.split(' ')[0].toLowerCase();
+            const intentoPalabra = datosIntento.dirigidoA.toLowerCase();
+            if (intentoPalabra.includes(objetivoPalabra) || objetivoPalabra.includes(intentoPalabra)) {
+                resultados.push({ valor: valorDirigido, color: 'amarillo' });
+            } else {
+                resultados.push({ valor: valorDirigido, color: 'rojo' });
+            }
         }
         
-        
-        // COLUMNA 3: Año de Fundación
-        const valorAnio = `Año Fund.: ${datosIntento.anioFundacion}`;
+        const valorAnio = `${datosIntento.anioFundacion}`;
         const diferenciaAnios = Math.abs(datosIntento.anioFundacion - objetivo.anioFundacion);
         if (diferenciaAnios === 0) {
             resultados.push({ valor: valorAnio, color: 'verde' });
         } else if (diferenciaAnios <= 10) { 
-            // Ejemplo de Amarillo: Si el año está a menos de 10 años del objetivo
             resultados.push({ valor: valorAnio, color: 'amarillo' });
         } else {
             resultados.push({ valor: valorAnio, color: 'rojo' });
         }
 
-        // COLUMNA 4: Alcance Geográfico
-        const valorAlcance = `Alcance GEO.: ${datosIntento.alcanceGeografico}`;
+        const mapaAlcance = { 'I': 'Internacional', 'N': 'Nacional', 'L': 'Local' };
+        const valorAlcance = `${mapaAlcance[datosIntento.alcanceGeografico]}`;
+
+        console.log('Intento Alcance:', datosIntento.alcanceGeografico);
+        console.log('Objetivo Alcance:', objetivo.alcanceGeografico);
         if (datosIntento.alcanceGeografico === objetivo.alcanceGeografico) {
             resultados.push({ valor: valorAlcance, color: 'verde' });
         } else {
             resultados.push({ valor: valorAlcance, color: 'rojo' });
         }
         
-        
-        // COLUMNA 5: Contribuciones
         let colorContribuciones = 'rojo';
         const coincidencias = datosIntento.contribuciones.filter(c => objetivo.contribuciones.includes(c));
         
-        if (coincidencias.length > 0 && coincidencias.length === objetivo.contribuciones.length) {
+        if (coincidencias.length === objetivo.contribuciones.length && coincidencias.length > 0) {
             colorContribuciones = 'verde';
         } else if (coincidencias.length > 0) {
             colorContribuciones = 'amarillo';
         }
         
-        const valorContribuciones = `Contribuciones: ${datosIntento.contribuciones.join(', ')}`;
+        const valorContribuciones = `${datosIntento.contribuciones.join(', ')}`;
         resultados.push({ valor: valorContribuciones, color: colorContribuciones });
 
         return resultados;
     }
 
-    // (Función auxiliar para comparar similitud, si se desea un Amarillo más complejo)
-    _esSimilar(str1, str2) {
-        // Podría usar alguna métrica de distancia de cadena o simplemente un chequeo de palabras clave.
-        return str1.toLowerCase().includes(str2.toLowerCase().split(' ')[0]);
-    }
-
-    // Método para que el Controlador se 'suscriba' a los cambios
     enlazarCambios(callback) {
-            this.alCambiarModelo = callback;
-        }
+        this.alCambiarModelo = callback;
     }
+}

@@ -100,14 +100,14 @@
                 <p id="nombreDes">Usuario</p>
                 <p>usuario@hotmail.com</p>
                 <hr>
-                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.html">Jugar</a></li>
-                <li><i class="fa-solid fa-book"></i> <a href="colecciones.html">Colección</a></li>
+                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.php">Jugar</a></li>
+                <li><i class="fa-solid fa-book"></i> <a href="colecciones.php">Colección</a></li>
                 <li><i class="fa-solid fa-trophy"></i><a href="ranking.html">Ranking</a></li>
                 <hr>
                 <li><i class="fa-solid fa-key"></i> <a href="cambio.html">Cambiar Contraseña</a></li>
                 <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="login.html">Cerrar sesión</a></li>
             </ul>
         </nav>
-        <script type="module" src="../../app.js"></script>
+        <script type="module" src="../../../src/js/app.js"></script>
     </body>
 </html>

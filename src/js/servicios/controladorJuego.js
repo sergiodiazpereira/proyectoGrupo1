@@ -12,6 +12,10 @@ export class ControladorJuego {
     }
     
     manejarIntento = (intento) => {
+        if (this.modelo.juegoGanado)
+        {
+            return;
+        }
         this.modelo.registrarIntento(intento); 
     }
 }
