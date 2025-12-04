@@ -71,7 +71,7 @@
         </ul>
     </nav>
     <main>
-        <form action="index.php?c=Contribucion&m=procesarModificar" method="POST" enctype="multipart/form-data">
+        <form action="index.php?c=Contribucion&m=procesarModificar&idContr" method="POST" enctype="multipart/form-data">
             <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
             <div id="bloqueGestionContribuciones">
                 <h1>Gestionar Contribuciones</h1>
@@ -99,8 +99,8 @@
                 </div>
 
                 <div class="fila">
-                    <input type="text" value="Educación" name="<?php echo $descripcion ?>">
-                    <a href="index.php?c=Contribucion&m=eliminar&id=<?php echo $id ?>">
+                    <input type="text" value="Educación" name="<?= $datos['descripcion'] ?>">
+                    <a href="index.php?c=Contribucion&m=eliminar&id=<?= $datos['descripcion'] ?>">
                         <button class="btn-eliminar">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>

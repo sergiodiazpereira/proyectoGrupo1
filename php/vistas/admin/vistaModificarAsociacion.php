@@ -75,19 +75,18 @@
         <div id="bloqueGestionAsociaciones">
             <div id="tituloSubtitulo">
                 <h1>Editar Asociación</h1>
-                <p>Modifica los detalles de "Cruz Roja"</p>
+                <p>Modifica los detalles de "<?=$datos['nombre']?>"</p>
             </div>
         </div>
 
         <!-- Formulario Asociaciones-->
-        <form action="index.php?c=Asociacion&m=procesarModificar" method="POST" enctype="multipart/form-data" id="bloqueFormularioAsociaciones">
+        <form action="index.php?c=Asociacion&m=procesarModificar&idAsoc=<?= $datos['idAsoc'] ?>" method="POST" enctype="multipart/form-data" id="bloqueFormularioAsociaciones">
             <div id="formulario-head">
                 <h2>Detalles de la Asociación</h2>
                 <p>Asegurese de que la información sea correcta antes de guardar.</p>
             </div>
             <div id="formulario-main">
                 <div id="formAsociacion">
-                    <input type="hidden" name="idAsoc" value="<?= $datos['idAsoc'] ?>">
                     <!-- Nombre + Año -->
                     <div class="fila">
                         <div class="campo">
@@ -97,7 +96,7 @@
 
                         <div class="campo">
                             <label>Año de fundación:</label>
-                            <input type="date" name="fecha_fun" value="<?= $datos['fecha_fun'] ?>">
+                            <input type="text" name="fecha_fun" value="<?= $datos['fecha_fun'] ?>">
                         </div>
                     </div>
 
@@ -129,6 +128,7 @@
                         <div class="campo-grande">
                             <label>Imagen:</label>
                             <input type="file" name="imagen">
+                            <img src="<?= $datos['imagen'] ?>">
                         </div>
                     </div>
 
@@ -136,7 +136,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Difícil:</label>
-                            <textarea name="pista_dificil">Su fundador ganó el primer premio Nobel de la paz.</textarea>
+                            <textarea name="pista_dificil"><?= $datos['pista_dificil'] ?></textarea>
                         </div>
                     </div>
 
@@ -144,7 +144,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Media:</label>
-                            <textarea name="pista_media">Su emblema es un símbolo de protección reconocido mundialmente en las zonas de conflicto.</textarea>
+                            <textarea name="pista_media"><?= $datos['pista_media'] ?></textarea>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Fácil:</label>
-                            <textarea name="pista_facil">Se asocia con el color rojo y la ayuda médica de emergencia.</textarea>
+                            <textarea name="pista_facil"><?= $datos['pista_facil'] ?></textarea>
                         </div>
                     </div>
 
@@ -177,8 +177,8 @@
                 </div>
             </div>
             <div id="formulario-footer">
-                <a href="index.php?c=Contribucion&m=listar">
-                    <button>
+                <a href="index.php?c=Asociacion&m=listar">
+                    <button type="button">
                         <span>Cancelar</span>
                     </button>
                 </a>

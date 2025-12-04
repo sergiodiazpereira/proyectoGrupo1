@@ -7,6 +7,10 @@
             parent::__construct();    
         }
 
+        public function listar(){
+        
+        }
+
         public function insertar(){
         
         }
@@ -30,11 +34,8 @@
 
                 return true;
 
-             } catch (Exception $e) {
-
-                $pdo->rollBack();
+            } catch (Exception $e) {
                 return false;
-
             }
 
         }

@@ -91,196 +91,65 @@
                         <tr>
                             <td>
                                 <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
+                                Cruz Roja
+                            </td>
+                            <td>
+                                <span>Jóvenes</span>
+                            </td>
+                            <td>
+                                1938
+                            </td>
+                            <td>
+                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=1"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="../src/img/cruzRoja.webp">
+                                Fundación Loyola
+                            </td>
+                            <td>
+                                <span>Jóvenes</span>
+                            </td>
+                            <td>
+                                1948
+                            </td>
+                            <td>
+                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=2"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=2"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="../src/img/cruzRoja.webp">
+                                Unicef
                             </td>
                             <td>
                                 <span>Personas</span>
                             </td>
                             <td>
-                                1863
+                                2002
                             </td>
                             <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz azul
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
+                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=3"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=3"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <img src="../src/img/cruzRoja.webp">
-                                Crus roja
+                                Fundación Once
                             </td>
                             <td>
-                                <span>Testiasdbj</span>
+                                <span>Discapacitados</span>
                             </td>
                             <td>
-                                1863
+                                2000
                             </td>
                             <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Test largo</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Prueba</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Pruebaasdsadasas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Prueba
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
+                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=4"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="index.php?c=Asociacion&m=eliminar&idAsoc=4"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     </tbody>
