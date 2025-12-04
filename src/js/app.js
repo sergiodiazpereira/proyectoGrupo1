@@ -11,14 +11,23 @@ import VistaPistas from "./vistas/vistaPistas.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const vistaMenu = new VistaMenu();
-    if (window.location.pathname == "../../php/vistas/usuario/pagina_juego") {
+
+    if (window.location.pathname.endsWith("pagina_juego.html")) {
+
         const modeloGanarPerder = new ModeloGanarPerder();
         const modeloPistas = new ModeloPistas();
-        const vistaGanarPerder = new VistaGanarPerder();
+
+        // 1. Crear vista sin servicio
+        const vistaGanarPerder = new VistaGanarPerder(null);
+
         const vistaInformacion = new VistaInformacion();
         const vistaPistas = new VistaPistas();
-        const vistaMenu = new VistaMenu();
+
+        // 2. Crear servicios
         const servicioPistas = new ServicioPistas(vistaPistas, modeloPistas);
         const servicioGanarPerder = new ServicioGanarPerder(vistaGanarPerder, modeloGanarPerder);
+
+        // 3. Asignar servicio a la vista (inyección tardía)
+        vistaGanarPerder.servicio = servicioGanarPerder;
     }
 });
