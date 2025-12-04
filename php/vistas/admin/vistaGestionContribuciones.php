@@ -71,7 +71,7 @@
         </ul>
     </nav>
     <main>
-        <form action="index.php?c=Contribucion&m=procesarModificar&idContr" method="POST" enctype="multipart/form-data">
+        <form action="index.php?c=Contribucion&m=procesarModificar" method="POST" enctype="multipart/form-data">
             <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
             <div id="bloqueGestionContribuciones">
                 <h1>Gestionar Contribuciones</h1>
@@ -98,93 +98,26 @@
                     <span>Acciones</span>
                 </div>
 
-                <div class="fila">
-                    <input type="text" value="Educación" name="<?= $datos['descripcion'] ?>">
-                    <a href="index.php?c=Contribucion&m=eliminar&id=<?= $datos['descripcion'] ?>">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Salud">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Protección Infantil">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Asistencia Sanitaria">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Conservación">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Activismo">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Derechos Humanos">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Ayuda Humanitaria">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="fila">
-                    <input type="text" value="Inclusión">
-                    <a href="">
-                        <button class="btn-eliminar">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </a>
-                </div>
-
+                <?php if(!empty($datos['contribuciones'])): ?>
+                    <?php foreach ($datos['contribuciones'] as $c): ?>
+                        <div class="fila">
+                            <input type="text" name="descripcion[<?= $c['idContribucion'] ?>]" value="<?= $c['descripcion'] ?>">
+                            <a href="index.php?c=Contribucion&m=borrar&idContribucion=<?= $c['idContribucion'] ?>">
+                                <button class="btn-eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No hay contribuciones registradas.</p>
+                <?php endif; ?>
             </div>
         </form>
 
         <!-- Modal para agregar Contribuciones -->
         <div class="fondo oculto" id="modal-contribuciones">
-            <form class="modal">
+            <form action="" class="modal">
                 <div class="modal-header">
                     <h2>Añadir Nueva Contribución</h2>
                     <button class="ico-cerrar">
@@ -198,8 +131,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button class="cancelar">Cancelar</button>
-                    <button class="aniadir">Añadir</button>
+                    <button class="cancelar" type="button">Cancelar</button>
+                    <button class="aniadir" type="submit">Añadir</button>
                 </div>
             </form>
         </div>

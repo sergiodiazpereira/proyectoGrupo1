@@ -12,18 +12,18 @@
 </head>
 
 <body>
-    <!-- Modal para confirmar borrado de Asociaciones -->
+    <!-- Modal para confirmar borrado de Contribuciones -->
     <div id="modal-contribuciones" class="fondo">
-        <form action="index.php?c=Asociacion&m=procesarBorrar&idAsoc=<?=$datos['idAsoc']?>" method="POST" class="modal">
+        <form action="index.php?c=Contribucion&m=procesarBorrar&idContribucion=<?=$datos['idContribucion']?>" method="POST" class="modal">
             <div class="modal-header">
-                <h2>¿Estas seguro de que quieres borrar <?=$datos['nombre']?>?</h2>
+                <h2>¿Estas seguro de que quieres borrar <?=$datos['descripcion']?>?</h2>
                 <button class="ico-cerrar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <div class="modal-footer">
-                <a href="index.php?c=Asociacion&m=listar">
+                <a href="index.php?c=Contribucion&m=listar">
                     <button class="cancelar" type="button">Cancelar</button>
                 </a>
                 <button class="borrar" type="submit">Borrar</button>

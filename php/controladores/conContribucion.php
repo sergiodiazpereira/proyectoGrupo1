@@ -12,7 +12,11 @@
         }
 
         public function listar(){
-            $this->vista="vistaGestionContribuciones.php";
+            $datos['contribuciones'] = $this->modelo->listar();
+
+            $this->vista = "vistaGestionContribuciones.php";
+
+            return $datos;
         }
         
         public function insertar(){
@@ -28,16 +32,16 @@
         }
 
         public function procesarModificar(){
-            $this->modelo->actualizar();
+            $this->modelo->modificar();
 
-            header('Location: index.php');
+            header('Location: index.php?c=Contribucion&m=listar');
             exit;
         }
 
         public function borrar(){
             $datos = $this->modelo->obtenerPorId();
 
-            $this->vista="vistaGesionContribuciones.php";
+            $this->vista="vistaBorrarContribucion.php";
 
             return $datos;
         }
@@ -45,7 +49,7 @@
         public function procesarBorrar(){
             $this->modelo->borrar();
         
-            header('Location: index.php');
+            header('Location: index.php?c=Contribucion&m=listar');
             exit;
         }
         

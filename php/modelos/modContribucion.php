@@ -8,7 +8,25 @@
         }
 
         public function listar(){
-        
+            $sql = "SELECT * FROM contribucion ORDER BY descripcion";
+            $stmt = $this->conexion->prepare($sql);
+
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function obtenerPorId(){
+            $idContribucion = $_GET['idContribucion'];
+
+            $sql = "SELECT * FROM contribucion WHERE idContribucion = :id";
+            $stmt = $this->conexion->prepare($sql);
+
+            $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $datos = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $datos;
         }
 
         public function insertar(){
@@ -19,20 +37,15 @@
 
             try {
 
-                $sql = "UPDATE contribucion
-                        SET descripcion = :desc
-                        WHERE idContribucion = :id";
+                foreach ($_POST['descripcion'] as $id => $desc) {
+                    $sql = "UPDATE contribucion SET descripcion = :desc WHERE idContribucion = :id";
+                    $stmt = $this->conexion->prepare($sql);
 
-                $stmt = $this->conexion->prepare($sql);
+                    $stmt->bindParam(':desc', $desc, PDO::PARAM_STR);
+                    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-                $desc = $_POST['descripcion'];
-                $id   = $_POST['idContribucion'];
-
-                $stmt->bindParam(':desc', $desc, PDO::PARAM_STR);
-                $stmt->bindParam(':id',   $id,   PDO::PARAM_INT);
-                $stmt->execute();
-
-                return true;
+                    $stmt->execute();
+                }
 
             } catch (Exception $e) {
                 return false;
@@ -40,20 +53,19 @@
 
         }
 
-        public function borrar($idContribucion){
-            $this->conexion->beginTransaction();
+        public function borrar(){
 
             try {
+                $this->conexion->beginTransaction();
+                $idContribucion = $_GET['idContribucion'];
 
                 $sql = "DELETE FROM asoc_contribucion WHERE idContribucion = :id";
                 $stmt = $this->conexion->prepare($sql);
-
                 $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
                 $stmt->execute();
 
                 $sql = "DELETE FROM contribucion WHERE idContribucion = :id";
                 $stmt = $this->conexion->prepare($sql);
-
                 $stmt->bindParam(':id', $idContribucion, PDO::PARAM_INT);
                 $stmt->execute();
 
