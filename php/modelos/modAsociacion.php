@@ -39,6 +39,7 @@
                 };
                 
             }catch(PDOException $e){
+                echo $e->getMessage();
                 return false;
             }
         }
@@ -62,6 +63,7 @@
                 return true;
 
             }catch(PDOException $e){
+                echo $e->getMessage();
                 return false;
             }   
         }
@@ -73,7 +75,8 @@
             $sql="SELECT * FROM tipo_asoc;";
             $stmt=$this->conexion->prepare($sql);
             $stmt->execute();
-            return $stmt;
+            $datos=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datos;
         }
     }
 ?>

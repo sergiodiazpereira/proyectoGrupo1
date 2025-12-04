@@ -74,8 +74,8 @@
             <div id="bloqueGestionContribuciones">
                 <h1>Gestionar Contribuciones</h1>
                 <p>Añadir, editar o eliminar los tipos de contribucion.</p>
-                <a href="./vistaAgregarContribucion.html">
-                    <button>
+                <a >
+                    <button id="abrirModal">
                         <i class="fa-solid fa-circle-plus"></i>
                         <span>Añadir contribución</span>
                     </button>
@@ -113,26 +113,41 @@
                 
             <!-- Modal para agregar Contribuciones -->
             <div class="fondo oculto" id="modal-contribuciones">
-                <form class="modal">
+                <form action="./index.php?c=Contribucion&m=insertar" method="post" class="modal">
                     <div class="modal-header">
                         <h2>Añadir Nueva Contribución</h2>
-                        <button class="ico-cerrar">
+                        <button id="cerrarModal" class="ico-cerrar" type="button">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
 
                     <div class="modal-main">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" placeholder="Ej: Apoyo escolar">
+                        <label for="contribucion">Nombre</label>
+                        <input type="text" name="contribucion" id="nombre" placeholder="Ej: Apoyo escolar">
                     </div>
 
                     <div class="modal-footer">
-                        <button class="cancelar">Cancelar</button>
+                        <!--Cambiar controlador y modelo por defecto cuanto se tenga el dashboard-->
+                        <button class="cancelar"><a href="./index.php">Cancelar</a></button>
                         <button class="aniadir">Añadir</button>
                     </div>
                 </form>
             </div>
-
+            <script> 
+                /*Recojo el modal el boton abrir y el boton de cerrar */
+                const modal = document.getElementById("modal-contribuciones");
+                const btnAbrir = document.getElementById("abrirModal");
+                const btnCerrar = document.getElementById("cerrarModal");
+                /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
+                btnAbrir.onclick = () => modal.classList.remove("oculto");
+                btnCerrar.onclick = () => modal.classList.add("oculto");
+                /*Esto es por si clico fuera del modal se cierra */
+                window.onclick = (event) => {
+                    if (event.target === modal) {
+                        modal.classList.add("oculto");
+                    }
+                }
+            </script>
         </main>
     </body>
 </html>

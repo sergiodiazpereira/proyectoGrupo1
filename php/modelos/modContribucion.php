@@ -10,7 +10,15 @@
             
         }
         public function insertar(){
-        
+            try{
+                $sql="INSERT INTO contribucion (descripcion) VALUES (?)";
+                $stmt=$this->conexion->prepare($sql);
+                $stmt->execute([$_POST["contribucion"]]);
+                return true;
+            }catch(PDOException $e){
+                echo $e->getMessage();
+                return false;
+            }
         }
 
         /**

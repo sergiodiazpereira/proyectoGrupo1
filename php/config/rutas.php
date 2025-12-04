@@ -10,8 +10,8 @@
     
     define('VISTAS','vistas/admin/');
     define('CONTROLADOR','controladores/');
-    define('CONDEF','Asociacion');
-    define('METDEF','inicio');
+    define('CONDEF','Contribucion');
+    define('METDEF','obtenerContribucion');
 
     /*rutas para el archivo*/
 

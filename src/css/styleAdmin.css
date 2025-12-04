@@ -790,7 +790,7 @@
 
     /* Clase para mostrar u ocultar el modal+fondo */
     .oculto {
-    display: none !important;
+    display: none ;
     }
 
     /* Fondo del modal */
@@ -820,27 +820,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    }
-
-    /* Elementos internos de la cabecera */
-    .modal-header {
-
-    /* Título del modal */
-    h2 {
-        font-size: 1.4rem;
-        color: var(--azul-marino);
-        margin: 0;
-    }
-
-    /* Icono cerrar */
-    .ico-cerrar {
-        background: transparent;
-        border: none;
-        font-size: 1.3rem;
-        cursor: hand;
-        color: #0b285b;
-    }
-
     }
 
     /* Cuerpo del modal */

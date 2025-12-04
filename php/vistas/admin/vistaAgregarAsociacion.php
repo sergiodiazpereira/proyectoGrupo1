@@ -105,8 +105,8 @@
                                 <label>Dirigida a:</label>
                                 <select name="categoria" id="categoriaDedicacion">
                                     <?php
-                                        while($fila=$datos["tiposAsoc"]->fetch()){
-                                            echo '<option value="'.$fila->idTipoAsoc.'">'.$fila->nombre.'</option>';
+                                        foreach($datos['tiposAsoc'] as $value){
+                                            echo '<option value="'.$value['idTipoAsoc'].'">'.$value['nombre'].'</option>';
                                         }
                                     ?>
                                 </select>
@@ -159,8 +159,8 @@
                             <label>Contribuciones:</label>
                             <div id="cuadroContribuciones">
                                 <?php
-                                    while($fila=$datos["contribuciones"]->fetch()){
-                                        echo'<div class="tag"><input type="checkbox" name=contribucion[] value="'.$fila->idContribucion.'">'.$fila->descripcion.'</div>';
+                                    foreach($datos['contribuciones'] as $value){
+                                        echo'<div class="tag"><input type="checkbox" name=contribucion[] value="'.$value['idContribucion'].'">'.$value['descripcion'].'</div>';
                                     }
                                 ?>
                             </div>
