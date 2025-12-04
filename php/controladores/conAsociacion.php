@@ -2,28 +2,37 @@
     require_once __DIR__.'/../config/rutas.php';
     require_once __DIR__.'/../modelos/modAsociacion.php';
     require_once __DIR__.'/../modelos/modContribucion.php';
+    /**
+     * Este es el controlador de las asociaciones
+     */
     class ConAsociacion{
+        /**
+         * @var $vista cargara la vista necesaria que se incluira en el index.php
+         * @var $modeloA este objeto sera instanciado del modAsociacion
+         * @var $modeloC este objeto sera instanciado del moContribucion
+         */
         public $vista;
         public $modeloA;
         public $modeloC;
         function __construct(){
             $this->modeloA= new ModAsociacion();
             $this->modeloC= new ModContribucion();
-            
-            
         }
         public function inicio(){
-
-            $this->vista="vistaAgregarAsociacion.php";
-
+            $this->vista="vistaGestionContribuciones.php";
         }
-        public function validaciones(){
+        /**
+         * Summary of validaciones
+         * @return bool funcion llamada por la funcion insertar que retornara verdadero si todas las 
+         * validaciones son correctas y falso si alguna falla 
+         */
+        private function validaciones(){
 
             /*Compruebo si esta vacio y le quito los espacios*/
             if(empty(trim($_POST["nombre"]))){ return false; };
 
             /*Compruebo si esta vacio , le quito los espacios y controlo el rango del año*/
-            $anio = (int) trim($_POST["anio"]);
+            $anio = trim($_POST["anio"]);
             if($anio < 1800 || $anio > date('Y')) { return false; }
 
             /*Compruebo que el logo esta cargado y que no devuelve error*/
@@ -46,6 +55,11 @@
             return true;
 
         }
+        /**
+         * Summary of insertar
+         * @return string esta funcion insertara los datos recogidos en la base de datos y devolvera un 
+         * en funcion de si ha ido todo bien o fallo algo dependiendo del error
+         */
         public function insertar(){
 
             if($this->validaciones()){
@@ -70,15 +84,11 @@
             };
         
         }
-
-        public function modificar(){
-        
-        }
-
-        public function borrar(){
-        
-        }
-
+        /**
+         * Summary of guardarImg
+         * @return bool esta funcion guardara una imagen que se asociara a una asociacion
+         * y devolvera verdadero o falso dependiendo de si se completa exitosamente o no
+         */
         private function guardarImg(){
             $destino = RUTAIMG . $_FILES["logo"]['name'];
             if(!move_uploaded_file($_FILES["logo"]['tmp_name'], $destino)){
@@ -87,6 +97,11 @@
                 return true;
             };
         }
+        /**
+         * Summary of cargarPaginaAsoc
+         * @return array{contribuciones: bool|PDOStatement, tiposAsoc: bool|PDOStatement} esta funcion retornara un array
+         * que cargara la vista que dejaremos guardada en $this->vista
+         */
         public function cargarPaginaAsoc(){
             $tipos=$this->modeloA->obtenerTipos();
             $contribuciones=$this->modeloC->obtenerContribuciones();

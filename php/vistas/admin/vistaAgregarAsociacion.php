@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./listarAsociaciones.html">
+                        <a href="./index.php?c=Asociacion&m=cargarPaginaAsoc">
                             <button class="paginaSeleccionada">
                                 <i class="fa-regular fa-building"></i>
                                 <span>Asociaciones</span>
@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./vistaGestionContribuciones.html">
+                        <a href="./index.php">
                             <button>
                                 <i class="fa-solid fa-hand-holding-heart"></i>
                                 <span>Contribuciones</span>
