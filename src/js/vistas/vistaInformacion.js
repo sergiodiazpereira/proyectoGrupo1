@@ -1,10 +1,33 @@
 class VistaInformacion{
     constructor(){
-        // elementos del html
-        // event listeners que llamarán al controlador
+        this.menu = document.getElementById("pantalla-modal");
+        this.botonInformacion = document.getElementById("informacion");
+        this.iconoBotonInformacion = document.getElementById("icono-boton-informacion");
+        this.botonCerrar = document.getElementById("boton-cerrar");
+        this.botonInformacion.addEventListener('click', () => {
+            this.mostrarMenu();
+        });
+
+        this.iconoBotonInformacion.addEventListener('click', () => {
+            this.mostrarMenu();
+        });
+
+        this.botonCerrar.addEventListener('click', (e) => {
+            this.ocultarMenu();
+        });
     }
 
-    // funciones de mostrar/ocultar elementos
+
+
+    mostrarMenu(){
+        this.menu.classList.add("mostrar");
+    }
+
+
+
+    ocultarMenu(){
+        this.menu.classList.remove("mostrar");
+    }
 }
 
 export default VistaInformacion;

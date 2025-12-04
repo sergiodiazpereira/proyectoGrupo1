@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -8,11 +7,48 @@
         <title>Mockup Jugando Partida</title>
     </head>
     <body class="body_rafa">
+
+
+        <!-- POP-UP DE INFORMACION -->
+        <div id="pantalla-modal">
+            <div class="guia-modal" id="modal-info">
+                <button id="boton-cerrar" class="x-cerrar">X</button>
+                <h2>GUÍA DE INDICADORES</h2>
+                <div class="fila-top">
+                    <div class="indicador-box celda">
+                        <div class="circulo verde"></div>
+                        <p class="textoCentrado"><strong>CORRECTO</strong></p>
+                        <p class="textoCentrado">Has acertado el atributo.</p>
+                    </div>
+                    <div class="indicador-box celda">
+                        <div class="circulo celda amarillo"></div>
+                        <p class="textoCentrado"><strong>PARCIAL</strong></p>
+                        <p class="textoCentrado">El atributo contiene una parte.</p>
+                    </div>
+                    <div class="indicador-box celda">
+                        <div class="circulo rojo"></div>
+                        <p class="textoCentrado"><strong>INCORRECTO</strong></p>
+                        <p class="textoCentrado">El atributo no es el correcto.</p>
+                    </div>
+                </div>
+                <div class="box-inferior celda">
+                    <div class="flechas">
+                        <span class="flecha-up">▲</span>
+                        <span class="flecha-down">▼</span>
+                    </div>
+                    <p class="textoCentrado"><strong>AÑO DE FUNDACIÓN</strong></p>
+                    <p class="desc-menor textoCentrado">Las flechas indican si el año de fundacion de la asociacion correcta es mayor & o menor ¥ que el de tu intento.</p>
+                </div>
+            </div>
+        </div>
+        <!-- FIN DE POP-UP INFORMACION -->
+
+
         <header class="header_rafa">
 	        <span>Asociaciondle</span>
 	        <button id="usuario"><i id="icono-boton-usuario" class="fa-solid fa-user"></i></button>
         </header>
-        <div id="desplegable">
+        <nav id="desplegable">
             <ul>
                 <p id="nombreDes">Usuario</p>
                 <p>usuario@hotmail.com</p>
@@ -24,9 +60,9 @@
                 <li><i class="fa-solid fa-key"></i> <a href="cambio.html">Cambiar Contraseña</a></li>
                 <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="login.html">Cerrar sesión</a></li>
             </ul>
-        </div>
+        </nav>
         <nav id="nav_crono">
-            <button class="azul"><a href="pagina_boton_info.html" target="_blank"><i class="fa-solid fa-info tam-img colorBlanco"></i></a></button>
+            <button id="informacion" class="azul"><i id="icono-boton-informacion" class="fa-solid fa-info tam-img colorBlanco"></i></button>
             <button class="amarillo"><a href="pagina_boton_pistas.html" target="_blank"><i class="fa-regular fa-lightbulb tam-img colorBlanco"></i></a></button>
             <div id="crono" class="textoCentrado">
                 <i class="fa-solid fa-stopwatch gris estiloCrono"></i>
@@ -35,21 +71,23 @@
         </nav>
         <main class="main_rafa">
             <h1>Adivina la asociación</h1>
-            <h4 class="gris">Intento 1 de 10</h4>
+            <h4 class="gris"><span id="contador-intentos">Intento 0 de 10</span></h4>
             <select name="opcion-usuario">
                 <option value="" disabled selected>Introduce una Asociación</option>
                 <option value="Fundación Loyola">Fundación Loyola</option>
                 <option value="Cáritas">Cáritas</option>
                 <option value="Cruz Roja">Cruz Roja</option>
                 <option value="Unicef">Unicef</option>
+                <option value="Médicos Sin Fronteras">Médicos Sin Fronteras</option>
             </select>
-            <div id="contenedor-tabla">
+            <div id="contenedor-encabezados">
                 <div class="encabezado textoCentrado">Asociación</div>
                 <div class="encabezado textoCentrado">Dirigido a</div>
                 <div class="encabezado textoCentrado">Año Fund.</div>
                 <div class="encabezado textoCentrado">Alcance GEO.</div>
                 <div class="encabezado textoCentrado">Contribuciones</div>
-
+            </div>
+            <div id="contenedor-resultados" style="display: none;">
                 <div class="celda rojo textoCentrado">Cruz Roja</div>
                 <div class="celda rojo textoCentrado">Personas</div>
                 <div class="celda verde textoCentrado">1998</div>

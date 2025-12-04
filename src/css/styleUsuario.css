@@ -218,7 +218,7 @@ input[type=submit]{
 /*Le doy estilo al menu desplegable*/
 
 #desplegable{
-    opacity: 0;
+    display: none;
     text-align: left;
     position: fixed;
     width: 22.46%; /*230/1024*/
@@ -422,6 +422,37 @@ input[type=submit]{
         justify-content: space-around;
     }
 }
+
+
+#pantalla-modal{
+    opacity: 0;                  /* invisible al inicio */
+    transform: translateY(-50px); /* desplazado ligeramente */
+    transition: opacity 0.3s ease, transform 0.4s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.7); /* fondo semi-transparente */
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+#pantalla-modal.mostrar{
+    opacity: 1;                   /* se hace visible */
+    transform: translateY(0); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7); /* fondo semi-transparente */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* encima de todo */
+}
+
 /* Estilos de Info y botones (popups de info, pistas y otros botones) */
 .guia-modal {
     background-color: #386EF7;

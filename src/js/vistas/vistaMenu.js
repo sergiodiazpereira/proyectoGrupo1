@@ -12,7 +12,6 @@ class VistaMenu{
             this.mostrarMenu();
         });
 
-
         document.addEventListener('click', (e) => {
             if (!this.menu.contains(e.target) && e.target !== this.iconoBotonUsuario && e.target !== this.botonUsuario) {
                 this.ocultarMenu();
@@ -23,13 +22,13 @@ class VistaMenu{
 
 
     mostrarMenu(){
-        this.menu.style.opacity = "1";
+        this.menu.style.display = "flex";
     }
 
 
 
     ocultarMenu(){
-        this.menu.style.opacity = "0";
+        this.menu.style.display = "none";
     }
 }
 

@@ -11,7 +11,7 @@ import VistaPistas from "./vistas/vistaPistas.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const vistaMenu = new VistaMenu();
-    if (window.location.pathname == "../../php/vistas/usuario/pagina_juego") {
+    if (window.location.pathname.endsWith("pagina_juego.html")) {
         const modeloGanarPerder = new ModeloGanarPerder();
         const modeloPistas = new ModeloPistas();
         const vistaGanarPerder = new VistaGanarPerder();
@@ -22,3 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const servicioGanarPerder = new ServicioGanarPerder(vistaGanarPerder, modeloGanarPerder);
     }
 });
+
+
+
+// arreglar popup informacion
