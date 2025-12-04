@@ -17,7 +17,7 @@
                 <p id="nombreDes">Usuario</p>
                 <p>usuario@hotmail.com</p>
                 <hr>
-                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_principal.html">Jugar</a></li>
+                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.php">Jugar</a></li>
                 <li><i class="fa-solid fa-book"></i><a href="colecciones.php">Colección</a></li>
                 <li><i class="fa-solid fa-trophy"></i><a href="ranking.html">Ranking</a></li>
                 <hr>
