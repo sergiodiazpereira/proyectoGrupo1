@@ -1,16 +1,15 @@
 class ServicioGanarPerder{
-    constructor(vista, modelo){
-        this.vista = vista;
+    constructor(modelo){
         this.modelo = modelo;
     }
     
-    async mandarNombre(){
-        let datos = await this.modelo.cogerDatosPartida();
+    mandarNombre(){
+        let datos = this.modelo.cogerDatosPartida();
         return datos[0];
     }
 
-    async mandarTiempo(){
-        let datos = await this.modelo.cogerDatosPartida();
+    mandarTiempo(){
+        let datos = this.modelo.cogerDatosPartida();
         return datos[1];
     }
 

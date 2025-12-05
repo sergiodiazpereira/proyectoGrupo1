@@ -218,7 +218,7 @@ input[type=submit]{
 /*Le doy estilo al menu desplegable*/
 
 #desplegable{
-    opacity: 0;
+    display: none;
     text-align: left;
     position: fixed;
     width: 22.46%; /*230/1024*/
@@ -521,6 +521,14 @@ input[type=submit]{
     color: #1C07FF;
     font-weight: bold;
 }
+
+#jugar-derrota {
+    width: 10.625rem; /* 170px */
+    height: 5rem; /* 80px */
+    color: #1C07FF;
+    font-weight: bold;
+}
+
 .quitarBorde {
     border: none;
 }

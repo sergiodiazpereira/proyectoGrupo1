@@ -18,16 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const modeloPistas = new ModeloPistas();
 
         // 1. Crear vista sin servicio
-        const vistaGanarPerder = new VistaGanarPerder(null);
-
         const vistaInformacion = new VistaInformacion();
         const vistaPistas = new VistaPistas();
 
         // 2. Crear servicios
         const servicioPistas = new ServicioPistas(vistaPistas, modeloPistas);
-        const servicioGanarPerder = new ServicioGanarPerder(vistaGanarPerder, modeloGanarPerder);
+        const servicioGanarPerder = new ServicioGanarPerder(modeloGanarPerder);
 
-        // 3. Asignar servicio a la vista (inyección tardía)
-        vistaGanarPerder.servicio = servicioGanarPerder;
+        // 3. Crear vista con servicio
+        const vistaGanarPerder = new VistaGanarPerder(servicioGanarPerder);
     }
 });

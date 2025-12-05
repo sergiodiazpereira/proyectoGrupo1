@@ -45,6 +45,32 @@
         <!-- FIN DE POP-UP DE INFORMACIÓN -->
 
 
+        <!-- POP-UP DE PISTAS -->
+         <div id="pantalla-pistas" class="pantalla-popup">
+            <div class="guia-modal" id="modal-pistas">
+                <button id="boton-cerrar-pistas" class="x-cerrar">X</button>
+                <h2>PISTAS</h2>
+                <div class="fila-top">
+                    <div class="indicador-box celda">
+                        <p class="textoCentrado"><strong>Pista 1 (Difícil)</strong></p>
+                        <p class="textoCentrado">Su logo es una vela envuelta en alambre de espino.</p>
+                    </div>
+                    <div class="indicador-box celda">
+                        <p class="textoCentrado"><strong>Pista 2 (Media)</strong></p>
+                        <p class="textoCentrado">????</p>
+                        <p class="textoCentrado">Se desbloquea en el intento 5</p>
+                    </div>
+                    <div class="indicador-box celda">
+                        <p class="textoCentrado"><strong>Pista 3 (Fácil)</strong></p>
+                        <p class="textoCentrado">????</p>
+                        <p class="textoCentrado">Se desbloquea en el intento 5</p>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!-- FIN DE POP-UP DE PISTAS -->
+
+
         <!-- POP-UP DE VICTORIA -->
         <div id="pantalla-victoria" class="pantalla-popup">
             <div class="guia-modal" id="modal-ganar">
@@ -61,6 +87,24 @@
             </div>
         </div>
         <!-- FIN DE POP-UP DE VICTORIA -->
+
+
+        <!-- POP-UP DE DERROTA -->
+        <div id="pantalla-derrota" class="pantalla-popup">
+            <div class="guia-modal" id="modal-perder">
+                <h2>¡HAS PERDIDO!</h2>
+                <div class="fila-top">
+                    <div class="indicador-box quitarBorde celda">
+                        <p class="textoCentrado">Has agotado tus 10 intentos.</p>
+                        <p class="textoCentrado">La asociacion era:</p>
+                        <img src="../../../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <p class="textoCentrado"><strong>Amnistía Internacional</strong></p>
+                        <button id="jugar-derrota">Jugar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN DE POP-UP DE DERROTA -->
 
 
         <header class="header_rafa">
