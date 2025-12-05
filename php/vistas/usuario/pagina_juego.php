@@ -116,8 +116,8 @@
                 <p id="nombreDes">Usuario</p>
                 <p>usuario@hotmail.com</p>
                 <hr>
-                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.html">Jugar</a></li>
-                <li><i class="fa-solid fa-book"></i><a href="colecciones.html">Colección</a></li>
+                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.php">Jugar</a></li>
+                <li><i class="fa-solid fa-book"></i><a href="colecciones.php">Colección</a></li>
                 <li><i class="fa-solid fa-trophy"></i><a href="ranking.html">Ranking</a></li>
                 <hr>
                 <li><i class="fa-solid fa-key"></i> <a href="cambio.html">Cambiar Contraseña</a></li>
@@ -134,21 +134,23 @@
         </nav>
         <main class="main_rafa">
             <h1>Adivina la asociación</h1>
-            <h4 class="gris">Intento 1 de 10</h4>
+            <h4 class="gris"><span id="contador-intentos">Intento 0 de 10</span></h4>
             <select id="select-asociacion" name="opcion-usuario">
                 <option value="" disabled selected>Introduce una Asociación</option>
                 <option value="Fundación Loyola">Fundación Loyola</option>
                 <option value="Cáritas">Cáritas</option>
                 <option value="Cruz Roja">Cruz Roja</option>
                 <option value="Unicef">Unicef</option>
+                <option value="Médicos Sin Fronteras">Médicos Sin Fronteras</option>
             </select>
-            <div id="contenedor-tabla">
+            <div id="contenedor-encabezados">
                 <div class="encabezado textoCentrado">Asociación</div>
                 <div class="encabezado textoCentrado">Dirigido a</div>
                 <div class="encabezado textoCentrado">Año Fund.</div>
                 <div class="encabezado textoCentrado">Alcance GEO.</div>
                 <div class="encabezado textoCentrado">Contribuciones</div>
-
+            </div>
+            <div id="contenedor-resultados" style="display: none;">
                 <div class="celda rojo textoCentrado">Cruz Roja</div>
                 <div class="celda rojo textoCentrado">Personas</div>
                 <div class="celda verde textoCentrado">1998</div>
