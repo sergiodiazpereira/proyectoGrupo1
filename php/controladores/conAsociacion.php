@@ -42,7 +42,7 @@
             /*comprobamos si el tipo de dato esta dentro de los que se pueden cargar*/
             if (!in_array($_FILES["logo"]['type'], $tipos)) {return false;}
 
-            if(!isset($_FILES["logo"]) || $_FILES["logo"]["error"] !== UPLOAD_ERR_OK){ return false; };
+            if(!isset($_FILES["logo"]) || $_FILES["logo"]["error"] !== 0){ return false; };
 
             /*Estas son las pistas y compruebo que no esten vacias y le quito los espacios*/
             if(empty(trim($_POST["pistaD"]))){ return false; };
@@ -67,20 +67,23 @@
                 if($this->modeloA->insertar()){
 
                     if($this->guardarImg()){
+
                         $this->vista="mensajeError.php";
-                        return "insercion exitosa";
+                        return "Insercion exitosa";
                     }else{
+
                         $this->vista="mensajeError.php";
                         return "Fallo al insertar la imagen";
                     };
-                    
                 }else{
+
                     $this->vista="mensajeError.php";
-                    return "No inserta";
+                    return "Fallo al insertar los datos";
                 };
             }else{
+
                 $this->vista="mensajeError.php";
-                return "No valida";
+                return "Datos no validos";
             };
         
         }

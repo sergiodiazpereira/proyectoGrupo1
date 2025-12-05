@@ -15,7 +15,7 @@
 
     /*rutas para el archivo*/
 
-    $ruta=__DIR__."/../../src/img/";
+    $ruta="../src/img/";
 
     define('RUTAIMG',$ruta);
 ?>
