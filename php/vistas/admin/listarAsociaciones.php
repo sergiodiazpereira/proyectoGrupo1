@@ -74,7 +74,7 @@
                     <h1 class="h1-admin">Gestionar asociaciones</h1>
                     <p class="subtitulos-admin">Añadir, editar o eliminar asociaciones del juego.</p>
                 </div>
-                <a class="boton-añadir" href="./vistaAgregarAsociacion.html"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
+                <a class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de asociaciones</h2>
@@ -88,70 +88,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Cruz Roja
-                            </td>
-                            <td>
-                                <span>Jóvenes</span>
-                            </td>
-                            <td>
-                                1938
-                            </td>
-                            <td>
-                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=1"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Fundación Loyola
-                            </td>
-                            <td>
-                                <span>Jóvenes</span>
-                            </td>
-                            <td>
-                                1948
-                            </td>
-                            <td>
-                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=2"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Unicef
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                2002
-                            </td>
-                            <td>
-                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=3"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=3"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../src/img/cruzRoja.webp">
-                                Fundación Once
-                            </td>
-                            <td>
-                                <span>Discapacitados</span>
-                            </td>
-                            <td>
-                                2000
-                            </td>
-                            <td>
-                                <a href="index.php?c=Asociacion&m=modificar&idAsoc=4"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="index.php?c=Asociacion&m=borrar&idAsoc=4"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
+                    <?php if (!empty($datos)): ?>
+                        <?php foreach ($datos as $fila): ?>
+                            <tr>
+                                <td><img src="../src/img/<?= $fila['imagen'] ?>"><?= $fila['nombre'] ?></td>
+                                <td><span><?= $fila['tipo_asociacion'] ?></span></td>
+                                <td><?= $fila['fecha_fun'] ?></td>
+                                <td>
+                                    <a href="index.php?c=Asociacion&m=modificar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="index.php?c=Asociacion&m=borrar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="4">No hay asociaciones registradas.</td></tr>
+                    <?php endif; ?>
                     </tbody>
                 </table>
             </section>

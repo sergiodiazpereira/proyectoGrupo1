@@ -11,7 +11,13 @@ class ConAsociacion {
     }
 
     public function listar() {
+        // Obtenemos los datos de la BD
+        $datos = $this->modelo->listar();
+
+        // Indicamos la vista
         $this->vista = "listarAsociaciones.php";
+
+        return $datos;
     }
 
     public function insertar() {

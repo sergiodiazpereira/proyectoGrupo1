@@ -8,7 +8,17 @@
         }
 
         public function listar() {
+            $sql = "SELECT a.*,
+                   t.nombre AS tipo_asociacion
+                FROM asociacion a
+                INNER JOIN tipo_asoc t 
+                    ON a.idTipoAsoc = t.idTipoAsoc
+                ORDER BY a.nombre DESC";
             
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute();
+
+            return $consulta->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function listarTipos() {
