@@ -20,8 +20,6 @@ class VistaInformacion{
         });
     }
 
-
-
     mostrarMenu(){
         this.popupInformacion.style.display = "flex";
         setTimeout(() => {

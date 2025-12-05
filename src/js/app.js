@@ -20,9 +20,7 @@ import { ControladorColeccion } from './servicios/controladorColeccion.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const vistaMenu = new VistaMenu();
-
     if (window.location.pathname.endsWith("pagina_juego.php")) {
-
         const modeloGanarPerder = new ModeloGanarPerder();
         const modeloPistas = new ModeloPistas();
 
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const nombrePagina = window.location.pathname.split('/').pop();
-
     if (nombrePagina === 'pagina_juego.php') {
         const modelo = new ModeloJuego();
         const vista = new VistaJuego(); 
