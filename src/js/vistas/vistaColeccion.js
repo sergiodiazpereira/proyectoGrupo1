@@ -5,7 +5,28 @@ export class VistaColeccion {
         this.menuDesplegable = document.getElementById('desplegable');
     }
     
-    enlazarMenuUsuario() { /* ... Lógica del menú ... */ }
+    enlazarMenuUsuario() { /* ... Lógica del menú ... */ 
+        if (this.botonMenu && this.menuDesplegable) {
+            this.botonMenu.addEventListener('click', () => {
+                this.menuDesplegable.classList.toggle('activo'); 
+            });
+        }
+        
+        if (this.btnLogin && manejadorLogin) {
+            this.btnLogin.addEventListener('click', (e) => {
+                this.menuDesplegable.classList.remove('activo');
+                manejadorLogin();
+            });
+        }
+        
+        if (this.btnLogout && manejadorLogout) {
+            this.btnLogout.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.menuDesplegable.classList.remove('activo'); 
+                manejadorLogout();
+            });
+        }
+    }
 
     renderizarColeccion(datosColeccion) {
         if (!this.contenedorGrid) return;

@@ -1,6 +1,3 @@
-import { ModeloJuego } from '../modelos/modeloJuego.js';
-import { VistaJuego } from '../vistas/vistaJuego.js';
-
 export class ControladorJuego {
     constructor(modelo, vista) {
         this.modelo = modelo;
