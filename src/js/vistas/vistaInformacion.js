@@ -1,9 +1,11 @@
 class VistaInformacion{
     constructor(){
-        this.menu = document.getElementById("pantalla-modal");
-        this.botonInformacion = document.getElementById("informacion");
-        this.iconoBotonInformacion = document.getElementById("icono-boton-informacion");
+        this.popupInformacion = document.getElementById("pantalla-informacion");
+        this.contenidoPopupInformacion = document.getElementById("modal-info");
+        this.botonInformacion = document.getElementById("boton-info");
+        this.iconoBotonInformacion = document.getElementById("icono-boton-info");
         this.botonCerrar = document.getElementById("boton-cerrar");
+
         this.botonInformacion.addEventListener('click', () => {
             this.mostrarMenu();
         });
@@ -12,7 +14,8 @@ class VistaInformacion{
             this.mostrarMenu();
         });
 
-        this.botonCerrar.addEventListener('click', (e) => {
+
+        this.botonCerrar.addEventListener('click', () => {
             this.ocultarMenu();
         });
     }
@@ -20,13 +23,18 @@ class VistaInformacion{
 
 
     mostrarMenu(){
-        this.menu.classList.add("mostrar");
+        this.popupInformacion.style.display = "flex";
+        setTimeout(() => {
+            this.contenidoPopupInformacion.classList.add("mostrar");
+        }, 1); /* timeout para que dé tiempo a hacer la animacion */
+        this.contenidoPopupInformacion.style.display = "block";
     }
 
 
 
     ocultarMenu(){
-        this.menu.classList.remove("mostrar");
+        this.popupInformacion.style.display = "none";
+        this.contenidoPopupInformacion.classList.remove("mostrar");
     }
 }
 

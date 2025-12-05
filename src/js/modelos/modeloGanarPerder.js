@@ -1,9 +1,21 @@
 class ModeloGanarPerder{
     constructor(){
-        // Conectar con el controlador de backend
+        this.tiempo = null;
+        this.asociacion = null;
     }
 
-    // funciones para obtener datos del backend y enviarlas al controlador (ej. solicitar la categoria de una asociación)
+    async cogerDatosPartida() {
+        try {
+            const response = await fetch("../../src/js/modelos/datosEjemplo.json"); /* ni idea */
+            const data = await response.json();
+            this.tiempo = data.tiempo;
+            this.asociacion = data.asociacion;
+            
+            return [this.asociacion, this.tiempo];
+        } catch (error) {
+            console.error("Error al cargar JSON:", error);
+        }
+    }
     // funciones para enviar datos al backend (ej. introducir una asociacion en la bd)
 }
 

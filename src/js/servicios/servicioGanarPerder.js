@@ -4,7 +4,16 @@ class ServicioGanarPerder{
         this.modelo = modelo;
     }
     
-    // funciones que comprueben datos traidos por las vistas
+    async mandarNombre(){
+        let datos = await this.modelo.cogerDatosPartida();
+        return datos[0];
+    }
+
+    async mandarTiempo(){
+        let datos = await this.modelo.cogerDatosPartida();
+        return datos[1];
+    }
+
     // funciones que llevan datos comprobados del modelo a la vista
 }
 
