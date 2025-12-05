@@ -8,7 +8,7 @@
             $this->modeloC = new ModContribucion();
         }
         public function vistaCargar(){
-            $this->vista="vistaAgregarContribucion.html";
+            $this->vista="admin/vistaAgregarContribucion.html";
         }
         public function validaciones(){
              /**Verifico que la cadena no esta vacia ,le quito los espacios y compruebo que no tenga numeros */
@@ -19,23 +19,23 @@
         }
         public function insertar(){
             if(!$this->validaciones()){
-                $this->vista="mensajeError.php";
+                $this->vista="admin/mensajeError.php";
                 return "Contribucion vacia o la contribucion tiene algun número";
             }else{
                 if($this->modeloC->insertar()){
                     
-                    $this->vista="mensajeError.php";
+                    $this->vista="admin/mensajeError.php";
                     return "Constribucion guardada con exito";
 
                 }else{
-                    $this->vista="mensajeError.php";
+                    $this->vista="admin/mensajeError.php";
                     return "Fallo al guardar la contribucion";
                 };
             };
         }
 
         public function obtenerContribucion(){
-            $this->vista="vistaGestionContribuciones.php";
+            $this->vista="admin/vistaGestionContribuciones.php";
             $datos=$this->modeloC->obtenerContribuciones();
             return  $datos;
         }

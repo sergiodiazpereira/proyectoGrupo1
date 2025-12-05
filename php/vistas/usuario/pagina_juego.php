@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
-        <link rel="stylesheet" href="../../../src/css/styleUsuario.css">
+        <link rel="stylesheet" href="../src/css/styleUsuario.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <title>Mockup Jugando Partida</title>
     </head>
@@ -80,7 +80,7 @@
                     <div class="indicador-box quitarBorde">
                         <p id="texto-tiempo-derrota" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>
                         <p class="textoCentrado celda">La asociacion era:</p>
-                        <img src="../../../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
                         <p class="textoCentrado celda"><strong>Médicos Sin Fronteras</strong></p>
                         <a href="./pagina_juego.php"><button id="jugar">Jugar de nuevo</button></a>
                     </div>
@@ -98,7 +98,7 @@
                     <div class="indicador-box quitarBorde celda">
                         <p class="textoCentrado">Has agotado tus 10 intentos.</p>
                         <p class="textoCentrado">La asociacion era:</p>
-                        <img src="../../../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
                         <p class="textoCentrado"><strong>Médicos Sin Fronteras</strong></p>
                         <a href="./pagina_juego.php"><button id="jugar-derrota">Jugar de nuevo</button></a>
                     </div>
@@ -165,7 +165,7 @@
                 <div class="celda amarillo textoCentrado">Salud, Educación</div>
             </div>
         </main>
-        <script type="module" src="../../../src/js/app.js"></script>
+        <script type="module" src="../src/js/app.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
 <script>

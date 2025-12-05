@@ -19,7 +19,7 @@
             $this->modeloC= new ModContribucion();
         }
         public function inicio(){
-            $this->vista="vistaGestionContribuciones.php";
+            $this->vista="admin/vistaGestionContribuciones.php";
         }
         /**
          * Summary of validaciones
@@ -68,21 +68,21 @@
 
                     if($this->guardarImg()){
 
-                        $this->vista="mensajeError.php";
+                        $this->vista="admin/mensajeError.php";
                         return "Insercion exitosa";
                     }else{
 
-                        $this->vista="mensajeError.php";
+                        $this->vista="admin/mensajeError.php";
                         return "Fallo al insertar la imagen";
                     };
                 }else{
 
-                    $this->vista="mensajeError.php";
+                    $this->vista="admin/mensajeError.php";
                     return "Fallo al insertar los datos";
                 };
             }else{
 
-                $this->vista="mensajeError.php";
+                $this->vista="admin/mensajeError.php";
                 return "Datos no validos";
             };
         
@@ -114,7 +114,7 @@
                 "contribuciones" => $contribuciones
             ];
             
-            $this->vista="vistaAgregarAsociacion.php";
+            $this->vista="admin/vistaAgregarAsociacion.php";
             return $arrayAsoc;
         }
     }

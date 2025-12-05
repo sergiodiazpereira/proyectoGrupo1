@@ -6,18 +6,18 @@
      * @var $metodo  Recibe el metodo del controladore al que queremos ir mediante el metodo get
      */
     $controlador = $_GET["c"] ?? CONDEF;
-    $metodo = $_GET["m"] ?? METDEF;
+    $metodo = $_GET["m"] ?? METDEF; 
     
     /**
      * @var $rutaControlador formara la ruta del controlador necesario
      */
-    $rutaControlador = CONTROLADOR."con".$controlador.".php";
+    $rutaControlador = CONTROLADOR."con".$controlador.".php"; 
     require_once $rutaControlador;
 
     /**
      * @var $instanciaControlador creara el nombre de la clase para instanciar 
      */
-    $instanciaControlador = "Con".$controlador;
+    $instanciaControlador = "Con".$controlador; 
 
     /**
      * @var object $objContro crea un objeto instanciado al controlador necesario

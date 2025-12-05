@@ -8,7 +8,7 @@
      * @var $ruta guardara la ruta que almacenara la constante RUTAIMG
      */
     
-    define('VISTAS','vistas/admin/');
+    define('VISTAS','vistas/');
     define('CONTROLADOR','controladores/');
     define('CONDEF','Contribucion');
     define('METDEF','obtenerContribucion');
