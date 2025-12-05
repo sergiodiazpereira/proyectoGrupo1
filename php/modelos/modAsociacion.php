@@ -57,22 +57,6 @@
         public function modificar() {
             try {
 
-                // Procesar imagen
-                /* if (!empty($_FILES['imagen']['name'])) {
-                    $nombreImg = time() . "_" . basename($_FILES["imagen"]["name"]);
-                    move_uploaded_file($_FILES["imagen"]["tmp_name"], "uploads/" . $nombreImg);
-                } else {
-                    // Si no se sube nueva imagen, conservar la anterior
-                    $sql = "SELECT imagen FROM asociacion WHERE idAsoc = :id";
-                    $stmt = $this->conexion->prepare($sql);
-
-                    $stmt->bindParam(":id", $_GET["idAsoc"]);
-
-                    $stmt->execute();
-
-                    $nombreImg = $stmt->fetchColumn();
-                }  */
-
                 $sql = "UPDATE asociacion 
                         SET nombre = :nombre,
                             fecha_fun = :fecha_fun,
@@ -94,7 +78,7 @@
                 $pista_dificil = $_POST['pista_dificil'];
                 $idTipoAsoc = $_POST['idTipoAsoc'];
                 $alcance = $_POST['alcance'];
-                $imagen = 'nombre_fijo.jpg';
+                $imagen = $_FILES['imagen']['name'];
 
                 $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                 $stmt->bindParam(':fecha_fun', $fecha_fun, PDO::PARAM_INT);
@@ -115,30 +99,37 @@
         }
 
         public function modificarContribuciones() {
-            // Eliminar las antiguas
-            $sql = "DELETE FROM asoc_contribucion WHERE idAsoc = :id";
-            $stmt = $this->conexion->prepare($sql);
 
-            $stmt->bindParam(':id', $_GET["idAsoc"]);
+            try {
+                // Eliminar las antiguas
+                $sql = "DELETE FROM asoc_contribucion WHERE idAsoc = :id";
+                $stmt = $this->conexion->prepare($sql);
 
-            $stmt->execute();
+                $stmt->bindParam(':id', $_GET["idAsoc"]);
 
-            // Insertar nuevas
-            if (!empty($_POST['contribuciones'])) {
+                $stmt->execute();
 
-                foreach ($_POST['contribuciones'] as $idContribucion) {
-                    $sql = "INSERT INTO asoc_contribucion (idAsoc, idContribucion)
-                            VALUES (:idAsoc, :idContribucion)";
+                // Insertar nuevas
+                if (!empty($_POST['contribuciones'])) {
 
-                    $stmt = $this->conexion->prepare($sql);
+                    foreach ($_POST['contribuciones'] as $idContribucion) {
+                        $sql = "INSERT INTO asoc_contribucion (idAsoc, idContribucion)
+                                VALUES (:idAsoc, :idContribucion)";
 
-                    $stmt->bindParam(':idAsoc', $_GET["idAsoc"]);
-                    $stmt->bindParam(':idContribucion', $idContribucion);
+                        $stmt = $this->conexion->prepare($sql);
 
-                    $stmt->execute();
+                        $stmt->bindParam(':idAsoc', $_GET["idAsoc"]);
+                        $stmt->bindParam(':idContribucion', $idContribucion);
+
+                        $stmt->execute();
+                    }
                 }
-
+                
+                return true;
+            } catch (Exception $e) {
+                return false;
             }
+        
         }
 
         public function borrar() {

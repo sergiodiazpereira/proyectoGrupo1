@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../config/rutas.php';
-require_once __DIR__.'/../modelos/modAsociacion.php';
+require_once __DIR__.'/../'.MODELO.'modAsociacion.php';
 
 class ConAsociacion {
     private $modelo;
@@ -54,6 +54,26 @@ class ConAsociacion {
         // Actualizamos la tabla contribuciones
         $this->modelo->modificarContribuciones();
 
+        if($this->modelo->modificar() && $this->modelo->modificarContribuciones()){
+
+            if($this->guardarImg()){
+                if($this->borrarImg()){
+                    $this->vista="mensajeError.php";
+                    return "Modificacion exitosa";
+                }else{
+                    $this->vista="mensajeError.php";
+                    return "Fallo al actualizar la imagen";
+                }
+            }else{
+                $this->vista="mensajeError.php";
+                return "Fallo al guardar la imagen";
+            };
+            
+        }else{
+            $this->vista="mensajeError.php";
+            return "No inserta";
+        };
+
         // Redirigimos a la lista de asociaciones
         header("Location: index.php?c=Asociacion&m=listar");
         exit;
@@ -83,5 +103,26 @@ class ConAsociacion {
         exit;
     }
 
+    private function guardarImg(){
+        //
+        $destino = RUTAIMG . $_FILES["imagen"]['name'];
+
+        if(!move_uploaded_file($_FILES["imagen"]['tmp_name'], $destino)){
+            return false;
+        }else{
+            return true;
+        };
+    }
+
+    private function borrarImg(){
+        //
+        $ruta = RUTAIMG . $_POST['antiguaImagen'];
+
+        if(file_exists($ruta)) {
+            return unlink($ruta);
+        } else {
+            return false;
+        }
+    }
 }
 ?>

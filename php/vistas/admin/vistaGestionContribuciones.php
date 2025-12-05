@@ -102,10 +102,8 @@
                     <?php foreach ($datos['contribuciones'] as $c): ?>
                         <div class="fila">
                             <input type="text" name="descripcion[<?= $c['idContribucion'] ?>]" value="<?= $c['descripcion'] ?>">
-                            <a href="index.php?c=Contribucion&m=borrar&idContribucion=<?= $c['idContribucion'] ?>">
-                                <button class="btn-eliminar">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
+                            <a class="btn-eliminar" href="index.php?c=Contribucion&m=borrar&idContribucion=<?= $c['idContribucion'] ?>">
+                                <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </div>
                     <?php endforeach; ?>

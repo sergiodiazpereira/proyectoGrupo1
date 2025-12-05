@@ -28,7 +28,7 @@
                 </li>
                 <li>
                     <a href="index.php?c=Asociacion&m=listar">
-                        <button>
+                        <button class="paginaSeleccionada">
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
                         </button>
@@ -44,7 +44,7 @@
                 </li>
                 <li>
                     <a href="index.php?c=Contribucion&m=listar">
-                        <button class="paginaSeleccionada">
+                        <button>
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
                         </button>
@@ -128,7 +128,9 @@
                         <div class="campo-grande">
                             <label>Imagen:</label>
                             <input type="file" name="imagen">
-                            <img src="<?= $datos['imagen'] ?>">
+                            <label>Imagen actual:</label>
+                            <img src="<?= RUTAIMG.$datos['imagen'] ?>">
+                            <input type="hidden" name="antiguaImagen" value="<?=$datos['imagen']?>">
                         </div>
                     </div>
 

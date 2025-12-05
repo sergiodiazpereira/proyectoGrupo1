@@ -766,6 +766,13 @@
     a{
         text-decoration: none;
         width: 100%; /* %> 338px/338px 0.2fr */
+        text-align: center;
+    }
+
+    a {
+        i {
+            line-height: 5.20vh;
+        }
     }
 
     /* Botón eliminar */
@@ -1090,24 +1097,29 @@
 
         .fila {
 
-        /* Campos estándar dentro de una fila */
-        .campo {
-            display: inline-block;
-            vertical-align: top;
-            width: 100%;
+            /* Campos estándar dentro de una fila */
+            .campo {
+                display: inline-block;
+                vertical-align: top;
+                width: 100%;
+            }
+
+            /* Separación para el primer campo */
+            .campo:first-child {
+                margin-right: 0;
+            }
+
+            /* Campos grandes como textarea o contenedores amplios */
+            .campo-grande {
+                display: block;
+                width: 100%;
+            }
+
         }
 
-        /* Separación para el primer campo */
-        .campo:first-child {
-            margin-right: 0;
-        }
-
-        /* Campos grandes como textarea o contenedores amplios */
-        .campo-grande {
-            display: block;
-            width: 100%;
-        }
-
+        .fila img {
+            max-width: 100px;
+            height: auto;
         }
 
         /* Cuadro de contribuciones (646 width + (15+15) padding + (1+1) border = 676 ) */
