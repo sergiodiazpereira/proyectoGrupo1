@@ -1,4 +1,11 @@
+import VistaPistas from "../vistas/vistaPistas";
+
 class ServicioPistas{
+    /**
+     * 
+     * @param {VistaPistas} vista - Vista de los pop-ups ganar y perder
+     * @param {ModeloJuego} modelo - Modelo que trae y envia todos los datos a backend para que la pantalla de juego funcione
+     */
     constructor(vista, modelo){
         this.vista = vista;
         this.modelo = modelo;

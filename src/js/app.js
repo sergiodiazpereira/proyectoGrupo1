@@ -1,4 +1,3 @@
-import ModeloPistas from "./modelos/modeloPistas.js";
 import ServicioGanarPerder from "./servicios/servicioGanarPerder.js";
 import ServicioPistas from "./servicios/servicioPistas.js";
 import VistaGanarPerder from "./vistas/vistaGanarPerder.js";
@@ -17,11 +16,13 @@ import { ControladorColeccion } from './servicios/controladorColeccion.js';
 
 
 
+// No hay documentacion porque ni se le pasa parametros ni retorna nada
+
 document.addEventListener('DOMContentLoaded', () => {
     const vistaMenu = new VistaMenu();
     if (window.location.pathname.endsWith("pagina_juego.php")) {
         const modeloGanarPerder = new ModeloJuego();
-        const modeloPistas = new ModeloPistas();
+        const modeloPistas = new ModeloJuego();
 
         // 1. Crear vista sin servicio
         const vistaInformacion = new VistaInformacion();

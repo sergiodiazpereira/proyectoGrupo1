@@ -1,4 +1,8 @@
 class VistaGanarPerder{
+    /**
+     * 
+     * @param {ServicioGanarPerder} servicio - Servicio de los pop-ups ganar y perder 
+     */
     constructor(servicio){
         this.servicio = servicio;
         this.selectAsociacion = document.getElementById("select-asociacion");
