@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Gestionar asociaciones</title>
-        <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+        <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../../../src/img/bombilla.png">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
