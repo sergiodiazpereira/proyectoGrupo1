@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
         <link rel="stylesheet" href="../../../src/css/styleUsuario.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <title>Mockup Jugando Partida</title>
@@ -165,5 +166,15 @@
             </div>
         </main>
         <script type="module" src="../../../src/js/app.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+<script>
+  const asociacionesSelect = new Choices('#select-asociacion', {
+    searchEnabled: true,      // permite escribir para buscar
+    itemSelectText: '',       // quita el texto "Press to select"
+    shouldSort: false,        // mantiene el orden original
+    searchPlaceholderValue: 'Buscar...', 
+  });
+</script>
     </body>
 </html>

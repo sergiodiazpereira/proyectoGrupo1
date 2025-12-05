@@ -1,5 +1,3 @@
-import VistaPistas from "../vistas/vistaPistas";
-
 class ServicioPistas{
     /**
      * 
