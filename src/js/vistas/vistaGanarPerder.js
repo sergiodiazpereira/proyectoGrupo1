@@ -9,22 +9,24 @@ class VistaGanarPerder{
 
         this.popupPerder = document.getElementById("pantalla-derrota");
         this.contenidoPopupPerder = document.getElementById("modal-perder");
+        this.textoCronometro = document.querySelector('#crono span');
+        this.textoPerder = document.getElementById("texto-tiempo-derrota");
         this.botonContinuarPerder = document.getElementById("jugar-derrota");
 
         let contadorIntentos = 1; /* Este valor se cogerá del valor real de intentos */
         document.addEventListener('change', (e) => {
             const select = e.target;
             const valor = select.value;
-            const asociacionCorrecta = this.servicio.mandarNombre();
+            const asociacionCorrecta = this.servicio.mandarNombre(); /* nombre de la asociacion correcta */
             if (valor === asociacionCorrecta) {
                 this.mostrarPantallaVictoria();
-                contadorIntentos = 1;
+                contadorIntentos = 1; /* reiniciar intentos */
             } else {
                 if (contadorIntentos == 10) {
                     this.mostrarPantallaDerrota();
-                    contadorIntentos = 1;
+                    contadorIntentos = 1; /* reiniciar intentos */
                 } else {
-                    contadorIntentos++;
+                    contadorIntentos++; /* sumar intentos */
                 }
             }
         });
@@ -41,6 +43,8 @@ class VistaGanarPerder{
 
 
     mostrarPantallaVictoria(){
+        let tiempo = this.textoCronometro.innerText;
+        this.textoPerder.innerText = "Has adivinado la asociación en " + tiempo;
         this.popupGanar.style.display = "flex";
         setTimeout(() => {
             this.contenidoPopupGanar.classList.add("mostrar");

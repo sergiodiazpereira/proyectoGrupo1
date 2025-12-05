@@ -4,13 +4,11 @@ class ServicioGanarPerder{
     }
     
     mandarNombre(){
-        let datos = this.modelo.cogerDatosPartida();
-        return datos[0];
+        return this.modelo.asociacionObjetivo.nombre;
     }
 
     mandarTiempo(){
-        let datos = this.modelo.cogerDatosPartida();
-        return datos[1];
+        return this.modelo.obtenerTiempoFormateado();
     }
 
     // funciones que llevan datos comprobados del modelo a la vista

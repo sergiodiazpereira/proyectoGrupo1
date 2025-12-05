@@ -30,7 +30,7 @@ export class VistaJuego {
 
     renderizar(modelo) {
         if (this.spanCronometro) {
-            this.spanCronometro.textContent = modelo.obtenerTiempoFormateado();
+            this.spanCronometro.innerText = modelo.obtenerTiempoFormateado();
         }
 
         if (this.contadorIntentos) {

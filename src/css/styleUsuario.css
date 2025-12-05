@@ -541,7 +541,7 @@ input[type=submit]{
     display: grid;
     width: 95%; /* Usamos el 95% del max-width de 768px */
     max-width: 45rem; /* 720px */
-    grid-template-columns: repeat(5, 1fr); 
+    grid-template-columns: repeat(5, 1fr);
 }
 
 #contenedor-encabezados{
@@ -637,7 +637,7 @@ button.azul {
 button.amarillo { 
     background-color: #FFC527;
 }
-    
+
 @media (max-width: 450px) {
     .main_kiko{
         padding: 2.66% 1.49vh; /*10/375 y 10/667*/
@@ -694,6 +694,7 @@ button.amarillo {
         left: 0;
         right: 0;
         margin: 0;
+        z-index: 10;
     }
 
     /* El contenido interno del header se limita y se centra */
@@ -736,6 +737,7 @@ button.amarillo {
         right: 0.2rem; 
         top: 0.625rem; 
         font-size: 1em; 
+        top: 40%;
     }
 
     #nav_crono {

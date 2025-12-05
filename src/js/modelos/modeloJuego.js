@@ -70,7 +70,6 @@ export class ModeloJuego {
         //y el 0 es para darle un valor inicial
         const minutos = Math.floor(totalSegundos / 60).toString().padStart(2, '0'); 
         const segundos = (totalSegundos % 60).toString().padStart(2, '0');
-
         return `${minutos}:${segundos}`;
     }
 
