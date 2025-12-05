@@ -652,14 +652,14 @@ button.amarillo {
     width: 100% !important;              /* ocupa todo el contenedor */
     border: 2px solid var(--colorTitulo) !important;
     border-radius: 0.8rem !important;
-    padding: 2.5% 2% 6px 10px !important;  /* espacio para la flecha */
+    padding: 2.5% 2.78% 1.67% 2.78% !important;  /* espacio para la flecha */
     height: auto !important;
 }
 
 /* Flecha */
 .choices[data-type*=select-one]::after {
-    right: 10px !important;
-    top: 50% !important;
+    right: 4% !important;
+    top: 63% !important;
     transform: translateY(-50%) !important;
 }
 
