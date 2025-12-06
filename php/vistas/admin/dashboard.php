@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Dashboard</title>
-        <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+        <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarAsociaciones.html">
+                    <a href="index.php?c=Asociacion&m=listar">
                         <button>
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./vistaGestionContribuciones.html">
+                    <a href="index.php?c=Contribucion&m=listar">
                         <button>
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>

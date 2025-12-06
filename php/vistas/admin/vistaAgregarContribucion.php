@@ -2,7 +2,7 @@
 
 <head>
     <title>Contribuciones</title>
-    <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+    <link rel="stylesheet" href="css/styleRelative.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="asociacionContribucion">
+<body>
     <!-- Modal para agregar Contribuciones -->
     <div id="modal-contribuciones" class="fondo">
         <form action="" class="modal">
@@ -28,8 +28,8 @@
             </div>
 
             <div class="modal-footer">
-                <button class="cancelar"><a id="enlace-cancelar" href="vistaGestionContribuciones.html">Cancelar</a></button>
-                <button class="aniadir"><a id="enlace-añadir" href="vistaGestionContribuciones.html">Añadir</a></button>
+                <button class="cancelar">Cancelar</button>
+                <button class="aniadir">Añadir</button>
             </div>
         </form>
     </div>
