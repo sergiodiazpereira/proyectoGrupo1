@@ -15,7 +15,7 @@
             }
             return $nombresAsociaciones;
         }
-        public function cargarJuego(){
+        public function cargarPagina(){
             $this->vista="usuario/pagina_juego.php";
             return $this->nombresDeAsociaciones();
         }

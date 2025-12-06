@@ -1,5 +1,4 @@
 import ServicioGanarPerder from "./servicios/servicioGanarPerder.js";
-import ServicioPistas from "./servicios/servicioPistas.js";
 import VistaGanarPerder from "./vistas/vistaGanarPerder.js";
 import VistaInformacion from "./vistas/vistaInformacion.js";
 import VistaMenu from "./vistas/vistaMenu.js";
@@ -36,13 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 1. Crear vista sin servicio
             const vistaInformacion = new VistaInformacion();
-            const vistaPistas = new VistaPistas();
 
-            // 2. Crear servicios
-            const servicioPistas = new ServicioPistas(vistaPistas, modeloJuego);
             (async () => {
                 const servicioGanarPerder = new ServicioGanarPerder(modeloJuego);
                 const vistaGanarPerder = new VistaGanarPerder(servicioGanarPerder);
+                const vistaPistas = new VistaPistas(servicioGanarPerder);
                 await servicioGanarPerder.inicializar();
             })();
 
@@ -52,14 +49,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const modelo = new ModeloJuego();
             const vista = new VistaJuego(); 
             new ControladorJuego(modelo, vista);
-
         }
 
-            
+         
+        
         if (finDePagina === 'usuario/colecciones.php') {
             const modelo = new ModeloColeccion();
             const vista = new VistaColeccion();
             new ControladorColeccion(modelo, vista);
+        }
+
+
+
+        if (finDePagina === 'usuario/cambio.php') {
+            /* metodos para la pagina cambio */
+        }
+
+
+
+        if (finDePagina === 'usuario/ranking.php') {
+            /* metodos para la pagina ranking */
         }
     }            
     

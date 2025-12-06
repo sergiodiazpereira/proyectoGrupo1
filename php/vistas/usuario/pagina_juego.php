@@ -54,17 +54,18 @@
                 <div class="fila-top">
                     <div class="indicador-box celda">
                         <p class="textoCentrado"><strong>Pista 1 (Difícil)</strong></p>
-                        <p class="textoCentrado">Su logo es una vela envuelta en alambre de espino.</p>
+                        <p id="interrogacionesDificil" class="textoCentrado">????</p>
+                        <p id="textoDificil" class="textoCentrado">Se desbloquea en el intento 3</p>
                     </div>
                     <div class="indicador-box celda">
                         <p class="textoCentrado"><strong>Pista 2 (Media)</strong></p>
-                        <p class="textoCentrado">????</p>
-                        <p class="textoCentrado">Se desbloquea en el intento 5</p>
+                        <p id="interrogacionesMedia" class="textoCentrado">????</p>
+                        <p id="textoMedia" class="textoCentrado">Se desbloquea en el intento 5</p>
                     </div>
                     <div class="indicador-box celda">
                         <p class="textoCentrado"><strong>Pista 3 (Fácil)</strong></p>
-                        <p class="textoCentrado">????</p>
-                        <p class="textoCentrado">Se desbloquea en el intento 5</p>
+                        <p id="interrogacionesFacil" class="textoCentrado">????</p>
+                        <p id="textoFacil" class="textoCentrado">Se desbloquea en el intento 8</p>
                     </div>
                 </div>
             </div>
@@ -117,11 +118,11 @@
                 <p id="nombreDes">Usuario</p>
                 <p>usuario@hotmail.com</p>
                 <hr>
-                <li><i class="fa-solid fa-gamepad"></i> <a href="pagina_juego.php">Jugar</a></li>
-                <li><i class="fa-solid fa-book"></i><a href="colecciones.php">Colección</a></li>
-                <li><i class="fa-solid fa-trophy"></i><a href="ranking.html">Ranking</a></li>
+                <li><i class="fa-solid fa-gamepad"></i> <a href="./index.php?c=Juego&m=cargarPagina">Jugar</a></li>
+                <li><i class="fa-solid fa-book"></i><a href="./index.php?c=Colecciones&m=cargarPagina">Colección</a></li>
+                <li><i class="fa-solid fa-trophy"></i><a href="./index.php?c=Ranking&m=cargarPagina">Ranking</a></li>
                 <hr>
-                <li><i class="fa-solid fa-key"></i> <a href="cambio.html">Cambiar Contraseña</a></li>
+                <li><i class="fa-solid fa-key"></i> <a href="./index.php?c=Cambio&m=cargarPagina">Cambiar Contraseña</a></li>
                 <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="login.html">Cerrar sesión</a></li>
             </ul>
         </div>

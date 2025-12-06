@@ -31,6 +31,17 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.nombre;
     }
 
+    mandarPistaDificilAsociacionCorrecta(){
+        return this.asociacionCorrecta.pista_dificil;
+    }
+
+    mandarPistaMediaAsociacionCorrecta(){
+        return this.asociacionCorrecta.pista_media;
+    }
+
+    mandarPistaFacilAsociacionCorrecta(){
+        return this.asociacionCorrecta.pista_facil;
+    }
 
 
     // funciones que llevan datos comprobados del modelo a la vista
