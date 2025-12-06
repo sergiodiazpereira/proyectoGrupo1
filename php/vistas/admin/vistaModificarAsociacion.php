@@ -163,12 +163,12 @@
                         <label>Contribuciones:</label>
                         <div id="cuadroContribuciones">
                             <?php
-                            foreach ($datos['contribuciones'] as $c) {
+                            foreach ($datos['contribucion'] as $c) {
 
                                 $checked = in_array($c['idContribucion'], $datos['contribucionesAsoc']) ? 'checked' : '';
 
                                 echo "<div class='tag'>";
-                                echo "<input type='checkbox' name='contribuciones[]' value='".$c['idContribucion']."' $checked>";
+                                echo "<input type='checkbox' name='contribucion[]' value='".$c['idContribucion']."' $checked>";
                                 echo $c['descripcion'];
                                 echo "</div>";
                             }

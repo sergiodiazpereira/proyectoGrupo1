@@ -74,7 +74,7 @@
                     <h1 class="h1-admin">Gestionar asociaciones</h1>
                     <p class="subtitulos-admin">Añadir, editar o eliminar asociaciones del juego.</p>
                 </div>
-                <a class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
+                <a href="index.php?c=Asociacion&m=cargarPaginaAsoc" class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de asociaciones</h2>

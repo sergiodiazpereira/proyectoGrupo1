@@ -132,10 +132,10 @@
                 $stmt->execute();
 
                 // Si el array de contribuciones no está vacio insertamos
-                if (!empty($_POST['contribuciones'])) {
+                if (!empty($_POST['contribucion'])) {
 
                     // Insertamos las nuevas contribuciones
-                    foreach ($_POST['contribuciones'] as $idContribucion) {
+                    foreach ($_POST['contribucion'] as $idContribucion) {
                         $sql = "INSERT INTO asoc_contribucion (idAsoc, idContribucion)
                                 VALUES (:idAsoc, :idContribucion)";
 
@@ -202,14 +202,14 @@
                 $stmt=$this->conexion->prepare($sql);
                 
                 $stmt->bindParam(1,$_POST["nombre"]);
-                $stmt->bindParam(2,$_POST["anio"]);
-                $stmt->bindParam(3,$_POST["pistaF"]);
-                $stmt->bindParam(4,$_POST["pistaM"]);
-                $stmt->bindParam(5,$_POST["pistaD"]);
-                $stmt->bindParam(6,$_FILES['logo']['name']);
+                $stmt->bindParam(2,$_POST["fecha_fun"]);
+                $stmt->bindParam(3,$_POST["pista_facil"]);
+                $stmt->bindParam(4,$_POST["pista_media"]);
+                $stmt->bindParam(5,$_POST["pista_dificil"]);
+                $stmt->bindParam(6,$_FILES['imagen']['name']);
                 
-                $stmt->bindParam(7,$_POST["categoria"]);
-                $stmt->bindParam(8,$_POST["alcanceGeografico"]);
+                $stmt->bindParam(7,$_POST["idTipoAsoc"]);
+                $stmt->bindParam(8,$_POST["alcance"]);
                 
                 if($stmt->execute()){
                     
@@ -223,6 +223,7 @@
                 
             }catch(PDOException $e){
                 $this->conexion->rollBack();
+                echo $e->getMessage();
                 return false;
             }
         }

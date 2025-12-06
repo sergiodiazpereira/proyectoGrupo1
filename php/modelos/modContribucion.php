@@ -78,7 +78,6 @@
                 $stmt->execute([$_POST["contribucion"]]);
                 return true;
             }catch(PDOException $e){
-                echo $e->getMessage();
                 return false;
             }
         }

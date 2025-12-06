@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./index.php?c=Asociacion&m=cargarPaginaAsoc">
+                        <a href="index.php?c=Asociacion&m=listar">
                             <button class="paginaSeleccionada">
                                 <i class="fa-regular fa-building"></i>
                                 <span>Asociaciones</span>
@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./index.php?c=Contribucion&m=obtenerContribucion">
+                        <a href="index.php?c=Contribucion&m=listar">
                             <button>
                                 <i class="fa-solid fa-hand-holding-heart"></i>
                                 <span>Contribuciones</span>
@@ -95,7 +95,7 @@
 
                             <div class="campo">
                                 <label>Año de fundación:</label>
-                                <input type="text" name="anio">
+                                <input type="text" name="fecha_fun">
                             </div>
                         </div>
 
@@ -103,7 +103,7 @@
                         <div class="fila">
                             <div class="campo">
                                 <label>Dirigida a:</label>
-                                <select name="categoria" id="categoriaDedicacion">
+                                <select name="idTipoAsoc" id="categoriaDedicacion">
                                     <?php
                                         foreach($datos['tiposAsoc'] as $value){
                                             echo '<option value="'.$value['idTipoAsoc'].'">'.$value['nombre'].'</option>';
@@ -114,7 +114,7 @@
 
                             <div class="campo">
                                 <label>Alcance Geográfico:</label>
-                                <select name="alcanceGeografico" id="alcanceGeografico">
+                                <select name="alcance" id="alcanceGeografico">
                                     <option value="I">Internacional</option>
                                     <option value="L">Local</option>
                                     <option value="N">Nacional</option>
@@ -126,7 +126,7 @@
                         <div class="fila">
                             <div class="campo-grande">
                                 <label>Imagen:</label>
-                                <input type="file" name="logo">
+                                <input type="file" name="imagen">
                             </div>
                         </div>
 
@@ -134,7 +134,7 @@
                         <div class="fila">
                             <div class="campo-grande">
                                 <label>Pista Difícil:</label>
-                                <textarea name="pistaD"></textarea>
+                                <textarea name="pista_dificil"></textarea>
                             </div>
                         </div>
 
@@ -142,7 +142,7 @@
                         <div class="fila">
                             <div class="campo-grande">
                                 <label>Pista Media:</label>
-                                <textarea name="pistaM"></textarea>
+                                <textarea name="pista_media"></textarea>
                             </div>
                         </div>
 
@@ -150,7 +150,7 @@
                         <div class="fila">
                             <div class="campo-grande">
                                 <label>Pista Fácil:</label>
-                                <textarea name="pistaF"></textarea>
+                                <textarea name="pista_facil"></textarea>
                             </div>
                         </div>
 

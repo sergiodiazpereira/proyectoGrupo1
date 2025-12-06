@@ -12,11 +12,12 @@
     <body class="asociacionContribucion">
         <!-- Modal para decir que todo esta bien -->
         <div id="modal-aceptarOno" class="fondo">
-            <form action="./index.php" method="post" class="modal">
+            <div class="modal">
                 <div class="modal-header">
                     <h2><?php echo $datos ?></h2>
                     <button id="cerrarModal" class="ico-cerrar" type="button">
-                        <a href="./index.php"><i class="fa-solid fa-xmark"></i></a>
+                        <!-- Esto te tiene que llevar al dashboard -->
+                        <a href="index.php?c=Contribucion&m=listar"><i class="fa-solid fa-xmark"></i></a>
                     </button>
                 </div>
                 <div id="not">
@@ -24,9 +25,9 @@
                 </div>
                 <div class="modal-footer">
                     <!--Cambiar ruta del cancelar cuando se tenga el dashboard-->
-                    <button class="aniadir"><a id="enlace-cancelar" href="index.php">Volver</a></button>
+                    <button class="aniadir"><a id="enlace-cancelar" href="index.php?c=Contribucion&m=listar">Volver</a></button>
                 </div>
-            </form>
+            </div>
         </div>
     </body>
 </html>

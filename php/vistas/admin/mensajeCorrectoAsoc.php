@@ -17,7 +17,7 @@
                     <h2><?php echo $datos ?></h2>
                     <button id="cerrarModal" class="ico-cerrar" type="button">
                         <!-- Esto te tiene que llevar al dashboard -->
-                        <a href="index.php?c=Contribucion&m=listar"><i class="fa-solid fa-xmark"></i></a>
+                        <a href="index.php?c=Asociacion&m=listar"><i class="fa-solid fa-xmark"></i></a>
                     </button>
                 </div>
                 <div id="yes">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="modal-footer">
                     <!--Cambiar ruta del cancelar cuando se tenga el dashboard-->
-                    <button class="aniadir"><a id="enlace-cancelar" href="index.php?c=Contribucion&m=listar">Volver</a></button>
+                    <button class="aniadir"><a id="enlace-cancelar" href="index.php?c=Asociacion&m=listar">Volver</a></button>
                 </div>
             </div>
         </div>

@@ -1,16 +1,19 @@
 <?php
     require_once __DIR__.'/../config/rutas.php';
     require_once __DIR__.'/../'.MODELO.'modContribucion.php';
+    require_once __DIR__.'/../'.MODELO.'modAsociacion.php';
 
     /**
      * Este es el controlador de las contribuciones
      */
     class ConContribucion {
         private $modeloCont;
+        private $modeloAsoc;
         public $vista;
 
         public function __construct() {
             $this->modeloCont = new ModContribucion();
+            $this->modeloAsoc = new ModAsociacion();
         }
 
         /**
@@ -19,6 +22,35 @@
          */
         public function validaciones(){
             $contribucion = trim($_POST["contribucion"]);
+
+            if (empty($contribucion)) {
+                return false;
+            }
+
+            if (preg_match('/[0-9]/', $contribucion)) {
+                return false;
+            }
+            return true;
+        }
+
+        /**
+         * Summary of validaciones
+         * @return bool esta funcion valida que la contribucion no esta vacia o contenga numeros
+         */
+        public function validacionArray(){
+
+            foreach ($_POST['descripcion'] as $id => $desc) {
+
+                if (empty($desc)) {
+                    return false;
+                }
+
+                if (preg_match('/[0-9]/', $desc)) {
+                    return false;
+                }
+
+            }
+            return true;
         }
 
         /**
@@ -28,7 +60,7 @@
          */
         public function listar(){
             // Obtenemos los datos de la BD
-            $datos['contribuciones'] = $this->modeloCont->listar();
+            $datos['contribucion'] = $this->modeloCont->listar();
 
             // Indicamos la vista
             $this->vista = "vistaGestionContribuciones.php";
@@ -63,20 +95,18 @@
          *  - POST['descripcion'][id] = nuevo texto
          */
         public function procesarModificar(){
-            // Actualizamos los datos en la base de datos
-            $this->modeloCont->modificar();
 
-            // Redirigimos a la lista de contribuciones
-            header('Location: index.php?c=Contribucion&m=listar');
-            exit;
-            if (empty($contribucion)) {
-                return false;
-            }
+            if(!$this->validacionArray()){
+                $this->vista="mensajeIncorrecto.php";
+                return "Alguna contribución es incorrecta";
+            } else {
+                // Actualizamos los datos en la base de datos
+                $this->modeloCont->modificar();
 
-            if (preg_match('/[0-9]/', $contribucion)) {
-                return false;
+                $this->vista="mensajeCorrecto.php";
+                return "Contribuciones actualizadas";
             }
-            return true;
+            
         }
 
         /**
