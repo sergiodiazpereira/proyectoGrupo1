@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <title>Contribuciones</title>
     <link rel="stylesheet" href="../src/css/styleAdmin.css">
@@ -76,8 +75,8 @@
             <div id="bloqueGestionContribuciones">
                 <h1>Gestionar Contribuciones</h1>
                 <p>Añadir, editar o eliminar los tipos de contribucion.</p>
-                <a href="">
-                    <button>
+                <a>
+                    <button id="abrirModal">
                         <i class="fa-solid fa-circle-plus"></i>
                         <span>Añadir contribución</span>
                     </button>
@@ -122,20 +121,57 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
+                <?php
+                    foreach($datos as $value) {
+                        echo'<div class="fila">
+                            <input type="hidden" name="contribucion" value="'.$value['idContribucion'].'" >
+                            <input type="text" value="'.$value['descripcion'].'" >
+                            <a href="">
+                                <button class="btn-eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </a>
+                        </div>';
+                    };
+                ?>
+                
+            <!-- Modal para agregar Contribuciones -->
+            <div class="fondo oculto" id="modal-contribuciones">
+                <form action="./index.php?c=Contribucion&m=insertar" method="post" class="modal">
+                    <div class="modal-header">
+                        <h2>Añadir Nueva Contribución</h2>
+                        <button id="cerrarModal" class="ico-cerrar" type="button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
 
-                <div class="modal-main">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" placeholder="Ej: Apoyo escolar">
-                </div>
+                    <div class="modal-main">
+                        <label for="contribucion">Nombre</label>
+                        <input type="text" name="contribucion" id="nombre" placeholder="Ej: Apoyo escolar">
+                    </div>
 
-                <div class="modal-footer">
-                    <button class="cancelar" type="button">Cancelar</button>
-                    <button class="aniadir" type="submit">Añadir</button>
-                </div>
-            </form>
-        </div>
-
-    </main>
-</body>
-
+                    <div class="modal-footer">
+                        <!--Cambiar controlador y modelo por defecto cuanto se tenga el dashboard-->
+                        <button class="cancelar"><a href="./index.php">Cancelar</a></button>
+                        <button class="aniadir">Añadir</button>
+                    </div>
+                </form>
+            </div>
+            <script> 
+                /*Recojo el modal el boton abrir y el boton de cerrar */
+                const modal = document.getElementById("modal-contribuciones");
+                const btnAbrir = document.getElementById("abrirModal");
+                const btnCerrar = document.getElementById("cerrarModal");
+                /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
+                btnAbrir.onclick = () => modal.classList.remove("oculto");
+                btnCerrar.onclick = () => modal.classList.add("oculto");
+                /*Esto es por si clico fuera del modal se cierra */
+                window.onclick = (event) => {
+                    if (event.target === modal) {
+                        modal.classList.add("oculto");
+                    }
+                }
+            </script>
+        </main>
+    </body>
 </html>
