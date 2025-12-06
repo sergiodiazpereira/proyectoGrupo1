@@ -93,16 +93,16 @@ INSERT INTO contribucion (descripcion) VALUES ("Salud"),
 
 -- Insertamos 4 filas de asociaciones
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Cruz Roja", '1938', "Va dirigida a Jóvenes", "Es una asociación Nacional", "Se fundó en el año 1938","https://www.ejemplo.com/imagenes/cruz_roja.jpg",1,'I');
+VALUES ("Cruz Roja", '1938', "Va dirigida a Jóvenes", "Es una asociación Nacional", "Se fundó en el año 1938","cruz_roja.png",1,'I');
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Fundación Loyola", '1948', "Va dirigida a Jóvenes", "Es una asociación Internacional", "Se fundó en el año 1948","https://www.ejemplo.com/imagenes/fundacion.jpg",2,'N');
+VALUES ("Fundación Loyola", '1948', "Va dirigida a Jóvenes", "Es una asociación Internacional", "Se fundó en el año 1948","fundacion_loyola.jpg",2,'N');
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Unicef", '2002',"Va dirigida a Personas", "Es una asociación Internacional","Se fundó en el año 2002","https://www.ejemplo.com/imagenes/unicef.jpg",3,'N');
+VALUES ("Unicef", '2002',"Va dirigida a Personas", "Es una asociación Internacional","Se fundó en el año 2002","unicef.jpg",3,'N');
 
 INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Fundación Once", '2000',"Va dirigida a Discapacitados", "Es una asociación Local","Se fundó en el año 2000","https://www.ejemplo.com/imagenes/fundacion_once.jpg",2,'L');
+VALUES ("Fundación Once", '2000',"Va dirigida a Discapacitados", "Es una asociación Local","Se fundó en el año 2000","fundacion_once.jpg",2,'L');
 
 -- Relaciones Cruz Roja (1)
 INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
