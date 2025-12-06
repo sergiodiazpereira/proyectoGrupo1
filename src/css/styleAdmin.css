@@ -830,29 +830,29 @@
     /* Elementos internos del modal-main */
     .modal-main {
 
-    /* Etiquetas */
-    label {
-        display: inline-block;
-        font-size: 1rem;
-        color: #0b285b;
-        margin-bottom: 6px; /* vh> 6px/768px */
-    }
+        /* Etiquetas */
+        label {
+            display: inline-block;
+            font-size: 1rem;
+            color: #0b285b;
+            margin-bottom: 6px; /* vh> 6px/768px */
+        }
+        
+        /* Input texto */
+        input[type="text"] {
+            width: 100%; /* %> 450px/450px */
+            padding: 1.30vh 3.11%; /* vh> 10px/768px %> 14px/450px */
+            font-size: 1rem;
+            border-radius: 14px;
+            border: 2px solid #c2d4ff;
+            outline: none;
+            background: white;
+        }
 
-    /* Input texto */
-    input[type="text"] {
-        width: 100%; /* %> 450px/450px */
-        padding: 1.30vh 3.11%; /* vh> 10px/768px %> 14px/450px */
-        font-size: 1rem;
-        border-radius: 14px;
-        border: 2px solid #c2d4ff;
-        outline: none;
-        background: white;
-    }
-
-    /* Focus */
-    input:focus {
-        border-color: #3e7bfe;
-    }
+        /* Focus */
+        input:focus {
+            border-color: #3e7bfe;
+        }
 
     }
 
@@ -867,40 +867,39 @@
     /* Elementos internos del footer */
     .modal-footer {
 
-    /* Botón cancelar */
-    .cancelar {
-        background: transparent;
-        border: none;
-        font-size: 1rem;
-        cursor: hand;
-    }
+        /* Botón cancelar */
+        .cancelar {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            cursor: hand;
+        }
 
-    /* Botón añadir */
-    .aniadir {
-        background: #3e7bfe;
-        padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
-        border: none;
-        border-radius: 14px;
-        font-size: 1rem;
-        cursor: hand;
-    }
+        /* Botón añadir */
+        .aniadir {
+            background: #3e7bfe;
+            padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            cursor: hand;
+        }
 
-    /* Hover añadir */
-    .aniadir:hover {
-        background: #2f67e3;
-    }
+        /* Hover añadir */
+        .aniadir:hover {
+            background: #2f67e3;
+        }
 
-    /* Quitar subrayado a los enlaces */
-    #enlace-cancelar{
-        text-decoration: none;
-        color: #0b285b;
-    }
+        /* Quitar subrayado a los enlaces */
+        #enlace-cancelar{
+            text-decoration: none;
+            color: #0b285b;
+        }
 
-    #enlace-añadir{
-        text-decoration: none;
-        color: white;
-    }
-
+        #enlace-añadir{
+            text-decoration: none;
+            color: white;
+        }
     }
 
     /* ====================================================[ ASOCIACIONES ]====================================================== */
