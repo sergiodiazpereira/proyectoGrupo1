@@ -12,6 +12,23 @@ class VistaPistas{
         this.botonCerrarPistas.addEventListener('click', () => {
             this.ocultarMenu();
         });
+
+        let contadorIntentos = 1; /* Este valor se cogerá del valor real de intentos */
+        this.selectAsociacion.addEventListener('change', () => {
+            const valor = this.selectAsociacion.value;
+            const asociacionCorrecta = this.servicio.mandarNombreAsociacionCorrecta(); /* nombre de la asociacion correcta */
+            if (valor === asociacionCorrecta) {
+                this.mostrarPantallaVictoria();
+                contadorIntentos = 1; /* reiniciar intentos */
+            } else {
+                if (contadorIntentos == 10) {
+                    this.mostrarPantallaDerrota();
+                    contadorIntentos = 1; /* reiniciar intentos */
+                } else {
+                    contadorIntentos++; /* sumar intentos */
+                }
+            }
+        });
     }
 
 

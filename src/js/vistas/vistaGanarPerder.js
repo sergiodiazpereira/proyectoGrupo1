@@ -20,9 +20,8 @@ class VistaGanarPerder{
         this.derrotaAsociacionEra = document.getElementById("derrotaAsociacionEra");
         this.botonContinuarPerder = document.getElementById("jugar-derrota");
         let contadorIntentos = 1; /* Este valor se cogerá del valor real de intentos */
-        document.addEventListener('change', (e) => {
-            const select = e.target;
-            const valor = select.value;
+        this.selectAsociacion.addEventListener('change', () => {
+            const valor = this.selectAsociacion.value;
             const asociacionCorrecta = this.servicio.mandarNombreAsociacionCorrecta(); /* nombre de la asociacion correcta */
             if (valor === asociacionCorrecta) {
                 this.mostrarPantallaVictoria();
