@@ -9,6 +9,10 @@
             parent::__construct();
             
         }
+        /**
+         * Summary of insertar
+         * @return bool esta funcion realiza el insert en la base de datos en la tabla contribucion
+         */
         public function insertar(){
             try{
                 $sql="INSERT INTO contribucion (descripcion) VALUES (?)";

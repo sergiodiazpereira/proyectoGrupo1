@@ -15,6 +15,7 @@
          */
         public function insertar(){
             try{
+                $this->conexion->beginTransaction();
                 $sql="INSERT INTO asociacion (nombre, fecha_fun, pista_facil, pista_media,pista_dificil , imagen, idTipoAsoc, alcance) VALUES (?,?,?,?,?,?,?,?)";
 
                 $stmt=$this->conexion->prepare($sql);
@@ -37,9 +38,9 @@
                         return false;
                     };
                 };
-                
+                $this->conexion->commit();
             }catch(PDOException $e){
-                echo $e->getMessage();
+                $this->conexion->rollBack();
                 return false;
             }
         }
@@ -63,7 +64,6 @@
                 return true;
 
             }catch(PDOException $e){
-                echo $e->getMessage();
                 return false;
             }   
         }

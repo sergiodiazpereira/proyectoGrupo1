@@ -64,28 +64,39 @@
 
             if($this->validaciones()){
 
-                if($this->modeloA->insertar()){
+                if($this->guardarImg()){
 
-                    if($this->guardarImg()){
+                    if($this->modeloA->insertar()){
 
-                        $this->vista="mensajeError.php";
+                        $this->vista="mensajeCorrecto.php";
                         return "Insercion exitosa";
                     }else{
+                        $rutaImagen = RUTAIMG.$_FILES["logo"]['name'];
+                        if(file_exists($rutaImagen)){
 
-                        $this->vista="mensajeError.php";
-                        return "Fallo al insertar la imagen";
-                    };
+                            if(unlink($rutaImagen)){
+
+                                $this->vista="mensajeIncorrecto.php";
+                                return "Fallo al insertar los datos";
+                            }else{
+                                $this->vista="mensajeIncorrecto.php";
+                                return "Fallo en la insercion y no se pudo borrar la imagen";
+                            }
+
+                        }else{
+                            $this->vista="mensajeIncorrecto.php";
+                            return "Imagen no encontrada";
+                        }
+                    }
                 }else{
-
-                    $this->vista="mensajeError.php";
-                    return "Fallo al insertar los datos";
-                };
+                    $this->vista="mensajeIncorrecto.php";
+                    return "Fallo al guardar la imagen";
+                }
             }else{
 
-                $this->vista="mensajeError.php";
+                $this->vista="mensajeIncorrecto.php";
                 return "Datos no validos";
             };
-        
         }
         /**
          * Summary of guardarImg
