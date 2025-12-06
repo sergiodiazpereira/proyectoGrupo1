@@ -50,6 +50,22 @@ export class ModeloJuego {
         this.intentosRealizados = []; 
         this.intentoActual = 1;
         this.alCambiarModelo = () => {}; 
+
+
+
+
+
+
+        /* DATOS DE LA BASE DE DATOS */
+        let finDePagina;
+
+
+        /* ------------------------------ RECOGE LA PAGINA ENVIADA POR PHP -------------------------- */  
+        async function obtenerDatos() {
+            const res = await fetch("index.php?c=Juego&m=obtenerPagina");
+            finDePagina = await res.json();
+        }
+        /* -------------------------------------------------------------------------------------------*/
     }
 
     iniciarCrono() {
@@ -70,7 +86,6 @@ export class ModeloJuego {
         //y el 0 es para darle un valor inicial
         const minutos = Math.floor(totalSegundos / 60).toString().padStart(2, '0'); 
         const segundos = (totalSegundos % 60).toString().padStart(2, '0');
-
         return `${minutos}:${segundos}`;
     }
 

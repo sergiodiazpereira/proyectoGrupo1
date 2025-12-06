@@ -5,7 +5,7 @@ export class VistaColeccion {
         this.menuDesplegable = document.getElementById('desplegable');
     }
     
-    enlazarMenuUsuario() {
+    enlazarMenuUsuario() { /* ... Lógica del menú ... */ 
         if (this.botonMenu && this.menuDesplegable) {
             this.botonMenu.addEventListener('click', () => {
                 this.menuDesplegable.classList.toggle('activo'); 

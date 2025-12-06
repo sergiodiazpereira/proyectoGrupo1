@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
+                                <img src="../../../src/img/bombilla.png">
                                 Cruz rojaajhdsvasjhdvuiysavdu
                             </td>
                             <td>
