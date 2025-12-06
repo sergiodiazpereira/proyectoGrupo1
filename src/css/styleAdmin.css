@@ -56,7 +56,6 @@
 
     .nav-admin{
         width: 25%;
-        max-width: 256px; /* el menú nunca sobrepasará los 256px */
         height: 100vh;
         float: left;
         position: fixed;
@@ -641,9 +640,9 @@
 
     /* Contenido principal */
     .asociacionContribucion main {
-    width: 71.09%; /* 728px/1024px */
+    width: 94.79%; /* 728px/768px */
     background-color: var(--blanco-fondo-main, #e6edff);
-    padding: 2.60vh 2.74%; /* vh> 20px/768px %> 20px/728px*/
+    padding: 2.60vh 2.60%; /* vh> 20px/768px %> 20px/768px*/
     }
 
     /* ================================================[ CONTRIBUCIONES ]======================================================== */
@@ -726,7 +725,7 @@
     /* Fila con grid */
     .fila {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* %> 338px/676px %> 338px/676px Prefiero usar 1 fr para ambas*/
+        grid-template-columns: 1fr 0.2fr; /* %> 338px/676px %> 338px/676px Prefiero usar 1 fr para ambas*/
         align-items: center;
         margin-bottom: 1.56vh; /* vh> 12px/768px */
     }
@@ -766,7 +765,7 @@
     /* Enlace del boton */
     a{
         text-decoration: none;
-        width: 11.83%; /* %> 40px/338px */
+        width: 100%; /* %> 338px/338px 0.2fr */
     }
 
     /* Botón eliminar */
@@ -887,8 +886,6 @@
     }
 
     /* Elementos internos del footer */
-    .modal-footer {
-
     .modal-footer {
 
     /* Botón cancelar */
@@ -1313,12 +1310,18 @@
         }
     }
     .header-admin{
-        width: 86.1%; /* 1351px */
+        width: 82%; /* 1351px */
         z-index: 2;
     }
     .query{
         box-sizing: border-box;
         width: 65%; /* 654px */
+    }
+    .nav-admin{
+        width: 256px;
+    }
+    .main-admin{
+        width: 77%;
     }
   }
 }
