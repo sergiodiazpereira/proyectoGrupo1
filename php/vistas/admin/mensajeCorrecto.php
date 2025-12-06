@@ -11,7 +11,7 @@
     </head>
     <body class="asociacionContribucion">
         <!-- Modal para decir que todo esta bien -->
-        <div id="modal-contribuciones" class="fondo">
+        <div id="modal-aceptarOno" class="fondo">
             <form action="./index.php" method="post" class="modal">
                 <div class="modal-header">
                     <h2><?php echo $datos ?></h2>
@@ -19,7 +19,9 @@
                         <a href="./index.php"><i class="fa-solid fa-xmark"></i></a>
                     </button>
                 </div>
-                <i class="fa-regular fa-circle-check"></i>
+                <div id="yes">
+                    <i  class="fa-regular fa-circle-check"></i>
+                </div>
                 <div class="modal-footer">
                     <!--Cambiar ruta del cancelar cuando se tenga el dashboard-->
                     <button class="aniadir"><a id="enlace-cancelar" href="index.php">Volver</a></button>

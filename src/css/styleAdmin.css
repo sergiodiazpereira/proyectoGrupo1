@@ -805,7 +805,33 @@
     justify-content: center;
     align-items: center;
     }
-
+    /* Icono cerrar */
+    .ico-cerrar {
+        background: transparent;
+        border: none;
+        font-size: 1.3rem;
+        cursor: hand;
+        color: #0b285b;
+    }
+    #modal-aceptarOno{
+        text-align: center;
+    }
+    #modal-aceptarOno{
+        .modal-header{
+            align-items: center;
+        }
+        #not{
+            display: block;
+            font-size: 50px;
+            color: red;
+        }
+        #yes{
+            display: block;
+            font-size: 50px;
+            color: rgb(93, 207, 89);
+        }
+        
+    }
     /* Ventana del modal */
     .modal {
     width: 43.94%; /* %> 450px/1024px */
