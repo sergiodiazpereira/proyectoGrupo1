@@ -5,14 +5,30 @@ class ServicioGanarPerder{
      */
     constructor(modelo){
         this.modelo = modelo;
+        this.datosAsociaciones = null;
+        this.asociacionCorrecta = null;
+    }
+
+
+
+    async inicializar() {
+        this.datosAsociaciones = await this.modelo.obtenerAsociacionesDelControladorPHP(); // espera a que los datos estén cargados
+        this.elegirAsociacionCorrecta();
+    }
+
+
+    elegirAsociacionCorrecta(){
+        const indiceAleatorio = Math.floor(Math.random() * this.datosAsociaciones.length);
+        this.asociacionCorrecta = this.datosAsociaciones[indiceAleatorio];
+        console.log(this.asociacionCorrecta);
     }
 
     /**
      * 
      * @returns {String} El nombre de la asociacion correcta
      */
-    mandarNombre(){
-        return this.modelo.obtenerNombreAsociacionCorrecta();
+    mandarNombreAsociacionCorrecta(){
+        return this.asociacionCorrecta.nombre;
     }
 
 

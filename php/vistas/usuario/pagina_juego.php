@@ -78,10 +78,10 @@
                 <h2>¡HAS GANADO!</h2>
                 <div class="fila-top">
                     <div class="indicador-box quitarBorde">
-                        <p id="texto-tiempo-derrota" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>
+                        <p id="texto-tiempo-victoria" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>
                         <p class="textoCentrado celda">La asociacion era:</p>
                         <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
-                        <p class="textoCentrado celda"><strong>Médicos Sin Fronteras</strong></p>
+                        <p id="victoriaAsociacionEra" class="textoCentrado celda"><strong>Médicos Sin Fronteras</strong></p>
                         <a href="./pagina_juego.php"><button id="jugar">Jugar de nuevo</button></a>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                         <p class="textoCentrado">Has agotado tus 10 intentos.</p>
                         <p class="textoCentrado">La asociacion era:</p>
                         <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
-                        <p class="textoCentrado"><strong>Médicos Sin Fronteras</strong></p>
+                        <p class="textoCentrado"><strong id="derrotaAsociacionEra">Médicos Sin Fronteras</strong></p>
                         <a href="./pagina_juego.php"><button id="jugar-derrota">Jugar de nuevo</button></a>
                     </div>
                 </div>

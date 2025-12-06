@@ -32,20 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         if (finDePagina == "usuario/pagina_juego.php") {
-            const modeloGanarPerder = new ModeloJuegoDinamico();
-            const modeloPistas = new ModeloJuegoDinamico();
+            const modeloJuego = new ModeloJuegoDinamico();
 
             // 1. Crear vista sin servicio
             const vistaInformacion = new VistaInformacion();
             const vistaPistas = new VistaPistas();
 
             // 2. Crear servicios
-            const servicioPistas = new ServicioPistas(vistaPistas, modeloPistas);
-            const servicioGanarPerder = new ServicioGanarPerder(modeloGanarPerder);
-
-            // 3. Crear vista con servicio
-            const vistaGanarPerder = new VistaGanarPerder(servicioGanarPerder);
-
+            const servicioPistas = new ServicioPistas(vistaPistas, modeloJuego);
+            (async () => {
+                const servicioGanarPerder = new ServicioGanarPerder(modeloJuego);
+                const vistaGanarPerder = new VistaGanarPerder(servicioGanarPerder);
+                await servicioGanarPerder.inicializar();
+            })();
 
 
 
@@ -53,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const modelo = new ModeloJuego();
             const vista = new VistaJuego(); 
             new ControladorJuego(modelo, vista);
+
         }
 
             
@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const vista = new VistaColeccion();
             new ControladorColeccion(modelo, vista);
         }
-    }
+    }            
+    
     obtenerPaginaDelControladorPHP();
+
 });
