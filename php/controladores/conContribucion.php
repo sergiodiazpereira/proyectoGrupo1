@@ -88,7 +88,7 @@
             return $datos;
         }
 
-         /**
+        /**
          * Procesa la modificación de una contribución.
          * 
          * Recoge:
