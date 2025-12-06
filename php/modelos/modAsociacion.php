@@ -33,12 +33,13 @@
                 if($stmt->execute()){
                     
                     if($this->insertarTablaMediaContri($this->conexion->lastInsertId())){
+                        $this->conexion->commit();
                         return true;
                     }else{
                         return false;
                     };
                 };
-                $this->conexion->commit();
+                
             }catch(PDOException $e){
                 $this->conexion->rollBack();
                 return false;
