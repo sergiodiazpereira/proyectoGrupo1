@@ -1,105 +1,78 @@
-CREATE DATABASE IF NOT EXISTS asociaciondle;
-
-USE asociaciondle;
--- Script SQL Asociaciondle
-
--- Tabla Usuario
 CREATE TABLE usuario(
-	idUsuario smallint unsigned PRIMARY KEY AUTO_INCREMENT,
-    nombre varchar(50) NOT NULL,
-    contrasenia varchar(50) NOT NULL,
-    permiso char(1) NOT NULL DEFAULT 'U',
-    correo varchar(100) NOT NULL UNIQUE,
-	fecha_registro date NOT NULL
+	idUsuario SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    contrasenia VARCHAR(50) NOT NULL,
+    permiso CHAR(1) NOT NULL DEFAULT 'U',
+    correo VARCHAR(100) NOT NULL UNIQUE,
+	fecha_registro DATE DEFAULT (CURRENT_DATE)
 );
 
--- Tabla Tipo-Asoc
 CREATE TABLE tipo_asoc(
-	idTipoAsoc smallint unsigned PRIMARY KEY AUTO_INCREMENT,
-    nombre varchar(40) NOT NULL UNIQUE
+	idTipoAsoc SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL UNIQUE
 );
 
--- Tabla Contribucion
 CREATE TABLE contribucion(
-	idContribucion smallint unsigned PRIMARY KEY AUTO_INCREMENT,
-    descripcion varchar(100) NOT NULL UNIQUE
+	idContribucion SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    descripcion VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Tabla Asociacion
 CREATE TABLE asociacion(
-	idAsoc smallint unsigned PRIMARY KEY AUTO_INCREMENT,
-    nombre varchar(50) NOT NULL UNIQUE,
-    fecha_fun date NOT NULL,
-    pista_facil varchar(120) NOT NULL,
-    pista_media varchar(120) NOT NULL,
-    pista_dificil varchar(120) NOT NULL,
-    imagen varchar(200) NOT NULL,
-    idTipoAsoc smallint unsigned,
-    alcance char(1) NOT NULL CHECK (alcance IN ('I','N','L')),
+	idAsoc SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    fecha_fun SMALLINT NOT NULL,
+    pista_facil VARCHAR(120) NOT NULL,
+    pista_media VARCHAR(120) NOT NULL,
+    pista_dificil VARCHAR(120) NOT NULL,
+    imagen VARCHAR(200) NOT NULL UNIQUE,
+    idTipoAsoc SMALLINT UNSIGNED,
+    alcance CHAR(1) NOT NULL CHECK (alcance IN ('I','N','L')),
     CONSTRAINT fk_tipo_asoc FOREIGN KEY (idTipoAsoc) REFERENCES tipo_asoc(idTipoAsoc)
 );
 
--- Tabla Asoc-Contribucion
 CREATE TABLE asoc_contribucion (
-    idAsoc smallint unsigned NOT NULL,
-    idContribucion smallint unsigned NOT NULL,
+    idAsoc SMALLINT UNSIGNED NOT NULL,
+    idContribucion SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idAsoc, idContribucion),
     CONSTRAINT fk_ac_asoc FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc),
     CONSTRAINT fk_ac_contri FOREIGN KEY (idContribucion) REFERENCES contribucion(idContribucion)
 );
 
--- Tabla Intento
 CREATE TABLE intento(
-	idIntento smallint unsigned PRIMARY KEY AUTO_INCREMENT,
-    tiempo_empleado time NOT NULL,
-    idUsuario smallint unsigned,
-    idAsoc smallint unsigned,
+	idIntento SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    tiempo_empleado TIME NOT NULL,
+    idUsuario SMALLINT UNSIGNED,
+    idAsoc SMALLINT UNSIGNED,
     CONSTRAINT fk_usuario FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
     CONSTRAINT fk_asoc_intento FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE CASCADE
 );
 
--- Inserciones de prueba en las tablas --
-
--- Inserción Tabla Usuario
-
--- Insertamos 4 filas de usuarios
-INSERT INTO usuario (nombre,contrasenia,permiso,correo) VALUES ("Pedro","pedro1234",DEFAULT,"pedro@gmail.com"),
+-- Insertar Usuarios
+INSERT INTO usuario (nombre,contrasenia,permiso,correo) VALUES
+("Pedro","pedro1234",DEFAULT,"pedro@gmail.com"),
 ("Juan","juan1234",DEFAULT,"juan@gmail.com"),
 ("Marta","marta1234",DEFAULT,"marta@gmail.com"),
-("Aitana","aitana1234",DEFAULT,"aitana@gmail.com");
-
--- Insertamos 2 filas de administrador
-INSERT INTO usuario (nombre,contrasenia,permiso,correo) VALUES ("Kiko","kiko5678","A","kiko@gmail.com"),
+("Aitana","aitana1234",DEFAULT,"aitana@gmail.com"),
+("Kiko","kiko5678","A","kiko@gmail.com"),
 ("Sergio","sergio5678","A","sergio@gmail.com");
 
+-- Insertar Tipos de Asociación
+INSERT INTO tipo_asoc (nombre) VALUES
+("Jóvenes"),("Discapacitados"),("Personas");
 
--- Inserción Tabla Tipo-Asoc
+-- Insertar Contribuciones
+INSERT INTO contribucion (descripcion) VALUES
+("Educación"),
+("Protección Infantil"),
+("Inclusión"),
+("Formación");
 
--- Insertamos 3 filas de los tipos (Jóvenes, Discapacitados y Personas)
-INSERT INTO tipo_asoc (nombre) VALUES ("Jóvenes"),
-("Discapacitados"),
-("Personas");
+-- Insertar Asociaciones (orden corregido)
+INSERT INTO asociacion (nombre, fecha_fun, pista_facil, pista_media, pista_dificil, imagen, idTipoAsoc, alcance) VALUES
+("Cruz Roja", 1938, "Va dirigida a Jóvenes", "Es una asociación Nacional", "Se fundó en el año 1938", "https://www.ejemplo.com/imagenes/cruz_roja.jpg", 1, 'I'),
 
--- Inserción Tabla Contribución
+("Fundación Loyola", 1948, "Va dirigida a Jóvenes", "Es una asociación Internacional", "Se fundó en el año 1948", "https://www.ejemplo.com/imagenes/fundacion.jpg", 2, 'N'),
 
--- Insertamos 4 filas de contribuciones
-INSERT INTO contribucion (descripcion) VALUES ("Eduación, Salud"),
-("Eduación, Protección Infantil, Salud"),
-("Inclusión, Autonomía"),
-("Eduación, Formación");
+("Unicef", 2002, "Va dirigida a Personas", "Es una asociación Internacional", "Se fundó en el año 2002", "https://www.ejemplo.com/imagenes/unicef.jpg", 3, 'N'),
 
-
--- Inserción Tabla Asociación
-
--- Insertamos 4 filas de asociaciones
-INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Cruz Roja", '1938-11-27',"Se fundó en el año 1938", "Es una asociación Nacional", "Va dirigida a Jóvenes","https://www.ejemplo.com/imagenes/cruz_roja.jpg",1,'I');
-
-INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Fundación Loyola", '1948-11-27',"Se fundó en el año 1948", "Es una asociación Internacional", "Va dirigida a Jóvenes","https://www.ejemplo.com/imagenes/fundacion.jpg",2,'N');
-
-INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Unicef", '2002-08-10',"Se fundó en el año 2002", "Es una asociación Internacional", "Va dirigida a Personas","https://www.ejemplo.com/imagenes/unicef.jpg",3,'N');
-
-INSERT INTO asociacion (nombre, fecha_fun, pista_dificil, pista_media, pista_facil, imagen, idTipoAsoc, alcance)
-VALUES ("Fundación Once", '2000-10-14',"Se fundó en el año 2000", "Es una asociación Local", "Va dirigida a Discapacitados","https://www.ejemplo.com/imagenes/fundacion_once.jpg",2,'L');
+("Fundación Once", 2000, "Va dirigida a Discapacitados", "Es una asociación Local", "Se fundó en el año 2000", "https://www.ejemplo.com/imagenes/fundacion_once.jpg", 2, 'L');
