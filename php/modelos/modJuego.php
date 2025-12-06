@@ -10,12 +10,17 @@
             
         }
         
-        public function obtenerContribuciones(){
-            $sql="SELECT * FROM contribucion;";
-            $stmt=$this->conexion->prepare($sql);
-            $stmt->execute();
-            $datos=$stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $datos;
+        public function datosAsociaciones(){
+            $sql = "SELECT idAsoc, asociacion.nombre, fecha_fun, pista_facil, pista_media, pista_dificil, imagen, tipo_asoc.nombre as nombre_tipo, alcance 
+                    FROM asociacion
+                    INNER JOIN tipo_asoc
+                    ON asociacion.idTipoAsoc = tipo_asoc.idTipoAsoc
+                    ORDER BY asociacion.nombre ASC";
+            
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute();
+
+            return $consulta->fetchAll(); // Formato objeto por defecto
         }
     }
 ?>

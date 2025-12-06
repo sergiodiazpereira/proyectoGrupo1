@@ -12,7 +12,7 @@ class ServicioGanarPerder{
      * @returns {String} El nombre de la asociacion correcta
      */
     mandarNombre(){
-        return this.modelo.asociacionObjetivo.nombre;
+        return this.modelo.obtenerNombreAsociacionCorrecta();
     }
 
 

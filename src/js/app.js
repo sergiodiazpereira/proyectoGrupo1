@@ -4,6 +4,7 @@ import VistaGanarPerder from "./vistas/vistaGanarPerder.js";
 import VistaInformacion from "./vistas/vistaInformacion.js";
 import VistaMenu from "./vistas/vistaMenu.js";
 import VistaPistas from "./vistas/vistaPistas.js";
+import ModeloJuegoDinamico from "./modelos/modeloJuegoDinamico.js";
 
 
 import { ModeloJuego } from './modelos/modeloJuego.js';
@@ -24,16 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ------------------------------ RECOGE LA PAGINA ENVIADA POR PHP -------------------------- */  
-    async function cargarPagina() {
+    async function obtenerPaginaDelControladorPHP() {
         const res = await fetch("index.php?c=Juego&m=obtenerPagina");
         finDePagina = await res.json();
-        console.log("Ya está cargado:", finDePagina);
     /* -------------------------------------------------------------------------------------------*/
 
 
         if (finDePagina == "usuario/pagina_juego.php") {
-            const modeloGanarPerder = new ModeloJuego();
-            const modeloPistas = new ModeloJuego();
+            const modeloGanarPerder = new ModeloJuegoDinamico();
+            const modeloPistas = new ModeloJuegoDinamico();
 
             // 1. Crear vista sin servicio
             const vistaInformacion = new VistaInformacion();
@@ -62,5 +62,5 @@ document.addEventListener('DOMContentLoaded', () => {
             new ControladorColeccion(modelo, vista);
         }
     }
-    cargarPagina();
+    obtenerPaginaDelControladorPHP();
 });

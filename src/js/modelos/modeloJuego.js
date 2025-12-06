@@ -50,6 +50,22 @@ export class ModeloJuego {
         this.intentosRealizados = []; 
         this.intentoActual = 1;
         this.alCambiarModelo = () => {}; 
+
+
+
+
+
+
+        /* DATOS DE LA BASE DE DATOS */
+        let finDePagina;
+
+
+        /* ------------------------------ RECOGE LA PAGINA ENVIADA POR PHP -------------------------- */  
+        async function obtenerDatos() {
+            const res = await fetch("index.php?c=Juego&m=obtenerPagina");
+            finDePagina = await res.json();
+        }
+        /* -------------------------------------------------------------------------------------------*/
     }
 
     iniciarCrono() {

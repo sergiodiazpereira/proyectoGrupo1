@@ -138,11 +138,11 @@
             <h4 class="gris"><span id="contador-intentos">Intento 0 de 10</span></h4>
             <select id="select-asociacion" name="opcion-usuario">
                 <option value="" disabled selected>Introduce una Asociación</option>
-                <option value="Fundación Loyola">Fundación Loyola</option>
-                <option value="Cáritas">Cáritas</option>
-                <option value="Cruz Roja">Cruz Roja</option>
-                <option value="Unicef">Unicef</option>
-                <option value="Médicos Sin Fronteras">Médicos Sin Fronteras</option>
+                <?php
+                    foreach ($datos as $nombreAsociacion) {
+                        echo '<option value="'.$nombreAsociacion.'">'.$nombreAsociacion.'</option>';
+                    }
+                ?>
             </select>
             <div id="contenedor-encabezados">
                 <div class="encabezado textoCentrado">Asociación</div>
