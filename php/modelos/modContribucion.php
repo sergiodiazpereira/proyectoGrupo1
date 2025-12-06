@@ -7,15 +7,51 @@
             parent::__construct();    
         }
 
+        /**
+         * Lista todas las contribuciones.
+         * 
+         * @return array
+         */
         public function listar(){
             $sql = "SELECT * FROM contribucion ORDER BY descripcion";
             $stmt = $this->conexion->prepare($sql);
 
             $stmt->execute();
             
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datos;
         }
 
+        /**
+         * Lista las contribuciones asociadas a una asociación.
+         *
+         * Recoge:
+         *  - GET['idAsoc']
+         *
+         * @return array IDs de contribuciones
+         */
+        public function listarContribucionesAsociacion() {
+            $idAsoc = $_GET['idAsoc'];
+
+            $sql = "SELECT idContribucion FROM asoc_contribucion WHERE idAsoc = :id";
+            $stmt = $this->conexion->prepare($sql);
+
+            $stmt->bindParam(":id", $idAsoc);
+
+            $stmt->execute();
+
+            $datos = array_column($stmt->fetchAll(PDO::FETCH_ASSOC), "idContribucion");
+            return $datos;
+        }
+
+        /**
+         * Obtiene una contribución por su ID.
+         *
+         * Recoge:
+         *  - GET['idContribucion']
+         *
+         * @return array
+         */
         public function obtenerPorId(){
             $idContribucion = $_GET['idContribucion'];
 
@@ -29,10 +65,22 @@
             return $datos;
         }
 
+        /**
+         * Inserta una contribución.
+         * 
+         */
         public function insertar(){
         
         }
 
+        /**
+         * Modifica varias contribuciones a la vez.
+         *
+         * Recoge POST:
+         *  - descripcion[id] = texto nuevo
+         *
+         * @return bool true si la modificacion fue exitosa.
+         */
         public function modificar(){
 
             try {
@@ -47,12 +95,21 @@
                     $stmt->execute();
                 }
 
+                return true;
             } catch (Exception $e) {
                 return false;
             }
 
         }
 
+        /**
+         * Borra una contribución y sus relaciones.
+         *
+         * Recoge:
+         *  - GET['idContribucion']
+         *
+         * @return bool true si el borrado fue realizado con exito.
+         */
         public function borrar(){
 
             try {

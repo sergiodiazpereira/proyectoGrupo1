@@ -12,11 +12,11 @@
 </head>
 
 <body>
-    <!-- Modal para mensajes de error -->
+    <!-- Modal para mensajes informativos sobre operaciones -->
     <div id="modal-contribuciones" class="fondo">
         <div class="modal">
             <div class="modal-header">
-                <h2>Error</h2>
+                <h2>Información</h2>
                 <button class="ico-cerrar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
