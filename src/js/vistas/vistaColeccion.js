@@ -1,31 +1,6 @@
 export class VistaColeccion {
     constructor() {
         this.contenedorGrid = document.getElementById('gridColec');
-        this.botonMenu = document.getElementById('usuario');
-        this.menuDesplegable = document.getElementById('desplegable');
-    }
-    
-    enlazarMenuUsuario() { /* ... Lógica del menú ... */ 
-        if (this.botonMenu && this.menuDesplegable) {
-            this.botonMenu.addEventListener('click', () => {
-                this.menuDesplegable.classList.toggle('activo'); 
-            });
-        }
-        
-        if (this.btnLogin && manejadorLogin) {
-            this.btnLogin.addEventListener('click', (e) => {
-                this.menuDesplegable.classList.remove('activo');
-                manejadorLogin();
-            });
-        }
-        
-        if (this.btnLogout && manejadorLogout) {
-            this.btnLogout.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.menuDesplegable.classList.remove('activo'); 
-                manejadorLogout();
-            });
-        }
     }
 
     renderizarColeccion(datosColeccion) {
@@ -37,31 +12,31 @@ export class VistaColeccion {
             const caja = document.createElement('div');
             caja.className = 'cajaAsoc';
             
-            const claseIconoCandado = item.estaBloqueada ? 'fa-solid fa-lock' : 'fa-solid fa-lock-open';
+            // Lógica Visual Simple:
+            // Si está bloqueada -> Candado cerrado y borroso
+            // Si está desbloqueada -> Candado abierto y se ve bien
             
-            const estiloDifuminado = item.estaBloqueada ? 'filter: blur(5px); pointer-events: none;' : 'filter: none;';
-            const contenidoDatos = item.estaBloqueada ? 'Datos ocultos' : `
-                <p>Fundación: ${item.datos.fundacion}</p>
+            const icono = item.estaBloqueada ? 'fa-lock' : 'fa-lock-open';
+            const estiloBlur = item.estaBloqueada ? 'filter: blur(5px); pointer-events: none;' : '';
+            
+            // Contenido de los datos (oculto si está bloqueado)
+            const infoTexto = item.estaBloqueada 
+                ? '<p>???</p><p>???</p>' 
+                : `<p>Fundación: ${item.datos.fundacion}</p>
                 <p>Alcance: ${item.datos.alcance}</p>
-            `;
+                <p>Tipo: ${item.datos.tipo}</p>`;
 
             caja.innerHTML = `
                 <div id="imgAsoc">
-                    <img src="/src/img/logo_sin_fondo.png"> 
+                    <img src="${item.imagen || '/src/img/logo_sin_fondo.png'}" style="${estiloBlur}">
                     <h3>${item.nombre}</h3>
-                    <i class="${claseIconoCandado}"></i> 
+                    <i class="fa-solid ${icono}"></i>
                 </div>
-                <div style="${estiloDifuminado}" id="datosColec">
-                    ${contenidoDatos}
+                <div id="datosColec" style="${estiloBlur}">
+                    ${infoTexto}
                 </div>
             `;
             this.contenedorGrid.appendChild(caja);
         });
-    }
-    
-    mostrarError(mensaje) {
-        if (this.contenedorGrid) {
-            this.contenedorGrid.innerHTML = `<p style="color: red;">${mensaje}</p>`;
-        }
     }
 }

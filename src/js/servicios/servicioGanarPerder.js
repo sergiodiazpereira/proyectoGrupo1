@@ -3,19 +3,28 @@ class ServicioGanarPerder{
      * 
      * @param {ModeloJuego} modelo - Modelo que trae y envia todos los datos a backend para que la pantalla de juego funcione
      */
-    constructor(modelo){
+    constructor(modelo) {
         this.modelo = modelo;
-        this.datosAsociaciones = null;
+        this.datosAsociaciones = [];
         this.asociacionCorrecta = null;
     }
 
-
-
     async inicializar() {
-        this.datosAsociaciones = await this.modelo.obtenerAsociacionesDelControladorPHP(); // espera a que los datos estén cargados
-        this.elegirAsociacionCorrecta();
-    }
+        // 1. Pedimos los datos al PHP
+        const datos = await this.modelo.obtenerAsociacionesDelControladorPHP();
+        
+        // 2. Guardamos los datos en la propiedad de la clase
+        // Si datos es null, guardamos array vacío
+        this.datosAsociaciones = datos || [];
+        
+        console.log("Servicio: Datos recibidos:", this.datosAsociaciones);
 
+        // 3. Elegimos la correcta al azar
+        if (this.datosAsociaciones.length > 0) {
+            const randomIndex = Math.floor(Math.random() * this.datosAsociaciones.length);
+            this.asociacionCorrecta = this.datosAsociaciones[randomIndex];
+        }
+    }
 
     elegirAsociacionCorrecta(){
         const indiceAleatorio = Math.floor(Math.random() * this.datosAsociaciones.length);
