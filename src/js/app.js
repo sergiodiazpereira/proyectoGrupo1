@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function obtenerPaginaDelControladorPHP() {
         try { 
             // 1. Preguntamos al PHP qué página cargar
-            const res = await fetch("index.php?c=Juego&m=obtenerPagina");
+            const res = await fetch("../../index.php?c=Juego&m=obtenerPagina");
             if (!res.ok) throw new Error("Error en la red al obtener la página"); 
             
             finDePagina = await res.json();
@@ -34,43 +34,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 const modeloJuegoDinamico = new ModeloJuegoDinamico();
                 const servicioGanarPerder = new ServicioGanarPerder(modeloJuegoDinamico);
                 
-                // Esperamos a que la BD devuelva los datos
                 await servicioGanarPerder.inicializar();
                 
-                // Recuperamos los datos del servicio
                 const asociacionCorrectaBD = servicioGanarPerder.asociacionCorrecta;
                 const listaTodasAsociacionesBD = servicioGanarPerder.datosAsociaciones;
 
-                // Debug: Muestra en la consola qué está llegando exactamente
-                console.log("Datos recibidos para el desplegable:", listaTodasAsociacionesBD);
+                console.log("Datos para el select:", listaTodasAsociacionesBD); // Para confirmar
 
-                // B. INICIALIZACIÓN DEL SELECT (CHOICES.JS)
+                // B. INICIALIZACIÓN DEL SELECT
                 const elementoSelect = document.getElementById('select-asociacion');
                 
                 if (elementoSelect && listaTodasAsociacionesBD) {
-                    // 1. Configuramos Choices
+                    
+                    // PASO 1: Preparamos los datos ANTES de crear el desplegable
+                    const opcionesParaChoices = listaTodasAsociacionesBD.map(item => {
+                        return { 
+                            value: item.nombre, 
+                            label: item.nombre,
+                            selected: false,
+                            disabled: false
+                        };
+                    });
+
+                    // Verificamos en consola que la lista esté perfecta
+                    console.log("Lista preparada para Choices:", opcionesParaChoices);
+
+                    // PASO 2: Creamos el desplegable pasándole los datos directamente (más seguro)
                     const choices = new Choices(elementoSelect, {
+                        choices: opcionesParaChoices, // <--- AQUÍ METEMOS LOS DATOS
                         searchEnabled: true,
                         itemSelectText: '',
-                        shouldSort: false, 
+                        shouldSort: false,
                         searchPlaceholderValue: 'Buscar...',
+                        removeItemButton: true,
+                        placeholder: true,
+                        placeholderValue: 'Introduce una Asociación'
                     });
-
-                    // 2. Preparamos los datos (Mapeo Inteligente)
-                    // Esto detecta si llega un objeto {nombre: "X"} o un string "X"
-                    const opcionesParaChoices = listaTodasAsociacionesBD.map(item => {
-                        let textoAmostrar = item;
-                        
-                        // Si el item es un objeto, intentamos sacar el nombre
-                        if (typeof item === 'object' && item !== null) {
-                            textoAmostrar = item.nombre || item.Nombre || Object.values(item)[0];
-                        }
-
-                        return { value: textoAmostrar, label: textoAmostrar };
-                    });
-
-                    // 3. Inyectamos los datos en el HTML
-                    choices.setChoices(opcionesParaChoices, 'value', 'label', true);
                 }
 
                 // C. INICIALIZACIÓN DE VISTAS AUXILIARES
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const vistaGanarPerder = new VistaGanarPerder(servicioGanarPerder);
                 const vistaPistas = new VistaPistas(servicioGanarPerder);
 
-                // D. INICIALIZACIÓN DEL JUEGO PRINCIPAL (Lógica de Rafa)
+                // D. INICIALIZACIÓN DEL JUEGO PRINCIPAL
                 const modelo = new ModeloJuego(asociacionCorrectaBD, listaTodasAsociacionesBD);
                 const vista = new VistaJuego(); 
                 new ControladorJuego(modelo, vista);

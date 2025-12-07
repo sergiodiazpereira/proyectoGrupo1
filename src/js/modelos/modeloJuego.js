@@ -1,9 +1,4 @@
 export class ModeloJuego {
-    
-    /**
-     * @param {Object} asociacionObjetivo - El objeto de la asociación correcta traído de PHP
-     * @param {Array} listaMaestra - El array de todas las asociaciones traído de PHP
-     */
     constructor(asociacionObjetivo, listaMaestra) {
         
         // 1. Convertimos los datos de la BD al formato que usa tu lógica de JS
@@ -25,26 +20,22 @@ export class ModeloJuego {
         this.alCambiarModelo = () => {}; 
     }
 
-    /**
-     * TRADUCTOR: Convierte las columnas de SQL a tus variables de JS
-     */
     _mapearDatosBD(datoBD) {
         return {
             // Ajusta 'datoBD.nombre_columna' según venga exactamente en el JSON de PHP
             nombre: datoBD.nombre, 
             
             // Asumiendo que 'dirigidoA' viene en 'pista_facil' o 'nombre_tipo'
-            // CAMBIA ESTO si la columna se llama diferente en el JSON
             dirigidoA: datoBD.pista_facil || datoBD.nombre_tipo || "General", 
             
             // Convertimos la fecha 'YYYY-MM-DD' a solo el año (número)
-            anioFundacion: datoBD.fecha_fun ? new Date(datoBD.fecha_fun).getFullYear() : 0, 
+            anioFundacion: datoBD.fecha_fun,
             
             // Mapeo directo de 'alcance' (SQL) a 'alcanceGeografico' (JS)
             alcanceGeografico: datoBD.alcance, 
             
             // Si PHP no manda array de contribuciones, ponemos vacío para evitar error
-            contribuciones: datoBD.contribuciones || [] 
+            contribuciones: datoBD.descripcion ? datoBD.descripcion.split(',') : [],
         };
     }
 
