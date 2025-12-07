@@ -1,7 +1,7 @@
 -- Script SQL Asociaciondle
 CREATE DATABASE asociaciondle;
 -- Tabla Usuario
-SELECT DATABASE asociaciondle;
+USE asociaciondle;
 
 CREATE TABLE usuario(
 	idUsuario smallint unsigned PRIMARY KEY AUTO_INCREMENT,

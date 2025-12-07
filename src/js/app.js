@@ -22,56 +22,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const vistaMenu = new VistaMenu();
     let finDePagina;
 
-
-    /* ------------------------------ RECOGE LA PAGINA ENVIADA POR PHP -------------------------- */  
     async function obtenerPaginaDelControladorPHP() {
-        const res = await fetch("index.php?c=Juego&m=obtenerPagina");
-        finDePagina = await res.json();
-    /* -------------------------------------------------------------------------------------------*/
+        try { // <--- Añadido bloque try
+            const res = await fetch("index.php?c=Juego&m=obtenerPagina");
+            if (!res.ok) throw new Error("Error en la red"); // <--- Protección extra
+            
+            finDePagina = await res.json();
 
+            // LÓGICA PARA LA PÁGINA DE JUEGO
+            if (finDePagina === "usuario/pagina_juego.php") { // <--- Usando ===
+                
+                // 1. CARGA DE DATOS 
+                const modeloJuegoDinamico = new ModeloJuegoDinamico();
+                const servicioGanarPerder = new ServicioGanarPerder(modeloJuegoDinamico);
+                
+                // Aquí podrías poner un "Cargando..." en pantalla si tarda mucho
+                await servicioGanarPerder.inicializar();
+                
+                const asociacionCorrectaBD = servicioGanarPerder.asociacionCorrecta;
+                const listaTodasAsociacionesBD = servicioGanarPerder.datosAsociaciones;
 
-        if (finDePagina == "usuario/pagina_juego.php") {
-            const modeloJuego = new ModeloJuegoDinamico();
-
-            // 1. Crear vista sin servicio
-            const vistaInformacion = new VistaInformacion();
-
-            (async () => {
-                const servicioGanarPerder = new ServicioGanarPerder(modeloJuego);
+                // 2. VISTAS AUXILIARES
+                const vistaInformacion = new VistaInformacion();
                 const vistaGanarPerder = new VistaGanarPerder(servicioGanarPerder);
                 const vistaPistas = new VistaPistas(servicioGanarPerder);
-                await servicioGanarPerder.inicializar();
-            })();
 
+                // 3. JUEGO PRINCIPAL
+                const modelo = new ModeloJuego(asociacionCorrectaBD, listaTodasAsociacionesBD);
+                const vista = new VistaJuego(); 
+                new ControladorJuego(modelo, vista);
+            }
 
+            // OTRAS PÁGINAS
+            if (finDePagina === 'usuario/colecciones.php') {
+                const modelo = new ModeloColeccion();
+                const vista = new VistaColeccion();
+                new ControladorColeccion(modelo, vista);
+            }
 
-            // PARTE DE RAFA
-            const modelo = new ModeloJuego();
-            const vista = new VistaJuego(); 
-            new ControladorJuego(modelo, vista);
-        }
+            if (finDePagina === 'usuario/cambio.php') { /* ... */ }
 
-         
-        
-        if (finDePagina === 'usuario/colecciones.php') {
-            const modelo = new ModeloColeccion();
-            const vista = new VistaColeccion();
-            new ControladorColeccion(modelo, vista);
-        }
+            if (finDePagina === 'usuario/ranking.php') { /* ... */ }
 
-
-
-        if (finDePagina === 'usuario/cambio.php') {
-            /* metodos para la pagina cambio */
-        }
-
-
-
-        if (finDePagina === 'usuario/ranking.php') {
-            /* metodos para la pagina ranking */
+        } catch (error) {
+            console.error("Hubo un problema cargando la página:", error);
         }
     }            
     
     obtenerPaginaDelControladorPHP();
-
 });
