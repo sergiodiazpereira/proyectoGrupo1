@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
-        <link rel="stylesheet" href="../../../src/css/styleUsuario.css">
+        <link rel="stylesheet" href="../src/css/styleUsuario.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <title>Mockup Jugando Partida</title>
     </head>
@@ -81,7 +81,7 @@
                     <div class="indicador-box quitarBorde">
                         <p id="texto-tiempo-victoria" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>
                         <p class="textoCentrado celda">La asociacion era:</p>
-                        <img src="../../../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
                         <p id="victoriaAsociacionEra" class="textoCentrado celda"><strong>Médicos Sin Fronteras</strong></p>
                         <a href="./pagina_juego.php"><button id="jugar">Jugar de nuevo</button></a>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="indicador-box quitarBorde celda">
                         <p class="textoCentrado">Has agotado tus 10 intentos.</p>
                         <p class="textoCentrado">La asociacion era:</p>
-                        <img src="../../../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
                         <p class="textoCentrado"><strong id="derrotaAsociacionEra">Médicos Sin Fronteras</strong></p>
                         <a href="./pagina_juego.php"><button id="jugar-derrota">Jugar de nuevo</button></a>
                     </div>
@@ -110,8 +110,8 @@
 
 
         <header class="header_rafa">
-	        <span>Asociaciondle</span>
-	        <button id="usuario"><i id="icono-boton-usuario" class="fa-solid fa-user"></i></button>
+            <span>Asociaciondle</span>
+            <button id="usuario"><i id="icono-boton-usuario" class="fa-solid fa-user"></i></button>
         </header>
         <div id="desplegable">
             <ul>
@@ -139,6 +139,11 @@
             <h4 class="gris"><span id="contador-intentos">Intento 0 de 10</span></h4>
             <select id="select-asociacion" name="opcion-usuario">
                 <option value="" disabled selected>Introduce una Asociación</option>
+                <?php
+                    foreach ($datos as $nombreAsociacion) {
+                        echo '<option value="'.$nombreAsociacion.'">'.$nombreAsociacion.'</option>';
+                    }
+                ?>
             </select>
             <div id="contenedor-encabezados">
                 <div class="encabezado textoCentrado">Asociación</div>
@@ -161,7 +166,16 @@
                 <div class="celda amarillo textoCentrado">Salud, Educación</div>
             </div>
         </main>
-        <script type="module" src="../../../src/js/app.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+        <script type="module" src="../src/js/app.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+<script>
+  const asociacionesSelect = new Choices('#select-asociacion', {
+    searchEnabled: true,      // permite escribir para buscar
+    itemSelectText: '',       // quita el texto "Press to select"
+    shouldSort: false,        // mantiene el orden original
+    searchPlaceholderValue: 'Buscar...', 
+  });
+</script>
     </body>
 </html>

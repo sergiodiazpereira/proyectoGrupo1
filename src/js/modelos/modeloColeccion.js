@@ -9,7 +9,6 @@ export class ModeloColeccion {
     async obtenerColeccion() {
         try {
             // 1. Petición al Backend (Asegúrate de tener este controlador en PHP)
-            // Si aún no tienes el PHP hecho, comenta estas líneas y descomenta la parte "SIMULACIÓN" de abajo.
             const respuesta = await fetch("index.php?c=Coleccion&m=obtenerColeccionUsuario");
             
             // Si la respuesta no es OK, lanzamos error

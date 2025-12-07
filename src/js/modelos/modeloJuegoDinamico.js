@@ -6,7 +6,7 @@ class ModeloJuegoDinamico {
     async obtenerAsociacionesDelControladorPHP() {
         try {
             // 1. La ruta con ../../ es la CLAVE para que funcione
-            const res = await fetch("../../index.php?c=Juego&m=obtenerDatosAsociaciones");
+            const res = await fetch("index.php?c=Juego&m=obtenerDatosAsociaciones");
 
             // 2. Protección: Si el servidor da error (ej: 500 o 404), lanzamos aviso
             if (!res.ok) {
