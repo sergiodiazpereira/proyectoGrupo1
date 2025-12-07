@@ -35,7 +35,7 @@ export class ModeloJuego {
             alcanceGeografico: datoBD.alcance, 
             
             // Si PHP no manda array de contribuciones, ponemos vacío para evitar error
-            contribuciones: datoBD.descripcion ? datoBD.descripcion.split(',') : [],
+            contribuciones: datoBD.descripcion,
         };
     }
 
