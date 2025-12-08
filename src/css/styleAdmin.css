@@ -512,6 +512,7 @@
             background-color: var(--colorFondoFormulario);
             border-radius: var(--bordeRadius); 
             color: var(--colorLabel);
+            cursor: pointer;
         }
         #ulCerrar{
             padding: 0 10px;

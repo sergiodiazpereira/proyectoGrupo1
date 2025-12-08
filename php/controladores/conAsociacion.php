@@ -98,7 +98,7 @@ class ConAsociacion {
                             // Mostramos la vista informativa
                             $this->vista="admin/mensajeCorrectoAsoc.php";
                             // Retornamos el mensaje a la vista
-                            return "Modificacion exitosa";
+                            return "Modificación exitosa";
                         }else{
                             // Mostramos la vista informativa
                             $this->vista="admin/mensajeIncorrectoAsoc.php";
@@ -115,7 +115,7 @@ class ConAsociacion {
                     // Mostramos la vista informativa
                     $this->vista="admin/mensajeCorrectoAsoc.php";
                     // Retornamos el mensaje a la vista
-                    return "Modificacion exitosa";
+                    return "Modificación exitosa";
                 }
                 
             }else{

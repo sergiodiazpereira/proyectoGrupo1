@@ -98,7 +98,7 @@
 
             if(!$this->validacionArray()){
                 $this->vista="admin/mensajeIncorrecto.php";
-                return "Alguna contribución es incorrecta";
+                return "Alguna contribución está vacia o tiene algún número";
             } else {
                 // Actualizamos los datos en la base de datos
                 $this->modeloCont->modificar();
@@ -116,16 +116,16 @@
         public function insertar(){
             if(!$this->validaciones()){
                 $this->vista="admin/mensajeIncorrecto.php";
-                return "Contribucion vacia o la contribucion tiene algun número";
+                return "Contribución vacia o la contribución tiene algun número";
             }else{
                 if($this->modeloCont->insertar()){
                     
                     $this->vista="admin/mensajeCorrecto.php";
-                    return "Constribucion guardada con exito";
+                    return "Constribución guardada con exito";
 
                 }else{
                     $this->vista="admin/mensajeIncorrecto.php";
-                    return "Fallo al guardar la contribucion";
+                    return "Fallo al guardar la contribución";
                 };
             };
         }
