@@ -40,6 +40,10 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.nombre;
     }
 
+    mandarImagenAsociacionCorrecta(){
+        return this.asociacionCorrecta.imagen;
+    }
+
     mandarPistaDificilAsociacionCorrecta(){
         return this.asociacionCorrecta.pista_dificil;
     }

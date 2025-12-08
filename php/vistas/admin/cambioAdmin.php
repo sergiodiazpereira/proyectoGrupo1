@@ -18,14 +18,14 @@
         <nav id="navAdmin">
             <ul>
                 <p>Menú Principal</p>
-                <li><a href="./dashboard.html"><button><i class="fa-solid fa-chart-line"></i>Dashboard</button></a></li>
+                <li><a href="index.php?c=Dashboard&m=cargarPagina"><button><i class="fa-solid fa-chart-line"></i>Dashboard</button></a></li>
                 <li><a href="index.php?c=Asociacion&m=listar"><button><i class="fa-regular fa-building"></i>Asociaciones</button></a></li>
-                <li><a href="./listarUsuarios.html"><button><i class="fa-solid fa-users"></i>Usuarios</button></a></li>
+                <li><a href="index.php?c=Usuarios&m=cargarPagina"><button><i class="fa-solid fa-users"></i>Usuarios</button></a></li>
                 <li><a href="index.php?c=Contribucion&m=listar"><button><i class="fa-solid fa-hand-holding-heart"></i></i>Contribuciones</button></a></li>
             </ul>
             <ul id="ulCerrar">
-                <li ><a href="cambioAdmin.html"><button id="pestaña"><i class="fa-solid fa-key"></i>Cambiar Contraseña</button></a></li>
-                <li><a href="../usuario/login.html"><button><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</button></a></li>
+                <li ><a href="index.php?c=CambioAdmin&m=cargarPagina"><button id="pestaña"><i class="fa-solid fa-key"></i>Cambiar Contraseña</button></a></li>
+                <li><a href="index.php?c=Dashboard&m=cargarPagina"><button><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</button></a></li>
             </ul>
         </nav>
         <div id="contenedorLogin">

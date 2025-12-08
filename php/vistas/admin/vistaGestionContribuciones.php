@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Contribuciones</title>
-        <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+        <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
             <h3>Menú Principal</h3>
             <ul>
                 <li>
-                    <a href="./dashboard.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-chart-line"></i>
                             <span>Dashboard</span>
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarUsuarios.html">
+                    <a href="index.php?c=Usuarios&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-users"></i>
                             <span>Usuarios</span>
@@ -52,7 +52,7 @@
             </ul>
             <ul class="ul-inferior">
                 <li>
-                    <a href="./cambioAdmin.html">
+                    <a href="index.php?c=CambioAdmin&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-key"></i>
                             <span>Cambiar contraseña</span>
@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../usuario/login.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             <span>Cerrar sesión</span>

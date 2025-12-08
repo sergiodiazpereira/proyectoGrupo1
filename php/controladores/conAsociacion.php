@@ -23,7 +23,7 @@ class ConAsociacion {
         $datos = $this->modeloAsoc->listar();
 
         // Indicamos la vista
-        $this->vista = "listarAsociaciones.php";
+        $this->vista = "admin/listarAsociaciones.php";
 
         // Retornamos los datos
         return $datos;
@@ -51,7 +51,7 @@ class ConAsociacion {
         $contribucionesAsoc = $this->modeloCont->listarContribucionesAsociacion();
 
         // Establecemos la vista y devolvemos el array de datos
-        $this->vista = "vistaModificarAsociacion.php";
+        $this->vista = "admin/vistaModificarAsociacion.php";
 
         // Aplano el array antes de devolverlo
         $datos = array_merge(
@@ -79,7 +79,7 @@ class ConAsociacion {
      */
     public function procesarModificar() {
 
-        if($this->validaciones()){
+        if($this->validaciones('modificar')){
             // Actualizamos los datos en la base de datos
             $this->modeloAsoc->modificar();
 
@@ -89,30 +89,38 @@ class ConAsociacion {
             // Comrpovamos si se ha hecho el modificar de las asociciaciones y contribuciones
             if($this->modeloAsoc->modificar() && $this->modeloAsoc->modificarContribuciones()){
 
-                // Si se ha hecho se guarda la imagen
-                if($this->guardarImg()){
-                    // Si se ha guardado la imagen borramos su antigua imagen
-                    if($this->borrarImg()){
-                        // Mostramos la vista informativa
-                        $this->vista="mensajeCorrectoAsoc.php";
-                        // Retornamos el mensaje a la vista
-                        return "Modificacion exitosa";
+                // Comprobamos que la imagen exista para guardarla
+                if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
+                    // Si se ha hecho se guarda la imagen
+                    if($this->guardarImg()){
+                        // Si se ha guardado la imagen borramos su antigua imagen
+                        if($this->borrarImg()){
+                            // Mostramos la vista informativa
+                            $this->vista="admin/mensajeCorrectoAsoc.php";
+                            // Retornamos el mensaje a la vista
+                            return "Modificacion exitosa";
+                        }else{
+                            // Mostramos la vista informativa
+                            $this->vista="admin/mensajeIncorrectoAsoc.php";
+                            // Retornamos el mensaje a la vista
+                            return "Fallo al actualizar la imagen";
+                        }
                     }else{
                         // Mostramos la vista informativa
-                        $this->vista="mensajeIncorrectoAsoc.php";
+                        $this->vista="admin/mensajeIncorrectoAsoc.php";
                         // Retornamos el mensaje a la vista
-                        return "Fallo al actualizar la imagen";
-                    }
-                }else{
+                        return "Fallo al guardar la imagen";
+                    };
+                } else {
                     // Mostramos la vista informativa
-                    $this->vista="mensajeIncorrectoAsoc.php";
+                    $this->vista="admin/mensajeCorrectoAsoc.php";
                     // Retornamos el mensaje a la vista
-                    return "Fallo al guardar la imagen";
-                };
+                    return "Modificacion exitosa";
+                }
                 
             }else{
                 // Mostramos la vista informativa
-                $this->vista="mensajeIncorrectoAsoc.php";
+                $this->vista="admin/mensajeIncorrectoAsoc.php";
                 // Retornamos el mensaje a la vista
                 return "Error al insertar";
             };
@@ -122,7 +130,7 @@ class ConAsociacion {
             exit;
 
         }else{
-            $this->vista="mensajeIncorrectoAsoc.php";
+            $this->vista="admin/mensajeIncorrectoAsoc.php";
             return "Datos no validos";
         };
     }
@@ -146,7 +154,7 @@ class ConAsociacion {
         $datos = $this->modeloAsoc->obtenerPorId();
 
         // Establecemos la vista y devolvemos el array de datos
-        $this->vista = "vistaBorrarAsociacion.php";
+        $this->vista = "admin/vistaBorrarAsociacion.php";
         return $datos;
     }
 
@@ -208,7 +216,7 @@ class ConAsociacion {
      * @return bool funcion llamada por la funcion insertar que retornara verdadero si todas las 
      * validaciones son correctas y falso si alguna falla 
      */
-    private function validaciones(){
+    private function validaciones($modo){
 
         /*Compruebo si esta vacio y le quito los espacios*/
         if(empty(trim($_POST["nombre"]))){ return false; };
@@ -221,11 +229,12 @@ class ConAsociacion {
         /* Compruebo que el tipo de archivo sea correcto*/
         $tipos = ['image/jpeg','image/png','image/webp','image/jpg'];
 
-        /*comprobamos si el tipo de dato esta dentro de los que se pueden cargar*/
-        if (!in_array($_FILES["imagen"]['type'], $tipos)) {return false;}
-
-        if(!isset($_FILES["imagen"]) || $_FILES["imagen"]["error"] !== 0){ return false; };
-
+        if($modo == 'insertar'){
+            /*comprobamos si el tipo de dato esta dentro de los que se pueden cargar*/
+            if (!in_array($_FILES["imagen"]['type'], $tipos)) {return false;}
+            if(!isset($_FILES["imagen"]) || $_FILES["imagen"]["error"] !== 0){ return false; };
+        }
+        
         /*Estas son las pistas y compruebo que no esten vacias y le quito los espacios*/
         if(empty(trim($_POST["pista_dificil"]))){ return false; };
         if(empty(trim($_POST["pista_media"]))){ return false; };
@@ -245,13 +254,13 @@ class ConAsociacion {
      */
     public function insertar(){
 
-        if($this->validaciones()){
+        if($this->validaciones('insertar')){
 
             if($this->guardarImg()){
 
                 if($this->modeloAsoc->insertar()){
 
-                    $this->vista="mensajeCorrectoAsoc.php";
+                    $this->vista="admin/mensajeCorrectoAsoc.php";
                     return "Inserción exitosa";
                 }else{
                     $rutaImagen = RUTAIMG.$_FILES["logo"]['name'];
@@ -259,25 +268,25 @@ class ConAsociacion {
 
                         if(unlink($rutaImagen)){
 
-                            $this->vista="mensajeIncorrectoAsoc.php";
+                            $this->vista="admin/mensajeIncorrectoAsoc.php";
                             return "Fallo al insertar los datos";
                         }else{
-                            $this->vista="mensajeIncorrectoAsoc.php";
+                            $this->vista="admin/mensajeIncorrectoAsoc.php";
                             return "Fallo en la inserción y no se pudo borrar la imagen";
                         }
 
                     }else{
-                        $this->vista="mensajeIncorrectoAsoc.php";
+                        $this->vista="admin/mensajeIncorrectoAsoc.php";
                         return "Imagen no encontrada";
                     }
                 }
             }else{
-                $this->vista="mensajeIncorrectoAsoc.php";
+                $this->vista="admin/mensajeIncorrectoAsoc.php";
                 return "Fallo al guardar la imagen";
             }
         }else{
 
-            $this->vista="mensajeIncorrectoAsoc.php";
+            $this->vista="admin/mensajeIncorrectoAsoc.php";
             return "Datos no validos";
         };
     }
@@ -296,7 +305,7 @@ class ConAsociacion {
             "contribuciones" => $contribuciones
         ];
         
-        $this->vista="vistaAgregarAsociacion.php";
+        $this->vista="admin/vistaAgregarAsociacion.php";
         return $arrayAsoc;
     }
     

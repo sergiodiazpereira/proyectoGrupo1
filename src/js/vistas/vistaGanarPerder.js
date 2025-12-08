@@ -1,3 +1,4 @@
+const rutaImg = "../src/img/";
 class VistaGanarPerder{
     /**
      * 
@@ -10,6 +11,7 @@ class VistaGanarPerder{
         this.popupGanar = document.getElementById("pantalla-victoria");
         this.contenidoPopupGanar = document.getElementById("modal-ganar");
         this.victoriaAsociacionEra = document.getElementById("victoriaAsociacionEra");
+        this.victoriaImagen = document.getElementById("imagen-victoria");
         this.textoVictoria = document.getElementById("texto-tiempo-victoria");
         this.botonContinuarGanar = document.getElementById("jugar");
 
@@ -18,6 +20,7 @@ class VistaGanarPerder{
         this.textoCronometro = document.querySelector('#crono span');
 
         this.derrotaAsociacionEra = document.getElementById("derrotaAsociacionEra");
+        this.derrotaImagen = document.getElementById("imagen-derrota");
         this.botonContinuarPerder = document.getElementById("jugar-derrota");
         let contadorIntentos = 1; /* Este valor se cogerá del valor real de intentos */
         this.selectAsociacion.addEventListener('change', () => {
@@ -50,6 +53,7 @@ class VistaGanarPerder{
     mostrarPantallaVictoria(){
         let tiempo = this.textoCronometro.innerText;
         this.victoriaAsociacionEra.innerText = this.servicio.mandarNombreAsociacionCorrecta();
+        this.victoriaImagen.src = rutaImg + this.servicio.mandarImagenAsociacionCorrecta();
         this.textoVictoria.innerText = "Has adivinado la asociación en " + tiempo;
         this.popupGanar.style.display = "flex";
         setTimeout(() => {
@@ -69,6 +73,7 @@ class VistaGanarPerder{
 
     mostrarPantallaDerrota(){
         this.derrotaAsociacionEra.innerText = this.servicio.mandarNombreAsociacionCorrecta();
+        this.derrotaImagen.src = rutaImg + this.servicio.mandarImagenAsociacionCorrecta();
         this.popupPerder.style.display = "flex";
         setTimeout(() => {
             this.contenidoPopupPerder.classList.add("mostrar");

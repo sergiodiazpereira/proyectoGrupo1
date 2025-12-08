@@ -12,8 +12,8 @@
     define('CONTROLADOR','controladores/');
     define('MODELO','modelos/');
 
-    define('CONDEF','Asociacion');
-    define('METDEF','listar');
+    define('CONDEF','Dashboard');
+    define('METDEF','cargarPagina');
 
     define('RUTAIMG', '../src/img/');
 ?>
