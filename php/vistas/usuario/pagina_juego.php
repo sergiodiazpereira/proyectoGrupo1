@@ -83,7 +83,7 @@
                         <p class="textoCentrado celda">La asociacion era:</p>
                         <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
                         <p id="victoriaAsociacionEra" class="textoCentrado celda"><strong>Médicos Sin Fronteras</strong></p>
-                        <a href="./pagina_juego.php"><button id="jugar">Jugar de nuevo</button></a>
+                        <a href="index.php?c=Juego&m=cargarPagina"><button id="jugar">Jugar de nuevo</button></a>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         <p class="textoCentrado">La asociacion era:</p>
                         <img src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
                         <p class="textoCentrado"><strong id="derrotaAsociacionEra">Médicos Sin Fronteras</strong></p>
-                        <a href="./pagina_juego.php"><button id="jugar-derrota">Jugar de nuevo</button></a>
+                        <a href="../../index.php?c=Juego&m=cargarPagina"><button id="jugar-derrota">Jugar de nuevo</button></a>
                     </div>
                 </div>
             </div>
