@@ -42,7 +42,6 @@ export class VistaJuego {
             
             if (modelo.juegoGanado && this.selectAsociacion){
                 this.selectAsociacion.disabled = true;
-                this.selectAsociacion = "";
             }
         }
 
