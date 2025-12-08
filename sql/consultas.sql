@@ -67,20 +67,6 @@ INSERT INTO contribucion (descripcion) VALUES
 ("Inclusión"),
 ("Formación");
 
--- Insertar Asociaciones (orden corregido)
-INSERT INTO asociacion (nombre, fecha_fun, pista_facil, pista_media, pista_dificil, imagen, idTipoAsoc, alcance) VALUES
-("Cruz Roja", 1938, "Va dirigida a Jóvenes", "Es una asociación Nacional", "Se fundó en el año 1938", "https://www.ejemplo.com/imagenes/cruz_roja.jpg", 1, 'I'),
-
-("Fundación Loyola", 1948, "Va dirigida a Jóvenes", "Es una asociación Internacional", "Se fundó en el año 1948", "https://www.ejemplo.com/imagenes/fundacion.jpg", 2, 'N'),
-
--- Insertamos 4 filas de contribuciones
-INSERT INTO contribucion (descripcion) VALUES ("Salud"),
-("Protección Infantil"),
-("Inclusión"),
-("Eduación");
-
-
--- Inserción Tabla Asociación
 
 -- Insertamos 4 filas de asociaciones
 INSERT INTO asociacion (nombre, fecha_fun, pista_facil, pista_media, pista_dificil, imagen, idTipoAsoc, alcance)

@@ -63,7 +63,7 @@
             $datos['contribucion'] = $this->modeloCont->listar();
 
             // Indicamos la vista
-            $this->vista = "vistaGestionContribuciones.php";
+            $this->vista = "admin/vistaGestionContribuciones.php";
 
             // Retornamos el array de datos
             return $datos;
@@ -82,7 +82,7 @@
             $datos = $this->modeloCont->obtenerPorId();
 
             // Indicamos la vista
-            $this->vista="vistaGesionContribuciones.php";
+            $this->vista="admin/vistaGesionContribuciones.php";
             
             // Retornamos el array de datos
             return $datos;
@@ -97,13 +97,13 @@
         public function procesarModificar(){
 
             if(!$this->validacionArray()){
-                $this->vista="mensajeIncorrecto.php";
+                $this->vista="admin/mensajeIncorrecto.php";
                 return "Alguna contribución es incorrecta";
             } else {
                 // Actualizamos los datos en la base de datos
                 $this->modeloCont->modificar();
 
-                $this->vista="mensajeCorrecto.php";
+                $this->vista="admin/mensajeCorrecto.php";
                 return "Contribuciones actualizadas";
             }
             
@@ -115,16 +115,16 @@
          */
         public function insertar(){
             if(!$this->validaciones()){
-                $this->vista="mensajeIncorrecto.php";
+                $this->vista="admin/mensajeIncorrecto.php";
                 return "Contribucion vacia o la contribucion tiene algun número";
             }else{
                 if($this->modeloCont->insertar()){
                     
-                    $this->vista="mensajeCorrecto.php";
+                    $this->vista="admin/mensajeCorrecto.php";
                     return "Constribucion guardada con exito";
 
                 }else{
-                    $this->vista="mensajeIncorrecto.php";
+                    $this->vista="admin/mensajeIncorrecto.php";
                     return "Fallo al guardar la contribucion";
                 };
             };
@@ -135,7 +135,7 @@
          * @return bool|PDOStatement esta funcion llama al modelo para que le devuelva las contribuciones
          */
         public function obtenerContribucion(){
-            $this->vista="vistaGestionContribuciones.php";
+            $this->vista="admin/vistaGestionContribuciones.php";
             $datos=$this->modeloCont->obtenerContribuciones();
             return  $datos;
         }
@@ -153,7 +153,7 @@
             $datos = $this->modeloCont->obtenerPorId();
 
             // Establecemos la vista
-            $this->vista="vistaBorrarContribucion.php";
+            $this->vista="admin/vistaBorrarContribucion.php";
 
             // Devolvemos el array de datos
             return $datos;

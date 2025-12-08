@@ -93,6 +93,14 @@
 
                 $stmt = $this->conexion->prepare($sql);
 
+                // Si suben una imagen nueva
+                if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                    $imagenFinal = $_FILES['imagen']['name'];
+                } else {
+                    // Si no suben imagen → usar la antigua
+                    $imagenFinal = $_POST['antiguaImagen'];
+                }
+
                 $stmt->bindParam(':nombre', $_POST['nombre'], PDO::PARAM_STR);
                 $stmt->bindParam(':fecha_fun', $_POST['fecha_fun'], PDO::PARAM_INT);
                 $stmt->bindParam(':pista_facil', $_POST['pista_facil'], PDO::PARAM_STR);
@@ -100,7 +108,7 @@
                 $stmt->bindParam(':pista_dificil', $_POST['pista_dificil'], PDO::PARAM_STR);
                 $stmt->bindParam(':idTipoAsoc', $_POST['idTipoAsoc'], PDO::PARAM_INT);
                 $stmt->bindParam(':alcance', $_POST['alcance'], PDO::PARAM_STR);
-                $stmt->bindParam(':imagen', $_FILES['imagen']['name'], PDO::PARAM_STR);
+                $stmt->bindParam(':imagen', $imagenFinal, PDO::PARAM_STR);
                 $stmt->bindParam(':idAsoc', $_GET['idAsoc'], PDO::PARAM_INT);
 
                 $stmt->execute();

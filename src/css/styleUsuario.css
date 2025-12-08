@@ -8,8 +8,8 @@
     --colorP:#6A6F81;
     --bordeRadius:10px;
     --colorLabel:#102E59;
-    --fuenteTitulo:Space Grotesk;
-    --fueteP:PT Sans;
+    --fuenteTitulo: Space Grotesk;
+    --fueteP: PT Sans;
     --blanco-fondo-header: rgba(245, 247, 252, 0.7);
     --azul-borde-header: #c2d4ff;
 }
@@ -216,7 +216,9 @@ input[type=submit]{
     }
 }
 /*Le doy estilo al menu desplegable*/
+
 #desplegable{
+    display: none;
     text-align: left;
     position: fixed;
     width: 22.46%; /*230/1024*/
@@ -231,6 +233,7 @@ input[type=submit]{
     box-shadow: 0 0.52vh 1.3vh rgba(0,0,0,0.15);
     z-index: 10;
 }
+
 #desplegable{
     ul{
         padding: 1.3vh 2.93%; /*10px/768 y 30px/1024 */
@@ -419,6 +422,21 @@ input[type=submit]{
         justify-content: space-around;
     }
 }
+
+
+.pantalla-popup{
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Por encima de todo */
+}
+
 /* Estilos de Info y botones (popups de info, pistas y otros botones) */
 .guia-modal {
     background-color: #386EF7;
@@ -430,6 +448,14 @@ input[type=submit]{
     margin: 3.125rem auto;
     border-radius: 0.3125rem;
     position: relative;
+    opacity: 0;
+    transform: translate(0, -20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.guia-modal.mostrar {
+    opacity: 1;
+    transform: translate(0, 0);
 }
 .guia-modal h2 {
     margin-bottom: 1.5625rem;
@@ -495,20 +521,33 @@ input[type=submit]{
     color: #1C07FF;
     font-weight: bold;
 }
+
+#jugar-derrota {
+    width: 10.625rem; /* 170px */
+    height: 5rem; /* 80px */
+    color: #1C07FF;
+    font-weight: bold;
+}
+
 .quitarBorde {
     border: none;
 }
 /* Estilos de la tabla de juego (parte inferior)*/
-#contenedor-tabla {
+#contenedor-encabezados, #contenedor-resultados {
     gap: 0.5rem; /* gap (8px) */
     padding: 0;
     border-radius: 0.5rem; 
-    margin: 3rem auto; 
+    margin: 2.5rem auto; 
     display: grid;
     width: 95%; /* Usamos el 95% del max-width de 768px */
     max-width: 45rem; /* 720px */
-    grid-template-columns: repeat(5, 1fr); 
+    grid-template-columns: repeat(5, 1fr);
 }
+
+#contenedor-encabezados{
+    margin-bottom: 1.5rem;
+}
+
 .encabezado {
     font-weight: bold;
     padding: 0;
@@ -598,7 +637,32 @@ button.azul {
 button.amarillo { 
     background-color: #FFC527;
 }
-    
+
+
+.choices {
+    width: 30% !important;
+    margin: 0 auto !important;
+    display: block !important;
+    box-sizing: border-box !important;   /* <-- clave */
+}
+
+/* Caja interna */
+.choices__inner {
+    box-sizing: border-box !important;   /* <-- clave */
+    width: 100% !important;              /* ocupa todo el contenedor */
+    border: 2px solid var(--colorTitulo) !important;
+    border-radius: 0.8rem !important;
+    padding: 2.5% 2.78% 1.67% 2.78% !important;  /* espacio para la flecha */
+    height: auto !important;
+}
+
+/* Flecha */
+.choices[data-type*=select-one]::after {
+    right: 4% !important;
+    top: 63% !important;
+    transform: translateY(-50%) !important;
+}
+
 @media (max-width: 450px) {
     .main_kiko{
         padding: 2.66% 1.49vh; /*10/375 y 10/667*/
@@ -655,6 +719,7 @@ button.amarillo {
         left: 0;
         right: 0;
         margin: 0;
+        z-index: 10;
     }
 
     /* El contenido interno del header se limita y se centra */
@@ -665,6 +730,7 @@ button.amarillo {
         margin-left: auto;
         margin-right: auto;
         line-height: normal;
+        font-family: inherit;
     }
 
     .header_rafa #usuario {
@@ -689,6 +755,7 @@ button.amarillo {
         width: 14.375rem; /* 230px */
         top: 1rem; /* 16px */
         z-index: 10;
+        font-family: inherit;
     }
     
     /* Cronómetro */
@@ -697,6 +764,7 @@ button.amarillo {
         right: 0.2rem; 
         top: 0.625rem; 
         font-size: 1em; 
+        top: 40%;
     }
 
     #nav_crono {

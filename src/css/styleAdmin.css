@@ -239,6 +239,10 @@
                 font-weight: 400;
                 text-align: left;
             }
+            th:first-child{
+                text-align: left;
+                width: 38.22%;
+            }
             th:last-child{
                 text-align: right;
             }
@@ -293,7 +297,7 @@
                 padding: 5.353%; /* 16px (se pone separado porque el primer td al ser flex calcula su padding respecto a su ancho total en vez de respecto al ancho de la tabla) */
             }
             img{
-                width: 10.634%; /* 32px */
+                width: 15.634%; /* 32px */
                 border-radius: 0.75rem; 
                 object-fit: cover;  /* recorta la imagen sin deformar */
             }
