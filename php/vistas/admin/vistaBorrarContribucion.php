@@ -2,7 +2,7 @@
 
 <head>
     <title>Contribuciones</title>
-    <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+    <link rel="stylesheet" href="../src/css/styleAdmin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,26 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="asociacionContribucion">
-    <!-- Modal para agregar Contribuciones -->
+<body>
+    <!-- Modal para confirmar borrado de Contribuciones -->
     <div id="modal-contribuciones" class="fondo">
-        <form action="./index.php?c=Contribucion&m=insertar" method="post" class="modal">
+        <form action="index.php?c=Contribucion&m=procesarBorrar&idContribucion=<?=$datos['idContribucion']?>" method="POST" class="modal">
             <div class="modal-header">
-                <h2>Añadir Nueva Contribución</h2>
-                <button id="cerrarModal" class="ico-cerrar" type="button">
+                <h2>¿Estas seguro de que quieres borrar <?=$datos['descripcion']?>?</h2>
+                <button class="ico-cerrar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <div class="modal-main">
-                <label for="contribucion">Nombre</label>
-                <input type="text" name="contribucion" id="nombre" placeholder="Ej: Apoyo escolar">
-            </div>
-
             <div class="modal-footer">
-                <!--Cambiar ruta del cancelar cuando se tenga el dashboard-->
-                <button class="cancelar"><a id="enlace-cancelar" href="index.php">Cancelar</a></button>
-                <button class="aniadir">Añadir</button>
+                <a href="index.php?c=Contribucion&m=listar">
+                    <button class="cancelar" type="button">Cancelar</button>
+                </a>
+                <button class="borrar" type="submit">Borrar</button>
             </div>
         </form>
     </div>
