@@ -1,187 +1,147 @@
 export class ModeloJuego {
-    constructor() {
-        this.asociacionObjetivo = {
-            nombre: 'Médicos Sin Fronteras',
-            dirigidoA: 'Personas en conflicto',
-            anioFundacion: 1971,
-            alcanceGeografico: 'I',
-            contribuciones: ['Salud', 'Emergencias']
-        };
-
-        this.listaMaestraAsociaciones = [
-            { 
-                nombre: 'Cruz Roja', 
-                dirigidoA: 'Jóvenes',
-                anioFundacion: 1863, 
-                alcanceGeografico: 'I', 
-                contribuciones: ['Eduación', 'Salud'] 
-            },
-            { 
-                nombre: 'Unicef', 
-                dirigidoA: 'Personas',
-                anioFundacion: 2002, 
-                alcanceGeografico: 'N', 
-                contribuciones: ['Eduación', 'Protección Infantil', 'Salud'] 
-            },
-            { 
-                nombre: 'Fundación Loyola', 
-                dirigidoA: 'Personas',
-                anioFundacion: 2000, 
-                alcanceGeografico: 'I', 
-                contribuciones: ['Eduación', 'Protección Infantil'] 
-            },
-            { 
-                nombre: 'Cáritas', 
-                dirigidoA: 'Discapacitados',
-                anioFundacion: 1988, 
-                alcanceGeografico: 'L', 
-                contribuciones: ['Protección Infantil', 'Salud'] 
-            },
-            this.asociacionObjetivo 
-        ];
-        
-        this.juegoGanado = false;
-        this.cronometro = { 
-            estaCorriendo: false,
-            tiempoInicio: 0,
-            tiempoTranscurrido: 0,
-            idIntervalo: null
-        };
-        this.intentosRealizados = []; 
-        this.intentoActual = 1;
-        this.alCambiarModelo = () => {}; 
-
-
-
-
-
-
-        /* DATOS DE LA BASE DE DATOS */
-        let finDePagina;
-
-
-        /* ------------------------------ RECOGE LA PAGINA ENVIADA POR PHP -------------------------- */  
-        async function obtenerDatos() {
-            const res = await fetch("index.php?c=Juego&m=obtenerPagina");
-            finDePagina = await res.json();
-        }
-        /* -------------------------------------------------------------------------------------------*/
-    }
-
-    iniciarCrono() {
-        if (this.cronometro.estaCorriendo) return;
-        this.cronometro.estaCorriendo = true;
-        this.cronometro.tiempoInicio = Date.now() - this.cronometro.tiempoTranscurrido;
-        
-        this.cronometro.idIntervalo = setInterval(() => {
-            this.cronometro.tiempoTranscurrido = Date.now() - this.cronometro.tiempoInicio;
-            this.alCambiarModelo();
-        }, 1000);
-    }
     
+    constructor(asociacionCorrecta, listaTodas) {
+        // Blindaje contra listas vacías
+        const listaSegura = listaTodas || [];
+
+        // Mapeamos los datos (Aquí traduciremos la 'L' a 'Local')
+        this.asociacionCorrecta = this._mapearDatosBD(asociacionCorrecta);
+        this.listaOpciones = listaSegura.map(item => this._mapearDatosBD(item));
+        
+        this.intentos = [];
+        this.maxIntentos = 10;
+        this.juegoTerminado = false;
+        
+        // Cronómetro
+        this.tiempoInicio = new Date(); 
+
+        console.log("ModeloJuego INICIADO. Opciones cargadas:", this.listaOpciones.length);
+    }
+
+    /* PARA EL CONTROLADOR */
+    enlazarCambios(callback) {
+        this.onCambio = callback;
+    }
+
+    _mapearDatosBD(datoBD) {
+        if (!datoBD) return null;
+
+        const diccionarioAlcance = {
+            'L': 'Local',
+            'N': 'Nacional',
+            'I': 'Internacional'
+        };
+        // Si viene 'L', devuelve 'Local'. Si no está en la lista, deja el original.
+        const alcanceTraducido = diccionarioAlcance[datoBD.alcance] || datoBD.alcance;
+
+        return {
+            nombre: datoBD.nombre,
+            
+            dirigidoA: datoBD.pista_facil || datoBD.nombre_tipo || "General",
+
+            anioFundacion: datoBD.fecha_fun,
+
+            // ALCANCE: Usamos el traducido (Local, Nacional...)
+            alcanceGeografico: alcanceTraducido,
+
+            // CONTRIBUCIONES: Convertimos texto "A,B" a lista ["A","B"]
+            contribuciones: (datoBD.contribuciones && typeof datoBD.contribuciones === 'string') ? datoBD.contribuciones.split(',') : [],
+        };
+    }
+
+    /* LÓGICA DEL JUEGO */
+    registrarIntento(nombreIntento) {
+        if (this.juegoTerminado) return null;
+
+        const nombreLimpio = nombreIntento.trim();
+        const intento = this.listaOpciones.find(op => op.nombre === nombreLimpio);
+
+        if (!intento) {
+            console.error(`ERROR: No encuentro '${nombreLimpio}' en la lista.`);
+            return null;
+        }
+
+        const resultado = this._compararAsociacion(intento);
+        this.intentos.push(resultado);
+
+        if (this.onCambio) this.onCambio(this.intentos);
+
+        if (this.verificarVictoria(intento)) this.juegoTerminado = true;
+        else if (this.intentos.length >= this.maxIntentos) this.juegoTerminado = true;
+
+        return resultado;
+    }
+
     obtenerTiempoFormateado() {
-        const totalMilisegundos = this.cronometro.tiempoTranscurrido || 0; 
-        const totalSegundos = Math.floor(totalMilisegundos / 1000);
-        //El padstart se utiliza para dar formato al crono, el 2 se utiliza para indicar la longitud total de la cadena en el crono,
-        //y el 0 es para darle un valor inicial
-        const minutos = Math.floor(totalSegundos / 60).toString().padStart(2, '0'); 
-        const segundos = (totalSegundos % 60).toString().padStart(2, '0');
+        const ahora = new Date();
+        const diferencia = Math.floor((ahora - this.tiempoInicio) / 1000); 
+        const minutos = Math.floor(diferencia / 60).toString().padStart(2, '0');
+        const segundos = (diferencia % 60).toString().padStart(2, '0');
         return `${minutos}:${segundos}`;
     }
 
-    detenerCrono()
-    {
-        if (this.cronometro.idIntervalo)
-        {
-            clearInterval(this.cronometro.idIntervalo);
-            this.cronometro.estaCorriendo = false;
-            console.log("Se terminó el juego.");
+    _compararAsociacion(intento) {
+        const correcta = this.asociacionCorrecta;
+        
+        let estados = {};
+
+        // 1. LÓGICA DE COLORES
+        estados.nombre = (intento.nombre === correcta.nombre) ? 'verde' : 'rojo';
+        
+        // Dirigido A (Rojo si falla)
+        estados.dirigidoA = (intento.dirigidoA === correcta.dirigidoA) ? 'verde' : 'rojo';
+
+        // Alcance (Como ya están traducidos a "Local", comparamos las palabras completas)
+        estados.alcance = (intento.alcanceGeografico === correcta.alcanceGeografico) ? 'verde' : 'rojo';
+
+        // Año
+        let flecha = '';
+        if (intento.anioFundacion == correcta.anioFundacion) {
+            estados.anio = 'verde';
+        } else {
+            estados.anio = 'rojo';
+            flecha = (correcta.anioFundacion > intento.anioFundacion) ? '▲' : '▼';
         }
+
+        // Contribuciones
+        const intentoStr = JSON.stringify(intento.contribuciones.sort());
+        const correctaStr = JSON.stringify(correcta.contribuciones.sort());
+        const coincidencias = intento.contribuciones.filter(c => correcta.contribuciones.includes(c));
+
+        if (intentoStr === correctaStr) {
+            estados.contribuciones = 'verde';
+        } else if (coincidencias.length > 0) {
+            estados.contribuciones = 'amarillo';
+        } else {
+            estados.contribuciones = 'rojo';
+        }
+
+        const celdasGeneradas = [
+            { valor: intento.nombre, color: estados.nombre },
+            { valor: intento.dirigidoA, color: estados.dirigidoA },
+            { valor: intento.anioFundacion + ' ' + flecha, color: estados.anio },
+            // Aquí se mostrará "Local" o "Nacional" gracias a la traducción de arriba
+            { valor: intento.alcanceGeografico, color: estados.alcance }, 
+            // Aquí unimos la lista con comas para que se lea bien: "Salud, Educación"
+            { valor: intento.contribuciones.join(', ') || "Ninguna", color: estados.contribuciones }
+        ];
+
+        return {
+            datos: intento,
+            esCorrecto: intento.nombre === correcta.nombre,
+            celdas: celdasGeneradas 
+        };
     }
 
-    registrarIntento(intentoAsociacion) {
-        this.iniciarCrono();
-        const resultados = this._compararAsociacion(intentoAsociacion);
-        const victoria = resultados.every(celda => celda.color === 'verde');
-
-        if (victoria)
-        {
-            this.juegoGanado = true;
-            this.detenerCrono();
-        }
-
-        this.intentosRealizados.push({
-            id: this.intentoActual++,
-            asociacion: intentoAsociacion,
-            celdas: resultados 
-        });
-
-        this.alCambiarModelo();
+    verificarVictoria(intento) {
+        return intento.nombre === this.asociacionCorrecta.nombre;
     }
     
-    _compararAsociacion(nombreIntento) {
-        const datosIntento = this.listaMaestraAsociaciones.find(a => a.nombre === nombreIntento);
-        if (!datosIntento) {
-            console.warn(`ModeloJuego: No se encontró la asociación con nombre: ${nombreIntento}`);
-            return [];
-        }
-        
-        const objetivo = this.asociacionObjetivo;
-        const resultados = [];
-
-        let colorAsociacion = nombreIntento === objetivo.nombre ? 'verde' : 'rojo';
-        resultados.push({ valor: nombreIntento, color: colorAsociacion });
-
-        const valorDirigido = `${datosIntento.dirigidoA}`;
-        if (datosIntento.dirigidoA === objetivo.dirigidoA) {
-            resultados.push({ valor: valorDirigido, color: 'verde' });
-        } else {
-            const objetivoPalabra = objetivo.dirigidoA.split(' ')[0].toLowerCase();
-            const intentoPalabra = datosIntento.dirigidoA.toLowerCase();
-            if (intentoPalabra.includes(objetivoPalabra) || objetivoPalabra.includes(intentoPalabra)) {
-                resultados.push({ valor: valorDirigido, color: 'amarillo' });
-            } else {
-                resultados.push({ valor: valorDirigido, color: 'rojo' });
-            }
-        }
-        
-        const valorAnio = `${datosIntento.anioFundacion}`;
-        const diferenciaAnios = Math.abs(datosIntento.anioFundacion - objetivo.anioFundacion);
-        if (diferenciaAnios === 0) {
-            resultados.push({ valor: valorAnio, color: 'verde' });
-        } else if (diferenciaAnios <= 10) { 
-            resultados.push({ valor: valorAnio, color: 'amarillo' });
-        } else {
-            resultados.push({ valor: valorAnio, color: 'rojo' });
-        }
-
-        const mapaAlcance = { 'I': 'Internacional', 'N': 'Nacional', 'L': 'Local' };
-        const valorAlcance = `${mapaAlcance[datosIntento.alcanceGeografico]}`;
-
-        console.log('Intento Alcance:', datosIntento.alcanceGeografico);
-        console.log('Objetivo Alcance:', objetivo.alcanceGeografico);
-        if (datosIntento.alcanceGeografico === objetivo.alcanceGeografico) {
-            resultados.push({ valor: valorAlcance, color: 'verde' });
-        } else {
-            resultados.push({ valor: valorAlcance, color: 'rojo' });
-        }
-        
-        let colorContribuciones = 'rojo';
-        const coincidencias = datosIntento.contribuciones.filter(c => objetivo.contribuciones.includes(c));
-        
-        if (coincidencias.length === objetivo.contribuciones.length && coincidencias.length > 0) {
-            colorContribuciones = 'verde';
-        } else if (coincidencias.length > 0) {
-            colorContribuciones = 'amarillo';
-        }
-        
-        const valorContribuciones = `${datosIntento.contribuciones.join(', ')}`;
-        resultados.push({ valor: valorContribuciones, color: colorContribuciones });
-
-        return resultados;
+    get intentosRealizados() {
+        return this.intentos;
     }
-
-    enlazarCambios(callback) {
-        this.alCambiarModelo = callback;
+    
+    get juegoGanado() {
+        return this.juegoTerminado && this.intentos.length > 0 && this.intentos[this.intentos.length - 1].esCorrecto;
     }
 }

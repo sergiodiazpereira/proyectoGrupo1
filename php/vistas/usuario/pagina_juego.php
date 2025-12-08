@@ -110,8 +110,8 @@
 
 
         <header class="header_rafa">
-	        <span>Asociaciondle</span>
-	        <button id="usuario"><i id="icono-boton-usuario" class="fa-solid fa-user"></i></button>
+            <span>Asociaciondle</span>
+            <button id="usuario"><i id="icono-boton-usuario" class="fa-solid fa-user"></i></button>
         </header>
         <div id="desplegable">
             <ul>

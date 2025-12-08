@@ -1,13 +1,28 @@
 export class ModeloColeccion {
-    constructor() {
-        this.coleccionUsuario = [
-            { id: 1, nombre: 'Cruz Roja', adivinada: true, estaBloqueada: false, datos: { fundacion: '1863', alcance: 'Internacional' } },
-            { id: 2, nombre: 'Unicef', adivinada: false, estaBloqueada: true, datos: { fundacion: '2002', alcance: 'Nacional' } },
-            { id: 3, nombre: 'Fundación Once', adivinada: false, estaBloqueada: true, datos: { fundacion: '2000', alcance: 'Local' } },
-        ];
-    }
-    
-    obtenerColeccion() {
-        return Promise.resolve(this.coleccionUsuario);
+    async obtenerColeccion() {
+        try {
+            // Llamamos al controlador nuevo que hemos creado
+            const respuesta = await fetch("index.php?c=Coleccion&m=obtenerColeccionUsuario");
+            
+            if (!respuesta.ok) throw new Error("Error red");
+            
+            const datosBD = await respuesta.json();
+
+            // Mapeamos: Si tiene 'idIntento', está desbloqueada.
+            return datosBD.map(item => ({
+                nombre: item.nombre,
+                imagen: item.imagen,
+                // Si idIntento NO es nulo, es que la has acertado -> Desbloqueada
+                estaBloqueada: (item.idIntento == null),
+                datos: {
+                    fundacion: item.fecha_fun,
+                    alcance: item.alcance,
+                    tipo: item.nombre_tipo
+                }
+            }));
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
     }
 }
