@@ -81,7 +81,7 @@
                     <div class="indicador-box quitarBorde">
                         <p id="texto-tiempo-victoria" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>
                         <p class="textoCentrado celda">La asociacion era:</p>
-                        <img id="imagen-victoria" src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <img id="imagen-victoria" src="" alt="" class="estiloFundacion">
                         <p id="victoriaAsociacionEra" class="textoCentrado celda"><strong>Médicos Sin Fronteras</strong></p>
                         <a href="index.php?c=Juego&m=cargarPagina"><button id="jugar">Jugar de nuevo</button></a>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="indicador-box quitarBorde celda">
                         <p class="textoCentrado">Has agotado tus 10 intentos.</p>
                         <p class="textoCentrado">La asociacion era:</p>
-                        <img id="imagen-derrota" src="../src/img/cruzRoja.webp" alt="" class="estiloFundacion">
+                        <img id="imagen-derrota" src="" alt="" class="estiloFundacion">
                         <p class="textoCentrado"><strong id="derrotaAsociacionEra">Médicos Sin Fronteras</strong></p>
                         <a href="index.php?c=Juego&m=cargarPagina"><button id="jugar-derrota">Jugar de nuevo</button></a>
                     </div>
