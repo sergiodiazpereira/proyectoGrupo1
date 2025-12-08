@@ -20,7 +20,7 @@
                 FROM asociacion a
                 INNER JOIN tipo_asoc t 
                     ON a.idTipoAsoc = t.idTipoAsoc
-                ORDER BY a.nombre DESC";
+                ORDER BY a.nombre ASC";
             
             $consulta = $this->conexion->prepare($sql);
 
