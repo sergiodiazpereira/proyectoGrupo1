@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Gestionar asociaciones</title>
-        <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+        <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
             <h3>Menú Principal</h3>
             <ul>
                 <li>
-                    <a href="./dashboard.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-chart-line"></i>
                             <span>Dashboard</span>
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarAsociaciones.html">
+                    <a href="index.php?c=Asociacion&m=listar">
                         <button class="paginaSeleccionada">
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarUsuarios.html">
+                    <a href="index.php?c=Usuarios&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-users"></i>
                             <span>Usuarios</span>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./vistaGestionContribuciones.html">
+                    <a href="index.php?c=Contribucion&m=listar">
                         <button>
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
@@ -51,7 +51,7 @@
             </ul>
             <ul class="ul-inferior">
                 <li>
-                    <a href="./cambioAdmin.html">
+                    <a href="index.php?c=CambioAdmin&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-key"></i>
                             <span>Cambiar contraseña</span>
@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../usuario/login.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             <span>Cerrar sesión</span>
@@ -74,7 +74,7 @@
                     <h1 class="h1-admin">Gestionar asociaciones</h1>
                     <p class="subtitulos-admin">Añadir, editar o eliminar asociaciones del juego.</p>
                 </div>
-                <a class="boton-añadir" href="./vistaAgregarAsociacion.html"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
+                <a href="index.php?c=Asociacion&m=cargarPaginaAsoc" class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de asociaciones</h2>
@@ -88,201 +88,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <img src="../../../img/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz azul
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Crus roja
-                            </td>
-                            <td>
-                                <span>Testiasdbj</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Test largo</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="../../../src/img/bombilla.png">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Prueba</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Pruebaasdsadasas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Cruz rojaajhdsvasjhdvuiysavdu
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="imagenesEjemplo/cruzRoja.webp">
-                                Prueba
-                            </td>
-                            <td>
-                                <span>Personas</span>
-                            </td>
-                            <td>
-                                1863
-                            </td>
-                            <td>
-                                <a><i class="fa-solid fa-ellipsis"></i></a>
-                            </td>
-                        </tr>
+                    <?php if (!empty($datos)): ?>
+                        <?php foreach ($datos as $fila): ?>
+                            <tr>
+                                <td><img src="../src/img/<?= $fila['imagen'] ?>"><?= $fila['nombre'] ?></td>
+                                <td><span><?= $fila['tipo_asociacion'] ?></span></td>
+                                <td><?= $fila['fecha_fun'] ?></td>
+                                <td>
+                                    <a href="index.php?c=Asociacion&m=modificar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="index.php?c=Asociacion&m=borrar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="4">No hay asociaciones registradas.</td></tr>
+                    <?php endif; ?>
                     </tbody>
                 </table>
             </section>

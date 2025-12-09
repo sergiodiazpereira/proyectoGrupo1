@@ -14,6 +14,7 @@
                         asociacion.pista_dificil, 
                         asociacion.imagen, 
                         asociacion.alcance,
+                        asociacion.imagen,
                         tipo_asoc.nombre as nombre_tipo
                     FROM asociacion
                     INNER JOIN tipo_asoc ON asociacion.idTipoAsoc = tipo_asoc.idTipoAsoc

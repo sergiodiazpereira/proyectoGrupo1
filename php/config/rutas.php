@@ -10,12 +10,10 @@
     
     define('VISTAS','vistas/');
     define('CONTROLADOR','controladores/');
-    define('CONDEF','Contribucion');
-    define('METDEF','obtenerContribucion');
+    define('MODELO','modelos/');
 
-    /*rutas para el archivo*/
+    define('CONDEF','Dashboard');
+    define('METDEF','cargarPagina');
 
-    $ruta="../src/img/";
-
-    define('RUTAIMG',$ruta);
+    define('RUTAIMG', '../src/img/');
 ?>

@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Contribuciones</title>
-        <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+        <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
             <h3>Menú Principal</h3>
             <ul>
                 <li>
-                    <a href="./dashboard.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-chart-line"></i>
                             <span>Dashboard</span>
@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./index.php?c=Asociacion&m=cargarPaginaAsoc">
+                    <a href="index.php?c=Asociacion&m=listar">
                         <button>
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarUsuarios.html">
+                    <a href="index.php?c=Usuarios&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-users"></i>
                             <span>Usuarios</span>
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./index.php?c=Contribucion&m=obtenerContribucion">
+                    <a href="index.php?c=Contribucion&m=listar">
                         <button class="paginaSeleccionada">
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
@@ -52,7 +52,7 @@
             </ul>
             <ul class="ul-inferior">
                 <li>
-                    <a href="./cambioAdmin.html">
+                    <a href="index.php?c=CambioAdmin&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-key"></i>
                             <span>Cambiar contraseña</span>
@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../usuario/login.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             <span>Cerrar sesión</span>
@@ -70,50 +70,51 @@
             </ul>
         </nav>
         <main>
-            <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
-            <div id="bloqueGestionContribuciones">
-                <h1>Gestionar Contribuciones</h1>
-                <p>Añadir, editar o eliminar los tipos de contribucion.</p>
-                <a >
-                    <button id="abrirModal">
+            <form action="index.php?c=Contribucion&m=procesarModificar" method="POST" enctype="multipart/form-data">
+                <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
+                <div id="bloqueGestionContribuciones">
+                    <h1>Gestionar Contribuciones</h1>
+                    <p>Añadir, editar o eliminar los tipos de contribucion.</p>
+
+                    <button id="abrirModal" type="button">
                         <i class="fa-solid fa-circle-plus"></i>
                         <span>Añadir contribución</span>
                     </button>
-                </a>
-                <a href="./vistaGestionContribuciones.html">
-                    <button>
+
+                    <button type="submit">
                         <i class="fa-regular fa-floppy-disk"></i>
                         <span>Guardar cambios</span>
                     </button>
-                </a>
-            </div>
-
-            <!-- Lista de Contribuciones -->
-            <div id="bloqueListaContribuciones">
-
-                <h2>Lista de Contribuciones</h2>
-
-                <div class="fila encabezado">
-                    <span>Nombre</span>
-                    <span>Acciones</span>
                 </div>
-                <?php
-                    foreach($datos as $value) {
-                        echo'<div class="fila">
-                            <input type="hidden" name="contribucion" value="'.$value['idContribucion'].'" >
-                            <input type="text" value="'.$value['descripcion'].'" >
-                            <a href="">
-                                <button class="btn-eliminar">
+
+                <!-- Lista de Contribuciones -->
+                <div id="bloqueListaContribuciones">
+
+                    <h2>Lista de Contribuciones</h2>
+
+                    <div class="fila encabezado">
+                        <span>Nombre</span>
+                        <span>Acciones</span>
+                    </div>
+
+                    <?php if(!empty($datos['contribucion'])): ?>
+                        <?php foreach ($datos['contribucion'] as $c): ?>
+                            <div class="fila">
+                                <input type="text" name="descripcion[<?= $c['idContribucion'] ?>]" value="<?= $c['descripcion'] ?>">
+                                <a class="btn-eliminar" href="index.php?c=Contribucion&m=borrar&idContribucion=<?= $c['idContribucion'] ?>">
                                     <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </a>
-                        </div>';
-                    };
-                ?>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No hay contribuciones registradas.</p>
+                    <?php endif; ?>
+                </div>
+            </form>
                 
             <!-- Modal para agregar Contribuciones -->
             <div class="fondo oculto" id="modal-contribuciones">
-                <form action="./index.php?c=Contribucion&m=insertar" method="post" class="modal">
+                <form action="index.php?c=Contribucion&m=insertar" method="post" class="modal">
                     <div class="modal-header">
                         <h2>Añadir Nueva Contribución</h2>
                         <button id="cerrarModal" class="ico-cerrar" type="button">
@@ -128,7 +129,7 @@
 
                     <div class="modal-footer">
                         <!--Cambiar controlador y modelo por defecto cuanto se tenga el dashboard-->
-                        <button class="cancelar"><a href="./index.php">Cancelar</a></button>
+                        <button class="cancelar"><a href="./index.php?c=Contribucion&m=listar">Cancelar</a></button>
                         <button class="aniadir">Añadir</button>
                     </div>
                 </form>

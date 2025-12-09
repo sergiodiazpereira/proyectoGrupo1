@@ -2,7 +2,7 @@
 
 <head>
     <title>Asociaciones</title>
-    <link rel="stylesheet" href="../../../src/css/styleAdmin.css">
+    <link rel="stylesheet" href="../src/css/styleAdmin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
         <h3>Menú Principal</h3>
             <ul>
                 <li>
-                    <a href="./dashboard.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-chart-line"></i>
                             <span>Dashboard</span>
@@ -27,15 +27,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./listarAsociaciones.html">
-                        <button>
+                    <a href="index.php?c=Asociacion&m=listar">
+                        <button class="paginaSeleccionada">
                             <i class="fa-regular fa-building"></i>
                             <span>Asociaciones</span>
                         </button>
                     </a>
                 </li>
                 <li>
-                    <a href="./listarUsuarios.html">
+                    <a href="index.php?c=Usuarios&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-users"></i>
                             <span>Usuarios</span>
@@ -43,8 +43,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./vistaGestionContribuciones.html">
-                        <button class="paginaSeleccionada">
+                    <a href="index.php?c=Contribucion&m=listar">
+                        <button>
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
                         </button>
@@ -53,7 +53,7 @@
             </ul>
             <ul class="ul-inferior">
                 <li>
-                    <a href="./cambioAdmin.html">
+                    <a href="index.php?c=CambioAdmin&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-key"></i>
                             <span>Cambiar contraseña</span>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../usuario/login.html">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             <span>Cerrar sesión</span>
@@ -75,29 +75,28 @@
         <div id="bloqueGestionAsociaciones">
             <div id="tituloSubtitulo">
                 <h1>Editar Asociación</h1>
-                <p>Modifica los detalles de "Cruz Roja"</p>
+                <p>Modifica los detalles de "<?=$datos['nombre']?>"</p>
             </div>
         </div>
 
         <!-- Formulario Asociaciones-->
-        <form action="" id="bloqueFormularioAsociaciones">
+        <form action="index.php?c=Asociacion&m=procesarModificar&idAsoc=<?= $datos['idAsoc'] ?>" method="POST" enctype="multipart/form-data" id="bloqueFormularioAsociaciones">
             <div id="formulario-head">
                 <h2>Detalles de la Asociación</h2>
                 <p>Asegurese de que la información sea correcta antes de guardar.</p>
             </div>
             <div id="formulario-main">
                 <div id="formAsociacion">
-
                     <!-- Nombre + Año -->
                     <div class="fila">
                         <div class="campo">
                             <label>Nombre:</label>
-                            <input type="text" value="Cruz Roja">
+                            <input type="text" name="nombre" value="<?= $datos['nombre'] ?>">
                         </div>
 
                         <div class="campo">
                             <label>Año de fundación:</label>
-                            <input type="text" value="1863">
+                            <input type="text" name="fecha_fun" value="<?= $datos['fecha_fun'] ?>">
                         </div>
                     </div>
 
@@ -105,22 +104,21 @@
                     <div class="fila">
                         <div class="campo">
                             <label>Dirigida a:</label>
-                            <select name="categoria" id="categoriaDedicacion">
-                                <option value="1">Personas con discapacidad</option>
-                                <option value="2">Refugiados y migrantes</option>
-                                <option value="3">Estudiantes y jóvenes</option>
-                                <option value="4" selected="selected">Personas de bajos recursos</option>
+                            <select name="idTipoAsoc" id="categoriaDedicacion">
+                                <?php
+                                    foreach ($datos['tipo_asoc'] as $t) {
+                                        echo "<option value='".$t['idTipoAsoc']."' ".(($t['idTipoAsoc'] == $datos['idTipoAsoc']) ? "selected" : "").">".$t['nombre']."</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
 
                         <div class="campo">
                             <label>Alcance Geográfico:</label>
-                            <select name="alcanceGeografico" id="alcanceGeografico">
-                                <option value="1">Global</option>
-                                <option value="2">Continental</option>
-                                <option value="2" selected="selected">Internacional</option>
-                                <option value="3">Nacional</option>
-                                <option value="4">Autonómico</option>
+                            <select name="alcance" id="alcanceGeografico">
+                                <option value="I" <?= $datos['alcance'] == 'I' ? 'selected' : '' ?>>Internacional</option>
+                                <option value="N" <?= $datos['alcance'] == 'N' ? 'selected' : '' ?>>Nacional</option>
+                                <option value="L" <?= $datos['alcance'] == 'L' ? 'selected' : '' ?>>Local</option>
                             </select>
                         </div>
                     </div>
@@ -129,7 +127,10 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Imagen:</label>
-                            <input type="file">
+                            <input type="file" name="imagen">
+                            <label>Imagen actual:</label>
+                            <img src="<?= RUTAIMG.$datos['imagen'] ?>">
+                            <input type="hidden" name="antiguaImagen" value="<?=$datos['imagen']?>">
                         </div>
                     </div>
 
@@ -137,7 +138,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Difícil:</label>
-                            <textarea>Su fundador ganó el primer premio Nobel de la paz.</textarea>
+                            <textarea name="pista_dificil"><?= $datos['pista_dificil'] ?></textarea>
                         </div>
                     </div>
 
@@ -145,7 +146,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Media:</label>
-                            <textarea>Su emblema es un símbolo de protección reconocido mundialmente en las zonas de conflicto.</textarea>
+                            <textarea name="pista_media"><?= $datos['pista_media'] ?></textarea>
                         </div>
                     </div>
 
@@ -153,7 +154,7 @@
                     <div class="fila">
                         <div class="campo-grande">
                             <label>Pista Fácil:</label>
-                            <textarea>Se asocia con el color rojo y la ayuda médica de emergencia.</textarea>
+                            <textarea name="pista_facil"><?= $datos['pista_facil'] ?></textarea>
                         </div>
                     </div>
 
@@ -161,31 +162,32 @@
                     <div>
                         <label>Contribuciones:</label>
                         <div id="cuadroContribuciones">
-                            <div class="tag"><input type="checkbox" value="Salud" checked>Salud</div>
-                            <div class="tag"><input type="checkbox" value="Protección Infantil">Protección Infantil</div>
-                            <div class="tag"><input type="checkbox" value="Asistencia Sanitaria" checked>Asistencia sanitaria</div>
-                            <div class="tag"><input type="checkbox" value="Conservación">Conservación</div>
-                            <div class="tag"><input type="checkbox" value="Activismo">Activismo</div>
-                            <div class="tag"><input type="checkbox" value="Derechos Humanos">Derechos Humanos</div>
-                            <div class="tag"><input type="checkbox" value="Ayuda Humanitaria">Ayuda Humanitaria</div>
-                            <div class="tag"><input type="checkbox" value="Inclusión">Inclusión</div>
+                            <?php
+                            foreach ($datos['contribucion'] as $c) {
+
+                                $checked = in_array($c['idContribucion'], $datos['contribucionesAsoc']) ? 'checked' : '';
+
+                                echo "<div class='tag'>";
+                                echo "<input type='checkbox' name='contribucion[]' value='".$c['idContribucion']."' $checked>";
+                                echo $c['descripcion'];
+                                echo "</div>";
+                            }
+                            ?>
                         </div>
                     </div>
 
                 </div>
             </div>
             <div id="formulario-footer">
-                <a href="./vistaGestionContribuciones.html">
-                    <button>
+                <a href="index.php?c=Asociacion&m=listar">
+                    <button type="button">
                         <span>Cancelar</span>
                     </button>
                 </a>
-                <a href="./vistaGestionContribuciones.html">
-                    <button>
-                        <i class="fa-regular fa-floppy-disk"></i>
-                        <span>Guardar</span>
-                    </button>
-                </a>
+                <button type="submit">
+                    <i class="fa-regular fa-floppy-disk"></i>
+                    <span>Guardar</span>
+                </button>
             </div>
         </form>
     </main>
