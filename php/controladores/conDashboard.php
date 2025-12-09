@@ -9,7 +9,9 @@
         }
 
         public function cargarPagina(){
+            $visitas = $this->modeloJ->contarVisitas();
             $this->vista="admin/dashboard.php";
+            return $visitas;
         }
     }
 ?>

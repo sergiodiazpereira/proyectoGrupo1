@@ -40,6 +40,7 @@ CREATE TABLE asoc_contribucion (
 
 CREATE TABLE intento(
 	idIntento SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    fecha_intento DATE DEFAULT (CURRENT_DATE),
     tiempo_empleado TIME NOT NULL,
     idUsuario SMALLINT UNSIGNED,
     idAsoc SMALLINT UNSIGNED,

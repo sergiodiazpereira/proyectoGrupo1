@@ -167,15 +167,14 @@
             </div>
         </main>
         <script type="module" src="../src/js/app.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-
-<script>
-  const asociacionesSelect = new Choices('#select-asociacion', {
-    searchEnabled: true,      // permite escribir para buscar
-    itemSelectText: '',       // quita el texto "Press to select"
-    shouldSort: false,        // mantiene el orden original
-    searchPlaceholderValue: 'Buscar...', 
-  });
-</script>
+        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+        <script>
+        const asociacionesSelect = new Choices('#select-asociacion', {
+            searchEnabled: true,      // permite escribir para buscar
+            itemSelectText: '',       // quita el texto "Press to select"
+            shouldSort: false,        // mantiene el orden original
+            searchPlaceholderValue: 'Buscar...', 
+        });
+        </script>
     </body>
 </html>

@@ -2,9 +2,10 @@
     require_once __DIR__.'/../config/rutas.php';
     require_once __DIR__.'/../'.MODELO.'modLogin.php';
     class ConLogin {
-        public $modelo;
+        public $modeloL;
+        public $vista;
         function __construct(){
-            $this->modelo = new ModLogin();
+            $this->modeloL = new ModLogin();
         }
     }
 ?>

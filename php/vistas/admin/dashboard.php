@@ -98,7 +98,7 @@
                         <h3>Visitas totales</h3>
                         <i class="fa-regular fa-building"></i>
                     </div>
-                    <p>2,432,127</p>
+                    <p><?php echo $datos ?></p>
                 </section>
             </div>
             <section class="seccion-regular">
