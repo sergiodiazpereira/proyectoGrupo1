@@ -38,10 +38,10 @@ class VistaPistas{
                     contadorIntentos = 1; /* reiniciar intentos */
                 } else {
                     if (contadorIntentos >= 3) {
-                        this.interrogacionesDificil.remove();
+                        this.interrogacionesDificil.remove(); // Quita las interrogaciones
                         this.textoDificil.innerText = this.servicio.mandarPistaDificilAsociacionCorrecta();
                     } else {
-                        this.textoDificil.insertAdjacentElement('beforebegin', this.interrogacionesDificil);
+                        this.textoDificil.insertAdjacentElement('beforebegin', this.interrogacionesDificil); // Introduce el elemento this.interrogacionesDificil antes del elemento this.textoDificil
                     }
                     if (contadorIntentos >= 5) {
                         this.interrogacionesMedia.remove();
