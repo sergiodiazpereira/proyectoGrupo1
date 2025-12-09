@@ -31,50 +31,54 @@
             </ul>
         </div>
         <main class="main_kiko">
-            <div id="gridColec">
-                <?php 
-                // Usamos $controlador (o $objeto si no cambiaste el index)
-                $lista = $objContro->datos; 
+            <div id="coleccionPadre">
+                <h1>Mi Colección</h1>
+                <p>Explora las asociaciones que has adivinado y las que te faltan</p>
+                <div id="gridColec">
+                    <?php 
+                    // Usamos $controlador (o $objeto si no cambiaste el index)
+                    $lista = $objContro->datos; 
 
-                if (!empty($lista)) {
-                    foreach ($lista as $asoc) { 
-                        // Verificamos si está adivinada
-                        $desbloqueada = (isset($asoc['adivinada']) && $asoc['adivinada'] == 1);
-                ?>
-                        <div class="cajaAsoc">
-                            
-                            <div id="imgAsoc">
-                                <img src="../src/img/<?= $asoc['imagen'] ?>" 
-                                    alt="Logo"
-                                    style="<?= $desbloqueada ? '' : 'filter: blur(8px); opacity: 0.5;' ?>">
+                    if (!empty($lista)) {
+                        foreach ($lista as $asoc) { 
+                            // Verificamos si está adivinada
+                            $desbloqueada = (isset($asoc['adivinada']) && $asoc['adivinada'] == 1);
+                    ?>
+                            <div class="cajaAsoc">
                                 
-                                <h3><?= $desbloqueada ? $asoc['nombre'] : '???' ?></h3>
-                                
-                                <i class="fa-solid <?= $desbloqueada ? 'fa-lock-open' : 'fa-lock' ?>"></i>
-                            </div>
-
-                            <div id="datosColec">
-                                <?php if ($desbloqueada): ?>
-                                    <p><strong>Fundación:</strong> <?= $asoc['fundacion'] ?></p>
-                                    <p><strong>Alcance:</strong> <?= $asoc['alcance'] ?></p>
+                                <div id="imgAsoc">
+                                    <img src="../src/img/<?= $asoc['imagen'] ?>" 
+                                        alt="Logo"
+                                        style="<?= $desbloqueada ? '' : 'filter: blur(8px); opacity: 0.5;' ?>">
                                     
-                                    <a href="<?= $asoc['web'] ?>" target="_blank" style="display:block; margin-top:5px; color:#007bff; text-decoration:none;">
-                                        <i class="fa-solid fa-link"></i> Visitar Web Oficial
-                                    </a>
-                                <?php else: ?>
-                                    <p style="color: #666; font-style: italic; margin-top: 10px;">
-                                        Bloqueado
-                                    </p>
-                                <?php endif; ?>
-                            </div>
+                                    <h3><?= $desbloqueada ? $asoc['nombre'] : '???' ?></h3>
+                                    
+                                    <i class="fa-solid <?= $desbloqueada ? 'fa-lock-open' : 'fa-lock' ?>"></i>
+                                </div>
 
-                        </div>
-                <?php 
-                    } 
-                } else {
-                    echo "<p>No hay datos disponibles.</p>";
-                }
-                ?>
+                                <div id="datosColec">
+                                    <?php if ($desbloqueada): ?>
+                                        <p><strong>Fundación:</strong> <?= $asoc['fundacion'] ?></p>
+                                        <p><strong>Alcance:</strong> <?= $asoc['alcance'] ?></p>
+                                        
+                                        <a href="<?= $asoc['web'] ?>" target="_blank" style="display:block; margin-top:5px; color:#007bff; text-decoration:none;">
+                                            <i class="fa-solid fa-link"></i> Visitar Web Oficial
+                                        </a>
+                                    <?php else: ?>
+                                        <p style="color: #666; font-style: italic; margin-top: 10px;">
+                                            Bloqueado
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
+
+                            </div>
+                    <?php 
+                        } 
+                    } else {
+                        echo "<p>No hay datos disponibles.</p>";
+                    }
+                    ?>
+                </div>
             </div>
         </main>
         <script type="module" src="../src/js/app.js"></script>
