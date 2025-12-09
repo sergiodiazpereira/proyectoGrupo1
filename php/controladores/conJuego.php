@@ -9,9 +9,9 @@
         function __construct(){
             $this->modeloJ = new ModJuego();
         }
-        /***
-         * Esta funcion devuelve SOLO los nombres de las asociaciones de la bd
-         * @retur
+        /**
+         * Esta funcion saca los nombres de las asociaciones de la bd
+         * @return array nombre de todas las asociaciones
          */
         public function nombresDeAsociaciones(){
             $nombresAsociaciones = [];
@@ -24,7 +24,7 @@
             return $nombresAsociaciones;
         }
 
-        /***
+        /**
          * Esta funcion sirve para darle valor al atributo vista, que será usado en el index.php para hacer el include
          */
         public function cargarPagina(){
@@ -38,7 +38,7 @@
             exit;
         }
 
-        /***
+        /**
          * Esta funcion envía los datos de las asociaciones de la bd mediante json
          */
         public function obtenerDatosAsociaciones(){

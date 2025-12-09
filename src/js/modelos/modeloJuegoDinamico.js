@@ -1,7 +1,10 @@
 class ModeloJuegoDinamico {
     constructor() {
     }
-    
+    /**
+     * 
+     * @returns {Array} - Retorna un array de objetos de todas las asociaciones
+     */
     /* ---------------- RECOGE LOS DATOS DE LAS ASOCIACIONES ---------------- */  
     async obtenerAsociacionesDelControladorPHP() {
         try {

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Obtener página
             // OJO: Si estás en /php/index.php, la ruta es directa:
             const res = await fetch("index.php?c=Juego&m=obtenerPagina");
-            finDePagina = await res.json();
+            finDePagina = await res.json(); // finDePagina siempre será usuario/pagina_juego.php porque siempre se ejecuta el método de la linea anterior que devuelve usuario/pagina_juego.php (esta mal la logica)
 
             if (finDePagina === "usuario/pagina_juego.php") {
                 

@@ -9,7 +9,7 @@
         }
 
 
-        /***
+        /**
          * Esta funcion sirve para darle valor al atributo vista, que será usado en el index.php para hacer el include
          */
         public function cargarPagina(){
@@ -17,7 +17,7 @@
         }
 
 
-        /***
+        /**
          * Esta funcion sirve para enviar la pagina que se esta cargando actualmente mediante json
          */
         public function obtenerPagina(){

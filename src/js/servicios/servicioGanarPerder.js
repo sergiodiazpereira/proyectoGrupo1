@@ -9,6 +9,10 @@ class ServicioGanarPerder{
         this.asociacionCorrecta = null;
     }
 
+
+    /**
+     * Esta funcion recoge todas las asociaciones disponibles en la BD y elige una aleatoria que será la correcta
+     */
     async inicializar() {
         // 1. Pedimos los datos al PHP
         const datos = await this.modelo.obtenerAsociacionesDelControladorPHP();
