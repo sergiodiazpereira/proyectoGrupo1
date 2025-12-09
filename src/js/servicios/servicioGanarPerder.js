@@ -60,8 +60,18 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.pista_facil;
     }
 
+    /* async registrarVictoria(idAsoc, tiempo) {
+        const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                idAsoc,
+                tiempo
+            })
+        });
 
-    // funciones que llevan datos comprobados del modelo a la vista
+        return await res.json();
+    } */
 
 }
 

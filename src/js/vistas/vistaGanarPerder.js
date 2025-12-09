@@ -39,7 +39,15 @@ class VistaGanarPerder{
             }
         });
 
-        this.botonContinuarGanar.addEventListener('click', () => {
+        /** Registramos el tiempo al ganar la partida */
+        this.botonContinuarGanar.addEventListener('click', async () => {
+            /* // Recogemos el tiempo que ha tardado en completar el juego
+            const tiempo = this.textoCronometro.innerText;
+            // Recogemos el id de la asociación acertada
+            const idAsoc = this.servicio.mandarIdAsociacionCorrecta();
+            // Guardamos los datos en la base de datos
+            await this.servicio.registrarVictoria(idAsoc, tiempo);
+            // Ocultamos el popup */
             this.ocultarPantallaVictoria();
         });
 

@@ -3,9 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
         <link rel="stylesheet" href="../src/css/styleUsuario.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;500;700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Press+Start+2P&display=swap" rel="stylesheet">
         <title>Mockup Jugando Partida</title>
     </head>
     <body class="body_rafa">
@@ -130,12 +135,16 @@
             <button id="boton-info" class="azul"><i id="icono-boton-info" class="fa-solid fa-info tam-img colorBlanco"></i></button>
             <button id="boton-pistas" class="amarillo"><i class="fa-regular fa-lightbulb tam-img colorBlanco"></i></button>
             <div id="crono" class="textoCentrado">
-                <i class="fa-solid fa-stopwatch gris estiloCrono"></i>
-                <br><br><span class="negro">00:00</span>
+                <i class="fa-solid fa-stopwatch gris estiloCrono colorBlanco"></i>
+                <br><br><span class="negro colorBlanco">00:00</span>
             </div>
         </nav>
         <main class="main_rafa">
-            <h1>Adivina la asociación</h1>
+            <!--<div id="rankingBox" class="ranking-top3">
+                 <h4>Top 3 mejores tiempos</h4>
+                <div id="rankingContenido"></div>
+            </div> -->
+            <h2 id="tituloAdivina">Adivina la asociación</h2>
             <h4 class="gris"><span id="contador-intentos">Intento 0 de 10</span></h4>
             <select id="select-asociacion" name="opcion-usuario">
                 <option value="" disabled selected>Introduce una Asociación</option>
@@ -146,11 +155,11 @@
                 ?>
             </select>
             <div id="contenedor-encabezados">
-                <div class="encabezado textoCentrado">Asociación</div>
-                <div class="encabezado textoCentrado">Dirigido a</div>
-                <div class="encabezado textoCentrado">Año Fund.</div>
-                <div class="encabezado textoCentrado">Alcance GEO.</div>
-                <div class="encabezado textoCentrado">Contribuciones</div>
+                <div class="encabezado neutro textoCentrado colorBlanco">Asociación</div>
+                <div class="encabezado neutro textoCentrado colorBlanco">Dirigido a</div>
+                <div class="encabezado neutro textoCentrado colorBlanco">Año Fund.</div>
+                <div class="encabezado neutro textoCentrado colorBlanco">Alcance GEO.</div>
+                <div class="encabezado neutro textoCentrado colorBlanco">Contribuciones</div>
             </div>
             <div id="contenedor-resultados" style="display: none;">
                 <div class="celda rojo textoCentrado">Cruz Roja</div>

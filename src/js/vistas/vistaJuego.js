@@ -66,4 +66,16 @@ export class VistaJuego {
             });
         });
     }
+
+    /* // Mio
+    renderizarRanking(datos) {
+        const contenedor = document.getElementById("rankingContenido");
+        if (!contenedor) return;
+
+        // Solo top 3
+        const top3 = datos.slice(0,3);
+
+        contenedor.innerHTML = top3.map((r, i) => `
+            <p><strong>${i+1}º</strong> ${r.nombreUsuario} – ${r.tiempo_empleado}s (${r.asoc})</p>`).join("");
+    } */
 }
