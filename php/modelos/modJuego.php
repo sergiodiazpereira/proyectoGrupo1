@@ -43,7 +43,7 @@
                 // Obtenemos lista simple: ['Salud', 'Educación']
                 $nombresContribuciones = $stmt->fetchAll(PDO::FETCH_COLUMN);
                 
-                // 3. TRUCO FINAL: Convertimos la lista en un String separado por comas
+                // 3. TERCERO: Convertimos la lista en un String separado por comas
                 // Si la lista está vacía, ponemos un texto por defecto
                 if (!empty($nombresContribuciones)) {
                     $listaAsociaciones[$key]['contribuciones'] = implode(',', $nombresContribuciones);

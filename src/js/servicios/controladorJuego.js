@@ -2,6 +2,7 @@ export class ControladorJuego {
     constructor(modelo, vista) {
         this.modelo = modelo;
         this.vista = vista;
+        this.juegoEmpezado = false;
 
         this.modelo.enlazarCambios(() => this.vista.renderizar(this.modelo));
         
@@ -12,6 +13,11 @@ export class ControladorJuego {
     }
     
     manejarIntento = (intento) => {
+        if (!this.juegoEmpezado) {
+            this.juegoEmpezado = true;
+            this.modelo.resetearTiempo();
+        }
+
         if (this.modelo.juegoGanado) {
             return;
         }
@@ -20,7 +26,7 @@ export class ControladorJuego {
 
     iniciarReloj() {
         setInterval(() => {
-            if (!this.modelo.juegoGanado) {
+            if (this.juegoEmpezado && !this.modelo.juegoGanado) {
                 this.vista.renderizar(this.modelo);
             }
         }, 1000);
