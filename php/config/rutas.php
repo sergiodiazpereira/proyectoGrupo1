@@ -1,7 +1,19 @@
 <?php
-    define('VISTAS','vistas/admin/');
+    /**
+     * @var string VISTAS guardara la ruta donde se almacenan las vistas
+     * @var string CONTROLADOR guardara la ruta donde se almacenan las vistas
+     * @var string CONDEF guardara el controlador por defecto
+     * @var string METDEF guardara el metodo por defecto
+     * @var string RUTAIMG guardara la ruta donde se guardaran o buscaran las imagenes
+     * @var $ruta guardara la ruta que almacenara la constante RUTAIMG
+     */
+    
+    define('VISTAS','vistas/');
     define('CONTROLADOR','controladores/');
+    define('MODELO','modelos/');
 
-    define('CONDEF','Profe');
-    define('METDEF','cargarTutoresInicio');
+    define('CONDEF','Dashboard');
+    define('METDEF','cargarPagina');
+
+    define('RUTAIMG', '../src/img/');
 ?>
