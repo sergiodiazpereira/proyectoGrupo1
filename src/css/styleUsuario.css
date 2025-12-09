@@ -368,7 +368,7 @@ input[type=submit]{
     }
 }
 #gridColec{
-    padding: 20%;
+    padding: 20px;
     text-align: left;
     display: grid;
     /*
