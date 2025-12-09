@@ -4,10 +4,7 @@
     class ConLogin {
         public $modelo;
         function __construct(){
-            $this->modelo = new Mo
-        }
-        public function obtenerVisitas(){
-
+            $this->modelo = new ModLogin();
         }
     }
 ?>
