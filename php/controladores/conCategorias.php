@@ -116,19 +116,19 @@
                     return "Categoría guardada con exito";
 
                 }else{
-                    $this->vista="admin/mensajeIncorrecto.php";
-                    return "Fallo al guardar la contribución";
+                    $this->vista="admin/mensajeIncorrectoCategoria.php";
+                    return "Fallo al guardar la categoría";
                 };
             };
         }
         
         /**
-         * Summary of obtenerContribucion
-         * @return bool|PDOStatement esta funcion llama al modelo para que le devuelva las contribuciones
+         * Summary of obtenerCategoria
+         * @return bool|PDOStatement esta funcion llama al modelo para que le devuelva las categorías
          */
-        public function obtenerContribucion(){
-            $this->vista="admin/vistaGestionContribuciones.php";
-            $datos=$this->modeloCat->obtenerContribuciones();
+        public function obtenerCategoria(){
+            $this->vista="admin/vistaGestionCategorias.php";
+            $datos=$this->modeloCat->obtenerCategorias();
             return  $datos;
         }
 
@@ -136,33 +136,41 @@
          * Muestra la vista para confirmar eliminación.
          * 
          * Recoge:
-         *  - GET['idContribucion']
+         *  - GET['idCategoría']
          * 
-         * @return array Datos de la contribución.
+         * @return array Datos de la categoría.
          */
         public function borrar(){
-            // Obtenemos los datos de la contribución
-            $datos = $this->modeloCat->obtenerPorId();
+            // Comprobamos si podemos borrar la categoría (si hay alguna asociacion usando la categoría)
+            $asociacionUsandoCategoria = $this->modeloCat->buscarAsociacionUsandoCategoria();
+            if (isset($asociacionUsandoCategoria["nombre"])) {
+                $this->vista="admin/vistaErrorBorradoCategoria.php";
+                return "Hay una o varias asociaciones usando esta categoría";
+            } else {
+                // Obtenemos los datos de la categoría
+                $datos = $this->modeloCat->obtenerPorId();
 
-            // Establecemos la vista
-            $this->vista="admin/vistaBorrarContribucion.php";
 
-            // Devolvemos el array de datos
-            return $datos;
+                // Establecemos la vista
+                $this->vista="admin/vistaBorrarCategoria.php";
+
+                // Devolvemos el array de datos
+                return $datos;
+            }
         }
 
         /**
-         * Procesa el borrado de la contribución.
+         * Procesa el borrado de la categoria.
          * 
          * Recoge:
-         *  - GET['idContribucion']
+         *  - GET['idCategoria']
          */
         public function procesarBorrar(){
-            // Eliminamos la contribución
+            // Eliminamos la categoría
             $this->modeloCat->borrar();
         
-            // Redirigimos a la lista de contribuciones
-            header('Location: index.php?c=Contribucion&m=listar');
+            // Redirigimos a la lista de categorías
+            header('Location: index.php?c=Categorias&m=listar');
             exit;
         }
         

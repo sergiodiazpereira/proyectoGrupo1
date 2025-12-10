@@ -108,7 +108,7 @@
                     <?php if(!empty($datos['categoria'])): ?>
                         <?php foreach ($datos['categoria'] as $c): ?>
                             <div class="fila">
-                                <input type="text" name="descripcion[<?= $c['idTipoAsoc'] ?>]" value="<?= $c['nombre'] ?>">
+                                <input type="text" name="nombre[<?= $c['idTipoAsoc'] ?>]" value="<?= $c['nombre'] ?>">
                                 <a class="btn-eliminar" href="index.php?c=Categorias&m=borrar&idTipoAsoc=<?= $c['idTipoAsoc'] ?>">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>

@@ -34,9 +34,9 @@
          * @return array
          */
         public function obtenerPorId(){
-            $idCategoria = $_GET['idCategoria'];
+            $idCategoria = $_GET['idTipoAsoc'];
 
-            $sql = "SELECT * FROM tipo_asoc WHERE idCategoria = :id";
+            $sql = "SELECT * FROM tipo_asoc WHERE idTipoAsoc = :id";
             $stmt = $this->conexion->prepare($sql);
 
             $stmt->bindParam(':id', $idCategoria, PDO::PARAM_INT);
@@ -126,6 +126,17 @@
             $stmt=$this->conexion->prepare($sql);
             $stmt->execute();
             $datos=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datos;
+        }
+
+        public function buscarAsociacionUsandoCategoria(){
+            $idCategoria = $_GET['idTipoAsoc'];
+
+            $sql="SELECT nombre FROM asociacion WHERE idTipoAsoc = ".$idCategoria." LIMIT 1;";
+            $stmt=$this->conexion->prepare($sql);
+            $stmt->execute();
+            $datos=$stmt->fetch(PDO::FETCH_ASSOC);
+
             return $datos;
         }
     }

@@ -14,7 +14,7 @@
 <body>
     <!-- Modal para confirmar borrado de Contribuciones -->
     <div id="modal-contribuciones" class="fondo">
-        <form action="index.php?c=Categorias&m=procesarBorrar&idCategoria=<?=$datos['idCategoria']?>" method="POST" class="modal">
+        <form action="index.php?c=Categorias&m=procesarBorrar&idCategoria=<?=$datos['idTipoAsoc']?>" method="POST" class="modal">
             <div class="modal-header">
                 <h2>¿Estas seguro de que quieres borrar <?=$datos['nombre']?>?</h2>
                 <button class="ico-cerrar">
