@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Contribuciones</title>
+        <title>Mensaje Correcto</title>
         <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,27 +10,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="asociacionContribucion">
-        <!-- Modal para agregar Contribuciones -->
-        <div id="modal-contribuciones" class="fondo">
-            <form action="./index.php?c=Contribucion&m=insertar" method="post" class="modal">
+        <!-- Modal para decir que todo esta bien -->
+        <div id="modal-aceptarOno" class="fondo">
+            <div class="modal">
                 <div class="modal-header">
-                    <h2>Añadir Nueva Contribución</h2>
+                    <h2><?php echo $datos ?></h2>
                     <button id="cerrarModal" class="ico-cerrar" type="button">
-                        <i class="fa-solid fa-xmark"></i>
+                        <!-- Esto te tiene que llevar al dashboard -->
+                        <a href="index.php?c=Categorias&m=listar"><i class="fa-solid fa-xmark"></i></a>
                     </button>
                 </div>
-
-                <div class="modal-main">
-                    <label for="contribucion">Nombre</label>
-                    <input type="text" name="contribucion" id="nombre" placeholder="Ej: Apoyo escolar">
+                <div id="yes">
+                    <i  class="fa-regular fa-circle-check"></i>
                 </div>
-
                 <div class="modal-footer">
                     <!--Cambiar ruta del cancelar cuando se tenga el dashboard-->
-                    <button class="cancelar"><a id="enlace-cancelar" href="index.php">Cancelar</a></button>
-                    <button class="aniadir">Añadir</button>
+                    <button class="aniadir"><a id="enlace-cancelar" href="index.php?c=Categorias&m=listar">Volver</a></button>
                 </div>
-            </form>
+            </div>
         </div>
     </body>
 </html>

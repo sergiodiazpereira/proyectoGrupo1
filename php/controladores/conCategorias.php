@@ -10,16 +10,16 @@
 
         /**
          * Summary of validaciones
-         * @return bool esta funcion valida que la contribucion no esta vacia o contenga numeros
+         * @return bool esta funcion valida que la categoria no esta vacia o contenga numeros
          */
         public function validaciones(){
-            $contribucion = trim($_POST["contribucion"]);
+            $categoria = trim($_POST["categoria"]);
 
-            if (empty($contribucion)) {
+            if (empty($categoria)) {
                 return false;
             }
 
-            if (preg_match('/[0-9]/', $contribucion)) {
+            if (preg_match('/[0-9]/', $categoria)) {
                 return false;
             }
             return true;
@@ -27,17 +27,17 @@
 
         /**
          * Summary of validaciones
-         * @return bool esta funcion valida que la contribucion no esta vacia o contenga numeros
+         * @return bool esta funcion valida que la categoria no esta vacia o contenga numeros
          */
         public function validacionArray(){
 
-            foreach ($_POST['descripcion'] as $id => $desc) {
+            foreach ($_POST['nombre'] as $id => $nom) {
 
-                if (empty($desc)) {
+                if (empty($nom)) {
                     return false;
                 }
 
-                if (preg_match('/[0-9]/', $desc)) {
+                if (preg_match('/[0-9]/', $nom)) {
                     return false;
                 }
 
@@ -62,58 +62,58 @@
         }
 
         /**
-         * Carga el formulario de modificación de una contribución.
+         * Carga el formulario de modificación de una categoria.
          *
          * Recoge:
-         *  - GET['idContribucion']
+         *  - GET['idCategoria']
          * 
-         * @return array Datos de la contribución.
+         * @return array Datos de la categoria.
          */
         public function modificar(){
             // Obtenemos los datos a modificar
             $datos = $this->modeloCat->obtenerPorId();
 
             // Indicamos la vista
-            $this->vista="admin/vistaGesionContribuciones.php";
+            $this->vista="admin/vistaGestionCategoria.php";
             
-            // Retornamos el array de datos
+            // Retornamos el array de datos 
             return $datos;
         }
 
         /**
-         * Procesa la modificación de una contribución.
+         * Procesa la modificación de una categoría.
          * 
          * Recoge:
-         *  - POST['descripcion'][id] = nuevo texto
+         *  - POST['nombre'][id] = nuevo texto
          */
         public function procesarModificar(){
 
             if(!$this->validacionArray()){
-                $this->vista="admin/mensajeIncorrecto.php";
-                return "Alguna contribución está vacia o tiene algún número";
+                $this->vista="admin/mensajeIncorrectoCategoria.php";
+                return "Alguna categoría está vacia o tiene algún número";
             } else {
                 // Actualizamos los datos en la base de datos
                 $this->modeloCat->modificar();
 
-                $this->vista="admin/mensajeCorrecto.php";
-                return "Contribuciones actualizadas";
+                $this->vista="admin/mensajeCorrectoCategoria.php";
+                return "Categorías actualizadas";
             }
             
         }
 
         /**
          * Summary of insertar
-         * @return string esta funcion inserta las contribuciones en su tabla
+         * @return string esta funcion inserta las categorías en su tabla
          */
         public function insertar(){
             if(!$this->validaciones()){
-                $this->vista="admin/mensajeIncorrecto.php";
-                return "Contribución vacia o la contribución tiene algun número";
+                $this->vista="admin/mensajeIncorrectoCategoria.php";
+                return "Categoría vacia o la categoría tiene algun número";
             }else{
                 if($this->modeloCat->insertar()){
                     
-                    $this->vista="admin/mensajeCorrecto.php";
-                    return "Constribución guardada con exito";
+                    $this->vista="admin/mensajeCorrectoCategoria.php";
+                    return "Categoría guardada con exito";
 
                 }else{
                     $this->vista="admin/mensajeIncorrecto.php";
