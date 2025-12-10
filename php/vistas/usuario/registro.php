@@ -17,8 +17,8 @@
                 <h1>Asociaciondle</h1>
                 <p>Demuestra cuánto sabes de organizaciones benéficas</p>
                 <div id="cajaBotonesIniYReg">
-                    <a href="login.html">Iniciar Sesión</a>
-                    <a href="registro.html" id="registro">Registrarse</a>
+                    <a href="login.php">Iniciar Sesión</a>
+                    <a href="registro.php" id="registro">Registrarse</a>
                 </div>
                 <form action="" method="post" id="formLoginRegis">
                     <h2>Crear una cuenta</h2>
