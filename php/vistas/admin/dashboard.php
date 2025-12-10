@@ -77,28 +77,28 @@
                         <h3>Asociaciones totales</h3>
                         <i class="fa-regular fa-building"></i>
                     </div>
-                    <p>67</p>
+                    <p><?php echo $datos["asociacionesTotales"] ?></p>
                 </section>
                 <section class="seccion-usuarios">
                     <div>
                         <h3>Usuarios registrados</h3>
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <p>777</p>
+                    <p><?php echo $datos["usuariosRegistrados"] ?></p>
                 </section>
                 <section class="seccion-contribuciones">
                     <div>
                         <h3>Total contribuciones</h3>
                         <i class="fa-solid fa-hand-holding-heart"></i>
                     </div>
-                    <p>38</p>
+                    <p><?php echo $datos["contribucionesTotales"] ?></p>
                 </section>
                 <section class="seccion-vistas">
                     <div>
                         <h3>Visitas totales</h3>
                         <i class="fa-regular fa-building"></i>
                     </div>
-                    <p><?php echo $datos ?></p>
+                    <p><?php echo $datos["visitas"] ?></p>
                 </section>
             </div>
             <section class="seccion-regular">
