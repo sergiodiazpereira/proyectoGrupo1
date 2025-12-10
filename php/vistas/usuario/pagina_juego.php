@@ -151,11 +151,11 @@
                 ?>
             </select>
             <div id="contenedor-encabezados">
-                <div class="encabezado neutro textoCentrado colorBlanco">Asociación</div>
-                <div class="encabezado neutro textoCentrado colorBlanco">Dirigido a</div>
-                <div class="encabezado neutro textoCentrado colorBlanco">Año Fund.</div>
-                <div class="encabezado neutro textoCentrado colorBlanco">Alcance GEO.</div>
-                <div class="encabezado neutro textoCentrado colorBlanco">Contribuciones</div>
+                <div class="encabezado neutro textoCentrado colorBlanco"><i class="fa-solid fa-building-columns"></i>Asociación</div>
+                <div class="encabezado neutro textoCentrado colorBlanco"><i class="fa-solid fa-address-book"></i>Dirigido a</div>
+                <div class="encabezado neutro textoCentrado colorBlanco"><i class="fa-regular fa-calendar"></i>Año Fund.</div>
+                <div class="encabezado neutro textoCentrado colorBlanco"><i class="fa-solid fa-globe"></i>Alcance GEO.</div>
+                <div class="encabezado neutro textoCentrado colorBlanco"><i class="fa-solid fa-gift"></i>Contribuciones</div>
             </div>
             <div id="contenedor-resultados" style="display: none;">
                 <div class="celda rojo textoCentrado">Cruz Roja</div>
