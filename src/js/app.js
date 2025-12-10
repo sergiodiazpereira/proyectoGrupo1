@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 finDePagina = mapaPaginas[controladorURL];
             } else {
                 // Por defecto la pagina juego
-                finDePagina = 'usuario/pagina_juego.php'; 
+                finDePagina = 'usuario/pagina_juego.php';
             }
 
             if (finDePagina === "usuario/pagina_juego.php") {
@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const conCambio = new ControladorCambio(modCambio);
                 const visCambio = new VistaCambio(conCambio);
                 conCambio.vista = visCambio;
-                conCambio.cambiarPwd();
             }
             if (finDePagina === 'usuario/ranking.php') {
                 const modRanking = new ModeloRanking();

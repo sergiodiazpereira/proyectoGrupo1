@@ -1,9 +1,15 @@
-export class ModeloCambio{
-    async traerContrasenia(){
-        const pwdGuardada = await fetch('index.php?c=Cambio&m=traerPwd');
-        return pwdGuardada;
-    }
-    async cambiarPwd(pwdNueva){
-        const realizado= await fetch('index.php?c=Cambio$m=modificarPwd');
+export class ModeloCambio {
+    async cambiarPwd(pwdAntigua, pwdNueva) {
+        
+        const datos = new FormData();
+        datos.append('contraActual', pwdAntigua);
+        datos.append('contraNueva', pwdNueva);
+
+        const respuesta = await fetch('index.php?c=Cambio&m=modificarPwd', {
+            method: 'POST',
+            body: datos
+        });
+
+        return respuesta.json();
     }
 }

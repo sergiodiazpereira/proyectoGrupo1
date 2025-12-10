@@ -9,15 +9,21 @@
             parent::__construct();
             
         }
-        public function traerPwd($nombreSesion){
-            $sql = "SELECT contrasenia FROM usuario WHERE nombre = ?";
+        public function traerPwd($idUsuario){
+            $sql = "SELECT contrasenia FROM usuario WHERE idUsuario = ?";
             $stmt=$this->conexion->prepare($sql);
-            $stmt->execute([$nombreSesion]);
+            $stmt->execute([$idUsuario]);
             $datos=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $datos;
         }
-        public function modificarPwd(nombre){
-
+        public function modificarPwd($idUsuario, $contrasenia){
+            $sql="UPDATE usuario
+                    SET contrasenia = ?
+                    WHERE idUsuario = ?;";
+            $stmt=$this->conexion->prepare($sql);
+            $stmt->bindParam(1 , $contrasenia);
+            $stmt->bindParam(2, $idUsuario);
+            return $stmt->execute();
         }
     }
 ?>

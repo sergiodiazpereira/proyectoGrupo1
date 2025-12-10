@@ -3,11 +3,11 @@
     require_once __DIR__.'/../modelos/modCambio.php';
     class ConCambio{
         public $modeloJ;
-        public $nombre;
+        public $idUsuario;
         public $vista;
         function __construct(){
             $this->modeloJ = new ModCambio();
-            $this->nombre = $_SESSION["nombre"];
+            $this->idUsuario = $_SESSION['idUsuario'];
         }
 
 
@@ -19,12 +19,34 @@
         }
 
         public function traerPwd(){
-            $datos=$this->modeloJ->traerPwd($this->nombre);
+            $datos=$this->modeloJ->traerPwd($this->idUsuario);
             echo json_encode($datos);
             exit;
         }
         public function modificarPwd(){
-            $this->modeloJ->modificarPwd($this->nombre);
+
+            $contraActual = $_POST['contraActual'] ?? '';
+            $contraNueva = $_POST['contraNueva'] ?? '';
+            
+            $usuario = $this->modeloJ->traerPwd($this->idUsuario);
+            
+            $pwdGuardada = $usuario[0]['contrasenia'];
+            
+            if ($contraActual !== $pwdGuardada) {
+                echo json_encode(['exito' => false, 'mensaje' => 'La contraseña actual es incorrecta']);
+                exit;
+            }
+            
+            
+            $resultado = $this->modeloJ->modificarPwd($this->idUsuario, $contraNueva);
+            
+            // Devolver el resultado
+            if ($resultado) {
+                echo json_encode(['exito' => true, 'mensaje' => 'Contraseña actualizada correctamente']);
+            } else {
+                echo json_encode(['exito' => false, 'mensaje' => 'Error al actualizar la contraseña']);
+            }
+            exit;
         }
         /**
          * Esta funcion sirve para enviar la pagina que se esta cargando actualmente mediante json
