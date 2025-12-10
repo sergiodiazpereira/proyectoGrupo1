@@ -17,10 +17,9 @@
             {
                 session_start();
                 $_SESSION['idUsuario'] = $usuarioEncontrado['idUsuario'];
-                $_SESSION['nombre'] = $usuarioEncontrado['nombre'];
+                $_SESSION['correo'] = $usuarioEncontrado['correo'];
                 $_SESSION['permiso'] = $usuarioEncontrado['permiso'];
-
-                if ($usuarioEncontrado['permiso'] == 'A')
+                if ($_SESSION['permiso'] == 'A')
                 {
                     header("Location: ../../index.php?c=Dashboard&m=cargarPagina");
                 }
