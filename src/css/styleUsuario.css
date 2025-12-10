@@ -15,7 +15,7 @@
     --azulPastel: #4B8CFB;
     --verdePastel: #8de0a6;
     --amarilloPastel: #f7e37b;
-    --rojoPastel: #ec6363;
+    --rojoPastel: #f08b8b;
     --colorNeutro: #505A74;
 }
 
@@ -563,7 +563,7 @@ input[type=submit]{
     margin: 2.5rem auto; 
     display: grid;
     width: 95%; /* Usamos el 95% del max-width de 768px */
-    max-width: 45rem; /* 720px */
+    max-width: 50rem; /* 720px */
     grid-template-columns: repeat(5, 1fr);
 }
 
@@ -581,6 +581,11 @@ input[type=submit]{
     color: #333;
     font-size: 0.9em;
     border-radius: 0.5rem;
+    text-align: left;
+}
+
+.encabezado i{
+    margin-right: 0.5rem;
 }
 .celda {
     display: grid;
@@ -592,11 +597,17 @@ input[type=submit]{
     color: white;
     line-height: 1.2; 
 }
-.rojo { background-color: var(--rojoPastel); }
-.verde { background-color: var(--verdePastel); }
+.rojo { 
+    background-color: var(--rojoPastel);
+    color: #333;
+}
+.verde { 
+    background-color: var(--verdePastel); 
+    color: #333;
+}
 .amarillo { 
     background-color: var(--amarilloPastel); 
-    color: #333; 
+    color: #333;
 }
 .azul{
     background-color: var(--azulPastel);

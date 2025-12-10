@@ -149,6 +149,7 @@
             font-family: var(--fuente-regular);
             font-weight: 100;
             font-size: 0.875rem;
+            text-decoration: none;
             i{
                 margin-right: 16px; /* imposible cambiar a % */
             }
@@ -795,6 +796,160 @@
     }
 
     }
+
+
+    /* =======================================================[ CATEGORÍAS ]========================================================== */
+
+    /* Div informacion categorias + botones */
+    #bloqueGestionCategorias {
+    font-family: var(--fuente-titulo-nav);
+    border: var(--azul-marino);
+    width: 100%; /* %> 728px/728px */
+    }
+
+    /* Elementos internos del bloque de gestion de categorias */
+    #bloqueGestionCategorias {
+
+    /* Título principal */
+    h1 {
+        font-size: 2rem;
+        color: var(--azul-marino, #b2bcce);
+        margin: 0px;
+    }
+
+    /* Subtítulo */
+    p {
+        margin-top: 0;
+    }
+
+    /* Enlaces sin subrayado */
+    a {
+        text-decoration: none;
+        width: 15.62%; /* %> 120px/728px */
+    }
+
+    /* Botón principal */
+    button {
+        background-color: var(--azul-marino, #0b285b);
+        color: var(--blanco-texto-boton, #fafcff);
+        width: 100%; /* %> 120px/120px */
+        padding: 1.04vh 1.09%; /* vh> 8px/768px %> 8px/728px */
+        text-align: left;
+        border: 1px solid var(--azul-marino);
+        border-radius: 14px;
+    }
+
+    /* Hover botón */
+    button:hover {
+        cursor: hand;
+        background-color: var(--blanco-texto-boton, #fafcff);
+        color: var(--azul-marino, #0b285b);
+        border: 1px solid var(--azul-borde-header);
+    }
+
+    /* Espaciado entre el botón y el texto */
+    span {
+        padding-left: 8.33%; /* %> 10px/120px */
+    }
+
+    }
+
+    /* Div lista de categorias (676 width + (25+25) padding + (1+1) border = 728px) */
+    #bloqueListaCategorias {
+    width: 92.85%; /* %> 676px/728px */
+    background: white;
+    padding: 3.25vh 3.43%; /* vh> 25px/768px %> 25px/728px */
+    border: 1px solid var(--azul-borde-header, #c2d4ff);
+    border-radius: 14px;
+    margin-top: 3.90vh; /* vh> 30px/768px */
+    font-family: var(--fuente-titulo-nav);
+    }
+
+    /* Elementos internos dentro de lista de categorias */
+    #bloqueListaCategorias {
+
+    /* Título del bloque */
+    h2 {
+        font-size: 1.8rem;
+        color: var(--azul-marino);
+        margin-bottom: 2.60vh; /* vh> 20px/768px */
+    }
+
+    /* Fila con grid */
+    .fila {
+        display: grid;
+        grid-template-columns: 1fr 0.2fr; /* %> 338px/676px %> 338px/676px Prefiero usar 1 fr para ambas*/
+        align-items: center;
+        margin-bottom: 1.56vh; /* vh> 12px/768px */
+    }
+
+    /* Encabezado de la lista */
+    .encabezado {
+        background: transparent;
+        padding: 0;
+
+        /* Texto dentro del encabezado */
+        span {
+        font-weight: bold;
+        color: var(--gris-subtitulo-main);
+        }
+
+    }
+
+    /* Inputs de texto */
+    input {
+        border: none;
+        border-radius: 14px;
+        background-color: #f4f6ff;
+        font-size: 1rem;
+        color: var(--azul-marino);
+        outline: none;
+        padding: 1.56vh 4.73%; /* vh> 12px/768px %> 16px/338px */
+        margin-right: 5.91%; /* %> 20px/338px */
+        border: 1px solid #ffffff;
+        width: 88.75%; /* %> 300px/338px */
+    }
+
+    /* Focus input */
+    input:focus {
+        border: 1px solid var(--azul-borde-header);
+    }
+
+    /* Enlace del boton */
+    a{
+        text-decoration: none;
+        width: 100%; /* %> 338px/338px 0.2fr */
+        text-align: center;
+    }
+
+    a {
+        i {
+            line-height: 5.20vh;
+        }
+    }
+
+    /* Botón eliminar */
+    .btn-eliminar {
+        background: #ff5757;
+        border: none;
+        border-radius: 14px;
+        width: 100%; /* %> 40px/40px */
+        height: 5.20vh; /* vh> 40px/768px */
+        color: white;
+        cursor: pointer;
+    }
+
+    /* Hover eliminar */
+    .btn-eliminar:hover {
+        background: #ff3030;
+    }
+
+    }
+
+
+
+
+
 
     /* =======================================================[ MODAL ]========================================================== */
 

@@ -21,15 +21,17 @@ export class ControladorJuego {
         if (this.modelo.juegoGanado) {
             return;
         }
-        this.modelo.registrarIntento(intento);
 
-        /* // Obtenemos el numero de intentos realizados
-        const n = this.modelo.intentosRealizados.length;
+        const resultado = this.modelo.registrarIntento(intento);
 
-        // Mostrar pistas automáticamente
-        if (n === 3) this.modelo.mostrarPista(1);
-        if (n === 5) this.modelo.mostrarPista(2);
-        if (n === 7) this.modelo.mostrarPista(3); */
+        // Recogemos el numero de intentos realizados
+        const totalIntentos = this.modelo.intentosRealizados.length;
+
+        // Si el numero de intentos es de 3,5 u 8 mostramos un popup de forma automatica
+        if (!resultado.esCorrecto && (totalIntentos === 3 || totalIntentos === 5 || totalIntentos === 8)) {
+            this.vista.mostrarPopupAutomatico();
+        }
+        
     }
 
     iniciarReloj() {

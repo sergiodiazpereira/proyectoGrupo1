@@ -82,7 +82,7 @@
             $datos = $this->modeloCont->obtenerPorId();
 
             // Indicamos la vista
-            $this->vista="admin/vistaGesionContribuciones.php";
+            $this->vista="admin/vistaGestionContribuciones.php";
             
             // Retornamos el array de datos
             return $datos;
@@ -121,7 +121,7 @@
                 if($this->modeloCont->insertar()){
                     
                     $this->vista="admin/mensajeCorrecto.php";
-                    return "Constribución guardada con exito";
+                    return "Contribución guardada con exito";
 
                 }else{
                     $this->vista="admin/mensajeIncorrecto.php";

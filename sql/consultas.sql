@@ -51,13 +51,13 @@ CREATE TABLE intento(
 
 
 -- Insertar Usuarios
-INSERT INTO usuario (nombre,contrasenia,permiso,correo) VALUES
-("Pedro","pedro1234",DEFAULT,"pedro@gmail.com"),
-("Juan","juan1234",DEFAULT,"juan@gmail.com"),
-("Marta","marta1234",DEFAULT,"marta@gmail.com"),
-("Aitana","aitana1234",DEFAULT,"aitana@gmail.com"),
-("Kiko","kiko5678","A","kiko@gmail.com"),
-("Sergio","sergio5678","A","sergio@gmail.com");
+INSERT INTO usuario (nombre,contrasenia,permiso,correo,visitas) VALUES
+("Pedro","pedro1234",DEFAULT,"pedro@gmail.com",0),
+("Juan","juan1234",DEFAULT,"juan@gmail.com",0),
+("Marta","marta1234",DEFAULT,"marta@gmail.com",0),
+("Aitana","aitana1234",DEFAULT,"aitana@gmail.com",0),
+("Kiko","kiko5678","A","kiko@gmail.com",0),
+("Sergio","sergio5678","A","sergio@gmail.com",0);
 
 -- Insertar Tipos de Asociación
 INSERT INTO tipo_asoc (nombre) VALUES
