@@ -3,7 +3,6 @@
     require_once __DIR__.'/../'.MODELO.'modLogin.php';
     class ConLogin {
         public $modelo;
-        public $vista;
         function __construct(){
             $this->modelo = new ModLogin();
         }
