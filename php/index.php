@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__.'/config/rutas.php';
+    session_start();
     /**
      * @var $controlador Recibe el controlador al que queremos ir mediante el metodo get
      * @var $metodo  Recibe el metodo del controladore al que queremos ir mediante el metodo get

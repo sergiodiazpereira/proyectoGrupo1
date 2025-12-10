@@ -17,6 +17,10 @@ import { ModeloRanking } from './modelos/modeloRanking.js';
 import { VistaRanking } from './vistas/vistaRanking.js';
 import { ControladorRanking } from './servicios/controladorRanking.js';
 
+import { ModeloCambio } from './modelos/modeloCambio.js';
+import { VistaCambio } from './vistas/vistaCambio.js';
+import { ControladorCambio } from './servicios/controladorCambio.js';
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -106,7 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 new ControladorColeccion(modelo, vista);
             }
             /*PARTE KIKO*/
-            if (finDePagina === 'usuario/cambio.php') { /* ... */ }
+            if (finDePagina === 'usuario/cambio.php') {
+                const modCambio = new ModeloCambio();
+                const conCambio = new ControladorCambio(modCambio);
+                const visCambio = new VistaCambio(conCambio);
+                conCambio.vista = visCambio;
+                conRanking.cargarRanking();
+            }
             if (finDePagina === 'usuario/ranking.php') {
                 const modRanking = new ModeloRanking();
                 const conRanking = new ControladorRanking(modRanking);
