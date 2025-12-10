@@ -18,11 +18,11 @@
             $consulta = $this->conexion->prepare($sql);
             $consulta->execute();
             
-            // Si llega aquí, es que NO hubo error
+            /* Si está aquí es porque no ha habido ningún error */
             return true; 
 
             } catch (PDOException $e) {
-                // El código 23000 es el de "Dato duplicado"
+                /* El código 23000 es el de dato duplicado */
                 if ($e->getCode() == 23000) {
                     return false;
                 } 
