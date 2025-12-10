@@ -11,10 +11,24 @@
             {
                 return false;
             }
+            /* Encriptamos la contraseña mediante el password_hass, con la constante de PASSWORD_DEFAULT, para que la
+            encripte por defecto con algún algoritmo, es decir, el que tiene la versión actual que utilizas de php */
+            $pwdSegura = password_hash($pwd, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO usuario (nombre, correo, contrasenia) VALUES ('$nombre', '$correo', '$pwdSegura')";
 
-            $sql = "INSERT INTO usuario (nombre, correo, contrasenia) VALUES ('$nombre', '$correo', '$pwd')";
+            try {
             $consulta = $this->conexion->prepare($sql);
             $consulta->execute();
+            
+            /* Si está aquí es porque no ha habido ningún error */
+            return true; 
+
+            } catch (PDOException $e) {
+                /* El código 23000 es el de dato duplicado */
+                if ($e->getCode() == 23000) {
+                    return false;
+                } 
+            }
         }
     }
 
