@@ -17,10 +17,5 @@
             echo json_encode($datos);
             exit;
         }
-        public function obtenerPagina(){
-            $this->vista="usuario/ranking.php";
-            echo json_encode($this->vista); // Para cargar la pagina en javascript y poder controlarlo con el app.js
-            exit;
-        }
     }
 ?>

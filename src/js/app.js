@@ -114,9 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 conRanking.vista = visRanking;
                 conRanking.cargarRanking();
             }
-
-
-
         } catch (error) {
             console.error("Error crítico en APP.JS:", error);
         }
