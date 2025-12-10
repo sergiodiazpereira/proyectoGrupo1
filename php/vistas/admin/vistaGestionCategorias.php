@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Contribuciones</title>
+        <title>Categorias</title>
         <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     <a href="index.php?c=Contribucion&m=listar">
-                        <button class="paginaSeleccionada">
+                        <button>
                             <i class="fa-solid fa-hand-holding-heart"></i>
                             <span>Contribuciones</span>
                         </button>
@@ -51,7 +51,7 @@
                 </li>
                 <li>
                     <a href="index.php?c=Categorias&m=cargarPagina">
-                        <button>
+                        <button class="paginaSeleccionada">
                             <i class="fa-solid fa-icons"></i>
                             <span>Categorías</span>
                         </button>
@@ -78,10 +78,10 @@
             </ul>
         </nav>
         <main>
-            <form action="index.php?c=Contribucion&m=procesarModificar" method="POST" enctype="multipart/form-data">
+            <form action="index.php?c=Categorias&m=procesarModificar" method="POST" enctype="multipart/form-data">
                 <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
                 <div id="bloqueGestionContribuciones">
-                    <h1>Gestionar Contribuciones</h1>
+                    <h1>Gestionar Categorías</h1>
                     <p>Añadir, editar o eliminar los tipos de contribucion.</p>
 
                     <button id="abrirModal" type="button">

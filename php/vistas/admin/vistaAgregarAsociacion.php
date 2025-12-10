@@ -48,6 +48,14 @@
                             </button>
                         </a>
                     </li>
+                    <li>
+                        <a href="index.php?c=Categorias&m=cargarPagina">
+                            <button>
+                                <i class="fa-solid fa-icons"></i>
+                                <span>Categorías</span>
+                            </button>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="ul-inferior">
                     <li>
