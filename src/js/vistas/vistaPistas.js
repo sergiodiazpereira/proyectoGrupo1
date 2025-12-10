@@ -77,6 +77,12 @@ class VistaPistas{
         this.popupPistas.style.display = "none";
         this.contenidoPopupPistas.classList.remove("mostrar");
     }
+
+    // Método para mostrar automaticamente el popup de pistas
+    mostrarPopupAutomatico() {
+        this.mostrarMenu();
+    }
+
 }
 
 export default VistaPistas;
