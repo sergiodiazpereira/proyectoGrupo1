@@ -66,4 +66,22 @@ export class VistaJuego {
             });
         });
     }
+
+    // Método que muestra el pop-up de pistas automaticamente
+    mostrarPopupAutomatico() {
+        // Obtenemos el contenedor del popup
+        const popup = document.getElementById("pantalla-pistas");
+        // Obtenemos el modal interno donde están las pistas
+        const modal = document.getElementById("modal-pistas");
+
+        // Solo ejecutamos la animación si ambos elementos existen en el DOM
+        if (popup && modal) {
+            // Mostramos la capa oscurecida del popup
+            popup.style.display = "flex";
+            // Añado un timeout de 1 milisegundo para mostrarlo sin errores
+            setTimeout(() => modal.classList.add("mostrar"), 1);
+            // Aseguramos que el modal esté visible
+            modal.style.display = "block";
+        }
+    }
 }
