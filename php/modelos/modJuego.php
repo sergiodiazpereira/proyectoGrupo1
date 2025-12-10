@@ -64,13 +64,14 @@
             try{
                 $data = json_decode(file_get_contents("php://input"), true);
 
-                $sql="INSERT INTO intento (tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?)";
+                $sql="INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?,?)";
 
                 $stmt=$this->conexion->prepare($sql);
                 
-                $stmt->bindParam(1,$data["tiempo_empleado"]);
-                $stmt->bindParam(2,$data["idUsuario"]);
-                $stmt->bindParam(3,$data["idAsoc"]);
+                $stmt->bindParam(1,$data["fecha_intento"]);
+                $stmt->bindParam(2,$data["tiempo_empleado"]);
+                $stmt->bindParam(3,$_SESSION["idUsuario"]);
+                $stmt->bindParam(4,$data["idAsoc"]);
                 
                 $stmt->execute();
 

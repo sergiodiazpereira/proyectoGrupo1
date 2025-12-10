@@ -30,6 +30,7 @@ export class ControladorJuego {
         if (n === 3) this.modelo.mostrarPista(1);
         if (n === 5) this.modelo.mostrarPista(2);
         if (n === 7) this.modelo.mostrarPista(3); */
+        
     }
 
     iniciarReloj() {
