@@ -216,9 +216,6 @@ input[type=submit]{
         color: var(--colorLabel);
         border-radius: var(--bordeRadius);
     }
-    a:hover{
-        background-color: var(--azul-borde-header);
-    }
 }
 /*Le doy estilo al menu desplegable*/
 
@@ -259,6 +256,7 @@ input[type=submit]{
         color: var(--colorLabel);
     }
     li{ 
+        width: 90%;
         padding: 1.95vh; /*15px/768*/
         height: 1.95vh; /*15px/768*/
         border-radius: var(--bordeRadius);
@@ -440,6 +438,21 @@ input[type=submit]{
     align-items: center;
     justify-content: center;
     z-index: 9999; /* Por encima de todo */
+}
+#botonGuardar{
+    width: 130px;
+    background-color: #6c92f3;
+    color: white;
+}
+#botonGuardar1{
+    width: 130px;
+    background-color: var(--colorFondoFormulario);
+    color: var(--colorLabel);
+}
+#botonGuardar1:hover{
+    width: 130px;
+    background-color: #6c92f3;
+    color: white;
 }
 
 /* Estilos de Info y botones (popups de info, pistas y otros botones) */

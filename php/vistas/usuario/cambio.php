@@ -41,7 +41,7 @@
                 <label for="contraConfir">Confirmar Contraseña</label>
                 <input type="password" name="contraConfir">
                 <button type="submit" id="botonGuardar">Guardar cambios</button>
-                <a href="./index.php?c=Juego&m=cargarPagina">Cancelar</a>
+                <button type="button" id="botonGuardar1" onclick="window.location.href='./index.php?c=Juego&m=cargarPagina'" id="botonGuardar1">Cancelar</button>
             </form>
             <p>---------------o continuar con--------------------</p>
         </div>
