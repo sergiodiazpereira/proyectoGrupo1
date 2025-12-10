@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.php?c=Categorias&m=cargarPagina">
+                    <a href="index.php?c=Categorias&m=listar">
                         <button>
                             <i class="fa-solid fa-icons"></i>
                             <span>Categorías</span>

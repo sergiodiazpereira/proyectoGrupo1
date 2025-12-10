@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.php?c=Categorias&m=cargarPagina">
+                    <a href="index.php?c=Categorias&m=listar">
                         <button class="paginaSeleccionada">
                             <i class="fa-solid fa-icons"></i>
                             <span>Categorías</span>
@@ -79,14 +79,14 @@
         </nav>
         <main>
             <form action="index.php?c=Categorias&m=procesarModificar" method="POST" enctype="multipart/form-data">
-                <!-- Gestión de Contribuciones (agregar y guardar cambios) -->
+                <!-- Gestión de Categorias (agregar y guardar cambios) -->
                 <div id="bloqueGestionContribuciones">
                     <h1>Gestionar Categorías</h1>
-                    <p>Añadir, editar o eliminar los tipos de contribucion.</p>
+                    <p>Añadir, editar o eliminar las categorías de las asociaciones.</p>
 
                     <button id="abrirModal" type="button">
                         <i class="fa-solid fa-circle-plus"></i>
-                        <span>Añadir contribución</span>
+                        <span>Añadir categoria</span>
                     </button>
 
                     <button type="submit">
@@ -95,56 +95,56 @@
                     </button>
                 </div>
 
-                <!-- Lista de Contribuciones -->
-                <div id="bloqueListaContribuciones">
+                <!-- Lista de Categorias -->
+                <div id="bloqueListaCategorias">
 
-                    <h2>Lista de Contribuciones</h2>
+                    <h2>Lista de Categorías</h2>
 
                     <div class="fila encabezado">
                         <span>Nombre</span>
                         <span>Acciones</span>
                     </div>
 
-                    <?php if(!empty($datos['contribucion'])): ?>
-                        <?php foreach ($datos['contribucion'] as $c): ?>
+                    <?php if(!empty($datos['categoria'])): ?>
+                        <?php foreach ($datos['categoria'] as $c): ?>
                             <div class="fila">
-                                <input type="text" name="descripcion[<?= $c['idContribucion'] ?>]" value="<?= $c['descripcion'] ?>">
-                                <a class="btn-eliminar" href="index.php?c=Contribucion&m=borrar&idContribucion=<?= $c['idContribucion'] ?>">
+                                <input type="text" name="descripcion[<?= $c['idTipoAsoc'] ?>]" value="<?= $c['nombre'] ?>">
+                                <a class="btn-eliminar" href="index.php?c=Categorias&m=borrar&idTipoAsoc=<?= $c['idTipoAsoc'] ?>">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <p>No hay contribuciones registradas.</p>
+                        <p>No hay categorías registradas.</p>
                     <?php endif; ?>
                 </div>
             </form>
                 
-            <!-- Modal para agregar Contribuciones -->
-            <div class="fondo oculto" id="modal-contribuciones">
-                <form action="index.php?c=Contribucion&m=insertar" method="post" class="modal">
+            <!-- Modal para agregar Categorías -->
+            <div class="fondo oculto" id="modal-categorias">
+                <form action="index.php?c=Categorias&m=insertar" method="post" class="modal">
                     <div class="modal-header">
-                        <h2>Añadir Nueva Contribución</h2>
+                        <h2>Añadir Nueva Categoría</h2>
                         <button id="cerrarModal" class="ico-cerrar" type="button">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
 
                     <div class="modal-main">
-                        <label for="contribucion">Nombre</label>
-                        <input type="text" name="contribucion" id="nombre" placeholder="Ej: Apoyo escolar">
+                        <label for="categoria">Nombre</label>
+                        <input type="text" name="categoria" id="nombre" placeholder="Ej: Jóvenes">
                     </div>
 
                     <div class="modal-footer">
                         <!--Cambiar controlador y modelo por defecto cuanto se tenga el dashboard-->
-                        <button class="cancelar"><a href="./index.php?c=Contribucion&m=listar">Cancelar</a></button>
+                        <button class="cancelar"><a href="./index.php?c=Categorias&m=listar">Cancelar</a></button>
                         <button class="aniadir">Añadir</button>
                     </div>
                 </form>
             </div>
             <script> 
                 /*Recojo el modal el boton abrir y el boton de cerrar */
-                const modal = document.getElementById("modal-contribuciones");
+                const modal = document.getElementById("modal-categorias");
                 const btnAbrir = document.getElementById("abrirModal");
                 const btnCerrar = document.getElementById("cerrarModal");
                 /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
