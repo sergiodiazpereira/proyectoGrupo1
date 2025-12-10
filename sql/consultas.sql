@@ -4,7 +4,8 @@ CREATE TABLE usuario(
     contrasenia VARCHAR(50) NOT NULL,
     permiso CHAR(1) NOT NULL DEFAULT 'U',
     correo VARCHAR(100) NOT NULL UNIQUE,
-	fecha_registro DATE DEFAULT (CURRENT_DATE)
+	fecha_registro DATE DEFAULT (CURRENT_DATE),
+    visitas INT UNSIGNED DEFAULT '0'
 );
 
 CREATE TABLE tipo_asoc(
@@ -40,12 +41,14 @@ CREATE TABLE asoc_contribucion (
 
 CREATE TABLE intento(
 	idIntento SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    fecha_intento DATE DEFAULT (CURRENT_DATE),
     tiempo_empleado TIME NOT NULL,
     idUsuario SMALLINT UNSIGNED,
     idAsoc SMALLINT UNSIGNED,
     CONSTRAINT fk_usuario FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
     CONSTRAINT fk_asoc_intento FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE CASCADE
 );
+
 
 -- Insertar Usuarios
 INSERT INTO usuario (nombre,contrasenia,permiso,correo) VALUES
@@ -102,3 +105,17 @@ INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
 INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
 (4, 3), -- Inclusión
 (4, 4); -- Eduación
+
+/*Insert para los intentos*/
+INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc)
+VALUES
+('2025-01-10', '00:01:32', 1, 1),
+('2025-01-11', '00:02:15', 1, 2),
+('2025-01-12', '00:03:05', 2, 3),
+('2025-01-13', '00:01:50', 2, 1),
+('2025-01-14', '00:02:41', 3, 2),
+('2025-01-15', '00:01:22', 3, 3),
+('2025-01-16', '00:02:10', 4, 1),
+('2025-01-17', '00:03:33', 4, 2),
+('2025-01-18', '00:01:48', 5, 3),
+('2025-01-19', '00:02:55', 5, 1);

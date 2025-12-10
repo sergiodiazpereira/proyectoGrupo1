@@ -11,10 +11,10 @@
         public function cargarPagina(){
             $this->vista="usuario/ranking.php";
         }
-
-        public function obtenerPagina(){
-            $this->vista="usuario/ranking.php";
-            echo json_encode($this->vista); // Para cargar la pagina en javascript y poder controlarlo con el app.js
+        
+        public function obtenerRanking(){
+            $datos= $this->modeloJ->sacarRanking();
+            echo json_encode($datos);
             exit;
         }
     }

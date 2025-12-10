@@ -44,7 +44,7 @@
                 // Obtenemos lista simple: ['Salud', 'Educación']
                 $nombresContribuciones = $stmt->fetchAll(PDO::FETCH_COLUMN);
                 
-                // 3. TRUCO FINAL: Convertimos la lista en un String separado por comas
+                // 3. TERCERO: Convertimos la lista en un String separado por comas
                 // Si la lista está vacía, ponemos un texto por defecto
                 if (!empty($nombresContribuciones)) {
                     $listaAsociaciones[$key]['contribuciones'] = implode(',', $nombresContribuciones);
@@ -55,5 +55,32 @@
 
             return $listaAsociaciones; 
         }
+
+        /**
+         * Summary of insertar
+         * @return bool esta funcion retornara o true o false dependiendo si la insercion ha sido exitosa
+         */
+        public function insertar(){
+            try{
+                $data = json_decode(file_get_contents("php://input"), true);
+
+                $sql="INSERT INTO intento (tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?)";
+
+                $stmt=$this->conexion->prepare($sql);
+                
+                $stmt->bindParam(1,$data["tiempo_empleado"]);
+                $stmt->bindParam(2,$data["idUsuario"]);
+                $stmt->bindParam(3,$data["idAsoc"]);
+                
+                $stmt->execute();
+
+                echo json_encode(["exito" => true]);
+                return true;
+            }catch(PDOException $e){
+                echo json_encode(["exito" => false, "error" => $e->getMessage()]);
+                return false;
+            }
+        }
+
     }
 ?>

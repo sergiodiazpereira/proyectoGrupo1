@@ -337,9 +337,6 @@
                 font-size: 0.875rem;
                 }
             }
-            .primer-usuario{
-                margin-top: 3.669724770642202%; /* 24px */
-            }
             }
         }
         }
@@ -348,9 +345,10 @@
             cursor: pointer;
         }
 
-        a{
+        .color-a{
             text-decoration: none;
             cursor: pointer;
+            color: var(--blanco-texto-boton, #fafcff);
     }
 
 }

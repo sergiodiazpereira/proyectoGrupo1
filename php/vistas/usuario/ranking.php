@@ -41,12 +41,6 @@
                     <div id="cajaRanking">
                         <p id="puesto">Puesto</p><p id="jugador">Jugador</p><p id="asociación">Asociación</p><p id="fecha">Fecha</p><p id="tiempo">Tiempo</p>
                         <!-----Esta parte  es de prueba de visualizacion esto se generara mediante php-->
-                        <h4 class="posicion">1</h4><h4 class="jugador">Player1</h4><h4 class="asociacion">Asociacion</h4><h4 class="fecha">1/01/00</h4><h4 class="tiempo">00:45</h4>
-                        <h4>2</h4><h4>Player2</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>01:45</h4>
-                        <h4>3</h4><h4>Player3</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>00:35</h4>
-                        <h4>4</h4><h4>Player4</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>01:55</h4>
-                        <h4>5</h4><h4>Player5</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>00:05</h4>
-                        <h4>6</h4><h4>Player6</h4><h4>Asociacion</h4><h4>1/01/00</h4><h4>02:45</h4>
                     </div>
                 </div>
             </div>

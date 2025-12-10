@@ -37,7 +37,7 @@ export class ModeloJuego {
         return {
             nombre: datoBD.nombre,
             
-            dirigidoA: datoBD.pista_facil || datoBD.nombre_tipo || "General",
+            dirigidoA: datoBD.nombre_tipo || datoBD.nombre_tipo || "General",
 
             anioFundacion: datoBD.fecha_fun,
 
@@ -70,6 +70,10 @@ export class ModeloJuego {
         else if (this.intentos.length >= this.maxIntentos) this.juegoTerminado = true;
 
         return resultado;
+    }
+
+    resetearTiempo() {
+        this.horaInicio = new Date(); 
     }
 
     obtenerTiempoFormateado() {
@@ -144,4 +148,9 @@ export class ModeloJuego {
     get juegoGanado() {
         return this.juegoTerminado && this.intentos.length > 0 && this.intentos[this.intentos.length - 1].esCorrecto;
     }
+
+    /* //mio
+    mostrarPista(num) {
+        document.getElementById(`pista${num}`).classList.add("visible");
+    } */
 }

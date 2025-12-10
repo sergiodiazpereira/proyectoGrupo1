@@ -9,6 +9,9 @@ class ServicioGanarPerder{
         this.asociacionCorrecta = null;
     }
 
+    /**
+     * Esta funcion recoge todas las asociaciones disponibles en la BD y elige una aleatoria que será la correcta
+     */
     async inicializar() {
         // 1. Pedimos los datos al PHP
         const datos = await this.modelo.obtenerAsociacionesDelControladorPHP();
@@ -36,6 +39,10 @@ class ServicioGanarPerder{
      * 
      * @returns {String} El nombre de la asociacion correcta
      */
+    mandarIdAsociacionCorrecta(){
+        return this.asociacionCorrecta.idAsoc;
+    }
+
     mandarNombreAsociacionCorrecta(){
         return this.asociacionCorrecta.nombre;
     }
@@ -56,8 +63,20 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.pista_facil;
     }
 
+    async registrarVictoria(fecha_intento, tiempo_empleado, idAsoc, idUsuario) {
+        const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                fecha_intento,
+                tiempo_empleado,
+                idAsoc,
+                idUsuario
+            })
+        });
 
-    // funciones que llevan datos comprobados del modelo a la vista
+        return await res.json();
+    }
 
 }
 
