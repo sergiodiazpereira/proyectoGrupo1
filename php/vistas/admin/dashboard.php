@@ -61,8 +61,8 @@
                 <li>
                     <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <a href="index.php?c=Login&m=cerrarSesion"><span>Cerrar sesión</span></a>
+                            <i class="fa-solid fa-arrow-right-from-bracket color-a"></i>
+                            <a href="index.php?c=Login&m=cerrarSesion"><span class="color-a">Cerrar sesión</span></a>
                         </button>
                     </a>
                 </li>
@@ -77,58 +77,42 @@
                         <h3>Asociaciones totales</h3>
                         <i class="fa-regular fa-building"></i>
                     </div>
-                    <p>67</p>
+                    <p><?php echo $datos["asociacionesTotales"] ?></p>
                 </section>
                 <section class="seccion-usuarios">
                     <div>
                         <h3>Usuarios registrados</h3>
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <p>777</p>
+                    <p><?php echo $datos["usuariosTotales"] ?></p>
                 </section>
                 <section class="seccion-contribuciones">
                     <div>
                         <h3>Total contribuciones</h3>
                         <i class="fa-solid fa-hand-holding-heart"></i>
                     </div>
-                    <p>38</p>
+                    <p><?php echo $datos["contribucionesTotales"] ?></p>
                 </section>
                 <section class="seccion-vistas">
                     <div>
                         <h3>Visitas totales</h3>
                         <i class="fa-regular fa-building"></i>
                     </div>
-                    <p><?php echo $datos ?></p>
+                    <p><?php echo $datos["visitas"] ?></p>
                 </section>
             </div>
             <section class="seccion-regular">
                 <h2>Nuevos usuarios</h2>
                 <ul>
-                    <li class="primer-usuario">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Super admin</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Admin</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Kiko</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Santi</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Rafa</span>
-                        <p>23/06/21</p>
-                    </li>
+                    <?php
+                        foreach($datos["usuariosNuevos"] as $usuario) {
+                            echo '<li>
+                                  <i class="fa-solid fa-user"></i>
+                                  <span>'.$usuario["nombre"].'</span>
+                                  <p>'.$usuario["fecha_registro"].'</p>
+                                  </li>';
+                        }
+                    ?>
                 </ul>
             </section>
         </main>

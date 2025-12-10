@@ -61,8 +61,8 @@
                 <li>
                     <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <a href="index.php?c=Login&m=cerrarSesion"><span>Cerrar sesión</span></a>
+                            <i class="fa-solid fa-arrow-right-from-bracket color-a"></i>
+                            <a href="index.php?c=Login&m=cerrarSesion"><span class="color-a">Cerrar sesión</span></a>
                         </button>
                     </a>
                 </li>
