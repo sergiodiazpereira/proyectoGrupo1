@@ -84,7 +84,7 @@
                         <h3>Usuarios registrados</h3>
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <p><?php echo $datos["usuariosRegistrados"] ?></p>
+                    <p><?php echo $datos["usuariosTotales"] ?></p>
                 </section>
                 <section class="seccion-contribuciones">
                     <div>
@@ -104,31 +104,15 @@
             <section class="seccion-regular">
                 <h2>Nuevos usuarios</h2>
                 <ul>
-                    <li class="primer-usuario">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Super admin</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Admin</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Kiko</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Santi</span>
-                        <p>23/06/21</p>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Rafa</span>
-                        <p>23/06/21</p>
-                    </li>
+                    <?php
+                        foreach($datos["usuariosNuevos"] as $usuario) {
+                            echo '<li>
+                                  <i class="fa-solid fa-user"></i>
+                                  <span>'.$usuario["nombre"].'</span>
+                                  <p>'.$usuario["fecha_registro"].'</p>
+                                  </li>';
+                        }
+                    ?>
                 </ul>
             </section>
         </main>

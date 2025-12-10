@@ -5,26 +5,36 @@
         public $modeloJ;
         public $vista;
 
+
+
         function __construct(){
             $this->modeloJ = new ModDashboard();
         }
 
+
+
         public function cargarPagina(){
             $visitas = $this->modeloJ->contarVisitas(); // Este metodo del modelo solo trae las visitas totales
+            $asociacionesTotales = $this->modeloJ->contarAsociaciones(); // Trae el numero total de asociaciones
+            $usuariosTotales = $this->modeloJ->contarUsuarios(); // Trae el numero total de asociaciones
+            $contribucionesTotales = $this->modeloJ->contarContribuciones(); // Trae el numero total de contribuciones
+            $usuariosNuevos = $this->modeloJ->datosUsuariosNuevos(); // Trae los 10 ultimos jugadores registrados
+
+            foreach ($usuariosNuevos as &$usuario) { // Pasa el formato fecha yyyy-mm-dd traído de la base de datos al formato dd/mm/yyyy para mostrarlo en la vista
+                $fecha = DateTime::createFromFormat('Y-m-d', $usuario['fecha_registro']);
+                $usuario['fecha_registro'] = $fecha->format('d/m/Y');
+            }
+
             $this->vista="admin/dashboard.php";
             $datos = [
-                "asociacionesTotales" => 32,
-                "usuariosRegistrados" => 9,
-                "contribucionesTotales" => 55,
+                "asociacionesTotales" => $asociacionesTotales,
+                "usuariosTotales" => $usuariosTotales,
+                "contribucionesTotales" => $contribucionesTotales,
                 "visitas" => $visitas,
-                "usuariosNuevos" => [
-                    ["nombreUsuario" => "sergio", "fecha" => "20/06/2025"],
-                    ["nombreUsuario" => "sergio2", "fecha" => "20/06/2023"],
-                    ["nombreUsuario" => "sergio3", "fecha" => "20/06/2022"],
-                    ["nombreUsuario" => "sergio4", "fecha" => "20/06/2021"],
-                    ["nombreUsuario" => "sergio5", "fecha" => "20/06/2020"]
-                ]
+                "usuariosNuevos" => $usuariosNuevos
             ];
+
+
             return $datos;
         }
     }
