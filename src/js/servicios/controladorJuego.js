@@ -21,7 +21,15 @@ export class ControladorJuego {
         if (this.modelo.juegoGanado) {
             return;
         }
-        this.modelo.registrarIntento(intento); 
+        this.modelo.registrarIntento(intento);
+
+        /* // Obtenemos el numero de intentos realizados
+        const n = this.modelo.intentosRealizados.length;
+
+        // Mostrar pistas automáticamente
+        if (n === 3) this.modelo.mostrarPista(1);
+        if (n === 5) this.modelo.mostrarPista(2);
+        if (n === 7) this.modelo.mostrarPista(3); */
     }
 
     iniciarReloj() {

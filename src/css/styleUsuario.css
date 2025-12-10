@@ -12,6 +12,11 @@
     --fueteP: PT Sans;
     --blanco-fondo-header: rgba(245, 247, 252, 0.7);
     --azul-borde-header: #c2d4ff;
+    --azulPastel: #4B8CFB;
+    --verdePastel: #8de0a6;
+    --amarilloPastel: #f7e37b;
+    --rojoPastel: #ec6363;
+    --colorNeutro: #505A74;
 }
 
 .body_kiko{
@@ -532,6 +537,11 @@ input[type=submit]{
 .quitarBorde {
     border: none;
 }
+
+.main_rafa{
+    margin-top: 50px;
+}
+
 /* Estilos de la tabla de juego (parte inferior)*/
 #contenedor-encabezados, #contenedor-resultados {
     gap: 0.5rem; /* gap (8px) */
@@ -548,27 +558,38 @@ input[type=submit]{
     margin-bottom: 1.5rem;
 }
 
+#contenedor-resultados{
+    margin-top: 0;
+}
+
 .encabezado {
     font-weight: bold;
     padding: 0;
     color: #333;
     font-size: 0.9em;
+    border-radius: 0.5rem;
 }
 .celda {
     display: grid;
     justify-items: center;
     align-items: center;
-    padding: 0.3rem 0;
+    padding: 0;
     border-radius: 0.5rem; 
     font-size: 0.8rem;
     color: white;
     line-height: 1.2; 
 }
-.rojo { background-color: #ff3333; }
-.verde { background-color: #00cc00; }
-.celda.amarillo { 
-    background-color: #ffc527; 
+.rojo { background-color: var(--rojoPastel); }
+.verde { background-color: var(--verdePastel); }
+.amarillo { 
+    background-color: var(--amarilloPastel); 
     color: #333; 
+}
+.azul{
+    background-color: var(--azulPastel);
+}
+.neutro{
+    background-color: var(--colorNeutro);
 }
 /* Cronómetro */
 #crono {
@@ -576,6 +597,12 @@ input[type=submit]{
     right: 0.2rem; /* 15px */
     top: 0.3125rem; /* 5px */
     font-size: 0.8em;
+    top: 30%;
+    width: 3rem;
+    padding: 1rem;
+    background-color: var(--azulPastel);
+    border-radius: 1rem;
+    text-align: center;
 }
 /* Estilos de Iconos/Imágenes */
 .estiloCrono {
@@ -626,18 +653,9 @@ button {
     cursor: pointer;
 }
 
-button.azul {
-    background-color: #1C07FF;
-}
-
 .colorBlanco{
     color: white;
 }
-
-button.amarillo { 
-    background-color: #FFC527;
-}
-
 
 .choices {
     width: 30% !important;
@@ -661,6 +679,25 @@ button.amarillo {
     right: 4% !important;
     top: 63% !important;
     transform: translateY(-50%) !important;
+}
+
+.ranking-top3 {
+    background: #f7f7f7;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    width: 200px;
+}
+.ranking-top3 p {
+    margin: 2px 0;
+}
+
+#tituloAdivina {
+    font-family: "Press Start 2P";
+}
+
+*{
+   font-family: var(--fueteP); 
 }
 
 @media (max-width: 450px) {
@@ -761,10 +798,15 @@ button.amarillo {
     /* Cronómetro */
     #crono {
         position: absolute;
-        right: 0.2rem; 
+        right: 0.5rem; 
         top: 0.625rem; 
         font-size: 1em; 
-        top: 40%;
+        top: 30%;
+        width: 3rem;
+        padding: 1rem;
+        background-color: var(--azulPastel);
+        border-radius: 1rem;
+        text-align: center;
     }
 
     #nav_crono {
@@ -787,10 +829,11 @@ button.amarillo {
     }
     .encabezado {
         font-size: 1em; 
+        padding: 0.5rem 0.5rem;
     }
     .celda {
         font-size: 0.9rem;
-        padding: 0.5rem 0;
+        padding: 0.5rem 0.5rem;
     }
     
     select {
