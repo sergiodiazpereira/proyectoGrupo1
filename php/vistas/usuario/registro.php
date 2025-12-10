@@ -1,3 +1,7 @@
+<?php
+    require_once __DIR__.'/../../controladores/conRegistro.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
