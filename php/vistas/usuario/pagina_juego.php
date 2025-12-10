@@ -140,10 +140,6 @@
             </div>
         </nav>
         <main class="main_rafa">
-            <!--<div id="rankingBox" class="ranking-top3">
-                 <h4>Top 3 mejores tiempos</h4>
-                <div id="rankingContenido"></div>
-            </div> -->
             <h2 id="tituloAdivina">Adivina la asociación</h2>
             <h4 class="gris"><span id="contador-intentos">Intento 0 de 10</span></h4>
             <select id="select-asociacion" name="opcion-usuario">
@@ -176,15 +172,14 @@
             </div>
         </main>
         <script type="module" src="../src/js/app.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-
-<script>
-  const asociacionesSelect = new Choices('#select-asociacion', {
-    searchEnabled: true,      // permite escribir para buscar
-    itemSelectText: '',       // quita el texto "Press to select"
-    shouldSort: false,        // mantiene el orden original
-    searchPlaceholderValue: 'Buscar...', 
-  });
-</script>
+        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+        <script>
+        const asociacionesSelect = new Choices('#select-asociacion', {
+            searchEnabled: true,      // permite escribir para buscar
+            itemSelectText: '',       // quita el texto "Press to select"
+            shouldSort: false,        // mantiene el orden original
+            searchPlaceholderValue: 'Buscar...', 
+        });
+        </script>
     </body>
 </html>

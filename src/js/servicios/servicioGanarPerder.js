@@ -9,7 +9,6 @@ class ServicioGanarPerder{
         this.asociacionCorrecta = null;
     }
 
-
     /**
      * Esta funcion recoge todas las asociaciones disponibles en la BD y elige una aleatoria que será la correcta
      */
@@ -40,6 +39,10 @@ class ServicioGanarPerder{
      * 
      * @returns {String} El nombre de la asociacion correcta
      */
+    mandarIdAsociacionCorrecta(){
+        return this.asociacionCorrecta.idAsoc;
+    }
+
     mandarNombreAsociacionCorrecta(){
         return this.asociacionCorrecta.nombre;
     }
@@ -60,18 +63,19 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.pista_facil;
     }
 
-    /* async registrarVictoria(idAsoc, tiempo) {
+    async registrarVictoria(tiempo_empleado, idAsoc, idUsuario) {
         const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+                tiempo_empleado,
                 idAsoc,
-                tiempo
+                idUsuario
             })
         });
 
         return await res.json();
-    } */
+    }
 
 }
 

@@ -28,6 +28,13 @@ class VistaGanarPerder{
             const asociacionCorrecta = this.servicio.mandarNombreAsociacionCorrecta(); /* nombre de la asociacion correcta */
             if (valor === asociacionCorrecta) {
                 this.mostrarPantallaVictoria();
+                let idAsoc = this.servicio.mandarIdAsociacionCorrecta();
+                let idUsuario =  1; //$_SESSION["idUsuario"]
+                let tiempo = this.textoCronometro.innerText;
+                let [m, s] = tiempo.split(":");
+                // Convertir a HH:MM:SS
+                let tiempoFormateado = `00:${m}:${s}`;
+                this.servicio.registrarVictoria(tiempoFormateado,idAsoc,idUsuario);
                 contadorIntentos = 1; /* reiniciar intentos */
             } else {
                 if (contadorIntentos == 10) {

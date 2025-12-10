@@ -2,7 +2,7 @@ export class ModeloColeccion {
     async obtenerColeccion() {
         try {
             // Llamamos al controlador nuevo que hemos creado
-            const respuesta = await fetch("index.php?c=Coleccion&m=obtenerColeccionUsuario");
+            const respuesta = await fetch("index.php?c=Colecciones&m=obtenerColeccionUsuario");
             
             if (!respuesta.ok) throw new Error("Error red");
             
