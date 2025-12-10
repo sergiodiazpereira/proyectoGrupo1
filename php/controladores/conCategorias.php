@@ -145,7 +145,7 @@
             $asociacionUsandoCategoria = $this->modeloCat->buscarAsociacionUsandoCategoria();
             if (isset($asociacionUsandoCategoria["nombre"])) {
                 $this->vista="admin/vistaErrorBorradoCategoria.php";
-                return "Hay una o varias asociaciones usando esta categoría";
+                return "La asociación ".$asociacionUsandoCategoria['nombre']." está usando esta categoría";
             } else {
                 // Obtenemos los datos de la categoría
                 $datos = $this->modeloCat->obtenerPorId();
