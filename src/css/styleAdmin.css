@@ -348,7 +348,7 @@
             cursor: pointer;
         }
 
-        a{
+        .color-a{
             text-decoration: none;
             cursor: pointer;
             color: var(--blanco-texto-boton, #fafcff);
