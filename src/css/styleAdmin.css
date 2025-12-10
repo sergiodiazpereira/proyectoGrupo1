@@ -149,6 +149,7 @@
             font-family: var(--fuente-regular);
             font-weight: 100;
             font-size: 0.875rem;
+            text-decoration: none;
             i{
                 margin-right: 16px; /* imposible cambiar a % */
             }
