@@ -46,20 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 finDePagina = 'usuario/pagina_juego.php'; 
             }
 
-            // Fallback: detectar página desde URL si el controlador no es Juego
-            const urlParams = new URLSearchParams(window.location.search);
-            const controladorURL = urlParams.get('c');
-            if (controladorURL && controladorURL !== 'Juego') {
-                const mapaPaginas = {
-                    'Colecciones': 'usuario/colecciones.php',
-                    'Ranking': 'usuario/ranking.php',
-                    'Cambio': 'usuario/cambio.php'
-                };
-                if (mapaPaginas[controladorURL]) {
-                    finDePagina = mapaPaginas[controladorURL];
-                }
-            }
-
             if (finDePagina === "usuario/pagina_juego.php") {
 
                 // 2. Instanciamos el servicio de datos
