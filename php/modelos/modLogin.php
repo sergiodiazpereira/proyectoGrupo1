@@ -7,15 +7,21 @@
         }
 
         public function validarUsuario($correo, $pwd){
-            $sql = "SELECT * FROM usuario WHERE correo = '$correo' AND contrasenia = '$pwd'";
+            $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
             $consulta = $this->conexion->prepare($sql);
             $consulta->execute();
             /* Lo que hace es comprobar que encontró al menos 1 fila (el usuario existe) */
             if ($consulta->rowCount()>0){
                 /* Lo que hace el fetch es devolver la consulta en un array asociativo */
                 $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
-                $this->actualizarVisitas($usuario['idUsuario']);
-                return $usuario; 
+                if (password_verify($pwd, $usuario['contrasenia']))
+                {
+                    $this->actualizarVisitas($usuario['idUsuario']);
+                    return $usuario; 
+                }
+                else{
+                    return false;
+                }
             } 
             else 
             {
