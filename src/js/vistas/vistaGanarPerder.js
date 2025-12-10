@@ -28,6 +28,14 @@ class VistaGanarPerder{
             const asociacionCorrecta = this.servicio.mandarNombreAsociacionCorrecta(); /* nombre de la asociacion correcta */
             if (valor === asociacionCorrecta) {
                 this.mostrarPantallaVictoria();
+                let idAsoc = this.servicio.mandarIdAsociacionCorrecta();
+                let idUsuario =  1; //$_SESSION["idUsuario"]
+                let tiempo = this.textoCronometro.innerText;
+                let fecha_intento = new Date();
+                let [m, s] = tiempo.split(":");
+                // Convertir a HH:MM:SS
+                let tiempoFormateado = `00:${m}:${s}`;
+                this.servicio.registrarVictoria(fecha_intento,tiempoFormateado,idAsoc,idUsuario);
                 contadorIntentos = 1; /* reiniciar intentos */
             } else {
                 if (contadorIntentos == 10) {
@@ -39,7 +47,15 @@ class VistaGanarPerder{
             }
         });
 
-        this.botonContinuarGanar.addEventListener('click', () => {
+        /** Registramos el tiempo al ganar la partida */
+        this.botonContinuarGanar.addEventListener('click', async () => {
+            /* // Recogemos el tiempo que ha tardado en completar el juego
+            const tiempo = this.textoCronometro.innerText;
+            // Recogemos el id de la asociación acertada
+            const idAsoc = this.servicio.mandarIdAsociacionCorrecta();
+            // Guardamos los datos en la base de datos
+            await this.servicio.registrarVictoria(idAsoc, tiempo);
+            // Ocultamos el popup */
             this.ocultarPantallaVictoria();
         });
 

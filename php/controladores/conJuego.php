@@ -3,7 +3,7 @@
     require_once __DIR__.'/../modelos/modJuego.php';
     
     class ConJuego{
-        public $modeloJ;
+        private $modeloJ;
         public $vista;
         
         function __construct(){
@@ -32,12 +32,6 @@
             return $this->nombresDeAsociaciones();
         }
 
-        public function obtenerPagina(){
-            $this->vista="usuario/pagina_juego.php";
-            echo json_encode($this->vista); 
-            exit;
-        }
-
         /**
          * Esta funcion envía los datos de las asociaciones de la bd mediante json
          */
@@ -48,5 +42,13 @@
             echo json_encode($datosAsociaciones); 
             exit;
         }
+
+        public function registrarVictoria(){
+            return $this->modeloJ->insertar();
+
+            echo json_encode(["exito" => $resultado]);
+            exit;
+        }
+
     }
 ?>
