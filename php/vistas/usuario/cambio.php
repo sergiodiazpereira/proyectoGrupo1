@@ -40,7 +40,7 @@
                 <input type="password" name="contraNueva">
                 <label for="contraConfir">Confirmar Contraseña</label>
                 <input type="password" name="contraConfir">
-                <input type="submit" value="Guardar cambios" id="botonGuardar"></input>
+                <button type="submit" id="botonGuardar">Guardar cambios</button>
                 <a href="./index.php?c=Juego&m=cargarPagina">Cancelar</a>
             </form>
             <p>---------------o continuar con--------------------</p>

@@ -9,5 +9,15 @@
             parent::__construct();
             
         }
+        public function traerPwd($nombreSesion){
+            $sql = "SELECT contrasenia FROM usuario WHERE nombre = ?";
+            $stmt=$this->conexion->prepare($sql);
+            $stmt->execute([$nombreSesion]);
+            $datos=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datos;
+        }
+        public function modificarPwd(nombre){
+
+        }
     }
 ?>

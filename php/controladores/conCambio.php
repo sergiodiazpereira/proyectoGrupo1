@@ -3,9 +3,11 @@
     require_once __DIR__.'/../modelos/modCambio.php';
     class ConCambio{
         public $modeloJ;
+        public $nombre;
         public $vista;
         function __construct(){
             $this->modeloJ = new ModCambio();
+            $this->nombre = $_SESSION["nombre"];
         }
 
 
@@ -16,7 +18,14 @@
             $this->vista="usuario/cambio.php";
         }
 
-
+        public function traerPwd(){
+            $datos=$this->modeloJ->traerPwd($this->nombre);
+            echo json_encode($datos);
+            exit;
+        }
+        public function modificarPwd(){
+            $this->modeloJ->modificarPwd($this->nombre);
+        }
         /**
          * Esta funcion sirve para enviar la pagina que se esta cargando actualmente mediante json
          */

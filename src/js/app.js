@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const conCambio = new ControladorCambio(modCambio);
                 const visCambio = new VistaCambio(conCambio);
                 conCambio.vista = visCambio;
-                conRanking.cargarRanking();
+                conCambio.cambiarPwd();
             }
             if (finDePagina === 'usuario/ranking.php') {
                 const modRanking = new ModeloRanking();
