@@ -1,7 +1,7 @@
 CREATE TABLE usuario(
 	idUsuario SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    contrasenia VARCHAR(50) NOT NULL,
+    contrasenia VARCHAR(255) NOT NULL,
     permiso CHAR(1) NOT NULL DEFAULT 'U',
     correo VARCHAR(100) NOT NULL UNIQUE,
 	fecha_registro DATE DEFAULT (CURRENT_DATE),

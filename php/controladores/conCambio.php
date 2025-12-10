@@ -32,13 +32,15 @@
             
             $pwdGuardada = $usuario[0]['contrasenia'];
             
-            if ($contraActual !== $pwdGuardada) {
+            /*Aqui uso el veryfy para compararar para ver si coinciden las dos contraseñas  */
+            if (!password_verify($contraActual, $pwdGuardada)) {
                 echo json_encode(['exito' => false, 'mensaje' => 'La contraseña actual es incorrecta']);
                 exit;
             }
             
-            
-            $resultado = $this->modeloJ->modificarPwd($this->idUsuario, $contraNueva);
+            //Hasheo la contraseña nueva y uso el default para por si no se pasan parametro que no funcione
+            $pwdHasheada = password_hash($contraNueva, PASSWORD_DEFAULT);
+            $resultado = $this->modeloJ->modificarPwd($this->idUsuario, $pwdHasheada);
             
             // Devolver el resultado
             if ($resultado) {
