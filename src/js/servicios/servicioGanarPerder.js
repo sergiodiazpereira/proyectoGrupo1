@@ -63,11 +63,12 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.pista_facil;
     }
 
-    async registrarVictoria(tiempo_empleado, idAsoc, idUsuario) {
+    async registrarVictoria(fecha_intento, tiempo_empleado, idAsoc, idUsuario) {
         const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+                fecha_intento,
                 tiempo_empleado,
                 idAsoc,
                 idUsuario
