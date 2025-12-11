@@ -23,6 +23,7 @@
                 <li><a href="index.php?c=Usuarios&m=cargarPagina"><button><i class="fa-solid fa-users"></i>Usuarios</button></a></li>
                 <li><a href="index.php?c=Contribucion&m=listar"><button><i class="fa-solid fa-hand-holding-heart"></i></i>Contribuciones</button></a></li>
                 <li><a href="index.php?c=Categorias&m=listar"><button><i class="fa-solid fa-icons"></i></i>Categorias</button></a></li>
+                <li><a href="index.php?c=Galeria&m=cargarPagina"><button><i class="fa-regular fa-image"></i></i>Galería</button></a></li>
             </ul>
             <ul id="ulCerrar">
                 <li ><a href="index.php?c=CambioAdmin&m=cargarPagina"><button id="pestaña"><i class="fa-solid fa-key"></i>Cambiar Contraseña</button></a></li>
