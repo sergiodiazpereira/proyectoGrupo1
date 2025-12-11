@@ -167,6 +167,8 @@ class ConAsociacion {
     public function procesarBorrar() {
         // Luego eliminamos la asociación
         $this->modeloAsoc->borrar();
+        $datos = $this->modeloAsoc->obtenerPorId();
+        $this->borrarCarpeta(RUTAIMG.$datos["nombre"]);
 
         // Redirigimos a la lista de asociaciones
         header("Location: index.php?c=Asociacion&m=listar");
@@ -261,7 +263,7 @@ class ConAsociacion {
                 if($this->modeloAsoc->insertar()){
                     mkdir(RUTAIMG.$_POST["nombre"]);
                     $this->vista="admin/mensajeCorrectoAsoc.php";
-                    return "Inserción exitosa" . RUTAIMG.$_POST["nombre"];
+                    return "Inserción exitosa";
                 }else{
                     $rutaImagen = RUTAIMG.$_FILES["imagen"]['name'];
                     if(file_exists($rutaImagen)){
@@ -308,6 +310,43 @@ class ConAsociacion {
         $this->vista="admin/vistaAgregarAsociacion.php";
         return $arrayAsoc;
     }
+
+
+
+
+
+
+
+    /**
+     * Summary of borrarCarpeta
+     * @param string dirección de la carpeta que hay que borrar
+     * Esta función borra una carpeta y los archivos que tenga dentro
+     */
+
+    private function borrarCarpeta($ruta) {
+        $archivosCarpeta = scandir($ruta); // Devuelve todos los archivos y carpetas de dentro de la carpeta
+
+        /* Por defecto, cuando se hace un scandir a una ruta, siempre devuelve '.' y '..' junto
+        con los archivos de la carpeta (son referencias a niveles superiores de la carpeta) */
+
+        $archivosABorrar = array_diff($archivosCarpeta, ['.', '..']); // Esta funcion quita esos niveles superiores de nuestro array de archivos y nos deja solo los archivos a borrar
+
+
+
+        foreach ($archivosABorrar as $archivo) { // Tratamos a cada archivo individualmente
+            $path = $ruta . "/" . $archivo; // Construimos la ruta donde está localizado ese archivo
+
+            if (is_dir($path)) {
+                $this->borrarCarpeta($path); // Como es una carpeta, le volvemos a aplicar borrarCarpeta()
+            } else {
+                unlink($path); // Es un archivo asi que lo borramos sencillamente
+            }
+        }
+
+
+        rmdir($ruta); // Una vez está vacía, borra la carpeta
+    }
+
     
 }
 ?>
