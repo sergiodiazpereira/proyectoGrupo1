@@ -259,11 +259,11 @@ class ConAsociacion {
             if($this->guardarImg()){
 
                 if($this->modeloAsoc->insertar()){
-
+                    mkdir(RUTAIMG.$_POST["nombre"]);
                     $this->vista="admin/mensajeCorrectoAsoc.php";
-                    return "Inserción exitosa";
+                    return "Inserción exitosa" . RUTAIMG.$_POST["nombre"];
                 }else{
-                    $rutaImagen = RUTAIMG.$_FILES["logo"]['name'];
+                    $rutaImagen = RUTAIMG.$_FILES["imagen"]['name'];
                     if(file_exists($rutaImagen)){
 
                         if(unlink($rutaImagen)){
