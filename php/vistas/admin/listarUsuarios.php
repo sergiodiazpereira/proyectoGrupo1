@@ -82,7 +82,7 @@
                     <h1 class="h1-admin">Gestionar usuarios</h1>
                     <p class="subtitulos-admin">Visualiza y gestiona los usuarios de la aplicación.</p>
                 </div>
-                <a class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>
+                <a href="index.php?c=CrearAdmin&m=cargarPagina" class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de usuarios</h2>
