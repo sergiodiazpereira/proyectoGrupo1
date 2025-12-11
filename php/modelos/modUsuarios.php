@@ -8,11 +8,20 @@
         function __construct(){
             parent::__construct();
         }
+        /**
+         * Summary of borrarUsu
+         * @param mixed $idUsuarioBor esta variable almacena el id del usuario que se va a borrar
+         * @return bool recibe true o false en funcion de si se borra o no
+         */
         function borrarUsu($idUsuarioBor){
             $sql="DELETE FROM usuario WHERE idUsuario = ?";
             $stmt=$this->conexion->prepare($sql);
             return $stmt->execute([$idUsuarioBor]);
         }
+        /**
+         * Summary of listar
+         * @return array Trae una lista de los usuarios en un orden indicado
+         */
         function listar(){
             $sql="SELECT *
                     FROM usuario
