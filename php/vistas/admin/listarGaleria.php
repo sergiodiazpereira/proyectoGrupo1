@@ -100,7 +100,7 @@
                         
                         <div class="acciones">
                             <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                            <button class="btn vincular">🔗 Vincular</button>
+                            <button class="btn vincular"><i class="fa-solid fa-link"></i> Vincular</button>
                         </div>
                     </div>
 
@@ -109,7 +109,7 @@
                         
                         <div class="acciones">
                             <button class="btn eliminar "><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                            <button class="btn desvincular">⛔ Desvincular</button>
+                            <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
                         </div>
                     </div>
 
