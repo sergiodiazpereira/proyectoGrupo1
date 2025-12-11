@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__.'/../../controladores/conLogin.php';
+    //require_once __DIR__.'/../../controladores/conLogin.php';
 ?>
 
 <!DOCTYPE html>
@@ -36,5 +36,6 @@
                 <p>---------------o continuar con--------------------</p>
             </div>
         </main>
+        <script type="module" src="../../../src/js/app.js"></script>
     </body>
 </html>

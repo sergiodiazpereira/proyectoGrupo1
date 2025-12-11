@@ -23,10 +23,16 @@ import { ControladorCambio } from './servicios/controladorCambio.js';
 
 import { VistaGestionBotones } from './vistas/vistaGestionBotones.js';
 
-
+/** Imports para el Login */
+import { ModeloLogin } from "./modelos/modeloLogin.js";
+import { VistaLogin } from "./vistas/vistaLogin.js";
+import { ControladorLogin } from "./servicios/controladorLogin.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    // Inicializamos el menú de usuario si existe el botón en el DOM
+    if (document.getElementById('usuario')) {
+        new VistaMenu();
+    }
     let finDePagina;
 
     async function obtenerPaginaDelControladorPHP() {
@@ -48,9 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Si el controlador ni la vista no son null se establece la vista en la variable fin de pagina
             if (controladorURL && mapaPaginas[controladorURL]) {
                 finDePagina = mapaPaginas[controladorURL];
-            } else {
-                // Por defecto la pagina juego
-                finDePagina = 'usuario/pagina_juego.php';
             }
 
             if (finDePagina === "usuario/pagina_juego.php") {
@@ -133,10 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 visGestion.sesion();
             }
 
-            // Inicializamos el menú de usuario si existe el botón en el DOM
-            if (document.getElementById('usuario')) {
-                new VistaMenu();
+            /** Validaciones Login */
+            if (document.getElementById('formLoginRegis')) {
+                const modelo = new ModeloLogin();
+                const controlador = new ControladorLogin(modelo);
+                const vista = new VistaLogin(controlador);
+                controlador.vista = vista;
             }
+
         } catch (error) {
             console.error("Error crítico en APP.JS:", error);
         }

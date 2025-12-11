@@ -19,25 +19,26 @@
                 $_SESSION['idUsuario'] = $usuarioEncontrado['idUsuario'];
                 $_SESSION['correo'] = $usuarioEncontrado['correo'];
                 $_SESSION['permiso'] = $usuarioEncontrado['permiso'];
-                if ($_SESSION['permiso'] == 'A' || $_SESSION['permiso'] == 'S')
-                {
-                    header("Location: ../../index.php?c=Dashboard&m=cargarPagina");
-                }
-                else
-                {
-                    header("Location: ../../index.php?c=Juego&m=cargarPagina");
-                }
-                exit();
-            }
-            else
-            {
-                echo "<script>alert('El usuario o la contraseña no son correctos.'); window.location.href='login.php';</script>";
+
+                // Aqui se pasa a validar en js
+                echo json_encode([
+                    "exito"   => true,
+                    "permiso" => $_SESSION['permiso']
+                ]);
+            } else {
+                // Si no se encuentra el usuario se pasa esto al js
+                echo json_encode([
+                    "exito"   => false,
+                    "mensaje" => "Usuario o contraseña incorrectos"
+                ]);
             }
         }
+
         public function traerRol(){
             echo json_encode($_SESSION["permiso"]);
             exit();
         }
+        
         public function cerrarSesion()
         {
             /* Lo que hacemos aquí es recoger o recuperar la sesión para poder eliminarla */
