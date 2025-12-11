@@ -2,7 +2,6 @@
     require_once __DIR__.'/../../controladores/conCrearAdmin.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,27 +24,29 @@
                 <p>Menú Principal</p>
                 <li><a href="index.php?c=Dashboard&m=cargarPagina"><button><i class="fa-solid fa-chart-line"></i>Dashboard</button></a></li>
                 <li><a href="index.php?c=Asociacion&m=listar"><button><i class="fa-regular fa-building"></i>Asociaciones</button></a></li>
-                <li><a href="index.php?c=Usuarios&m=cargarPagina"><button><i class="fa-solid fa-users"></i>Usuarios</button></a></li>
+                <li><a href="index.php?c=Usuarios&m=cargarPagina"><button id="pestaña"><i class="fa-solid fa-users"></i>Usuarios</button></a></li>
                 <li><a href="index.php?c=Contribucion&m=listar"><button><i class="fa-solid fa-hand-holding-heart"></i></i>Contribuciones</button></a></li>
                 <li><a href="index.php?c=Categorias&m=listar"><button><i class="fa-solid fa-icons"></i></i>Categorias</button></a></li>
             </ul>
             <ul id="ulCerrar">
-                <li ><a href="index.php?c=CambioAdmin&m=cargarPagina"><button id="pestaña"><i class="fa-solid fa-key"></i>Cambiar Contraseña</button></a></li>
-                <li><a href="index.php?c=Dashboard&m=cargarPagina"><button><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</button></a></li>
+                <li ><a href="index.php?c=CambioAdmin&m=cargarPagina"><button><i class="fa-solid fa-key"></i>Cambiar Contraseña</button></a></li>
+                <li><a href="index.php?c=Login&m=cerrarSesion"><button><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</button></a></li>
             </ul>
         </nav>
         <div id="contenedorLogin">
             <form action="" method="post" id="formCambio">
-                <h2>Cambiar Contraseña</h2>
-                <p>Actualiza tu contraseña para mantener tu cuenta segura</p>
+                <h2>Crear Administrador</h2>
+                <p>Registra el administrador para realizar sus funciones</p>
+                <label for="nombreAdmin">Nombre de usuario</label>
+                <input type="text" name="nombreAdmin">
+                <label for="correoAdmin">Correo electrónico</label>
+                <input type="text" name="correoAdmin">
                 <label for="contraActual">Contraseña</label>
                 <input type="password" name="contraActual">
-                <label for="contraNueva">Nueva Contraseña</label>
-                <input type="password" name="contraNueva">
-                <label for="contraConfir">Nueva Contraseña</label>
-                <input type="password" name="contraConfir">
+                <label for="contraConfirmar">Confirmar contraseña</label>
+                <input type="password" name="contraConfirmar">
                 <input type="submit" value="Guardar cambios" id="botonGuardar"></input>
-                <a href="./dashboard.html">Cancelar</a>
+                <a href="index.php?c=Usuarios&m=cargarPagina">Cancelar</a>
             </form>
             <p>---------------o continuar con--------------------</p>
         </div>
