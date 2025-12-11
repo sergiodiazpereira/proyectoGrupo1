@@ -476,6 +476,32 @@
         justify-items: stretch;   /* Cada tarjeta ocupa su columna completa */
         justify-content: start;   /* Alinea la última fila a la izquierda */
     }
+
+    .grid-titulo-lista-imagenes{
+        width: 100%; 
+        display: grid;
+        grid-template-columns: 1fr auto; /* izquierda ocupa todo, derecha tamaño del select */
+        align-items: start;  
+    }
+
+    #selectAsociacion{
+        font-family: var(--fuente-regular);
+        font-weight: 500;
+        padding: 8px 12px;
+        border-radius: 0.5rem;
+        border: 2px solid var(--azul-borde-header);
+        background-color: #ffffff;
+        font-size: 0.9rem;
+        color: var(--azul-marino); /* gris oscuro */
+        cursor: pointer;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+            
+    #selectAsociacion:focus {
+        outline: none;
+        border-color: var(--colorTitulo);
+        box-shadow: 0 0 0 2px rgba(59,130,246,0.25);
+    }
 /* =====================================================================================================================*/
         
 }
