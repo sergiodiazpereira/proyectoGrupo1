@@ -125,6 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 conRanking.vista = visRanking;
                 conRanking.cargarRanking();
             }
+            if (finDePagina === 'usuario/listarUsuarios.php') {
+                const visUsuarios = new VistaRanking();
+                visUsuarios.habilitar();
+            }
         } catch (error) {
             console.error("Error crítico en APP.JS:", error);
         }

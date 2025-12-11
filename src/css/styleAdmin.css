@@ -30,7 +30,6 @@
     --blanco-fondo-header: rgba(245, 247, 252, 0.7);
     --azul-borde-header: #c2d4ff;
 }
-
 .body-sergio{
     max-width: 100%; /* 1024px */
     margin: 0;
@@ -283,6 +282,7 @@
                 }
                 .desactivado{
                     color: var(--gris-titulo-nav, #b2bcce);
+                    cursor: default;
                 }
                 }
             }
@@ -796,8 +796,11 @@
     }
 
     }
-
-
+    .papelera{
+        color: #ef4444;
+        cursor: pointer;
+    }
+    
     /* =======================================================[ CATEGORÍAS ]========================================================== */
 
     /* Div informacion categorias + botones */

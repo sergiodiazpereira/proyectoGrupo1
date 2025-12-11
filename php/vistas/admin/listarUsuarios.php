@@ -82,7 +82,11 @@
                     <h1 class="h1-admin">Gestionar usuarios</h1>
                     <p class="subtitulos-admin">Visualiza y gestiona los usuarios de la aplicación.</p>
                 </div>
-                <a class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>
+                <?php
+                    if($_SESSION["permiso"] == 'A'){
+                        echo '<a class="boton-añadir" style="display:none"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>';
+                    }
+                ?>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de usuarios</h2>
@@ -123,7 +127,11 @@
                                 27/06/2024
                             </td>
                             <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
+                                <?php
+                                    if($_SESSION["permiso"] == 'A'){
+                                        echo'<a class="papelera"><i class="fa-solid fa-trash-can desactivado"></i></a>';
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <tr>
@@ -280,5 +288,8 @@
                 </table>
             </section>
         </main>
+        <!-- Poner modal de confirmacion -->
+        
+        <script type="module" src="../src/js/app.js?v=4"></script>
     </body>
 </html>
