@@ -8,7 +8,11 @@
         function __construct(){
             parent::__construct();
         }
-
+        function borrarUsu($idUsuarioBor){
+            $sql="DELETE FROM usuario WHERE idUsuario = ?";
+            $stmt=$this->conexion->prepare($sql);
+            return $stmt->execute([$idUsuarioBor]);
+        }
         function listar(){
             $sql="SELECT *
                     FROM usuario
