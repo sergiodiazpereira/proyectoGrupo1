@@ -84,7 +84,9 @@
                 </div>
                 <?php
                     if($_SESSION["permiso"] == 'A'){
-                        echo '<a class="boton-añadir" style="display:none"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>';
+                        echo '';
+                    }else{
+                        echo '<a href="index.php?c=CrearAdmin&m=cargarPagina" class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>';
                     }
                 ?>
             </div>
@@ -100,190 +102,47 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user superadmin"></i>
-                                Superadmin
-                            </td>
-                            <td>
-                                <span class="rol-superadmin">superadmin</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can desactivado"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user admin"></i>
-                                Santi
-                            </td>
-                            <td>
-                                <span class="rol-admin">admin</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <?php
-                                    if($_SESSION["permiso"] == 'A'){
-                                        echo'<a class="papelera"><i class="fa-solid fa-trash-can desactivado"></i></a>';
-                                    }
-                                ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user admin"></i>
-                                Rafa
-                            </td>
-                            <td>
-                                <span class="rol-admin">admin</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user admin"></i>
-                                Kiko
-                            </td>
-                            <td>
-                                <span class="rol-admin">admin</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user admin"></i>
-                                Sergio
-                            </td>
-                            <td>
-                                <span class="rol-admin">admin</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa-solid fa-user"></i>
-                                gamer300
-                            </td>
-                            <td>
-                                <span>usuario</span>
-                            </td>
-                            <td>
-                                27/06/2024
-                            </td>
-                            <td>
-                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
+                        <?php foreach ($datos as $fila): ?>
+                            <tr>
+                                <td>
+                                    <?php 
+                                        if ($fila['permiso'] == 'S'){
+                                            echo '<i class="fa-solid fa-user superadmin"></i>';
+                                        }else if($fila['permiso'] == 'A'){
+                                            echo '<i class="fa-solid fa-user admin"></i>';
+                                        }else{
+                                            echo '<i class="fa-solid fa-user"></i>';
+                                        }
+                                        echo $fila['nombre'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                        if ($fila['permiso'] == 'S'){
+                                            echo '<span class="rol-superadmin">superadmin</span>';
+                                        }else if($fila['permiso'] == 'A'){
+                                            echo '<span class="rol-admin">admin</span>';
+                                        }else{
+                                            echo '<span>usuario</span>';
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?= $fila['fecha_registro'] ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                        if ($_SESSION["permiso"] == 'A' && $fila['permiso'] == 'S'){
+                                            echo '';
+                                        }else if($_SESSION["permiso"] == 'A' && $fila["permiso"] == 'A'){
+                                            echo '';
+                                        }else{
+                                            echo '<a href="index.php?c=Usuarios&m=borrar&idUsuario='.$fila['idUsuario'].'"><i class="fa-solid fa-trash-can"></i></a>';
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </section>
