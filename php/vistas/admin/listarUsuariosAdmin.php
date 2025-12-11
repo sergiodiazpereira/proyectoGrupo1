@@ -56,6 +56,14 @@
                         </button>
                     </a>
                 </li>
+                <li>
+                    <a href="index.php?c=Galeria&m=cargarPagina">
+                        <button>
+                            <i class="fa-regular fa-image"></i>
+                            <span>Galeria</span>
+                        </button>
+                    </a>
+                </li>
             </ul>
             <ul class="ul-inferior">
                 <li>

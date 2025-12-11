@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Dashboard</title>
+        <title>Galería</title>
         <link rel="stylesheet" href="../src/css/styleAdmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
             <ul>
                 <li>
                     <a href="index.php?c=Dashboard&m=cargarPagina">
-                        <button class="paginaSeleccionada">
+                        <button>
                             <i class="fa-solid fa-chart-line"></i>
                             <span>Dashboard</span>
                         </button>
@@ -58,7 +58,7 @@
                 </li>
                 <li>
                     <a href="index.php?c=Galeria&m=cargarPagina">
-                        <button>
+                        <button class="paginaSeleccionada">
                             <i class="fa-regular fa-image"></i>
                             <span>Galeria</span>
                         </button>
@@ -85,51 +85,42 @@
             </ul>
         </nav>
         <main class="main-admin">
-            <h1 class="h1-admin">Dashboard</h1>
-            <p class="subtitulos-admin">Vista general del estado de Asociaciondle.</p>
-            <div class="grid-secciones">
-                <section class="seccion-asociaciones">
-                    <div>
-                        <h3>Asociaciones totales</h3>
-                        <i class="fa-regular fa-building"></i>
-                    </div>
-                    <p><?php echo $datos["asociacionesTotales"] ?></p>
-                </section>
-                <section class="seccion-usuarios">
-                    <div>
-                        <h3>Usuarios registrados</h3>
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <p><?php echo $datos["usuariosTotales"] ?></p>
-                </section>
-                <section class="seccion-contribuciones">
-                    <div>
-                        <h3>Total contribuciones</h3>
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                    </div>
-                    <p><?php echo $datos["contribucionesTotales"] ?></p>
-                </section>
-                <section class="seccion-vistas">
-                    <div>
-                        <h3>Visitas totales</h3>
-                        <i class="fa-regular fa-building"></i>
-                    </div>
-                    <p><?php echo $datos["visitas"] ?></p>
-                </section>
+            <div class="grid-titulo-botón">
+                <div>
+                    <h1 class="h1-admin">Gestionar asociaciones</h1>
+                    <p class="subtitulos-admin">Añadir, editar o eliminar asociaciones del juego.</p>
+                </div>
+                <a href="index.php?c=Asociacion&m=cargarPaginaAsoc" class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
             </div>
-            <section class="seccion-regular">
-                <h2>Nuevos usuarios</h2>
-                <ul>
-                    <?php
-                        foreach($datos["usuariosNuevos"] as $usuario) {
-                            echo '<li>
-                                  <i class="fa-solid fa-user"></i>
-                                  <span>'.$usuario["nombre"].'</span>
-                                  <p>'.$usuario["fecha_registro"].'</p>
-                                  </li>';
-                        }
-                    ?>
-                </ul>
+            <section class="seccion-regular query">
+                <h2 class="h2-regular">Lista de asociaciones</h2>
+                <table class="tabla-asociaciones">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Año fundación</th>
+                            <th>Acciones</th>        
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php if (!empty($datos)): ?>
+                        <?php foreach ($datos as $fila): ?>
+                            <tr>
+                                <td><img src="../src/img/<?= $fila['imagen'] ?>"><?= $fila['nombre'] ?></td>
+                                <td><span><?= $fila['tipo_asociacion'] ?></span></td>
+                                <td><?= $fila['fecha_fun'] ?></td>
+                                <td>
+                                    <a href="index.php?c=Asociacion&m=modificar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="index.php?c=Asociacion&m=borrar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="4">No hay asociaciones registradas.</td></tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
             </section>
         </main>
     </body>
