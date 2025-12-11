@@ -11,5 +11,9 @@
         public function cargarPagina(){
             $this->vista="admin/listarGaleria.php";
         }
+
+        public function insertarImagenPorURL(){
+            $this->vista="admin/listarGaleria.php";
+        }
     }
 ?>

@@ -87,10 +87,10 @@
         <main class="main-admin">
             <div class="grid-titulo-botón">
                 <div>
-                    <h1 class="h1-admin">Gestionar asociaciones</h1>
-                    <p class="subtitulos-admin">Añadir, editar o eliminar asociaciones del juego.</p>
+                    <h1 class="h1-admin">Galería de Imagenes</h1>
+                    <p class="subtitulos-admin">Añadir, asignar o eliminar imagenes del juego.</p>
                 </div>
-                <a href="index.php?c=Asociacion&m=cargarPaginaAsoc" class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir asociación</a>
+                <a class="boton-añadir"><button id="abrirModal"><i class="fa-solid fa-circle-plus"></i>Añadir imagen</button></a>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de asociaciones</h2>
@@ -122,6 +122,48 @@
                     </tbody>
                 </table>
             </section>
+
+
+
+            <!-- Modal para agregar Categorías -->
+            <div class="fondo oculto" id="modal-galeria">
+                <form action="index.php?c=Galeria&m=insertarImagenPorURL" method="post" class="modal">
+                    <div class="modal-header">
+                        <h2>Añadir Nueva Imagen</h2>
+                        <button id="cerrarModal" class="ico-cerrar" type="button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="modal-main">
+                        <label for="url">URL:</label>
+                        <input type="text" name="url" id="nombre" placeholder="Inserta la URL de la imagen que quieras cargar">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="cancelar"><a href="./index.php?c=Galeria&m=cargarPagina">Cancelar</a></button>
+                        <button class="aniadir">Añadir</button>
+                    </div>
+                </form>
+            </div>
+            <script> 
+                /*Recojo el modal el boton abrir y el boton de cerrar */
+                const modal = document.getElementById("modal-galeria");
+                const btnAbrir = document.getElementById("abrirModal");
+                const btnCerrar = document.getElementById("cerrarModal");
+                /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
+                btnAbrir.onclick = () => modal.classList.remove("oculto");
+                btnCerrar.onclick = () => modal.classList.add("oculto");
+                /*Esto es por si clico fuera del modal se cierra */
+                window.onclick = (event) => {
+                    if (event.target === modal) {
+                        modal.classList.add("oculto");
+                    }
+                }
+            </script>
+
+
+
         </main>
     </body>
 </html>

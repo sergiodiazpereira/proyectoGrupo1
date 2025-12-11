@@ -165,10 +165,14 @@ class ConAsociacion {
      *  - GET['idAsoc']
      */
     public function procesarBorrar() {
+        // Cogemos los datos de la asociacion a traves de su id
+        $datos = $this->modeloAsoc->obtenerPorId();
+
         // Luego eliminamos la asociación
         $this->modeloAsoc->borrar();
-        $datos = $this->modeloAsoc->obtenerPorId();
-        $this->borrarCarpeta(RUTAIMG.$datos["nombre"]);
+        
+        // Borramos la carpeta de esa asociacion
+        $this->borrarCarpeta(RUTAIMG."galeria/".$datos["nombre"]);
 
         // Redirigimos a la lista de asociaciones
         header("Location: index.php?c=Asociacion&m=listar");
@@ -261,7 +265,7 @@ class ConAsociacion {
             if($this->guardarImg()){
 
                 if($this->modeloAsoc->insertar()){
-                    mkdir(RUTAIMG.$_POST["nombre"]);
+                    mkdir(RUTAIMG."galeria/".$_POST["nombre"]);
                     $this->vista="admin/mensajeCorrectoAsoc.php";
                     return "Inserción exitosa";
                 }else{

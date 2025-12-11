@@ -38,6 +38,7 @@
 }
 
 .body-sergio{
+
     .header-admin{
         width: 75%; /* 768px */
         height: 64px; /* siempre serán 64px, las medidas en % serían 8.33333% */
@@ -142,17 +143,17 @@
             grid-template-columns: 1fr auto; /* izquierda ocupa todo, derecha tamaño del botón */
             align-items: center;             /* alinea verticalmente */
             .boton-añadir{
-            padding: 11px 16px; /* imposible cambiar a % */
-            background-color: var(--azul-celeste, #3e7bfe);
-            border-radius: 0.875rem;
-            color: var(--blanco-fondo-main, #e6edff);
-            font-family: var(--fuente-regular);
-            font-weight: 100;
-            font-size: 0.875rem;
-            text-decoration: none;
-            i{
-                margin-right: 16px; /* imposible cambiar a % */
-            }
+                padding: 11px 16px; /* imposible cambiar a % */
+                background-color: var(--azul-celeste, #3e7bfe);
+                border-radius: 0.875rem;
+                color: var(--blanco-fondo-main, #e6edff);
+                font-family: var(--fuente-regular);
+                font-weight: 100;
+                font-size: 0.875rem;
+                text-decoration: none;
+                i{
+                    margin-right: 16px; /* imposible cambiar a % */
+                }
             }   
         }
         .grid-secciones{
@@ -353,8 +354,24 @@
             text-decoration: none;
             cursor: pointer;
             color: var(--blanco-texto-boton, #fafcff);
-    }
+        }
 
+
+
+
+
+            #abrirModal {
+                all: unset;        /* elimina TODOS los estilos del navegador */
+                cursor: pointer;   /* vuelve a poner el cursor de botón */
+                display: inline-flex;
+                align-items: center;
+                background-color: red;
+                color: red;
+            }
+            .boton-añadir{
+                background-color: red;
+            }
+        
 }
 
 .body-kiko{
