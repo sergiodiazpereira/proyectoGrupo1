@@ -18,18 +18,11 @@ class VistaMenu{
             }
         });
     }
-
-
-
     mostrarMenu(){
         this.menu.style.display = "flex";
     }
-
-
-
     ocultarMenu(){
         this.menu.style.display = "none";
     }
 }
-
 export default VistaMenu;

@@ -5,9 +5,8 @@ export class ControladorColeccion {
     constructor(modelo, vista) {
         this.modelo = modelo;
         this.vista = vista;
-        
+
         this.cargarColeccion();
-        this.vista.enlazarMenuUsuario();
     }
 
     async cargarColeccion() {

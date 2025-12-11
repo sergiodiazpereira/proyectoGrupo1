@@ -36,13 +36,14 @@
                 <p>Explora las asociaciones que has adivinado y las que te faltan</p>
                 <div id="gridColec">
                     <?php 
-                    // Usamos $controlador (o $objeto si no cambiaste el index)
-                    $lista = $objContro->datos; 
+                        // Usamos $controlador (o $objeto si no cambiaste el index)
+                        $lista = $objContro->datos; 
 
-                    if (!empty($lista)) {
-                        foreach ($lista as $asoc) { 
-                            // Verificamos si está adivinada
-                            $desbloqueada = (isset($asoc['adivinada']) && $asoc['adivinada'] == 1);
+                        if (!empty($lista)) {
+                            foreach ($lista as $asoc) { 
+                                // Verificamos si está adivinada
+                                $desbloqueada = (isset($asoc['adivinada']) && $asoc['adivinada'] == 1);
+                                
                     ?>
                             <div class="cajaAsoc">
                                 
@@ -58,12 +59,21 @@
 
                                 <div id="datosColec">
                                     <?php if ($desbloqueada): ?>
-                                        <p><strong>Fundación:</strong> <?= $asoc['fundacion'] ?></p>
-                                        <p><strong>Alcance:</strong> <?= $asoc['alcance'] ?></p>
-                                        
-                                        <a href="<?= $asoc['web'] ?>" target="_blank" style="display:block; margin-top:5px; color:#007bff; text-decoration:none;">
-                                            <i class="fa-solid fa-link"></i> Visitar Web Oficial
-                                        </a>
+                                        <p><strong>Fundación:</strong> <?= $asoc['fecha_fun'] ?></p>
+                                        <p><strong>Alcance:</strong> 
+                                            <?php
+                                                $alcance = $asoc['alcance']; 
+
+                                                if ($alcance === 'I') {
+                                                    $zona = 'Internacional';
+                                                } elseif ($alcance === 'N') {
+                                                    $zona = 'Nacional';
+                                                } else {
+                                                    $zona = 'Local';
+                                                }
+                                                echo $zona;
+                                            ?>
+                                        </p>
                                     <?php else: ?>
                                         <p style="color: #666; font-style: italic; margin-top: 10px;">
                                             Bloqueado

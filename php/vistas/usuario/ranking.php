@@ -40,7 +40,6 @@
                     </div>
                     <div id="cajaRanking">
                         <p id="puesto">Puesto</p><p id="jugador">Jugador</p><p id="asociación">Asociación</p><p id="fecha">Fecha</p><p id="tiempo">Tiempo</p>
-                        <!-----Esta parte  es de prueba de visualizacion esto se generara mediante php-->
                     </div>
                 </div>
             </div>

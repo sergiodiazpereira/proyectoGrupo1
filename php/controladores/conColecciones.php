@@ -21,5 +21,15 @@ class ConColecciones {
     $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : 1;
     $this->datos = $this->modelo->obtenerColeccionUsuario($idUsuario);
     }
+
+    public function obtenerColeccionUsuario() {
+        header('Content-Type: application/json');
+        
+        $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : 1;
+        $datos = $this->modelo->obtenerColeccionUsuario($idUsuario);
+        
+        echo json_encode($datos);
+        exit;
+    }
 }
 ?>
