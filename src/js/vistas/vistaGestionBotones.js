@@ -1,7 +1,8 @@
 export class VistaGestionBotones{
     constructor(){
         this.botonesAnadir  = document.querySelectorAll('.boton-añadir');
-        this.iconosPape = document.querySelectorAll('.fa-solid.fa-trash-can');
+        this.iconosPape = document.querySelectorAll('.fa-solid,.fa-trash-can');
+        console.log("constructor vista");
     }
     async sesion(){
         const rol= await fetch ('index.php?c=Login&m=traerRol');

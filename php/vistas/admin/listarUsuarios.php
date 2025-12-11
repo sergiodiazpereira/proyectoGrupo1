@@ -282,6 +282,6 @@
         </main>
         <!-- Poner modal de confirmacion -->
         
-        <script type="module" src="../src/js/app.js?v=4"></script>
+        <script type="module" src="../src/js/app.js"></script>
     </body>
 </html>

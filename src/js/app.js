@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 conRanking.vista = visRanking;
                 conRanking.cargarRanking();
             }
-            if (finDePagina === 'usuario/listarUsuarios.php') {
+            if (finDePagina === 'admin/listarUsuarios.php') {
                 const visGestion = new VistaGestionBotones();
                 visGestion.sesion();
             }
