@@ -1,20 +1,24 @@
 <?php
     require_once __DIR__.'/../config/rutas.php';
-    require_once __DIR__.'/../modelos/modUsuarios.php';
+    require_once __DIR__.'/../'.MODELO.'/modUsuarios.php';
+
     class ConUsuarios{
-        public $modeloJ;
+        public $modeloU;
         public $vista;
+
         function __construct(){
-            $this->modeloJ = new ModUsuarios();
+            $this->modeloU = new ModUsuarios();
         }
 
         public function cargarPagina(){
-            $superadmin = true;                     // Controla si se mostrará la vista de admin o superadmin
-            if ($superadmin) {
-                $this->vista="admin/listarUsuarios.php";
-            } else {
-                $this->vista="admin/listarUsuariosAdmin.php";
-            }
+            // Obtenemos los datos
+            $datos = $this->modeloU->listar();
+
+            // Indicamos la vista
+            $this->vista = "admin/listarUsuarios.php";
+
+            // Retornamos los datos
+            return $datos;
         }
     }
 ?>

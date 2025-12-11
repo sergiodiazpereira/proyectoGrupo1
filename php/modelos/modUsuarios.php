@@ -7,7 +7,20 @@
 
         function __construct(){
             parent::__construct();
-            
         }
+
+        function listar(){
+            $sql="SELECT *
+                    FROM usuario
+                    ORDER BY FIELD(permiso, 's', 'a', 'u'), permiso;";
+            $stmt = $this->conexion->prepare($sql);
+
+            $stmt->execute();
+
+            $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $datos;
+        }
+        
     }
 ?>
