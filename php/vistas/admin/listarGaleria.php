@@ -88,39 +88,82 @@
             <div class="grid-titulo-botón">
                 <div>
                     <h1 class="h1-admin">Galería de Imagenes</h1>
-                    <p class="subtitulos-admin">Añadir, asignar o eliminar imagenes del juego.</p>
+                    <p class="subtitulos-admin">Añadir, asignar o eliminar imagenes de asociaciones.</p>
                 </div>
                 <a class="boton-añadir"><button id="abrirModal"><i class="fa-solid fa-circle-plus"></i>Añadir imagen</button></a>
             </div>
-            <section class="seccion-regular query">
-                <h2 class="h2-regular">Lista de asociaciones</h2>
-                <table class="tabla-asociaciones">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Categoría</th>
-                            <th>Año fundación</th>
-                            <th>Acciones</th>        
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php if (!empty($datos)): ?>
-                        <?php foreach ($datos as $fila): ?>
-                            <tr>
-                                <td><img src="../src/img/<?= $fila['imagen'] ?>"><?= $fila['nombre'] ?></td>
-                                <td><span><?= $fila['tipo_asociacion'] ?></span></td>
-                                <td><?= $fila['fecha_fun'] ?></td>
-                                <td>
-                                    <a href="index.php?c=Asociacion&m=modificar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="index.php?c=Asociacion&m=borrar&idAsoc=<?= $fila['idAsoc'] ?>"><i class="fa-solid fa-trash-can"></i></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr><td colspan="4">No hay asociaciones registradas.</td></tr>
-                    <?php endif; ?>
-                    </tbody>
-                </table>
+            <section class="seccion-regular query galeria">
+                <h2 class="h2-regular">Lista de imagenes</h2>
+                <div class="grid-imagenes">
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/bombilla apagada.png" alt="Imagen asociación">
+                        
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                            <button class="btn vincular">🔗 Vincular</button>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta no-disponible">
+                        <img src="../src/img/bombilla apagada.png" alt="Imagen asociación">
+                        
+                        <div class="acciones">
+                            <button class="btn eliminar "><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                            <button class="btn desvincular">⛔ Desvincular</button>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/fundacion_once.jpg" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta disponible">
+                        <img src="../src/img/santa_clara.png" alt="Imagen">
+                        <div class="acciones">
+                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+
+
             </section>
 
 
