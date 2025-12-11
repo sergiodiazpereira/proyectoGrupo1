@@ -133,10 +133,12 @@
                                 <td>
                                     <?php 
                                         if ($_SESSION["permiso"] == 'A' && $fila['permiso'] == 'S'){
-                                            echo '';
+                                            echo '<a"><i class="fa-solid fa-trash-can desactivado"></i></a>';
                                         }else if($_SESSION["permiso"] == 'A' && $fila["permiso"] == 'A'){
-                                            echo '';
-                                        }else{
+                                            echo '<a"><i class="fa-solid fa-trash-can desactivado"></i></a>';
+                                        }else if($fila["permiso"] == 'S'){
+                                            echo '<a"><i class="fa-solid fa-trash-can desactivado"></i></a>';
+                                        } else{
                                             echo '<a href="index.php?c=Usuarios&m=borrar&idUsuario='.$fila['idUsuario'].'"><i class="fa-solid fa-trash-can"></i></a>';
                                         }
                                     ?>
