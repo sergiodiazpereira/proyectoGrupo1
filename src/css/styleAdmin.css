@@ -152,7 +152,7 @@
             i{
                 margin-right: 16px; /* imposible cambiar a % */
             }
-            }
+            }   
         }
         .grid-secciones{
             margin-top: 4.545454545454545%; /* 32px */
@@ -340,6 +340,9 @@
             }
             }
         }
+        td i{
+            color: var(--azul-marino);
+        }
         }
 
         button{
@@ -469,7 +472,7 @@
     }
     #navAdmin{
         grid-area: navAdmin;
-        background-color: var(--colorTituloFormulario);
+        background-color: var(--azul-marino);
         padding-top: 20px; /*64px*/
         position: fixed;
         left: 0;
@@ -486,6 +489,9 @@
             text-align: left;
             list-style-type: none;
         }
+        ul p {
+            color: var(--gris-titulo-nav);
+        }
         li{
             margin-bottom: 10px;
         }
@@ -499,7 +505,7 @@
             text-align: left;
             border: none;
             color: var(--colorFondoFormulario);
-            background-color: var(--colorLabel);
+            background-color: var(--azul-marino);
             font-family: var(--fueteP);
             padding-left: 4%; /*35px*/
             width: 100%; /*139px*/

@@ -17,9 +17,11 @@
         <form action="index.php?c=Contribucion&m=procesarBorrar&idContribucion=<?=$datos['idContribucion']?>" method="POST" class="modal">
             <div class="modal-header">
                 <h2>¿Estas seguro de que quieres borrar <?=$datos['descripcion']?>?</h2>
-                <button class="ico-cerrar">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <a href="index.php?c=Contribucion&m=listar">
+                    <button type="button" class="ico-cerrar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </a>
             </div>
 
             <div class="modal-footer">
