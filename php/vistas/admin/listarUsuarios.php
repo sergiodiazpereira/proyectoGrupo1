@@ -59,7 +59,7 @@
             </ul>
             <ul class="ul-inferior">
                 <li>
-                    <a href="index.php?c=CambioAdmin&m=cargarPagina">
+                    <a href="index.php?c=Usuario&m=cargarPagina">
                         <button>
                             <i class="fa-solid fa-key"></i>
                             <span>Cambiar contraseña</span>
