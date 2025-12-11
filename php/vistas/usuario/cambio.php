@@ -27,7 +27,7 @@
                 <li><i class="fa-solid fa-trophy"></i><a href="./index.php?c=Ranking&m=cargarPagina">Ranking</a></li>
                 <hr>
                 <li><i class="fa-solid fa-key"></i> <a href="./index.php?c=Cambio&m=cargarPagina">Cambiar Contraseña</a></li>
-                <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="login.html">Cerrar sesión</a></li>
+                <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="index.php?c=Login&m=cerrarSesion">Cerrar sesión</a></li>
             </ul>
         </div>
         <div id="contenedorLogin">
@@ -40,11 +40,53 @@
                 <input type="password" name="contraNueva">
                 <label for="contraConfir">Confirmar Contraseña</label>
                 <input type="password" name="contraConfir">
-                <input type="submit" value="Guardar cambios" id="botonGuardar"></input>
-                <a href="./index.php?c=Juego&m=cargarPagina">Cancelar</a>
+                <button type="submit" id="botonGuardar">Guardar cambios</button>
+                <button type="button" id="botonGuardar1" onclick="window.location.href='./index.php?c=Juego&m=cargarPagina'" id="botonGuardar1">Cancelar</button>
             </form>
             <p>---------------o continuar con--------------------</p>
         </div>
-        <script type="module" src="../src/js/app.js"></script>
+        
+        <!-- Modal exito -->
+        <div id="modal-exito" class="fondo" style="display: none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Mensaje</h2>
+                    <button class="ico-cerrar" type="button" onclick="document.getElementById('modal-exito').style.display='none'">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="yes">
+                    <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="modal-footer">
+                    <button class="aniadir" onclick="window.location.href='index.php?c=Juego&m=cargarPagina'">
+                        Volver al Juego
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Error -->
+        <div id="modal-error" class="fondo" style="display: none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Error</h2>
+                    <button class="ico-cerrar" type="button" onclick="document.getElementById('modal-error').style.display='none'">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="not">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+                <div class="modal-footer">
+                    <button class="aniadir" onclick="document.getElementById('modal-error').style.display='none'">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script al final -->
+        <script type="module" src="../src/js/app.js?v=4"></script>
     </body>
 </html>

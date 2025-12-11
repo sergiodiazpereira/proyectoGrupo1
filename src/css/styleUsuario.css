@@ -216,9 +216,6 @@ input[type=submit]{
         color: var(--colorLabel);
         border-radius: var(--bordeRadius);
     }
-    a:hover{
-        background-color: var(--azul-borde-header);
-    }
 }
 /*Le doy estilo al menu desplegable*/
 
@@ -259,6 +256,7 @@ input[type=submit]{
         color: var(--colorLabel);
     }
     li{ 
+        width: 90%;
         padding: 1.95vh; /*15px/768*/
         height: 1.95vh; /*15px/768*/
         border-radius: var(--bordeRadius);
@@ -440,6 +438,21 @@ input[type=submit]{
     align-items: center;
     justify-content: center;
     z-index: 9999; /* Por encima de todo */
+}
+#botonGuardar{
+    width: 130px;
+    background-color: #6c92f3;
+    color: white;
+}
+#botonGuardar1{
+    width: 130px;
+    background-color: var(--colorFondoFormulario);
+    color: var(--colorLabel);
+}
+#botonGuardar1:hover{
+    width: 130px;
+    background-color: #6c92f3;
+    color: white;
 }
 
 /* Estilos de Info y botones (popups de info, pistas y otros botones) */
@@ -850,4 +863,105 @@ button {
     select {
         width: 11rem; 
     }
+}
+
+/* =======================================================[ MODAL ]========================================================== */
+
+/* Clase para mostrar u ocultar el modal+fondo */
+.oculto {
+    display: none !important;
+}
+
+/* Fondo del modal */
+.fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Icono cerrar */
+.ico-cerrar {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #0b285b;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+#modal-aceptarOno {
+    text-align: center;
+}
+
+#modal-aceptarOno .modal-header {
+    align-items: center;
+}
+
+#modal-aceptarOno #not {
+    display: block;
+    font-size: 50px;
+    color: red;
+}
+
+#modal-aceptarOno #yes {
+    display: block;
+    font-size: 50px;
+    color: rgb(93, 207, 89);
+}
+
+/* Ventana del modal */
+.modal {
+    width: 90%;
+    max-width: 450px;
+    background: var(--colorFondoFormulario, #FCFDFF);
+    padding: 25px;
+    border-radius: 14px;
+    font-family: var(--fuenteTitulo);
+}
+
+/* Cabecera del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: var(--colorTituloFormulario, #102E59);
+    margin: 0;
+}
+
+/* Pie del modal */
+.modal-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Botón añadir/volver */
+.modal-footer .aniadir {
+    background: var(--colorBotonInicioYCrearCuenta, #4B7BFC);
+    padding: 8px 30px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: white;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.modal-footer .aniadir:hover {
+    background: #2f67e3;
 }

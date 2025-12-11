@@ -28,7 +28,6 @@
             return false;
             }
         }
-
         public function actualizarVisitas($idUsuario){
             $sql = "UPDATE usuario SET visitas = visitas + 1 WHERE idUsuario = $idUsuario";
             $act = $this->conexion->prepare($sql);

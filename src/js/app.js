@@ -17,6 +17,10 @@ import { ModeloRanking } from './modelos/modeloRanking.js';
 import { VistaRanking } from './vistas/vistaRanking.js';
 import { ControladorRanking } from './servicios/controladorRanking.js';
 
+import { ModeloCambio } from './modelos/modeloCambio.js';
+import { VistaCambio } from './vistas/vistaCambio.js';
+import { ControladorCambio } from './servicios/controladorCambio.js';
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 finDePagina = mapaPaginas[controladorURL];
             } else {
                 // Por defecto la pagina juego
-                finDePagina = 'usuario/pagina_juego.php'; 
+                finDePagina = 'usuario/pagina_juego.php';
             }
 
             if (finDePagina === "usuario/pagina_juego.php") {
@@ -108,13 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 new ControladorColeccion(modelo, vista);
             }
             /*PARTE KIKO*/
-            if (finDePagina === 'usuario/cambio.php') { /* ... */ }
+            if (finDePagina === 'usuario/cambio.php') {
+                const modCambio = new ModeloCambio();
+                const conCambio = new ControladorCambio(modCambio);
+                const visCambio = new VistaCambio(conCambio);
+                conCambio.vista = visCambio;
+            }
             if (finDePagina === 'usuario/ranking.php') {
                 const modRanking = new ModeloRanking();
                 const conRanking = new ControladorRanking(modRanking);
                 const visRanking = new VistaRanking(conRanking);
                 conRanking.vista = visRanking;
                 conRanking.cargarRanking();
+            }
+            if (finDePagina === 'usuario/listarUsuarios.php') {
+                const visUsuarios = new VistaRanking();
+                visUsuarios.habilitar();
             }
         } catch (error) {
             console.error("Error crítico en APP.JS:", error);
