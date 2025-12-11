@@ -34,7 +34,10 @@
                 echo "<script>alert('El usuario o la contraseña no son correctos.'); window.location.href='login.php';</script>";
             }
         }
-
+        public function traerRol(){
+            echo json_encode($_SESSION["permiso"]);
+            exit();
+        }
         public function cerrarSesion()
         {
             /* Lo que hacemos aquí es recoger o recuperar la sesión para poder eliminarla */

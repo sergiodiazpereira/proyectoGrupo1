@@ -21,10 +21,12 @@ import { ModeloCambio } from './modelos/modeloCambio.js';
 import { VistaCambio } from './vistas/vistaCambio.js';
 import { ControladorCambio } from './servicios/controladorCambio.js';
 
+import { VistaGestionBotones } from './vistas/vistaGestionBotones.js';
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const vistaMenu = new VistaMenu();
+    
     let finDePagina;
 
     async function obtenerPaginaDelControladorPHP() {
@@ -39,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Juego': 'usuario/pagina_juego.php',
                 'Colecciones': 'usuario/colecciones.php',
                 'Ranking': 'usuario/ranking.php',
-                'Cambio': 'usuario/cambio.php'
+                'Cambio': 'usuario/cambio.php',
+                'Usuarios': 'admin/listarUsuarios.php'
             };
 
             // Si el controlador ni la vista no son null se establece la vista en la variable fin de pagina
@@ -126,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 conRanking.cargarRanking();
             }
             if (finDePagina === 'usuario/listarUsuarios.php') {
-                const visUsuarios = new VistaRanking();
-                visUsuarios.habilitar();
+                const visGestion = new VistaGestionBotones();
+                visGestion.sesion();
             }
         } catch (error) {
             console.error("Error crítico en APP.JS:", error);

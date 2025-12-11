@@ -67,10 +67,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.php?c=Login&m=cerrarSesion">
+                    <a href="index.php?c=Dashboard&m=cargarPagina">
                         <button>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <span>Cerrar sesión</span>
+                            <i class="fa-solid fa-arrow-right-from-bracket color-a"></i>
+                            <a href="index.php?c=Login&m=cerrarSesion"><span class="color-a">Cerrar sesión</span></a>
                         </button>
                     </a>
                 </li>
@@ -82,11 +82,7 @@
                     <h1 class="h1-admin">Gestionar usuarios</h1>
                     <p class="subtitulos-admin">Visualiza y gestiona los usuarios de la aplicación.</p>
                 </div>
-                <?php
-                    if($_SESSION["permiso"] == 'A'){
-                        echo '<a class="boton-añadir" style="display:none"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>';
-                    }
-                ?>
+                <a class="boton-añadir"><i class="fa-solid fa-circle-plus"></i>Añadir administrador</a>
             </div>
             <section class="seccion-regular query">
                 <h2 class="h2-regular">Lista de usuarios</h2>
@@ -127,11 +123,7 @@
                                 27/06/2024
                             </td>
                             <td>
-                                <?php
-                                    if($_SESSION["permiso"] == 'A'){
-                                        echo'<a class="papelera"><i class="fa-solid fa-trash-can desactivado"></i></a>';
-                                    }
-                                ?>
+                                <a class="papelera"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <tr>
