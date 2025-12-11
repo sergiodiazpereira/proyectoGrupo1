@@ -26,7 +26,7 @@ import { VistaGestionBotones } from './vistas/vistaGestionBotones.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     let finDePagina;
 
     async function obtenerPaginaDelControladorPHP() {
@@ -131,6 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (finDePagina === 'admin/listarUsuarios.php') {
                 const visGestion = new VistaGestionBotones();
                 visGestion.sesion();
+            }
+
+            // Inicializamos el menú de usuario si existe el botón en el DOM
+            if (document.getElementById('usuario')) {
+                new VistaMenu();
             }
         } catch (error) {
             console.error("Error crítico en APP.JS:", error);

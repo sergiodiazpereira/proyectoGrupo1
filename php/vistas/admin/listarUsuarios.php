@@ -12,7 +12,16 @@
     <body class="body-sergio">
         <header class="header-admin">
             <span>Asociaciondle - Admin</span>
+            <button id="usuario"><i id="icono-boton-usuario" class="fa-solid fa-user"></i></button>
         </header>
+        <div id="desplegable">
+            <ul>
+                <p id="nombreDes">Usuario</p>
+                <hr>
+                <li><i class="fa-solid fa-key"></i> <a href="index.php?c=Usuario&m=cargarPagina">Cambiar contraseña</a></li>
+                <li><i class="fa-solid fa-arrow-right-from-bracket"></i> <a href="index.php?c=Login&m=cerrarSesion">Cerrar sesión</a></li>
+            </ul>
+        </div>
         <nav class="nav-admin">
             <h3>Menú Principal</h3>
             <ul>
