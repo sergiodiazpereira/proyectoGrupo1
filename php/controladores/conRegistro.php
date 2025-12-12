@@ -37,12 +37,6 @@
                 echo "<script>alert('Las contraseñas no coinciden o el correo ya está en uso'); window.location.replace('registro.php');</script>";
             }
         }
-        public function cargarSuper(){
-            if($this->functionValidar()){
-                $this->modelo->insertarSuper();
-            }
-            
-        }
     }
 
     if (isset($_POST['nombre'])) {
