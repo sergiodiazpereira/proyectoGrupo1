@@ -12,11 +12,13 @@ class VistaGaleria{
         this.modal = document.getElementById("modal-galeria");
         this.btnAbrir = document.getElementById("abrirModal");
         this.btnCerrar = document.getElementById("cerrarModal");
+        this.btnCerrar2 = document.getElementById("cerrarModal2");
         this.select = document.getElementById("selectAsociacion");
         this.h2 = document.getElementById("h2listagaleria");
         /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
         this.btnAbrir.onclick = () => this.modal.classList.remove("oculto");
         this.btnCerrar.onclick = () => this.modal.classList.add("oculto");
+        this.btnCerrar2.onclick = () => this.modal.classList.add("oculto");
         this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
         this.select.addEventListener("change", async () => { // Detecta que se ha cambiado de asociación
             try {

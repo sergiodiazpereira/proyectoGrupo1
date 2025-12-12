@@ -112,7 +112,7 @@
 
             <!-- Modal para agregar Categorías -->
             <div class="fondo oculto" id="modal-galeria">
-                <form action="index.php?c=Galeria&m=insertarImagenPorURL" method="post" class="modal">
+                <form action="index.php?c=Galeria&m=insertarImagen" method="post" class="modal">
                     <div class="modal-header">
                         <h2>Añadir Nueva Imagen</h2>
                         <button id="cerrarModal" class="ico-cerrar" type="button">
@@ -121,13 +121,13 @@
                     </div>
 
                     <div class="modal-main">
-                        <label for="url">URL:</label>
-                        <input type="text" name="url" id="nombre" placeholder="Inserta la URL de la imagen que quieras cargar">
+                        <label for="subirArchivo">Solo se aceptan archivos .jpeg, .png, .webp y .jpg:</label>
+                        <input type="file" name="archivo" id="subirArchivo" accept=".jpeg, .png, .webp y .jpg">
                     </div>
 
                     <div class="modal-footer">
-                        <button class="cancelar"><a href="./index.php?c=Galeria&m=cargarPagina">Cancelar</a></button>
-                        <button class="aniadir">Añadir</button>
+                        <button type="button" id="cerrarModal2" class="cancelar">Cancelar</button>
+                        <button type="button" class="aniadir">Añadir</button>
                     </div>
                 </form>
             </div>

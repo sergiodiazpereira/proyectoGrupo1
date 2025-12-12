@@ -52,7 +52,7 @@ CREATE TABLE intento(
 CREATE TABLE galeria(
     idImagen SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombreImagen VARCHAR(20),
-    idAsoc SMALLINT UNSIGNED NULL,
+    idAsoc SMALLINT UNSIGNED DEFAULT NULL,
     CONSTRAINT fk_idAsoc FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE SET NULL -- Si se borra la asociacion, la imagen queda disponible para asignar pero no se borra
 );
 
@@ -130,10 +130,10 @@ VALUES
 /* Insert para las imagenes */
 INSERT INTO galeria (nombreImagen, idAsoc)
 VALUES
-('gatoejemplo', null),
-('perroejemplo', null),
-('juanejemplo', 1),
-('noseejemplo', null),
-('gorilaejemplo', 2),
-('semiluzejemplo', null),
-('proyectoejemplo', 4);
+('gatoejemplo.jpg', null),
+('perroejemplo.jpg', null),
+('juanejemplo.jpg', 1),
+('noseejemplo.jpg', null),
+('gorilaejemplo.jpg', 2),
+('semiluzejemplo.jpg', null),
+('proyectoejemplo.jpg', 4);
