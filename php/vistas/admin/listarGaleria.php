@@ -96,9 +96,9 @@
                 <div class="grid-titulo-lista-imagenes">
                     <h2 id="h2listagaleria" class="h2-regular">Lista de imagenes</h2>
                     <select id="selectAsociacion">
-                        <option selected>Todas las imágenes</option>
-                        <option>sadsa</option>
-                        <option>fdfdfd</option>
+                        <option value="" selected>Todas las imágenes</option>
+                        <option value="1">sadsa</option>
+                        <option value="2">fdfdfd</option>
                         
                     </select>
                 </div>
@@ -197,33 +197,7 @@
                     </div>
                 </form>
             </div>
-            <script> 
-                /*Recojo el modal el boton abrir y el boton de cerrar */
-                const modal = document.getElementById("modal-galeria");
-                const btnAbrir = document.getElementById("abrirModal");
-                const btnCerrar = document.getElementById("cerrarModal");
-                const select = document.getElementById("selectAsociacion");
-                const h2 = document.getElementById("h2listagaleria");
-                /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
-                btnAbrir.onclick = () => modal.classList.remove("oculto");
-                btnCerrar.onclick = () => modal.classList.add("oculto");
-                select.addEventListener("change", () => { // Detecta que se ha cambiado de asociación
-                    if (select.value == "Todas las imágenes") {
-                        h2.innerText = "Lista de imagenes";
-                    } else {
-                        h2.innerText = "Lista de imagenes de " + select.value;
-                    }
-                });
-                /*Esto es por si clico fuera del modal se cierra */
-                window.onclick = (event) => {
-                    if (event.target === modal) {
-                        modal.classList.add("oculto");
-                    }
-                }
-            </script>
-
-
-
+            <script type="module" src="../src/js/app.js"></script>
         </main>
     </body>
 </html>
