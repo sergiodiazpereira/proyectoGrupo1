@@ -21,14 +21,18 @@ export class VistaColeccion {
 
             // Contenido de los datos (oculto si está bloqueado)
             const infoTexto = item.estaBloqueada
-                ? '<p>???</p><p>???</p>'
-                : `<p>Fundación: ${item.datos.fundacion}</p>
-                <p>Alcance: ${item.datos.alcance}</p>
+            ? `<p>???</p><p>???</p>`
+            : `<p>Fundación: ${item.datos.fundacion}</p>
+                <p>Alcance: ${
+                item.datos.alcance === 'I' ? 'Internacional' :
+                item.datos.alcance === 'N' ? 'Nacional' :
+                'Local'
+                }</p>
                 <p>Tipo: ${item.datos.tipo}</p>`;
 
             caja.innerHTML = `
                 <div id="imgAsoc">
-                    <img src="${item.imagen || '../src/img/logo_sin_fondo.png'}" style="${estiloBlur}">
+                    <img src="${'../src/img/'+item.imagen || '../src/img/logo_sin_fondo.png'}" style="${estiloBlur}">
                     <h3>${item.nombre}</h3>
                     <i class="fa-solid ${icono}"></i>
                 </div>
