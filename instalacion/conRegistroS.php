@@ -19,14 +19,14 @@
         public function cargarSuper(){
             if($this->functionValidar()){
                 if($this->modelo->insertarSuper()){
-
-                    if($this->borrarInstalacion()){
-                        $this->vista="Correcto.php";
+                    if($this->modelo->ejecutarScript()){
+                        // Redirect to the external cleanup script to avoid file lock issues
+                        $this->vista="REDIRECT";
                         return "Felicidades Juego Instalado";
                     }else{
                         $this->vista="Incorrecto.php";
-                        return "No se pudo borrar la carpeta";
-                    };
+                        return "Fallo al ejecutar la carga de datos";
+                    }
                 }else{
                     $this->vista="Incorrecto.php";
                     return "No se pudo crear el Super Admin";
@@ -36,22 +36,6 @@
                 return "Alguno dato no es valido";
             }
         }
-        public function borrarInstalacion(){
-            function eliminarDirectorio($dir) {
-                $dir="./instalacion";
-            if (!is_dir($dir)) {
-                return false; 
-            }
-            /* Obtiene todos los archivos y carpetas*/
-            $items = glob($dir . '/*'); 
-            foreach ($items as $item) {
-                if (is_dir($item)) {
-                    unlink($item); 
-                }
-            }
-            rmdir($dir); 
-            return true;
-            }
-        }
+        // Function removed as deletion is handled by ../php/exito_instalacion.php
     }
 ?>
