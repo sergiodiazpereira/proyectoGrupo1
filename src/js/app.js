@@ -4,6 +4,9 @@ import VistaInformacion from "./vistas/vistaInformacion.js";
 import VistaMenu from "./vistas/vistaMenu.js";
 import VistaPistas from "./vistas/vistaPistas.js";
 import ModeloJuegoDinamico from "./modelos/modeloJuegoDinamico.js";
+import VistaGaleria from "./vistas/vistaGaleria.js";
+import ServicioGaleria from "./servicios/servicioGaleria.js";
+import ModeloGaleria from "./modelos/modeloGaleria.js";
 
 import { ModeloJuego } from './modelos/modeloJuego.js';
 import { VistaJuego } from './vistas/vistaJuego.js';
@@ -48,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Colecciones': 'usuario/colecciones.php',
                 'Ranking': 'usuario/ranking.php',
                 'Cambio': 'usuario/cambio.php',
-                'Usuarios': 'admin/listarUsuarios.php'
+                'Usuarios': 'admin/listarUsuarios.php',
+                'Galeria': 'admin/listarGaleria.php'
             };
 
             // Si el controlador ni la vista no son null se establece la vista en la variable fin de pagina
@@ -134,6 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (finDePagina === 'admin/listarUsuarios.php') {
                 const visGestion = new VistaGestionBotones();
                 visGestion.sesion();
+            }
+            if (finDePagina === 'admin/listarGaleria.php') {
+                const modeloGaleria = new ModeloGaleria();
+                const servicioGaleria = new ServicioGaleria(modeloGaleria);
+                await servicioGaleria.inicializar();
+                const vistaGaleria = new VistaGaleria(servicioGaleria);
             }
 
             /** Validaciones Login */
