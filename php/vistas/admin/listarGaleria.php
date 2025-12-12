@@ -170,12 +170,7 @@
                         </div>
                     </div>
                 </div>
-
-
             </section>
-
-
-
             <!-- Modal para agregar Categorías -->
             <div class="fondo oculto" id="modal-galeria">
                 <form action="index.php?c=Galeria&m=insertarImagenPorURL" method="post" class="modal">

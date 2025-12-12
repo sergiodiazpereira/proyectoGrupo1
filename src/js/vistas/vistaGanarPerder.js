@@ -55,8 +55,6 @@ class VistaGanarPerder{
         });
     }
 
-
-
     mostrarPantallaVictoria(){
         let tiempo = this.textoCronometro.innerText;
         this.victoriaAsociacionEra.innerText = this.servicio.mandarNombreAsociacionCorrecta();
@@ -69,14 +67,10 @@ class VistaGanarPerder{
         this.contenidoPopupGanar.style.display = "block";
     }
 
-
-
     ocultarPantallaVictoria(){
         this.popupGanar.style.display = "none";
         this.contenidoPopupGanar.classList.remove("mostrar");
     }
-
-
 
     mostrarPantallaDerrota(){
         this.derrotaAsociacionEra.innerText = this.servicio.mandarNombreAsociacionCorrecta();
@@ -87,8 +81,6 @@ class VistaGanarPerder{
         }, 1); /* timeout para que dé tiempo a hacer la animacion */
         this.contenidoPopupPerder.style.display = "block";
     }
-
-
 
     ocultarPantallaDerrota(){
         this.popupPerder.style.display = "none";

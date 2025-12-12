@@ -1,5 +1,6 @@
 <?php
     require_once './conRegistroS.php';
     $controlador = new conRegistroS();
-    $controlador->cargarSuper();
+    $mensaje=$controlador->cargarSuper();
+    include 'borrado'.$controlador->vista;
 ?>

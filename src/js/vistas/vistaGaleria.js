@@ -37,7 +37,7 @@ class VistaGaleria{
             }
         }
     }
-
+    
     mostrarTodasLasImagenes(imagenesAMostrar){ // VOY POR AQUI (MOSTRAR IMAGENES)
         imagenesAMostrar.forEach(imagen => {
             

@@ -28,8 +28,6 @@ class VistaInformacion{
         this.contenidoPopupInformacion.style.display = "block";
     }
 
-
-
     ocultarMenu(){
         this.popupInformacion.style.display = "none";
         this.contenidoPopupInformacion.classList.remove("mostrar");

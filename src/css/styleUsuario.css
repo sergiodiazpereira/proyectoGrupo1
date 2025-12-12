@@ -100,7 +100,7 @@ input[type=submit] {
 #contenedorLogin {
     width: 48.83%;
     /*500/1024*/
-    margin: 5.2vh auto;
+    margin: 0 auto;
     /*40/768*/
 }
 
@@ -108,6 +108,7 @@ input[type=submit] {
 #contenedorLogin {
     h1 {
         color: var(--colorTitulo);
+        margin-top: 10px;
         font-family: var(--fuenteTitulo);
     }
 
@@ -134,7 +135,7 @@ input[type=submit] {
         border: none;
         height: 3.26vh;
         /*25/768*/
-        width: 49.6%;
+        width: 49.5%;
         /*248/500*/
         /*deberia estar al pixel a 250px por no tener padding pero me esta pillando 2 px por defecto y no encuentro donde*/
         background-color: var(--colorFondo);

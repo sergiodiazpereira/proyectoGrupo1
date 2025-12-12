@@ -61,8 +61,6 @@ class VistaPistas{
         });
     }
 
-
-
     mostrarMenu(){
         this.popupPistas.style.display = "flex";
         setTimeout(() => {
@@ -71,18 +69,13 @@ class VistaPistas{
         this.contenidoPopupPistas.style.display = "block";
     }
 
-
-
     ocultarMenu(){
         this.popupPistas.style.display = "none";
         this.contenidoPopupPistas.classList.remove("mostrar");
     }
-
     // Método para mostrar automaticamente el popup de pistas
     mostrarPopupAutomatico() {
         this.mostrarMenu();
     }
-
 }
-
 export default VistaPistas;

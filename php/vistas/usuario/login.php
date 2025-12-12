@@ -29,7 +29,6 @@
                     <input type="password" name="pwd">
                     <input type="submit"></input>
                 </form>
-                <p>---------------o continuar con--------------------</p>
             </div>
         </main>
         <script type="module" src="../../../src/js/app.js"></script>

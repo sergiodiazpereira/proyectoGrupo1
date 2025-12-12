@@ -32,7 +32,7 @@ export class VistaColeccion {
 
             caja.innerHTML = `
                 <div id="imgAsoc">
-                    <img src="${'../src/img/'+item.imagen || '../src/img/logo_sin_fondo.png'}" style="${estiloBlur}">
+                    <img  src="${'../src/img/'+item.imagen || '../src/img/logo_sin_fondo.png'}" style="${estiloBlur} border-radius: 50%">
                     <h3>${item.nombre}</h3>
                     <i class="fa-solid ${icono}"></i>
                 </div>
