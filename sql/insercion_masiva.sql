@@ -196,6 +196,6 @@ INSERT INTO asoc_contribucion (idAsoc, idContribucion) VALUES
 -- 48 World Food Programme
 (48,4),(48,5),(48,8),
 -- 49 Ashoka
-(49,18),(49,19);
+(49,18),(49,19),
 -- 50 Fundación Loyola
 (50,2),(50,18),(50,12);
