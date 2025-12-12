@@ -49,6 +49,13 @@ CREATE TABLE intento(
     CONSTRAINT fk_asoc_intento FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE CASCADE
 );
 
+CREATE TABLE galeria(
+    idImagen SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombreImagen VARCHAR(20),
+    idAsoc SMALLINT UNSIGNED NULL,
+    CONSTRAINT fk_idAsoc FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE SET NULL -- Si se borra la asociacion, la imagen queda disponible para asignar pero no se borra
+);
+
 
 -- Insertar Usuarios
 INSERT INTO usuario (nombre,contrasenia,permiso,correo,visitas) VALUES
@@ -119,3 +126,14 @@ VALUES
 ('2025-01-17', '00:03:33', 4, 2),
 ('2025-01-18', '00:01:48', 5, 3),
 ('2025-01-19', '00:02:55', 5, 1);
+
+/* Insert para las imagenes */
+INSERT INTO galeria (nombreImagen, idAsoc)
+VALUES
+('gatoejemplo', null),
+('perroejemplo', null),
+('juanejemplo', 1),
+('noseejemplo', null),
+('gorilaejemplo', 2),
+('semiluzejemplo', null),
+('proyectoejemplo', 4)
