@@ -12,22 +12,37 @@
 
         public function cargarRegistro(): void
         {
+            // Validamos que lleguen los datos
+            if (!isset($_POST['nombre']) || !isset($_POST['correo']) || !isset($_POST['pwd'])) {
+                echo json_encode([
+                    "exito" => false,
+                    "error" => "Datos incompletos"
+                ]);
+                return;
+            }
+
             $nombre = $_POST['nombre'];
             $correo = $_POST['correo'];
             $pwd = $_POST['pwd'];
-            $pwdConfir = $_POST['pwdConfir'];
-
-            $registroHecho = $this->modelo->insertarRegistro($nombre, $correo, $pwd, $pwdConfir );
+            // La validación de que pwd == pwdConfir ya se hizo en JS.
+            // Pasamos $pwd dos veces para satisfacer la firma del método del modelo.
+            
+            $registroHecho = $this->modelo->insertarRegistro($nombre, $correo, $pwd, $pwd );
 
             if ($registroHecho)
             {
-                /* Es un mensaje que te redirige a la página de login.php, lo que hace el replace es sustituir la página en 
-                el historial en la que estabas por esa de login */ 
-                echo "<script>alert('Ya estás registrado, ahora inicia sesión'); window.location.replace('login.php');</script>";
+                echo json_encode([
+                    "exito" => true,
+                    "mensaje" => "Usuario registrado correctamente"
+                ]);
             }
             else
             {
-                echo "<script>alert('Las contraseñas no coinciden o el correo ya está en uso'); window.location.replace('registro.php');</script>";
+                // El modelo devuelve false si las pass no coinciden (aquí imposible) o si hay duplicado
+                echo json_encode([
+                    "exito" => false,
+                    "error" => "El correo ya está en uso o hubo un error en el registro"
+                ]);
             }
         }
     }
@@ -36,5 +51,4 @@
         $controlador = new ConRegistro();
         $controlador->cargarRegistro();
     }
-
 ?>

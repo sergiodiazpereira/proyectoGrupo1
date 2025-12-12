@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__.'/../../controladores/conRegistro.php';
+    //require_once __DIR__.'/../../controladores/conRegistro.php';
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +37,8 @@
                     <input type="password" name="pwdConfir">
                     <input type="submit" value="Crear cuenta"></input>
                 </form>
-                <p>---------------o continuar con--------------------</p>
             </div>
         </main>
+        <script type="module" src="../../../src/js/app.js"></script>
     </body>
 </html>

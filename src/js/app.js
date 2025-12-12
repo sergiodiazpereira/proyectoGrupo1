@@ -28,6 +28,10 @@ import { ModeloLogin } from "./modelos/modeloLogin.js";
 import { VistaLogin } from "./vistas/vistaLogin.js";
 import { ControladorLogin } from "./servicios/controladorLogin.js";
 
+import { ModeloRegistro } from "./modelos/modeloRegistro.js";
+import { VistaRegistro } from "./vistas/vistaRegistro.js";
+import { ControladorRegistro } from "./servicios/controladorRegistro.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializamos el menú de usuario si existe el botón en el DOM
     if (document.getElementById('usuario')) {
@@ -136,12 +140,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 visGestion.sesion();
             }
 
-            /** Validaciones Login */
+            /** Validaciones Login y Registro */
             if (document.getElementById('formLoginRegis')) {
-                const modelo = new ModeloLogin();
-                const controlador = new ControladorLogin(modelo);
-                const vista = new VistaLogin(controlador);
-                controlador.vista = vista;
+
+                // Si existe el input "nombre", es el formulario de REGISTRO
+                if (document.querySelector("input[name='nombre']")) {
+                    const modelo = new ModeloRegistro();
+                    const controlador = new ControladorRegistro(modelo);
+                    const vista = new VistaRegistro(controlador);
+                    controlador.vista = vista;
+                }
+                // Si NO, asumimos es LOGIN
+                else {
+                    const modelo = new ModeloLogin();
+                    const controlador = new ControladorLogin(modelo);
+                    const vista = new VistaLogin(controlador);
+                    controlador.vista = vista;
+                }
             }
 
         } catch (error) {
