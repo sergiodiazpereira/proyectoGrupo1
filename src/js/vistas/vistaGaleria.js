@@ -43,6 +43,14 @@ class VistaGaleria{
         }
     }
 
+
+
+
+
+    /**
+     * Esta funcion muestra en la vista todas las imagenes de la galería
+     * @param {array} imagenesAMostrar 
+     */
     mostrarTodasLasImagenes(imagenesAMostrar){
         imagenesAMostrar.forEach(imagen => {
             const tarjeta = document.createElement("div");
@@ -58,10 +66,19 @@ class VistaGaleria{
         });
     }
 
+
+
+
+
+    /**
+     * Esta funcion muestra en la vista todas las imagenes asociadas a una asociacion
+     * @param {array} imagenesAMostrar 
+     */
     mostrarImagenesDeAsociacion(imagenesAMostrar){
+        this.organizarPorDisponibilidad(imagenesAMostrar);
         imagenesAMostrar.forEach(imagen => {
             const tarjeta = document.createElement("div");
-            if (imagen.idAsoc == "null") {
+            if (imagen.idAsoc == null) {
                 tarjeta.classList.add("tarjeta", "disponible");
 
                 tarjeta.innerHTML = `
@@ -84,6 +101,14 @@ class VistaGaleria{
                 `;
                 contenedorImagenes.appendChild(tarjeta);
             }
+        });
+    }
+    
+    organizarPorDisponibilidad(imagenes){
+        imagenes.sort((a, b) => {
+            if (a.idAsoc != null && b.idAsoc == null) return -1; // a primero
+            if (a.idAsoc == null && b.idAsoc != null) return 1;  // b primero
+            return 0; // mantener orden si ambos son null o ambos no null
         });
     }
 } 
