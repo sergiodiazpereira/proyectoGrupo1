@@ -486,7 +486,7 @@
     #selectAsociacion{
         font-family: var(--fuente-regular);
         font-weight: 500;
-        padding: 8px 12px;
+        padding: 4px 12px;
         border-radius: 0.5rem;
         border: 2px solid var(--azul-borde-header);
         background-color: #ffffff;
