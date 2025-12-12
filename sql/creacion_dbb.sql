@@ -48,3 +48,10 @@ CREATE TABLE intento(
     CONSTRAINT fk_usuario FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
     CONSTRAINT fk_asoc_intento FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE CASCADE
 );
+
+CREATE TABLE galeria(
+    idImagen SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombreImagen VARCHAR(20),
+    idAsoc SMALLINT UNSIGNED NULL,
+    CONSTRAINT fk_idAsoc FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE SET NULL -- Si se borra la asociacion, la imagen queda disponible para asignar pero no se borra
+);
