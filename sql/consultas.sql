@@ -136,4 +136,4 @@ VALUES
 ('noseejemplo', null),
 ('gorilaejemplo', 2),
 ('semiluzejemplo', null),
-('proyectoejemplo', 4)
+('proyectoejemplo', 4);
