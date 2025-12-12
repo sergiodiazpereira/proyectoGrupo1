@@ -19,51 +19,37 @@
         }
         public function cargarRegistro(): void
         {
-            /* El trim lo pongo para que tanto al principio o al final de las cadenas te borre los espacios 
-            que pongas sin querer */
-            $nombre = trim($_POST['nombre']);
-            $correo = trim($_POST['correo']);
+            // Validamos que lleguen los datos
+            if (!isset($_POST['nombre']) || !isset($_POST['correo']) || !isset($_POST['pwd'])) {
+                echo json_encode([
+                    "exito" => false,
+                    "error" => "Datos incompletos"
+                ]);
+                return;
+            }
+
+            $nombre = $_POST['nombre'];
+            $correo = $_POST['correo'];
             $pwd = $_POST['pwd'];
-            $pwdConfir = $_POST['pwdConfir'];
-
-            if (empty($nombre) || empty($correo) || empty($pwd) || empty($pwdConfir)) 
-            {
-                /* Vuelve hacia atrás (la misma página), si no cumple las validaciones necesarias */
-                echo "<script>alert('Todos los campos obligatorios'); window.history.back();</script>";
-                exit;
-            }
-
-            if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) 
-            {
-                /* Esta es una validación de php que comprueba si el correo está en el formato correcto */
-                echo "<script>alert('El formato del correo electrónico no es válido'); window.history.back();</script>";
-                return;
-            }
-
-            if ($pwd !== $pwdConfir) 
-            {
-                echo "<script>alert('Las contraseñas no coinciden'); window.history.back();</script>";
-                return;
-            }
-
-            if (strlen($pwd) < 8) 
-            {
-                /* Esta es una validación para que la contraseña tenga un mínimo de caracteres */
-                echo "<script>alert('La contraseña es muy corta, debe tener al menos 8 caracteres'); window.history.back();</script>";
-                return;
-            }
-
-            $registroHecho = $this->modelo->insertarRegistro($nombre, $correo, $pwd, $pwdConfir );
+            // La validación de que pwd == pwdConfir ya se hizo en JS.
+            // Pasamos $pwd dos veces para satisfacer la firma del método del modelo.
+            
+            $registroHecho = $this->modelo->insertarRegistro($nombre, $correo, $pwd, $pwd );
 
             if ($registroHecho)
             {
-                /* Es un mensaje que te redirige a la página de login.php, lo que hace el replace es sustituir la página en 
-                el historial en la que estabas por esa de login */ 
-                echo "<script>alert('Ya estás registrado, ahora inicia sesión'); window.location.replace('login.php');</script>";
+                echo json_encode([
+                    "exito" => true,
+                    "mensaje" => "Usuario registrado correctamente"
+                ]);
             }
             else
             {
-                echo "<script>alert('Las contraseñas no coinciden o el correo ya está en uso'); window.location.replace('registro.php');</script>";
+                // El modelo devuelve false si las pass no coinciden (aquí imposible) o si hay duplicado
+                echo json_encode([
+                    "exito" => false,
+                    "error" => "El correo ya está en uso o hubo un error en el registro"
+                ]);
             }
         }
     }
@@ -72,5 +58,4 @@
         $controlador = new ConRegistro();
         $controlador->cargarRegistro();
     }
-
 ?>

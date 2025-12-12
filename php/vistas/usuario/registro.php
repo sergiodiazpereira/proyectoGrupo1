@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__.'/../../controladores/conRegistro.php';
+    //require_once __DIR__.'/../../controladores/conRegistro.php';
 ?>
 
 <!DOCTYPE html>
@@ -39,5 +39,6 @@
                 </form>
             </div>
         </main>
+        <script type="module" src="../../../src/js/app.js"></script>
     </body>
 </html>
