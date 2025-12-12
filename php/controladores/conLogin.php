@@ -25,6 +25,13 @@
                 return;
             }
 
+            if (empty($correo) || empty($pwd)) 
+            {
+                /* Vuelve hacia atrás (la misma página), si no cumple las validaciones necesarias */
+                echo "<script>alert('Todos los campos obligatorios'); window.history.back();</script>";
+                exit;
+            }
+
             $usuarioEncontrado = $this->modelo->validarUsuario($correo,$pwd);
 
             if ($usuarioEncontrado)
