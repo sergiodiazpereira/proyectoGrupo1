@@ -61,11 +61,6 @@
             {
                 echo "<script>alert('Ya se ha modificado la contraseña correctamente'); window.location.replace('index.php?c=Dashboard&m=cargarPagina');</script>";
                 exit;
-            } 
-            else 
-            {
-                echo "<script>alert('Error técnico al actualizar la base de datos'); window.location.replace('index.php?c=CambioAdmin&m=cargarPagina');</script>";
-                exit;
             }
         }
     }
