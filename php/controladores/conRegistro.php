@@ -9,7 +9,14 @@
         {
             $this->modelo = new ModRegistro();
         }
-
+        private function functionValidar(){
+            if(empty(trim($_POST['nombre']))){return false;};
+            if(empty(trim($_POST['correo']))){return false;};
+            if(empty(trim($_POST['pwd']))){return false;};
+            if(empty(trim($_POST['pwdConfir']))){return false;};
+            if(trim($_POST['pwdConfir'])!=trim($_POST['pwd'])){return false;};
+            return true;
+        }
         public function cargarRegistro(): void
         {
             $nombre = $_POST['nombre'];
@@ -29,6 +36,12 @@
             {
                 echo "<script>alert('Las contraseñas no coinciden o el correo ya está en uso'); window.location.replace('registro.php');</script>";
             }
+        }
+        public function cargarSuper(){
+            if($this->functionValidar()){
+                $this->modelo->insertarSuper();
+            }
+            
         }
     }
 

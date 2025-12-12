@@ -1,7 +1,3 @@
-<?php
-    //require_once __DIR__.'/../../controladores/conLogin.php';
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
