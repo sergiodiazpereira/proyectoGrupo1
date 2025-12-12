@@ -30,20 +30,20 @@
             {
                 /* Esta es una validación de php que comprueba si el correo está en el formato correcto */
                 echo "<script>alert('El formato del correo electrónico no es válido'); window.history.back();</script>";
-                return;
+                exit;
             }
 
             if ($pwd !== $pwdConfir) 
             {
                 echo "<script>alert('Las contraseñas no coinciden'); window.history.back();</script>";
-                return;
+                exit;
             }
 
             if (strlen($pwd) < 8) 
             {
                 /* Esta es una validación para que la contraseña tenga un mínimo de caracteres */
                 echo "<script>alert('La contraseña es muy corta, debe tener al menos 8 caracteres'); window.history.back();</script>";
-                return;
+                exit;
             }
 
             $registroHecho = $this->modelo->insertarRegistro($nombre, $correo, $pwd, $pwdConfir );
