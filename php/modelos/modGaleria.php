@@ -9,5 +9,14 @@
             parent::__construct();
             
         }
+
+        public function datosImagenes(){
+            $sql = "SELECT * FROM galeria;";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute();
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $resultado;
+        }
     }
 ?>

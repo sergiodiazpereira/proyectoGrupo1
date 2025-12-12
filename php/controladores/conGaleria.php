@@ -8,41 +8,42 @@
             $this->modeloGal = new ModGaleria();
         }
 
+        /**
+         * Esta funcion carga la ruta de la vista al atributo de la clase
+         */
         public function cargarPagina(){
             $this->vista="admin/listarGaleria.php";
         }
 
+
+        /**
+         * Esta funcion obtiene los datos de la galería de la BD y los envia por JSON al navegador
+         */
         public function obtenerDatosImagenes(){ 
-            $datosImagenes = [
-                [
-                    "idImagen" => 1,
-                    "nombreImagen" => "dsa",
-                    "idAsoc" => 2
-                ],
-                [
-                    "idImagen" => 4,
-                    "nombreImagen" => "ddssa",
-                    "idAsoc" => 1
-                ],
-                [
-                    "idImagen" => 3,
-                    "nombreImagen" => "imagendeasociacion1",
-                    "idAsoc" => 1
-                ],
-                [
-                    "idImagen" => 4,
-                    "nombreImagen" => "ddssa",
-                    "idAsoc" => "null"
-                ],
-                [
-                    "IdImagen" => 7,
-                    "nombreImagen" => "nombreejemplo.png",
-                    "idAsoc" => "null"
-                ]
-            ];
-            //$datosImagenes = $this->modeloJ->datosImagenes(); ---------
+            $datosImagenes = $this->modeloGal->datosImagenes();
             echo json_encode($datosImagenes); 
             exit;
+        }
+
+
+        /**
+         * Esta funcion convierte los nombres de las imagenes a rutas
+         * 
+         * @param array Este parametro son los datos de todas las imagenes
+         * @return array La funcion devuelve los datos de las imagenes con el nombre pasado a URL
+         */
+        private function convertirNombresARutas($imagenes){
+            $nuevosDatos = [];
+
+            foreach ($imagenes as $imagen) {
+            $nuevoItem = $imagen;
+                $nuevoItem["url"] = $imagen["nombreImagen"];
+                unset($nuevoItem["nombre"]);
+                $nuevoItem["url"] = realpath(__DIR__ . '/../../src/img/galeria/' . $nuevoItem["url"]);
+                $nuevosDatos[] = $nuevoItem;
+            }
+
+            return $nuevosDatos;
         }
     }
 ?>

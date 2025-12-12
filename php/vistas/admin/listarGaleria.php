@@ -102,9 +102,9 @@
                         
                     </select>
                 </div>
-                <div class="grid-imagenes">
+                <div  id="contenedorImagenes" class="grid-imagenes">
                     <div class="tarjeta disponible">
-                        <img src="../src/img/bombilla apagada.png" alt="Imagen asociación">
+                        <img src="../src/img/unicef.jpg" alt="Imagen asociación">
                         
                         <div class="acciones">
                             <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
@@ -170,8 +170,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </section>
 
 
