@@ -27,11 +27,11 @@
             </ul>
             <ul id="ulCerrar">
                 <li ><a href="index.php?c=CambioAdmin&m=cargarPagina"><button id="pestaña"><i class="fa-solid fa-key"></i>Cambiar Contraseña</button></a></li>
-                <li><a href="index.php?c=Dashboard&m=cargarPagina"><button><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</button></a></li>
+                <li><a href="index.php?c=Login&m=cerrarSesion"><button><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</button></a></li>
             </ul>
         </nav>
         <div id="contenedorLogin">
-            <form action="" method="post" id="formCambio">
+            <form action="index.php?c=CambioAdmin&m=cambiarContrasenia" method="post" id="formCambio">
                 <h2>Cambiar Contraseña</h2>
                 <p>Actualiza tu contraseña para mantener tu cuenta segura</p>
                 <label for="contraActual">Contraseña</label>
@@ -41,7 +41,7 @@
                 <label for="contraConfir">Nueva Contraseña</label>
                 <input type="password" name="contraConfir">
                 <input type="submit" value="Guardar cambios" id="botonGuardar"></input>
-                <a href="./dashboard.html">Cancelar</a>
+                <a href="index.php?c=Dashboard&m=cargarPagina">Cancelar</a>
             </form>
             <p>---------------o continuar con--------------------</p>
         </div>
