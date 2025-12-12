@@ -43,7 +43,6 @@
                 <input type="submit" value="Guardar cambios" id="botonGuardar"></input>
                 <a href="index.php?c=Dashboard&m=cargarPagina">Cancelar</a>
             </form>
-            <p>---------------o continuar con--------------------</p>
         </div>
     </body>
 </html>
