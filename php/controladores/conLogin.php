@@ -17,6 +17,7 @@
             {
                 session_start();
                 $_SESSION['idUsuario'] = $usuarioEncontrado['idUsuario'];
+                $_SESSION['nombre'] = $usuarioEncontrado['nombre'];
                 $_SESSION['correo'] = $usuarioEncontrado['correo'];
                 $_SESSION['permiso'] = $usuarioEncontrado['permiso'];
 

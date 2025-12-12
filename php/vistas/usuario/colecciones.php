@@ -19,8 +19,8 @@
         </header>
         <div id="desplegable">
             <ul>
-                <p id="nombreDes">Usuario</p>
-                <p>usuario@hotmail.com</p>
+                <p id="nombreDes"><?= $_SESSION['nombre'] ?></p>
+                <p><?= $_SESSION['correo'] ?></p>
                 <hr>
                 <li><i class="fa-solid fa-gamepad"></i> <a href="./index.php?c=Juego&m=cargarPagina">Jugar</a></li>
                 <li><i class="fa-solid fa-book"></i><a href="./index.php?c=Colecciones&m=cargarPagina">Colección</a></li>
@@ -48,7 +48,7 @@
                             <div class="cajaAsoc">
                                 
                                 <div id="imgAsoc">
-                                    <img src="../src/img/<?= $asoc['imagen'] ?>" 
+                                    <img src="../src/img/cruz_roja.png" 
                                         alt="Logo"
                                         style="<?= $desbloqueada ? '' : 'filter: blur(8px); opacity: 0.5;' ?>">
                                     
@@ -61,18 +61,7 @@
                                     <?php if ($desbloqueada): ?>
                                         <p><strong>Fundación:</strong> <?= $asoc['fecha_fun'] ?></p>
                                         <p><strong>Alcance:</strong> 
-                                            <?php
-                                                $alcance = $asoc['alcance']; 
-
-                                                if ($alcance === 'I') {
-                                                    $zona = 'Internacional';
-                                                } elseif ($alcance === 'N') {
-                                                    $zona = 'Nacional';
-                                                } else {
-                                                    $zona = 'Local';
-                                                }
-                                                echo $zona;
-                                            ?>
+                                            <?= $asoc['alcance']; ?>
                                         </p>
                                     <?php else: ?>
                                         <p style="color: #666; font-style: italic; margin-top: 10px;">

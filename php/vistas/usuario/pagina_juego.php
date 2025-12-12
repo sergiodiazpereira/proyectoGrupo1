@@ -120,8 +120,8 @@
         </header>
         <div id="desplegable">
             <ul>
-                <p id="nombreDes">Usuario</p>
-                <p>usuario@hotmail.com</p>
+                <p id="nombreDes"><?= $_SESSION['nombre'] ?></p>
+                <p><?= $_SESSION['correo'] ?></p>
                 <hr>
                 <li><i class="fa-solid fa-gamepad"></i> <a href="./index.php?c=Juego&m=cargarPagina">Jugar</a></li>
                 <li><i class="fa-solid fa-book"></i><a href="./index.php?c=Colecciones&m=cargarPagina">Colección</a></li>
@@ -158,17 +158,11 @@
                 <div class="encabezado neutro textoCentrado colorBlanco"><i class="fa-solid fa-gift"></i>Contribuciones</div>
             </div>
             <div id="contenedor-resultados" style="display: none;">
-                <div class="celda rojo textoCentrado">Cruz Roja</div>
-                <div class="celda rojo textoCentrado">Personas</div>
-                <div class="celda verde textoCentrado">1998</div>
-                <div class="celda rojo textoCentrado">Local</div>
-                <div class="celda rojo textoCentrado">Educación, Inclusión</div>
-
-                <div class="celda rojo textoCentrado">Cáritas</div>
-                <div class="celda rojo textoCentrado">Jóvenes</div>
-                <div class="celda rojo textoCentrado">1863</div>
-                <div class="celda rojo textoCentrado">Internacional</div>
-                <div class="celda amarillo textoCentrado">Salud, Educación</div>
+                <div class="celda rojo textoCentrado"></div>
+                <div class="celda rojo textoCentrado"></div>
+                <div class="celda verde textoCentrado"></div>
+                <div class="celda rojo textoCentrado"></div>
+                <div class="celda rojo textoCentrado"></div>
             </div>
         </main>
         <script type="module" src="../src/js/app.js"></script>

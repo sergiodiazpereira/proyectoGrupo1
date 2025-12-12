@@ -19,8 +19,8 @@
         </header>
         <div id="desplegable">
             <ul>
-                <p id="nombreDes">Usuario</p>
-                <p>usuario@hotmail.com</p>
+                <p id="nombreDes"><?= $_SESSION['nombre'] ?></p>
+                <p><?= $_SESSION['correo'] ?></p>
                 <hr>
                 <li><i class="fa-solid fa-gamepad"></i> <a href="./index.php?c=Juego&m=cargarPagina">Jugar</a></li>
                 <li><i class="fa-solid fa-book"></i><a href="./index.php?c=Colecciones&m=cargarPagina">Colección</a></li>

@@ -7,7 +7,6 @@ export class VistaLogin {
 
         this.form.addEventListener("submit", (evento) => {
             evento.preventDefault();
-            console.log("Formulario enviado"); // <--- revisar consola
             const correo = this.form.querySelector("input[name='correo']").value.trim();
             const pwd = this.form.querySelector("input[name='pwd']").value.trim();
             this.controlador.enviarLogin(correo, pwd);
