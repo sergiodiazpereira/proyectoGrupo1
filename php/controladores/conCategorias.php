@@ -2,7 +2,7 @@
     require_once __DIR__.'/../config/rutas.php';
     require_once __DIR__.'/../modelos/modCategorias.php';
     class ConCategorias{
-        public $modeloJ;
+        public $modeloCat;
         public $vista;
         function __construct(){
             $this->modeloCat = new ModCategorias();
