@@ -30,7 +30,7 @@ class VistaGaleria{
                 this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
             } else {
                 contenedorImagenes.innerHTML = "";
-                let textoDeSelect = this.select.options[this.select.value].text; // Coge el texto del option que tiene el value enviado
+                let textoDeSelect = this.select.options[this.select.selectedIndex].text; // Coge el texto del option que tiene el value enviado
                 this.h2.innerText = "Lista de imagenes de " + textoDeSelect;
                 this.mostrarImagenesDeAsociacion(this.servicio.datosImagenes);
             }

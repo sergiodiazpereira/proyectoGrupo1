@@ -13,7 +13,12 @@
          */
         public function cargarPagina(){
             $this->vista="admin/listarGaleria.php";
+            $datos = $this->modeloGal->datosAsociaciones();
+            return $datos;
         }
+
+
+
 
 
         /**
@@ -26,6 +31,9 @@
         }
 
 
+
+
+
         /**
          * Esta funcion convierte los nombres de las imagenes a rutas
          * 
@@ -36,7 +44,7 @@
             $nuevosDatos = [];
 
             foreach ($imagenes as $imagen) {
-            $nuevoItem = $imagen;
+                $nuevoItem = $imagen;
                 $nuevoItem["url"] = $imagen["nombreImagen"];
                 unset($nuevoItem["nombre"]);
                 $nuevoItem["url"] = realpath(__DIR__ . '/../../src/img/galeria/' . $nuevoItem["url"]);

@@ -97,78 +97,14 @@
                     <h2 id="h2listagaleria" class="h2-regular">Lista de imagenes</h2>
                     <select id="selectAsociacion">
                         <option value="" selected>Todas las imágenes</option>
-                        <option value="1">sadsa</option>
-                        <option value="2">fdfdfd</option>
-                        
+                        <?php
+                            foreach ($datos as $asociacion) {
+                                echo '<option value="'.$asociacion["idAsoc"].'">'.$asociacion["nombre"].'</option>';
+                            } 
+                        ?>
                     </select>
                 </div>
                 <div  id="contenedorImagenes" class="grid-imagenes">
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/unicef.jpg" alt="Imagen asociación">
-                        
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                            <button class="btn vincular"><i class="fa-solid fa-link"></i> Vincular</button>
-                        </div>
-                    </div>
-
-                    <div class="tarjeta no-disponible">
-                        <img src="../src/img/unicef.jpg" alt="Imagen asociación">
-                        
-                        <div class="acciones">
-                            <button class="btn eliminar "><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                            <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
-                        </div>
-                    </div>
-
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/fundacion_once.jpg" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
                 </div>
             </section>
 
