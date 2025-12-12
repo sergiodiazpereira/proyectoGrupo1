@@ -13,7 +13,7 @@
         <header>
             <span>Asociaciondle - Admin</span>
         </header>
-        <nav>
+        <nav class="nav-admin">
             <h3>Menú Principal</h3>
                 <ul>
                     <li>
