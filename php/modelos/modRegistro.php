@@ -5,7 +5,14 @@
         {
             return parent::__construct();
         }
-        
+        /**
+         * Summary of insertarRegistro
+         * @param mixed $nombre nombre de usuario
+         * @param mixed $correo correo de usuario
+         * @param mixed $pwd password de usuario
+         * @param mixed $pwdConfir password de usuario para confirmacion
+         * @return bool registrara el usuario y devolvera true o false
+         */
         public function insertarRegistro($nombre, $correo, $pwd, $pwdConfir){
             if ($pwd != $pwdConfir)
             {
@@ -31,5 +38,4 @@
             }
         }
     }
-
 ?>

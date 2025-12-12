@@ -37,7 +37,6 @@
                     <input type="password" name="pwdConfir">
                     <input type="submit" value="Crear cuenta"></input>
                 </form>
-                <p>---------------o continuar con--------------------</p>
             </div>
         </main>
     </body>
