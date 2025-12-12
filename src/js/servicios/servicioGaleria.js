@@ -19,7 +19,6 @@ class ServicioGaleria{
         
         // 2. Guardamos los datos en la propiedad de la clase
         // Si datos es null, guardamos array vacío
-        prompt("ds");
         if (datos) {
             this.datosImagenes = datos;
             this.datosImagenesDisponibles = datos.filter(imagen => imagen.idAsoc == "null");
