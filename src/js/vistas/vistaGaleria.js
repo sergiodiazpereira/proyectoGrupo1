@@ -98,7 +98,7 @@ class VistaGaleria{
                 });
             // =============================================================================================================================================== //
             // =================================================== LÓGICA DE BOTONES DE VINCULAR ============================================================= //
-                const idAsoc = this.select.selectedIndex; 
+                const idAsoc = this.select.value; 
                 // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
                 this.botonesVincularImagen = document.querySelectorAll('.vincular'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
                 this.botonesVincularImagen.forEach(boton => {
@@ -122,6 +122,41 @@ class VistaGaleria{
                                 botonVincular.classList.remove("vincular");
                                 botonVincular.classList.add("desvincular");
                                 botonVincular.innerHTML = '<i class="fa-solid fa-link-slash"></i> Desvincular';
+                                       
+                            } else {
+                                alert("Error: " + this.datos.mensaje);
+                            }
+                        } catch (error) {
+                            console.error("Error al llamar a PHP" + this.datos.mensaje);
+                            alert("Error al eliminar la imagen." + this.datos.mensaje);
+                        }
+                    });
+                });
+            // =============================================================================================================================================== //
+            // =================================================== LÓGICA DE BOTONES DE VINCULAR ============================================================= //
+                // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
+                this.botonesDesvincularImagen = document.querySelectorAll('.desvincular'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
+                this.botonesDesvincularImagen.forEach(boton => {
+                    boton.addEventListener('click', async function() {
+                        const idImagen = this.dataset.idImagen;
+                        const nombreImagen = this.dataset.nombreImagen;
+                        try {
+                            const respuesta = await fetch("index.php?c=Galeria&m=desvincularImagen", {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
+                            });
+
+                            this.datos = await respuesta.json();
+
+                            if (this.datos.imagenDesvinculada) {
+                                const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+                                div.classList.remove('no-disponible');
+                                div.classList.add('disponible');
+                                const botonVincular = div.querySelector(".desvincular");
+                                botonVincular.classList.remove("desvincular");
+                                botonVincular.classList.add("vincular");
+                                botonVincular.innerHTML = '<i class="fa-solid fa-link"></i> Vincular';
                                        
                             } else {
                                 alert("Error: " + this.datos.mensaje);

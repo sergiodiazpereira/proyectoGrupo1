@@ -113,6 +113,28 @@
 
 
         /**
+         * Este método se encarga de vincularle a la imagen la asociación correspondiente
+         */
+        public function desvincularImagenBD(){
+            try{
+                $sql = "UPDATE galeria SET idAsoc = null WHERE idImagen = :idImagen;";
+
+                $stmt = $this->conexion->prepare($sql);
+
+                $stmt->bindParam(':idImagen', $_POST["idImagen"]);
+
+                $stmt->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }
+
+
+
+
+
+        /**
          * Este método se encarga de sacar el nombre de la asociacion
          */
         public function obtenerNombrePorId(){

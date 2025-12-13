@@ -218,7 +218,7 @@
             try{
                 $respuestaBD = $this->modeloGal->vincularImagenBD();
                 if (!$respuestaBD) {
-                    throw new Exception (" no se ha podido vincular la imagen de la base de datos" . $_POST["idImagen"] .  $_POST["idAsoc"]);
+                    throw new Exception (" no se ha podido vincular la imagen de la base de datos");
                 }
 
                 $ruta = $this->obtenerRutaImagen($_POST["nombreImagen"]);
@@ -252,54 +252,58 @@
 
         public function moverImagenCarpeta($archivo, $nombreAsociacion){
             $carpetaDestino = $nombreAsociacion;
-            // Obtenemos el nombre del archivo
-            $nombreArchivo = basename($archivo);
+            $nombreArchivo = basename($archivo); // Obtenemos nombre del archivo
 
-            // Carpeta destino relativa al nivel del archivo actual
-            $rutaDestino = realpath(__DIR__ . '/../../src/img/galeria/' . $carpetaDestino);
+            $rutaDestino = realpath(__DIR__ . '/../../src/img/galeria/' . $carpetaDestino); // Formamos la ruta de destino donde queremos mover la imagen
 
-            // Registro de la ruta de origen
-            error_log("Ruta del archivo de origen: " . $archivo);
-            
-            // Verificar si el archivo de origen existe
-            if (!file_exists($archivo)) {
-                error_log("¡El archivo de origen no existe! Ruta: " . $archivo);  // Registra el error si el archivo no existe
-                return false;  // El archivo no existe, no se puede mover
-            }
-
-            // Verificar si la ruta de destino es válida
-            if ($rutaDestino === false) {
-                error_log("La ruta de destino es inválida: " . __DIR__ . '/../../src/img/galeria/' . $carpetaDestino);
-                return false;  // No se pudo obtener la ruta destino, devolver false
-            }
-
-            // Registro de la ruta de destino
-            error_log("Ruta de destino: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
-
-            // Si la carpeta destino no existe, la creamos
-            if (!is_dir($rutaDestino)) {
-                if (!mkdir($rutaDestino, 0777, true)) {
-                    error_log("No se pudo crear la carpeta destino: " . $rutaDestino);  // Registra si no se puede crear la carpeta destino
-                    return false;  // No se pudo crear la carpeta
-                }
-            }
-
-            // Verificar si el archivo ya existe en la carpeta destino
+            // Verificamos si el archivo ya existe en la carpeta destino
             if (file_exists($rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo)) {
-                error_log("El archivo ya existe en la carpeta destino: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
-                return true;  // No mover el archivo si ya existe en la carpeta destino
+                return true;  // No continuamos ejecutando el método porque ya existe en la carpeta destino
             }
 
-            // Intentar mover el archivo
-            error_log("Intentando mover el archivo...");
-            $movido = rename($archivo, $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
+            // Si no existe
+            $movido = rename($archivo, $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo); // Lo movemos
             
             if ($movido) {
-                error_log("Archivo movido correctamente de: " . $archivo . " a: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
                 return true;  // Si se mueve correctamente, retornar true
             } else {
-                error_log("No se pudo mover el archivo. Error de rename en: " . $archivo . " a: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
-                return false;  // No se pudo mover el archivo
+                return false;  // Si no se movió, retornar false
+            }
+        }
+
+
+
+
+
+        public function desvincularImagen(){
+            try{
+                $respuestaBD = $this->modeloGal->desvincularImagenBD();
+                if (!$respuestaBD) {
+                    throw new Exception (" no se ha podido vincular la imagen de la base de datos");
+                }
+
+                $ruta = $this->obtenerRutaImagen($_POST["nombreImagen"]);
+                if (!$ruta) {
+                    throw new Exception(" no se encontró la imagen en el servidor");
+                }
+                $datoAsociacion = $this->modeloGal->obtenerNombrePorId();
+                if (empty($datoAsociacion)) {
+                    throw new Exception("No se encontró la asociación con el id proporcionado.");
+                } else {
+                    if (!isset($datoAsociacion['nombre'])) {
+                        throw new Exception("No se encontró el nombre de la asociación.");
+                    }
+                    $respuesta = $this->moverImagenCarpeta($ruta, $datoAsociacion["nombre"]);
+                    if(!$respuesta){
+                        throw new Exception (" no se ha podido mover la imagen de la carpeta de servidor");
+                    }
+                echo json_encode(['imagenVinculada' => true, "mensaje" => "La imagen se ha movido correctamente"]);
+                exit;
+                }
+
+            }catch (Exception $e){
+                echo json_encode(['imagenVinculada' => false, "mensaje" => $e->getMessage()]);
+                exit;
             }
         }
 
