@@ -8,6 +8,10 @@
         function __construct(){
             $this->modelo = new ModRegistroS();
         }
+        /**
+         * Summary of functionValidar
+         * @return bool devuelve verdadero o falso si todas las validaciones son correctas
+         */
         private function functionValidar(){
             if(empty(trim($_POST['nombreS']))){return false;};
             if(empty(trim($_POST['correoS']))){return false;};
@@ -16,6 +20,10 @@
             if(trim($_POST['pwdConfirS'])!=trim($_POST['pwdS'])){return false;};
             return true;
         }
+        /**
+         * Summary of cargarSuper
+         * @return string devuelve un mensaje segun si los procesos se completan o no
+         */
         public function cargarSuper(){
             if($this->functionValidar()){
                 if($this->modelo->insertarSuper()){
