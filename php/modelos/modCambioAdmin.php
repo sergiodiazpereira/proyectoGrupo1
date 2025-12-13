@@ -9,6 +9,11 @@
             parent::__construct();
         }
 
+        /**
+         * Summary of recogerContrasenia
+         * @param mixed $correo
+         * Esta función recoge la contraseña del usuario en función de su correo 
+         */
         public function recogerContrasenia($correo)
         {
             $sql = "SELECT contrasenia FROM usuario WHERE correo = :correo";
@@ -20,6 +25,13 @@
             return $resultado ? $resultado['contrasenia'] : false;
         }
 
+        /**
+         * Summary of modificarContrasenia
+         * @param mixed $correoAdmin
+         * @param mixed $hashNuevo
+         * @return bool Esta función modifica la contraseña que necesitamos en función del correo que está
+         * asignado
+         */
         public function modificarContrasenia($correoAdmin, $hashNuevo)
         {
             $sql = "UPDATE usuario SET contrasenia = :pwdHash WHERE correo = :correo";

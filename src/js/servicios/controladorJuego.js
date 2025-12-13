@@ -12,6 +12,11 @@ export class ControladorJuego {
         this.iniciarReloj(); 
     }
     
+    /**
+     * 
+     * @param {*} intento 
+     * @returns Esta función lo que hace es que una vez que se acabe el juego, se restablezca el tiempo
+     */
     manejarIntento = (intento) => {
         if (!this.juegoEmpezado) {
             this.juegoEmpezado = true;
@@ -34,6 +39,9 @@ export class ControladorJuego {
         
     }
 
+    /**
+     * Esta función lo que hace es iniciar el cronómetro
+     */
     iniciarReloj() {
         setInterval(() => {
             if (this.juegoEmpezado && !this.modelo.juegoGanado) {

@@ -10,6 +10,10 @@
             $this->modelo = new ModCrearAdmin();
         }
 
+        /**
+         * Summary of cargarPagina
+         * @return void Esta función carga la vista nec
+         */
         public function cargarPagina()
         {
             $this->vista="admin/crearAdmin.php";
@@ -24,6 +28,11 @@
             return true;
         }
 
+        /**
+         * Summary of guardarAdmin
+         * @return void Esta función valida todos los datos que se han introducido en el formulario de registro
+         * de administrador y guarda al administrador si cumple con dichas validaciones
+         */
         public function guardarAdmin(): void
         {
             

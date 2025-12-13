@@ -7,6 +7,15 @@
             return parent::__construct();
         }
 
+        /**
+         * Summary of introducirAdmin
+         * @param mixed $nombreAdmin
+         * @param mixed $correoAdmin
+         * @param mixed $contraActual
+         * @param mixed $contraConfirmar
+         * @return bool Esta función inserta en la base de datos el administrador y valida si hay algún dato
+         * duplicado
+         */
         public function introducirAdmin($nombreAdmin, $correoAdmin, $contraActual, $contraConfirmar){
             if ($contraActual != $contraConfirmar)
             {
