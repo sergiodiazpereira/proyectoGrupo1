@@ -31,6 +31,14 @@ export class ControladorRegistro {
         }
     }
 
+    /**
+     * Método encargado 
+     * @param {*} nombre 
+     * @param {*} correo 
+     * @param {*} password 
+     * @param {*} pwdConfir 
+     * @returns 
+     */
     validar(nombre, correo, password, pwdConfir) {
         if (!nombre || !correo || !password || !pwdConfir) return "Rellena todos los campos";
         const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

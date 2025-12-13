@@ -43,10 +43,19 @@
             exit;
         }
 
+        /**
+         * Esta método registra las victorias del juego mediante una llamada al modelo del juego y
+         * devuelve el resutado en un json a
+         */
         public function registrarVictoria(){
-            return $this->modeloJ->insertar();
+            $resultado = $this->modeloJ->insertar();
 
-            echo json_encode(["exito" => $resultado]);
+            if ($resultado === true) {
+                echo json_encode(["exito" => true]);
+            } else {
+                echo json_encode(["exito" => false, "error" => $resultado]);
+            }
+
             exit;
         }
 

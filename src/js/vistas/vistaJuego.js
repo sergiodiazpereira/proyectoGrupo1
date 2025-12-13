@@ -67,7 +67,9 @@ export class VistaJuego {
         });
     }
 
-    // Método que muestra el pop-up de pistas automaticamente
+    /**
+     * Método que muestra el pop-up de pistas automaticamente al llegar al intento correspondiente
+     */
     mostrarPopupAutomatico() {
         // Obtenemos el contenedor del popup
         const popup = document.getElementById("pantalla-pistas");

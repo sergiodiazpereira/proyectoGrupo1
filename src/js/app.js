@@ -150,21 +150,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const vistaGaleria = new VistaGaleria(servicioGaleria);
             }
 
-            /** Validaciones Login y Registro */
+            // Validaciones Login y Registro
             if (document.getElementById('formLoginRegis')) {
 
-                // Si existe el input "nombre", es el formulario de REGISTRO
+                // Si existe el input "nombre" es el formulario de registro, si no, es el de login
                 if (document.querySelector("input[name='nombre']")) {
+                    // Instanciamos el modelo
                     const modelo = new ModeloRegistro();
+                    // Instanciamos el controlador y le pasamos el modelo
                     const controlador = new ControladorRegistro(modelo);
+                    // Instanciamos la vista y le pasamos el controlador
                     const vista = new VistaRegistro(controlador);
+                    // Establecemos la vista en el controlador
                     controlador.vista = vista;
-                }
-                // Si NO, asumimos es LOGIN
-                else {
+                } else {
+                    // Instanciamos el modelo
                     const modelo = new ModeloLogin();
+                    // Instanciamos el controlador y le pasamos el modelo
                     const controlador = new ControladorLogin(modelo);
+                    // Instanciamos la vista y le pasamos el controlador
                     const vista = new VistaLogin(controlador);
+                    // Establecemos la vista en el controlador
                     controlador.vista = vista;
                 }
             }

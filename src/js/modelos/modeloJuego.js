@@ -149,8 +149,4 @@ export class ModeloJuego {
         return this.juegoTerminado && this.intentos.length > 0 && this.intentos[this.intentos.length - 1].esCorrecto;
     }
 
-    /* //mio
-    mostrarPista(num) {
-        document.getElementById(`pista${num}`).classList.add("visible");
-    } */
 }

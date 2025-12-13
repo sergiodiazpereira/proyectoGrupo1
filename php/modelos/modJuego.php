@@ -57,29 +57,35 @@
         }
 
         /**
-         * Summary of insertar
+         * Esta método inserta las asociaciones adivinadas, el tiempo, la fecha y el jugador en la tabla intentos
          * @return bool esta funcion retornara o true o false dependiendo si la insercion ha sido exitosa
          */
         public function insertar(){
             try{
+                // Lee el JSON enviado desde fetch y lo convierte en un array asociativo de PHP
                 $data = json_decode(file_get_contents("php://input"), true);
 
-                $sql="INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?,?)";
+                // Consulta para insertar los aciertos de asociaciones
+                $sql = "INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?,?)";
 
-                $stmt=$this->conexion->prepare($sql);
+                // Preparamos la consulta
+                $stmt = $this->conexion->prepare($sql);
                 
-                $stmt->bindParam(1,$data["fecha_intento"]);
-                $stmt->bindParam(2,$data["tiempo_empleado"]);
-                $stmt->bindParam(3,$_SESSION["idUsuario"]);
-                $stmt->bindParam(4,$data["idAsoc"]);
+                // Asociamos los parametros
+                $stmt->bindParam(1, $data["fecha_intento"]);
+                $stmt->bindParam(2, $data["tiempo_empleado"]);
+                $stmt->bindParam(3, $_SESSION["idUsuario"]);
+                $stmt->bindParam(4, $data["idAsoc"]);
                 
+                // Ejecutamos la consulta
                 $stmt->execute();
 
-                echo json_encode(["exito" => true]);
+                // Retornamos true si todo fue correcto
                 return true;
+
             }catch(PDOException $e){
-                echo json_encode(["exito" => false, "error" => $e->getMessage()]);
-                return false;
+                // Si salta excepción
+                return $e->getMessage();
             }
         }
 

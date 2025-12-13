@@ -105,7 +105,7 @@
                 }
 
                 return true;
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 return false;
             }
 
@@ -138,7 +138,7 @@
                 $this->conexion->commit();
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
 
                 $this->conexion->rollBack();
                 return false;
