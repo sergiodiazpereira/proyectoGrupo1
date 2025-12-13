@@ -27,6 +27,9 @@ class VistaGaleria{
         this.botonesEliminarImagen = document.querySelectorAll('.eliminar'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
         this.botonesEliminarImagen.forEach(boton => {
             boton.addEventListener('click', function() {
+                const idImagen = this.dataset.idImagen;
+                const idAsoc = this.dataset.idAsoc;
+
                 const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
                 div.remove();
             });
@@ -92,7 +95,7 @@ class VistaGaleria{
             tarjeta.innerHTML = `
                 <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                 <div class="acciones">
-                    <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                    <button class="btn eliminar" data-idImagen="`+imagen.idImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                 </div>
         `;
         contenedorImagenes.appendChild(tarjeta);
@@ -117,7 +120,7 @@ class VistaGaleria{
                 tarjeta.innerHTML = `
                     <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
-                        <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        <button class="btn eliminar" data-idImagen="`+imagen.idImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         <button class="btn vincular"><i class="fa-solid fa-link"></i> Vincular</button>
                     </div>
                 `;
@@ -128,7 +131,7 @@ class VistaGaleria{
                 tarjeta.innerHTML = `
                     <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
-                        <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        <button class="btn eliminar" data-idImagen="`+imagen.idImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
                     </div>
                 `;
