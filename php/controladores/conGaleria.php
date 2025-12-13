@@ -63,7 +63,11 @@
          */
         public function insertarImagen(){
             try{
-
+                // ============================================== VERIFICACION DE ARCHIVO ENVIADO ========================================== //
+                if ($_FILES['archivo']['error'] == UPLOAD_ERR_NO_FILE) { // Entra en el "if" si el error del archivo es el de que no hay archivo
+                    throw new Exception("no has subido ninguna imagen");
+                }
+                // ========================================================================================================================== //
                 // =============================================== VERIFICACION DE HASH REPETIDO =========================================== //
                 $hashNuevo = md5_file($_FILES["archivo"]["tmp_name"]); // Obtiene el hash del archivo subido a una carpeta temporal
                 $repetido = $this->buscarHashRepetido($hashNuevo);
@@ -76,10 +80,16 @@
                 if ($resultado == 1062) {
                     throw new Exception("ya hay un archivo con ese nombre");
                 }
-                $datos = "bien?";
-                $this->vista = "admin/mensajeIncorrectoGaleria.php";
-                return $datos;
                 // ========================================================================================================================== //
+                // ====================================== INSERCCIÓN DEL ARCHIVO EN LA CARPETA DEL SERVIDOR ================================= //
+                $insertada = $this->insertarImagenEnCarpeta();
+                if (!$insertada){
+                   throw new Exception("la imagen no se ha subido correctamente"); 
+                }
+                // ========================================================================================================================== //
+                $datos = "Imagen subida correctamente a la galería.";
+                $this->vista = "admin/mensajeCorrectoGaleria.php";
+                return $datos;
             } catch (Exception $e){
                 $datos = "Error, ".$e->getMessage();
                 $this->vista = "admin/mensajeIncorrectoGaleria.php";
@@ -122,6 +132,28 @@
             }
 
             return false; // No se encontró
+        }
+
+
+
+
+        /**
+         * Esta funcion guarda la imagen en la carpeta del servidor
+         * @return boolean Retorna si ha sido guardado en la ruta o ha habido algun error
+         */
+        private function insertarImagenEnCarpeta(){
+            $nombreArchivo = $_FILES['archivo']['name'];       // Nombre de la imagen
+            $rutaTemporal  = $_FILES['archivo']['tmp_name'];   // Ruta temporal de la imagen al ser subida
+
+            // Ruta final donde se guardará
+            $rutaFinal = realpath(__DIR__ . "/../../src/img/galeria") . DIRECTORY_SEPARATOR . $nombreArchivo; // Ensamblo la ruta donde se va a guardar la imagen
+
+            // Muevo el archivo de la carpeta temporal a mi carpeta destino. El "if" es para comprobar si se ha movido correctamente o no 
+            if (move_uploaded_file($rutaTemporal, $rutaFinal)) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
     }

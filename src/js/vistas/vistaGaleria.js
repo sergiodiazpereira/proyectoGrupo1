@@ -24,6 +24,13 @@ class VistaGaleria{
         this.btnCerrar2.onclick = () => this.modal.classList.add("oculto");
 
         this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
+        this.botonesEliminarImagen = document.querySelectorAll('.eliminar'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
+        this.botonesEliminarImagen.forEach(boton => {
+            boton.addEventListener('click', function() {
+                const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+                div.remove();
+            });
+        });
 
         this.select.addEventListener("change", async () => { // Detecta que se ha cambiado de asociación
             try {
@@ -41,7 +48,16 @@ class VistaGaleria{
                 this.h2.innerText = "Lista de imagenes de " + textoDeSelect;
                 this.mostrarImagenesDeAsociacion(this.servicio.datosImagenes);
             }
+                // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
+                this.botonesEliminarImagen = document.querySelectorAll('.eliminar'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
+                this.botonesEliminarImagen.forEach(boton => {
+                    boton.addEventListener('click', function() {
+                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+                        div.remove();
+                    });
+                });
         });
+
 
         
         /*Esto es por si clico fuera del modal se cierra */
@@ -112,7 +128,7 @@ class VistaGaleria{
                 tarjeta.innerHTML = `
                     <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
-                        <button class="btn eliminar "><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
                     </div>
                 `;
