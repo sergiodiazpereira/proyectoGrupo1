@@ -3,7 +3,9 @@ export class ControladorRanking{
         this.modelo=modelo;
         this.vista=vista;
     }
-
+    /**
+     * Carga el ranking en pantalla
+     */
     async cargarRanking(){
         try{
             const ranking = await this.modelo.obtenerRanking();

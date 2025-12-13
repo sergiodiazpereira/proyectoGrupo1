@@ -1,5 +1,5 @@
 export class ModeloLogin {
-
+    
     async login(correo, password) {
 
         const datos = new FormData();

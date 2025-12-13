@@ -55,7 +55,10 @@
                 ]);
             }
         }
-
+        /**
+         * Summary of traerRol
+         * @return never devuelve el rol del usuario
+         */
         public function traerRol(){
             echo json_encode($_SESSION["permiso"]);
             exit();

@@ -340,7 +340,5 @@ class ConAsociacion {
 
         rmdir($ruta); // Una vez está vacía, borra la carpeta
     }
-
-    
 }
 ?>

@@ -42,7 +42,7 @@
             echo json_encode($datosAsociaciones); 
             exit;
         }
-
+        
         public function registrarVictoria(){
             return $this->modeloJ->insertar();
 

@@ -1,19 +1,16 @@
 <?php
     require_once __DIR__.'/../config/rutas.php';
     require_once __DIR__.'/../'.MODELO.'modContribucion.php';
-    require_once __DIR__.'/../'.MODELO.'modAsociacion.php';
 
     /**
      * Este es el controlador de las contribuciones
      */
     class ConContribucion {
         private $modeloCont;
-        private $modeloAsoc;
         public $vista;
 
         public function __construct() {
             $this->modeloCont = new ModContribucion();
-            $this->modeloAsoc = new ModAsociacion();
         }
 
         /**
