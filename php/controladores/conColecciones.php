@@ -13,11 +13,13 @@ class ConColecciones {
         }
     }
 
+    /**
+     * Summary of cargarPagina
+     * @return void Esta función carga la vista de colecciones.php
+     */
     public function cargarPagina() {
-    // IMPORTANTE: Añade el ".php" al final
     $this->vista = "usuario/colecciones.php"; 
     
-    // Y asegúrate de cargar los datos aquí también
     $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : 1;
     $this->datos = $this->modelo->obtenerColeccionUsuario($idUsuario);
     }

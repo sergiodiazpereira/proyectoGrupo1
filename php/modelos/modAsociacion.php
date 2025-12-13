@@ -114,7 +114,7 @@
                 $stmt->execute();
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 return false;
             }
         }
@@ -157,7 +157,7 @@
                 }
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 return false;
             }
         
@@ -191,7 +191,7 @@
                 $this->conexion->commit();
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 // Si hubo algun error en las consultas se hace un rollback y se descartan los cambios
                 $this->conexion->rollBack();
                 return false;
