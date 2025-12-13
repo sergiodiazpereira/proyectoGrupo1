@@ -35,34 +35,30 @@
 
 
         /**
-         * Devuelve rutas completas de las imágenes según sus nombres
+         * Devuelve la ruta completa de una imagen según su nombres
          * Busca también en subcarpetas de la galería
          *
-         * @param string|array $nombres Uno o varios nombres de imagen
-         * @return array Rutas completas de las imágenes existentes
+         * @param string $nombreImagen El nombres de la imagen la cual queremos obtener ruta
+         * @return string Ruta completa de la imagen existentes
          */
-        function obtenerRutasImagenes($nombres) {
-            $rutaBase = realpath(__DIR__ . '/../../src/img/galeria/'); // Carpeta base
-            $rutas = [];
-
-            if (!is_array($nombres)) {
-                $nombres = [$nombres]; // Convertir a array si es un solo string
+        private function obtenerRutaImagen($nombreImagen){
+            $rutaBase = realpath(__DIR__ . '/../../src/img/galeria/');
+            if ($rutaBase === false) {
+                return null;
             }
 
-            $directory = new RecursiveDirectoryIterator($rutaBase); // Recorre carpetas
-            $iterator = new RecursiveIteratorIterator($directory); // Recorre carpetas de forma recursiva
+            $directory = new RecursiveDirectoryIterator($rutaBase, RecursiveDirectoryIterator::SKIP_DOTS); // Lo uso para hacer busquedas recursivas de archivos dentro de la carpeta galeria
+            $iterator = new RecursiveIteratorIterator($directory);
 
             foreach ($iterator as $archivo) {
-                if ($archivo->isFile()) {
-                    $nombreArchivo = $archivo->getFilename();
-                    if (in_array($nombreArchivo, $nombres)) {
-                        $rutas[] = $archivo->getRealPath();
-                    }
+                if ($archivo->isFile() && $archivo->getFilename() === $nombreImagen) {
+                    return $archivo->getRealPath();
                 }
             }
 
-            return $rutas;
+            return false;
         }
+
 
 
 
@@ -171,7 +167,9 @@
 
 
 
-
+        /**
+         * Este metodo se encarga de borrar la imagen tanto de la base de datos como de la carpeta de imagenes del servidor donde esté
+         */
         public function borrarImagen(){
             try{
                 $respuestaBD = $this->modeloGal->borrarImagenBD();
@@ -179,29 +177,31 @@
                     throw new Exception (" no se ha podido borrar la imagen de la base de datos");
                 }
 
-                $ruta = $this->obtenerRutasImagenes($_POST["nombreImagen"]);
+                $ruta = $this->obtenerRutaImagen($_POST["nombreImagen"]);
+                if (!$ruta) {
+                    throw new Exception(" no se encontró la imagen en el servidor");
+                }
+
                 $respuesta = $this->borrarImagenCarpeta($ruta);
                 if(!$respuesta){
                     throw new Exception (" no se ha podido borrar la imagen de la carpeta de servidor");
                 }
-                
-                echo json_encode(['imagenBorrada' => true]);
-                $datos = "La imagen se ha borrado correctamente";
-                $this->vista = "admin/mensajeCorrectoGaleria.php";
-                return $datos;
+                echo json_encode(['imagenBorrada' => true, "mensaje" => "La imagen se ha borrado correctamente"]);
+                exit;
 
             }catch (Exception $e){
-                echo json_encode(['imagenBorrada' => false]);
-                $datos = "Error, ".$e->getMessage();
-                $this->vista = "admin/mensajeIncorrectoGaleria.php";
-                return $datos;
+                echo json_encode(['imagenBorrada' => false, "mensaje" => $e->getMessage()]);
+                exit;
             }
         }
 
 
 
 
-
+        /**
+         * Este método borra la imagen de la ruta que se le pasa
+         * @param string Es la ruta que el método se encargará de borrar
+         */
         public function borrarImagenCarpeta($archivo){
             if (unlink($archivo)) {
                 return true;
@@ -209,6 +209,103 @@
                 return false;
             }
         }
+
+
+
+
+
+        public function vincularImagen(){
+            try{
+                $respuestaBD = $this->modeloGal->vincularImagenBD();
+                if (!$respuestaBD) {
+                    throw new Exception (" no se ha podido vincular la imagen de la base de datos" . $_POST["idImagen"] .  $_POST["idAsoc"]);
+                }
+
+                $ruta = $this->obtenerRutaImagen($_POST["nombreImagen"]);
+                if (!$ruta) {
+                    throw new Exception(" no se encontró la imagen en el servidor");
+                }
+                $datoAsociacion = $this->modeloGal->obtenerNombrePorId();
+                if (empty($datoAsociacion)) {
+                    throw new Exception("No se encontró la asociación con el id proporcionado.");
+                } else {
+                    if (!isset($datoAsociacion['nombre'])) {
+                        throw new Exception("No se encontró el nombre de la asociación.");
+                    }
+                    $respuesta = $this->moverImagenCarpeta($ruta, $datoAsociacion["nombre"]);
+                    if(!$respuesta){
+                        throw new Exception (" no se ha podido mover la imagen de la carpeta de servidor");
+                    }
+                echo json_encode(['imagenVinculada' => true, "mensaje" => "La imagen se ha movido correctamente"]);
+                exit;
+                }
+
+            }catch (Exception $e){
+                echo json_encode(['imagenVinculada' => false, "mensaje" => $e->getMessage()]);
+                exit;
+            }
+        }
+
+
+
+
+
+        public function moverImagenCarpeta($archivo, $nombreAsociacion){
+            $carpetaDestino = $nombreAsociacion;
+            // Obtenemos el nombre del archivo
+            $nombreArchivo = basename($archivo);
+
+            // Carpeta destino relativa al nivel del archivo actual
+            $rutaDestino = realpath(__DIR__ . '/../../src/img/galeria/' . $carpetaDestino);
+
+            // Registro de la ruta de origen
+            error_log("Ruta del archivo de origen: " . $archivo);
+            
+            // Verificar si el archivo de origen existe
+            if (!file_exists($archivo)) {
+                error_log("¡El archivo de origen no existe! Ruta: " . $archivo);  // Registra el error si el archivo no existe
+                return false;  // El archivo no existe, no se puede mover
+            }
+
+            // Verificar si la ruta de destino es válida
+            if ($rutaDestino === false) {
+                error_log("La ruta de destino es inválida: " . __DIR__ . '/../../src/img/galeria/' . $carpetaDestino);
+                return false;  // No se pudo obtener la ruta destino, devolver false
+            }
+
+            // Registro de la ruta de destino
+            error_log("Ruta de destino: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
+
+            // Si la carpeta destino no existe, la creamos
+            if (!is_dir($rutaDestino)) {
+                if (!mkdir($rutaDestino, 0777, true)) {
+                    error_log("No se pudo crear la carpeta destino: " . $rutaDestino);  // Registra si no se puede crear la carpeta destino
+                    return false;  // No se pudo crear la carpeta
+                }
+            }
+
+            // Verificar si el archivo ya existe en la carpeta destino
+            if (file_exists($rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo)) {
+                error_log("El archivo ya existe en la carpeta destino: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
+                return true;  // No mover el archivo si ya existe en la carpeta destino
+            }
+
+            // Intentar mover el archivo
+            error_log("Intentando mover el archivo...");
+            $movido = rename($archivo, $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
+            
+            if ($movido) {
+                error_log("Archivo movido correctamente de: " . $archivo . " a: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
+                return true;  // Si se mueve correctamente, retornar true
+            } else {
+                error_log("No se pudo mover el archivo. Error de rename en: " . $archivo . " a: " . $rutaDestino . DIRECTORY_SEPARATOR . $nombreArchivo);
+                return false;  // No se pudo mover el archivo
+            }
+        }
+
+
+
+
 
     }
 ?>

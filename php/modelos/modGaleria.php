@@ -67,6 +67,9 @@
 
 
 
+        /**
+         * Este método se encarga de borrar la imagen de la base de datos
+         */
         public function borrarImagenBD(){
             try{
                 $sql = "DELETE FROM galeria WHERE idImagen = :idImagen";
@@ -77,6 +80,53 @@
 
                 $stmt->execute();
                 return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }
+
+
+
+
+
+        /**
+         * Este método se encarga de vincularle a la imagen la asociación correspondiente
+         */
+        public function vincularImagenBD(){
+            try{
+                $sql = "UPDATE galeria SET idAsoc = :idAsoc WHERE idImagen = :idImagen;";
+
+                $stmt = $this->conexion->prepare($sql);
+
+                $stmt->bindParam(':idAsoc', $_POST["idAsoc"]);
+                $stmt->bindParam(':idImagen', $_POST["idImagen"]);
+
+                $stmt->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }
+
+
+
+
+
+        /**
+         * Este método se encarga de sacar el nombre de la asociacion
+         */
+        public function obtenerNombrePorId(){
+            try{
+                $sql = "SELECT nombre FROM asociacion WHERE idAsoc = :idAsoc";
+
+                $stmt = $this->conexion->prepare($sql);
+
+                $stmt->bindParam(':idAsoc', $_POST["idAsoc"]);
+
+                $stmt->execute();
+                $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                return $resultado;
             }catch (PDOException $e){
                 return false;
             }
