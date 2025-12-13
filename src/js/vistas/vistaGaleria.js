@@ -15,11 +15,16 @@ class VistaGaleria{
         this.btnCerrar2 = document.getElementById("cerrarModal2");
         this.select = document.getElementById("selectAsociacion");
         this.h2 = document.getElementById("h2listagaleria");
+        this.inputArchivo = document.getElementById('subirArchivo');
+        this.labelArchivo = document.getElementById('labelArchivo');
+
         /*Si pulso abrir quito la clase oculto y si lo cierro la añado */
         this.btnAbrir.onclick = () => this.modal.classList.remove("oculto");
         this.btnCerrar.onclick = () => this.modal.classList.add("oculto");
         this.btnCerrar2.onclick = () => this.modal.classList.add("oculto");
+
         this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
+
         this.select.addEventListener("change", async () => { // Detecta que se ha cambiado de asociación
             try {
                 await this.servicio.inicializar();  // Llamamos a inicializar y esperamos a que cargue los datos
@@ -37,12 +42,22 @@ class VistaGaleria{
                 this.mostrarImagenesDeAsociacion(this.servicio.datosImagenes);
             }
         });
+
+        
         /*Esto es por si clico fuera del modal se cierra */
         window.onclick = (event) => {
             if (event.target === this.modal) {
                 this.modal.classList.add("oculto");
             }
         }
+
+        this.inputArchivo.addEventListener('change', () => {
+            if (this.inputArchivo.files.length > 0) {
+                this.labelArchivo.innerText = this.inputArchivo.files[0].name;
+            } else {
+                console.log('No se seleccionó ningún archivo.');
+            }
+        });
     }
 
 
@@ -106,6 +121,14 @@ class VistaGaleria{
         });
     }
     
+
+
+
+
+    /**
+     * Esta funcion reorganiza el array de imagenes y los ordena dando prioridad a los que tienen imagen asociada
+     * @param {array} imagenes Este array contiene todas las imagenes 
+     */
     organizarPorDisponibilidad(imagenes){
         imagenes.sort((a, b) => {
             if (a.idAsoc != null && b.idAsoc == null) return -1; // a primero

@@ -41,5 +41,26 @@
 
             return $resultado;
         }
+
+
+
+
+
+        /**
+         * Esta funcion inserta una imagen en la BD
+         */
+        public function insertarImagenEnBD(){
+            try{
+                $sql = "INSERT INTO galeria (nombreImagen) VALUES (:nombreImagen)";
+
+                $stmt = $this->conexion->prepare($sql);
+
+                $stmt->bindParam(':nombreImagen', $_FILES["archivo"]["name"]);
+
+                $stmt->execute();
+            }catch (PDOException $e){
+                return $e->errorInfo[1]; // En la segunda posicion del array errorInfo se encuentra el numero de error, que es lo que voy a utilizar para controlar las excepciones
+            }
+        }
     }
 ?>

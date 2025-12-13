@@ -356,6 +356,22 @@
         color: var(--blanco-texto-boton, #fafcff);
     }
 
+    .input-imagen{
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        border: 1.5px solid #2563eb;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #2563eb;
+        background-color: #e0e7ff;
+        transition: background-color 0.2s ease;
+    }
+
+    .input-archivo:hover {
+        background-color: #c7d2fe;
+    }
 
 
 
@@ -1179,13 +1195,42 @@
 
     /* Elementos internos del modal-main */
     .modal-main {
-
+        input[type="file"] {
+            display: none;
+        }
         /* Etiquetas */
         label {
             display: inline-block;
             font-size: 1rem;
             color: #0b285b;
-            margin-bottom: 6px; /* vh> 6px/768px */
+            margin-bottom: 2%;
+        }
+
+        .label-custom{
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: 2%;
+            border: 2px dashed var(--azul-celeste); /* dashed es linea discontinua */
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--azul-celeste);
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .label-custom:hover {
+            background-color: var(--azul-celeste);
+            color: var(--blanco-fondo-main);
+        }
+
+        p{
+            font-family: var(--fuente-regular);
+            font-size: 1rem;
+            color: #0b285b;
+            margin-bottom: 2%;
         }
         
         /* Input texto */

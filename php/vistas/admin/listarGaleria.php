@@ -112,7 +112,7 @@
 
             <!-- Modal para agregar Categorías -->
             <div class="fondo oculto" id="modal-galeria">
-                <form action="index.php?c=Galeria&m=insertarImagen" method="post" class="modal">
+                <form action="index.php?c=Galeria&m=insertarImagen" method="post" class="modal" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h2>Añadir Nueva Imagen</h2>
                         <button id="cerrarModal" class="ico-cerrar" type="button">
@@ -121,13 +121,14 @@
                     </div>
 
                     <div class="modal-main">
-                        <label for="subirArchivo">Solo se aceptan archivos .jpeg, .png, .webp y .jpg:</label>
-                        <input type="file" name="archivo" id="subirArchivo" accept=".jpeg, .png, .webp y .jpg">
+                        <p>Solo se aceptan archivos .jpeg, .png, .webp y .jpg:</p>
+                        <label id="labelArchivo" class="label-custom" for="subirArchivo">Haz clic aquí para seleccionar una imagen</label>
+                        <input type="file" class="input-imagen" name="archivo" id="subirArchivo" accept=".jpeg, .png, .webp, .jpg">
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" id="cerrarModal2" class="cancelar">Cancelar</button>
-                        <button type="button" class="aniadir">Añadir</button>
+                        <button type="submit" class="aniadir">Añadir</button>
                     </div>
                 </form>
             </div>

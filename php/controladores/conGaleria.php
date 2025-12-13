@@ -53,5 +53,76 @@
 
             return $nuevosDatos;
         }
+
+
+
+
+        /**
+         * Esta funcion inserta la imagen pasando por todas las validaciones posibles para una correcta insercción
+         * @return array La funcion devuevle los datos necesarios para cargar la vista necesaria
+         */
+        public function insertarImagen(){
+            try{
+
+                // =============================================== VERIFICACION DE HASH REPETIDO =========================================== //
+                $hashNuevo = md5_file($_FILES["archivo"]["tmp_name"]); // Obtiene el hash del archivo subido a una carpeta temporal
+                $repetido = $this->buscarHashRepetido($hashNuevo);
+                if ($repetido) {
+                    throw new Exception("esa imagen ya está subida");
+                } 
+                // ========================================================================================================================== //
+                // ========================================== INSERCCIÓN DEL ARCHIVO EN LA BASE DE DATOS ==================================== //
+                $resultado = $this->modeloGal->insertarImagenEnBD();
+                if ($resultado == 1062) {
+                    throw new Exception("ya hay un archivo con ese nombre");
+                }
+                $datos = "bien?";
+                $this->vista = "admin/mensajeIncorrectoGaleria.php";
+                return $datos;
+                // ========================================================================================================================== //
+            } catch (Exception $e){
+                $datos = "Error, ".$e->getMessage();
+                $this->vista = "admin/mensajeIncorrectoGaleria.php";
+                return $datos;
+            }
+
+            
+        }
+
+
+
+
+        /**
+         * Esta funcion escanea los archivos de la carpeta "galeria" y sus subcarpetas buscando un archivo con hash idéntico al que se le pase por parámetros
+         * @param string Es el hash que la funcion buscará en las carpetas
+         * @return boolean Retorna si está repetido (true) o no (false)
+         */
+        private function buscarHashRepetido($hashNuevo, $carpeta = null) {
+            // Si no se pasa carpeta, se usa la carpeta galeria
+            if ($carpeta == null) {
+                $carpeta = realpath(__DIR__ . "/../../src/img/galeria") . DIRECTORY_SEPARATOR; // Directory separator lo pongo porque la funcion realpath borra la "/" del final de la ruta asi que la pongo con directory separator
+            }
+
+            $archivos = scandir($carpeta);
+            foreach ($archivos as $archivo) {
+                if ($archivo != '.' && $archivo != '..'){ // Evitamos los archivos "." y ".." que vienen por defecto al hacer scandir()
+                    $ruta = $carpeta . $archivo;
+
+                    if (is_file($ruta)) {
+                        $hashExistente = md5_file($ruta);
+                        if ($hashExistente == $hashNuevo) {
+                            return true;
+                        }
+                    } elseif (is_dir($ruta)) { // Si es carpeta, volvemos a hacer toda esta funcion para escanear los archivos interiores
+                        if ($this->buscarHashRepetido($hashNuevo, $ruta . DIRECTORY_SEPARATOR)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false; // No se encontró
+        }
+
     }
 ?>
