@@ -56,7 +56,6 @@ header>span {
     font-family: var(--fuenteTitulo);
     color: var(--azul-celeste, #3e7bfe);
 }
-
 header {
     #flecha {
         float: left;
@@ -543,7 +542,11 @@ input[type=submit] {
         justify-content: space-around;
     }
 }
-
+#danceGif{
+    display: inline-block;
+    width: 250px;
+    height: 150px;
+}
 
 .pantalla-popup {
     display: none;
@@ -580,7 +583,7 @@ input[type=submit] {
 
 /* Estilos de Info y botones (popups de info, pistas y otros botones) */
 .guia-modal {
-    background-color: #386EF7;
+    background-color: var(--azulPastel);
     color: white;
     text-align: center;
     padding: 3.125rem 1.875rem 1.875rem;
@@ -602,7 +605,12 @@ input[type=submit] {
 .guia-modal h2 {
     margin-bottom: 1.5625rem;
 }
-
+#tituloPop{
+    font-family: var(--fuenteTitulo);
+}
+.tectoCentrado1{
+    font-weight:900;
+}
 .x-cerrar {
     position: absolute;
     top: 0.625rem;
@@ -625,7 +633,6 @@ input[type=submit] {
     border: 1px solid white;
     padding: 0.9375rem;
     border-radius: 0.3125rem;
-    font-size: 0.9rem;
 }
 
 .circulo {
