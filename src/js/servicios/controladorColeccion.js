@@ -9,6 +9,9 @@ export class ControladorColeccion {
         this.cargarColeccion();
     }
 
+    /**
+     * Esta función carga todas las colecciones
+     */
     async cargarColeccion() {
         try {
             const coleccion = await this.modelo.obtenerColeccion();
