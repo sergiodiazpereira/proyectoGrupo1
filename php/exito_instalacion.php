@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Summary of borrarInstalacion
+     * @param mixed $dir recibe el directorio que debe borrar
+     * @return bool devuelve verdadero o falso en funcion de si se ejecuta o no
+     */
     function borrarInstalacion($dir) {
         if (!file_exists($dir)) {
             return true;
@@ -16,9 +21,9 @@
     }
 
     $instalacionDir = __DIR__ . '/../instalacion';
-    borrarInstalacion($instalacionDir);
-    
-    $mensaje = "Felicidades Juego Instalado";
+    if(borrarInstalacion($instalacionDir)){
+        $mensaje = "Felicidades Juego Instalado";
+    };
 ?>
 <html>
     <head>

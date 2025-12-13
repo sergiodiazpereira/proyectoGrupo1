@@ -314,13 +314,6 @@ class ConAsociacion {
         $this->vista="admin/vistaAgregarAsociacion.php";
         return $arrayAsoc;
     }
-
-
-
-
-
-
-
     /**
      * Summary of borrarCarpeta
      * @param string dirección de la carpeta que hay que borrar
@@ -335,8 +328,6 @@ class ConAsociacion {
 
         $archivosABorrar = array_diff($archivosCarpeta, ['.', '..']); // Esta funcion quita esos niveles superiores de nuestro array de archivos y nos deja solo los archivos a borrar
 
-
-
         foreach ($archivosABorrar as $archivo) { // Tratamos a cada archivo individualmente
             $path = $ruta . "/" . $archivo; // Construimos la ruta donde está localizado ese archivo
 
@@ -347,10 +338,7 @@ class ConAsociacion {
             }
         }
 
-
         rmdir($ruta); // Una vez está vacía, borra la carpeta
     }
-
-    
 }
 ?>

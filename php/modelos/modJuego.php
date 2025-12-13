@@ -6,7 +6,10 @@
         function __construct(){
             parent::__construct();
         }
-        
+        /**
+         * Summary of datosAsociaciones
+         * @return array recoge todos los datos de las asociaciones
+         */
         public function datosAsociaciones(){
             // 1. PRIMERO: Sacamos las asociaciones limpias (sin mezclar contribuciones aun)
             $sql = "SELECT asociacion.idAsoc, asociacion.nombre, asociacion.fecha_fun, asociacion.pista_facil, 

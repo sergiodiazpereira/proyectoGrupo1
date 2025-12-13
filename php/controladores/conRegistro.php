@@ -9,14 +9,6 @@
         {
             $this->modelo = new ModRegistro();
         }
-        private function functionValidar(){
-            if(empty(trim($_POST['nombre']))){return false;};
-            if(empty(trim($_POST['correo']))){return false;};
-            if(empty(trim($_POST['pwd']))){return false;};
-            if(empty(trim($_POST['pwdConfir']))){return false;};
-            if(trim($_POST['pwdConfir'])!=trim($_POST['pwd'])){return false;};
-            return true;
-        }
         public function cargarRegistro(): void
         {
             // Validamos que lleguen los datos

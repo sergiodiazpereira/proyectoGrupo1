@@ -45,7 +45,7 @@
 
         /**
          * Esta método registra las victorias del juego mediante una llamada al modelo del juego y
-         * devuelve el resutado en un json a
+         * devuelve el resutado en un json
          */
         public function registrarVictoria(){
             $resultado = $this->modeloJ->insertar();

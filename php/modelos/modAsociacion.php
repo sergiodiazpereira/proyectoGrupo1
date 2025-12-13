@@ -16,7 +16,7 @@
          */
         public function listar() {
             $sql = "SELECT a.*,
-                   t.nombre AS tipo_asociacion
+                t.nombre AS tipo_asociacion
                 FROM asociacion a
                 INNER JOIN tipo_asoc t 
                     ON a.idTipoAsoc = t.idTipoAsoc

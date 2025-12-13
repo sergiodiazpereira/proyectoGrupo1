@@ -123,10 +123,10 @@
                     <?php
                         foreach($datos["usuariosNuevos"] as $usuario) {
                             echo '<li>
-                                  <i class="fa-solid fa-user"></i>
-                                  <span>'.$usuario["nombre"].'</span>
-                                  <p>'.$usuario["fecha_registro"].'</p>
-                                  </li>';
+                                <i class="fa-solid fa-user"></i>
+                                <span>'.$usuario["nombre"].'</span>
+                                <p>'.$usuario["fecha_registro"].'</p>
+                                </li>';
                         }
                     ?>
                 </ul>

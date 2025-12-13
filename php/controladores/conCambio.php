@@ -17,12 +17,20 @@
         public function cargarPagina(){
             $this->vista="usuario/cambio.php";
         }
-
+        /**
+         * Summary of traerPwd
+         * @return never llama al modelo para obtener los datos con un id cargado en la sesion
+         */
         public function traerPwd(){
             $datos=$this->modeloJ->traerPwd($this->idUsuario);
             echo json_encode($datos);
             exit;
         }
+        /**
+         * Summary of modificarPwd
+         * @return never compara las dos contraseñas ,la obtenida de base de datos y la proporcionada y si son iguales
+         * se hashea la nueva y se guarda en la base de datos
+         */
         public function modificarPwd(){
 
             $contraActual = $_POST['contraActual'] ?? '';
