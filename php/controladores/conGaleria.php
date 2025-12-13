@@ -35,24 +35,36 @@
 
 
         /**
-         * Esta funcion convierte los nombres de las imagenes a rutas
-         * 
-         * @param array Este parametro son los datos de todas las imagenes
-         * @return array La funcion devuelve los datos de las imagenes con el nombre pasado a URL
+         * Devuelve rutas completas de las imágenes según sus nombres
+         * Busca también en subcarpetas de la galería
+         *
+         * @param string|array $nombres Uno o varios nombres de imagen
+         * @return array Rutas completas de las imágenes existentes
          */
-        private function convertirNombresARutas($imagenes){
-            $nuevosDatos = [];
+        function obtenerRutasImagenes($nombres) {
+            $rutaBase = realpath(__DIR__ . '/../../src/img/galeria/'); // Carpeta base
+            $rutas = [];
 
-            foreach ($imagenes as $imagen) {
-                $nuevoItem = $imagen;
-                $nuevoItem["url"] = $imagen["nombreImagen"];
-                unset($nuevoItem["nombre"]);
-                $nuevoItem["url"] = realpath(__DIR__ . '/../../src/img/galeria/' . $nuevoItem["url"]);
-                $nuevosDatos[] = $nuevoItem;
+            if (!is_array($nombres)) {
+                $nombres = [$nombres]; // Convertir a array si es un solo string
             }
 
-            return $nuevosDatos;
+            $directory = new RecursiveDirectoryIterator($rutaBase); // Recorre carpetas
+            $iterator = new RecursiveIteratorIterator($directory); // Recorre carpetas de forma recursiva
+
+            foreach ($iterator as $archivo) {
+                if ($archivo->isFile()) {
+                    $nombreArchivo = $archivo->getFilename();
+                    if (in_array($nombreArchivo, $nombres)) {
+                        $rutas[] = $archivo->getRealPath();
+                    }
+                }
+            }
+
+            return $rutas;
         }
+
+
 
 
 
@@ -150,6 +162,48 @@
 
             // Muevo el archivo de la carpeta temporal a mi carpeta destino. El "if" es para comprobar si se ha movido correctamente o no 
             if (move_uploaded_file($rutaTemporal, $rutaFinal)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+
+
+        public function borrarImagen(){
+            try{
+                $respuestaBD = $this->modeloGal->borrarImagenBD();
+                if (!$respuestaBD) {
+                    throw new Exception (" no se ha podido borrar la imagen de la base de datos");
+                }
+
+                $ruta = $this->obtenerRutasImagenes($_POST["nombreImagen"]);
+                $respuesta = $this->borrarImagenCarpeta($ruta);
+                if(!$respuesta){
+                    throw new Exception (" no se ha podido borrar la imagen de la carpeta de servidor");
+                }
+                
+                echo json_encode(['imagenBorrada' => true]);
+                $datos = "La imagen se ha borrado correctamente";
+                $this->vista = "admin/mensajeCorrectoGaleria.php";
+                return $datos;
+
+            }catch (Exception $e){
+                echo json_encode(['imagenBorrada' => false]);
+                $datos = "Error, ".$e->getMessage();
+                $this->vista = "admin/mensajeIncorrectoGaleria.php";
+                return $datos;
+            }
+        }
+
+
+
+
+
+        public function borrarImagenCarpeta($archivo){
+            if (unlink($archivo)) {
                 return true;
             } else {
                 return false;

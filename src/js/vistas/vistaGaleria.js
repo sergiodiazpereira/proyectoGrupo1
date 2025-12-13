@@ -26,12 +26,30 @@ class VistaGaleria{
         this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
         this.botonesEliminarImagen = document.querySelectorAll('.eliminar'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
         this.botonesEliminarImagen.forEach(boton => {
-            boton.addEventListener('click', function() {
+            boton.addEventListener('click', async function() {
                 const idImagen = this.dataset.idImagen;
-                const idAsoc = this.dataset.idAsoc;
+                const nombreImagen = this.dataset.nombreImagen;
+                console.log(nombreImagen);
+                try {
+                    const respuesta = await fetch("index.php?c=Galeria&m=borrarImagen", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
+                    });
 
-                const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
-                div.remove();
+                    const datos = await respuesta.json();
+
+                    if (datos.imagenBorrada) {
+                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+                        div.remove();
+                    } else {
+                        alert("Error: " + datos.mensaje);
+                    }
+
+                } catch (error) {
+                    console.error("Error al llamar a PHP:", error);
+                    alert("Error al eliminar la imagen.");
+                }
             });
         });
 
@@ -95,7 +113,7 @@ class VistaGaleria{
             tarjeta.innerHTML = `
                 <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                 <div class="acciones">
-                    <button class="btn eliminar" data-idImagen="`+imagen.idImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                    <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                 </div>
         `;
         contenedorImagenes.appendChild(tarjeta);
@@ -120,7 +138,7 @@ class VistaGaleria{
                 tarjeta.innerHTML = `
                     <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
-                        <button class="btn eliminar" data-idImagen="`+imagen.idImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         <button class="btn vincular"><i class="fa-solid fa-link"></i> Vincular</button>
                     </div>
                 `;
@@ -131,7 +149,7 @@ class VistaGaleria{
                 tarjeta.innerHTML = `
                     <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
-                        <button class="btn eliminar" data-idImagen="`+imagen.idImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
                     </div>
                 `;

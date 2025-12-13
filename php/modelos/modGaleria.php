@@ -62,5 +62,24 @@
                 return $e->errorInfo[1]; // En la segunda posicion del array errorInfo se encuentra el numero de error, que es lo que voy a utilizar para controlar las excepciones
             }
         }
+
+
+
+
+
+        public function borrarImagenBD(){
+            try{
+                $sql = "DELETE FROM galeria WHERE idImagen = :idImagen";
+
+                $stmt = $this->conexion->prepare($sql);
+
+                $stmt->bindParam(':idImagen', $_POST["idImagen"]);
+
+                $stmt->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }
     }
 ?>
