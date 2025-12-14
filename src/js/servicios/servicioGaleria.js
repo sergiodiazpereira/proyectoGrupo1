@@ -7,6 +7,7 @@ class ServicioGaleria{
         this.modelo = modelo;
         this.datosImagenes = [];
         this.datosImagenesDisponibles = [];
+        this.nombreAsociacion = "";
     }
 
     
@@ -32,6 +33,19 @@ class ServicioGaleria{
         let imagenesDeAsociacion;
         imagenesDeAsociacion = this.datosImagenes.filter(imagen => imagen.idAsoc == idAsociacion);
         return imagenesDeAsociacion;
+    }
+
+    async obtenerNombrePorIdAsoc(idAsociacion){
+        // 1. Pedimos los datos al PHP
+        const nombreAsociacion = await this.modelo.obtenerNombrePorIdAsociacion(idAsociacion);
+        
+        // 2. Guardamos los datos en la propiedad de la clase
+        // Si datos es null, guardamos array vacío
+        if (nombreAsociacion) {
+            return nombreAsociacion;
+        } else {
+            return "error en el controlador de servicioGaleria";
+        }
     }
 
 }

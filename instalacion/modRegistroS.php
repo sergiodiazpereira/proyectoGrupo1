@@ -45,5 +45,19 @@
                 return false;
             }
         }
+
+
+        public function obtenerNombresAsociaciones(){
+            try{
+                $sql = "SELECT nombre FROM asociacion;";
+                $stmt = $this->conexion->prepare($sql);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                return $resultado;
+            }catch(PDOException $e){
+                return false;
+            }
+        }
     }
 ?>

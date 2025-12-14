@@ -20,7 +20,7 @@
             if($this->functionValidar()){
                 if($this->modelo->insertarSuper()){
                     if($this->modelo->ejecutarScript()){
-                        // Redirect to the external cleanup script to avoid file lock issues
+                        $this->crearCarpetas();
                         $this->vista="REDIRECT";
                         return "Felicidades Juego Instalado";
                     }else{
@@ -36,6 +36,11 @@
                 return "Alguno dato no es valido";
             }
         }
-        // Function removed as deletion is handled by ../php/exito_instalacion.php
+        private function crearCarpetas(){
+            $datos = $this->modelo->obtenerNombresAsociaciones();
+            foreach ($datos as $asociacion){
+                mkdir("../src/img/galeria/".$asociacion["nombre"]);
+            }
+        }
     }
 ?>

@@ -97,83 +97,19 @@
                     <h2 id="h2listagaleria" class="h2-regular">Lista de imagenes</h2>
                     <select id="selectAsociacion">
                         <option value="" selected>Todas las imágenes</option>
-                        <option value="1">sadsa</option>
-                        <option value="2">fdfdfd</option>
-                        
+                        <?php
+                            foreach ($datos as $asociacion) {
+                                echo '<option value="'.$asociacion["idAsoc"].'">'.$asociacion["nombre"].'</option>';
+                            } 
+                        ?>
                     </select>
                 </div>
-                <div class="grid-imagenes">
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/bombilla apagada.png" alt="Imagen asociación">
-                        
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                            <button class="btn vincular"><i class="fa-solid fa-link"></i> Vincular</button>
-                        </div>
-                    </div>
-
-                    <div class="tarjeta no-disponible">
-                        <img src="../src/img/unicef.jpg" alt="Imagen asociación">
-                        
-                        <div class="acciones">
-                            <button class="btn eliminar "><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                            <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
-                        </div>
-                    </div>
-
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/fundacion_once.jpg" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
-                    <div class="tarjeta disponible">
-                        <img src="../src/img/santa_clara.png" alt="Imagen">
-                        <div class="acciones">
-                            <button class="btn eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        </div>
-                    </div>
+                <div  id="contenedorImagenes" class="grid-imagenes">
                 </div>
             </section>
             <!-- Modal para agregar Categorías -->
             <div class="fondo oculto" id="modal-galeria">
-                <form action="index.php?c=Galeria&m=insertarImagenPorURL" method="post" class="modal">
+                <form action="index.php?c=Galeria&m=insertarImagen" method="post" class="modal" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h2>Añadir Nueva Imagen</h2>
                         <button id="cerrarModal" class="ico-cerrar" type="button">
@@ -182,13 +118,14 @@
                     </div>
 
                     <div class="modal-main">
-                        <label for="url">URL:</label>
-                        <input type="text" name="url" id="nombre" placeholder="Inserta la URL de la imagen que quieras cargar">
+                        <p>Solo se aceptan archivos .jpeg, .png, .webp y .jpg:</p>
+                        <label id="labelArchivo" class="label-custom" for="subirArchivo">Haz clic aquí para seleccionar una imagen</label>
+                        <input type="file" class="input-imagen" name="archivo" id="subirArchivo" accept=".jpeg, .png, .webp, .jpg">
                     </div>
 
                     <div class="modal-footer">
-                        <button class="cancelar"><a href="./index.php?c=Galeria&m=cargarPagina">Cancelar</a></button>
-                        <button class="aniadir">Añadir</button>
+                        <button type="button" id="cerrarModal2" class="cancelar">Cancelar</button>
+                        <button type="submit" class="aniadir">Añadir</button>
                     </div>
                 </form>
             </div>

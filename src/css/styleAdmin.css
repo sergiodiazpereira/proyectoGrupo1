@@ -52,6 +52,7 @@
         color: var(--azul-celeste, #3e7bfe);
         border-bottom: 1px solid var(--azul-borde-header, #c2d4ff);
         backdrop-filter: blur(5px);
+        z-index: 4;
     }
 
     .nav-admin{
@@ -355,6 +356,22 @@
         color: var(--blanco-texto-boton, #fafcff);
     }
 
+    .input-imagen{
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        border: 1.5px solid #2563eb;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #2563eb;
+        background-color: #e0e7ff;
+        transition: background-color 0.2s ease;
+    }
+
+    .input-archivo:hover {
+        background-color: #c7d2fe;
+    }
 
 
 
@@ -437,6 +454,10 @@
         color: #c0d9ff;
     }
 
+    .no-hover .btn.desvincular:hover {
+        color: #005fcc !important;    
+    }
+
     .btn.desvincular {
         background-color: #eaeaea;
         color: #5a5a5a;
@@ -447,6 +468,10 @@
     .btn.desvincular:hover {
         background-color: #5a5a5a;
         color: #eaeaea;
+    }
+
+    .no-hover .btn.desvincular:hover {
+        color: #5a5a5a !important;    
     }
 
     .acciones {
@@ -1126,6 +1151,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999; /*  -----------------------------------------------   */
     }
     /* Icono cerrar */
     .ico-cerrar {
@@ -1177,13 +1203,42 @@
 
     /* Elementos internos del modal-main */
     .modal-main {
-
+        input[type="file"] {
+            display: none;
+        }
         /* Etiquetas */
         label {
             display: inline-block;
             font-size: 1rem;
             color: #0b285b;
-            margin-bottom: 6px; /* vh> 6px/768px */
+            margin-bottom: 2%;
+        }
+
+        .label-custom{
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: 2%;
+            border: 2px dashed var(--azul-celeste); /* dashed es linea discontinua */
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--azul-celeste);
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .label-custom:hover {
+            background-color: var(--azul-celeste);
+            color: var(--blanco-fondo-main);
+        }
+
+        p{
+            font-family: var(--fuente-regular);
+            font-size: 1rem;
+            color: #0b285b;
+            margin-bottom: 2%;
         }
         
         /* Input texto */
@@ -1218,19 +1273,25 @@
         /* Botón cancelar */
         .cancelar {
             background: transparent;
-            border: none;
+            border: 2px solid var(--azul-celeste);
             font-size: 1rem;
             cursor: hand;
+            border-radius: 14px;
+            padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
+            font-family: var(--fuente-regular);
+            color: var(--azul-celeste);
         }
 
         /* Botón añadir */
         .aniadir {
-            background: #3e7bfe;
+            background: var(--azul-celeste);
             padding: 1.04vh 6.66%; /* vh> 8px/768px %> 30px/450px */
             border: none;
             border-radius: 14px;
             font-size: 1rem;
             cursor: hand;
+            color: var(--blanco-fondo-main);
+            font-family: var(--fuente-regular);
         }
 
         /* Hover añadir */
@@ -1669,7 +1730,7 @@
     }
     .header-admin{
         width: 82%; /* 1351px */
-        z-index: 2;
+        z-index: 4;
     }
     .query{
         box-sizing: border-box;
