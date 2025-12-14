@@ -76,14 +76,10 @@ class ServicioGanarPerder{
             const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
                 // Indicamos que la petición será de tipo POST
                 method: "POST",
-                // Indicamos que el contenido enviado es un JSON
-                headers: { "Content-Type": "application/json" },
-                // Enviamos los datos al servidor convertidos a JSON
-                body: JSON.stringify({
-                    fecha_intento,
-                    tiempo_empleado,
-                    idAsoc
-                })
+                // Indicamos que el contenido enviado es un POST
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                // Enviamos los datos al servidor convertidos a POST
+                body: `fecha_intento=${encodeURIComponent(fecha_intento)}&tiempo_empleado=${encodeURIComponent(tiempo_empleado)}&idAsoc=${encodeURIComponent(idAsoc)}`
             });
 
             // Conviertimos la respuesta del servidor a formato JSON y la devolvemos

@@ -59,8 +59,6 @@
          */
         public function insertar(){
             try{
-                // Lee el JSON enviado desde fetch y lo convierte en un array asociativo de PHP
-                $data = json_decode(file_get_contents("php://input"), true);
 
                 // Consulta para insertar los aciertos de asociaciones
                 $sql = "INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?,?)";
@@ -69,10 +67,10 @@
                 $stmt = $this->conexion->prepare($sql);
                 
                 // Asociamos los parametros
-                $stmt->bindParam(1, $data["fecha_intento"]);
-                $stmt->bindParam(2, $data["tiempo_empleado"]);
+                $stmt->bindParam(1, $_POST["fecha_intento"]);
+                $stmt->bindParam(2, $_POST["tiempo_empleado"]);
                 $stmt->bindParam(3, $_SESSION["idUsuario"]);
-                $stmt->bindParam(4, $data["idAsoc"]);
+                $stmt->bindParam(4, $_POST["idAsoc"]);
                 
                 // Ejecutamos la consulta
                 $stmt->execute();

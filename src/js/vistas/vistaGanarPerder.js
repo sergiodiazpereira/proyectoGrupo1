@@ -32,14 +32,20 @@ class VistaGanarPerder{
                 let idAsoc = this.servicio.mandarIdAsociacionCorrecta();
                 // Recogemos el tiempo que ha tardado
                 let tiempo = this.textoCronometro.innerText;
-                // Establecemos la fecha
+                // Establecemos la fecha y la formateamos
                 let fecha_intento = new Date();
+                let anio = fecha_intento.getFullYear();
+                let mes = String(fecha_intento.getMonth() + 1).padStart(2, '0');
+                let dia = String(fecha_intento.getDate()).padStart(2, '0');
+
+                let soloFecha = `${anio}-${mes}-${dia}`;
                 // Formateamos el tiempo del cronometro
                 let [m, s] = tiempo.split(":");
                 // Lo convertimos a HH:MM:SS para pasarselo a la BDD
                 let tiempoFormateado = `00:${m}:${s}`;
                 // Le pasamos los datos al método del controlador que registrará los datos
-                this.servicio.registrarVictoria(fecha_intento,tiempoFormateado,idAsoc);
+                
+                this.servicio.registrarVictoria(soloFecha,tiempoFormateado,idAsoc);
                 contadorIntentos = 1; /* reiniciar intentos */
             } else {
                 if (contadorIntentos == 10) {
