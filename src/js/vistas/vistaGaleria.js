@@ -23,33 +23,7 @@ class VistaGaleria{
         this.btnCerrar.onclick = () => this.modal.classList.add("oculto");
         this.btnCerrar2.onclick = () => this.modal.classList.add("oculto");
 
-        this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
-        this.botonesEliminarImagen = document.querySelectorAll('.eliminar'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
-        this.botonesEliminarImagen.forEach(boton => {
-            boton.addEventListener('click', async function() {
-                const idImagen = this.dataset.idImagen;
-                const nombreImagen = this.dataset.nombreImagen;
-                try {
-                    const respuesta = await fetch("index.php?c=Galeria&m=borrarImagen", {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
-                    });
-                    this.datos = await respuesta.json();
-
-                    if (this.datos.imagenBorrada) {
-                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
-                        div.remove();       
-                    } else {
-                        alert("Error: " + this.datos.mensaje);
-                    }
-
-                } catch (error) {
-                    console.error("Error al llamar a PHP" + this.datos.mensaje);
-                    alert("Error al eliminar la imagen." + this.datos.mensaje);
-                }
-            });
-        });
+        this.desplegarGaleriaTodasImagenes();
 
         this.select.addEventListener("change", async () => { // Detecta que se ha cambiado de asociación
             try {
@@ -60,115 +34,14 @@ class VistaGaleria{
             if (this.select.value == "") {
                 contenedorImagenes.innerHTML = "";
                 this.h2.innerText = "Lista de imagenes";
-                this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
+                this.desplegarGaleriaTodasImagenes();
             } else {
                 contenedorImagenes.innerHTML = "";
                 let textoDeSelect = this.select.options[this.select.selectedIndex].text; // Coge el texto del option que tiene el value enviado
                 this.h2.innerText = "Lista de imagenes de " + textoDeSelect;
-                this.mostrarImagenesDeAsociacion(this.servicio.datosImagenes, this.select.options[this.select.selectedIndex].text);
+                this.desplegarGaleriaDeAsociacion(this.servicio.datosImagenes, this.select.options[this.select.selectedIndex].text);
             }
-
-            // =================================================== LÓGICA DE BOTONES DE ELIMINAR ============================================================= //
-                // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
-                this.botonesEliminarImagen = document.querySelectorAll('.eliminar'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
-                this.botonesEliminarImagen.forEach(boton => {
-                    boton.addEventListener('click', async function() {
-                        const idImagen = this.dataset.idImagen;
-                        const nombreImagen = this.dataset.nombreImagen;
-                        try {
-                            const respuesta = await fetch("index.php?c=Galeria&m=borrarImagen", {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
-                            });
-                            this.datos = await respuesta.json();
-
-                            if (this.datos.imagenBorrada) {
-                                const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
-                                div.remove();       
-                            } else {
-                                alert("Error: " + this.datos.mensaje);
-                            }
-
-                        } catch (error) {
-                            console.error("Error al llamar a PHP" + this.datos.mensaje);
-                            alert("Error al eliminar la imagen." + this.datos.mensaje);
-                        }
-                    });
-                });
-            // =============================================================================================================================================== //
-            // =================================================== LÓGICA DE BOTONES DE VINCULAR ============================================================= //
-                const idAsoc = this.select.value; 
-                // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
-                this.botonesVincularImagen = document.querySelectorAll('.vincular'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
-                this.botonesVincularImagen.forEach(boton => {
-                    boton.addEventListener('click', async function() {
-                        const idImagen = this.dataset.idImagen;
-                        const nombreImagen = this.dataset.nombreImagen;
-                        try {
-                            const respuesta = await fetch("index.php?c=Galeria&m=vincularImagen", {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}&idAsoc=${encodeURIComponent(idAsoc)}`
-                            });
-
-                            this.datos = await respuesta.json();
-
-                            if (this.datos.imagenVinculada) {
-                                const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
-                                div.classList.remove('disponible');
-                                div.classList.add('no-disponible');
-                                const botonVincular = div.querySelector(".vincular");
-                                botonVincular.classList.remove("vincular");
-                                botonVincular.classList.add("desvincular");
-                                botonVincular.innerHTML = '<i class="fa-solid fa-link-slash"></i> Desvincular';
-                                       
-                            } else {
-                                alert("Error: " + this.datos.mensaje);
-                            }
-                        } catch (error) {
-                            console.error("Error al llamar a PHP" + this.datos.mensaje);
-                            alert("Error al eliminar la imagen." + this.datos.mensaje);
-                        }
-                    });
-                });
-            // =============================================================================================================================================== //
-            // =================================================== LÓGICA DE BOTONES DE VINCULAR ============================================================= //
-                // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
-                this.botonesDesvincularImagen = document.querySelectorAll('.desvincular'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
-                this.botonesDesvincularImagen.forEach(boton => {
-                    boton.addEventListener('click', async function() {
-                        const idImagen = this.dataset.idImagen;
-                        const nombreImagen = this.dataset.nombreImagen;
-                        try {
-                            const respuesta = await fetch("index.php?c=Galeria&m=desvincularImagen", {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
-                            });
-
-                            this.datos = await respuesta.json();
-
-                            if (this.datos.imagenDesvinculada) {
-                                const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
-                                div.classList.remove('no-disponible');
-                                div.classList.add('disponible');
-                                const botonVincular = div.querySelector(".desvincular");
-                                botonVincular.classList.remove("desvincular");
-                                botonVincular.classList.add("vincular");
-                                botonVincular.innerHTML = '<i class="fa-solid fa-link"></i> Vincular';
-                                       
-                            } else {
-                                alert("Error: " + this.datos.mensaje);
-                            }
-                        } catch (error) {
-                            console.error("Error al llamar a PHP" + this.datos.mensaje);
-                            alert("Error al eliminar la imagen." + this.datos.mensaje);
-                        }
-                    });
-                });
-            // =============================================================================================================================================== //
-            });
+        });
 
 
         
@@ -275,6 +148,173 @@ class VistaGaleria{
             if (a.idAsoc != null && b.idAsoc == null) return -1; // a primero
             if (a.idAsoc == null && b.idAsoc != null) return 1;  // b primero
             return 0; // mantener orden si ambos son null o ambos no null
+        });
+    }
+    
+
+
+
+
+    /**
+     * Esta funcion muestra por primera vez la galería
+     * @param {array} imagenes Este array contiene todas las imagenes 
+     */
+    async desplegarGaleriaTodasImagenes(){
+        await this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
+        
+        // =================================================== LÓGICA DE BOTONES DE ELIMINAR ============================================================= //
+        this.botonesEliminarImagen = document.querySelectorAll('.eliminar');
+        
+        this.botonesEliminarImagen.forEach(boton => {
+            boton.addEventListener('click', async function() {
+                const idImagen = this.dataset.idImagen;
+                const nombreImagen = this.dataset.nombreImagen;
+                try {
+                    const respuesta = await fetch("index.php?c=Galeria&m=borrarImagen", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
+                    });
+                    this.datos = await respuesta.json();
+
+                    if (this.datos.imagenBorrada) {
+                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+                        div.remove();       
+                    } else {
+                        alert("Error: " + this.datos.mensaje);
+                    }
+
+                } catch (error) {
+                    console.error("Error al llamar a PHP" + this.datos.mensaje);
+                    alert("Error al eliminar la imagen." + this.datos.mensaje);
+                }
+            });
+        });
+    }
+    
+
+
+
+
+    /**
+     * Esta funcion muestra la galería cuando se cambia de asociacion
+     * @param {array} datosImagenes Este array contiene todas las imagenes
+     * @param {string}  nombreAsociacion Este string contiene el nombre de la asociacion
+     */
+    desplegarGaleriaDeAsociacion(datosImagenes, nombreAsociacion){
+        this.mostrarImagenesDeAsociacion(datosImagenes, nombreAsociacion);
+
+
+
+        // =================================================== LÓGICA DE BOTONES DE ELIMINAR ============================================================= //
+        this.botonesEliminarImagen = document.querySelectorAll('.eliminar');
+        
+        this.botonesEliminarImagen.forEach(boton => {
+            boton.addEventListener('click', async function() {
+                const idImagen = this.dataset.idImagen;
+                const nombreImagen = this.dataset.nombreImagen;
+                try {
+                    const respuesta = await fetch("index.php?c=Galeria&m=borrarImagen", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
+                    });
+                    this.datos = await respuesta.json();
+
+                    if (this.datos.imagenBorrada) {
+                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+
+                        div.remove();       
+                    } else {
+                        alert("Error: " + this.datos.mensaje);
+                    }
+
+                } catch (error) {
+                    console.error("Error al llamar a PHP" + this.datos.mensaje);
+                    alert("Error al eliminar la imagen." + this.datos.mensaje);
+                }
+            });
+        });
+
+
+
+        // =================================================== LÓGICA DE BOTONES DE VINCULAR ============================================================= //
+        const idAsoc = this.select.value; 
+        // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
+        this.botonesVincularImagen = document.querySelectorAll('.vincular'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
+        this.botonesVincularImagen.forEach(boton => {
+            boton.addEventListener('click', async function() {
+                const idImagen = this.dataset.idImagen;
+                const nombreImagen = this.dataset.nombreImagen;
+                try {
+                    const respuesta = await fetch("index.php?c=Galeria&m=vincularImagen", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}&idAsoc=${encodeURIComponent(idAsoc)}`
+                    });
+
+                    this.datos = await respuesta.json();
+
+                    if (this.datos.imagenVinculada) {
+                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+
+                        div.classList.remove('disponible');
+                        div.classList.add('no-disponible');
+
+                        const botonVincular = div.querySelector(".vincular");
+                        
+                        botonVincular.classList.remove("vincular");
+                        botonVincular.classList.add("desvincular");
+                        botonVincular.innerHTML = '<i class="fa-solid fa-link-slash"></i> Desvincular';
+                                
+                    } else {
+                        alert("Error: " + this.datos.mensaje);
+                    }
+                } catch (error) {
+                    console.error("Error al llamar a PHP" + this.datos.mensaje);
+                    alert("Error al eliminar la imagen." + this.datos.mensaje);
+                }
+            });
+        });
+
+
+
+        // =================================================== LÓGICA DE BOTONES DE DESVINCULAR ========================================================== //
+        // TENEMOS QUE ASIGNAR DE NUEVO LOS BOTONES DENTRO DEL LISTENER "CHANGE" PORQUE CADA VEZ QUE SE CAMBIA EL SELECT, CAMBIAN LOS BOTONES
+        this.botonesDesvincularImagen = document.querySelectorAll('.desvincular'); // Despues de que se hayan desplegado todos los botones de las imagenes, nos los traemos a una variable
+        this.botonesDesvincularImagen.forEach(boton => {
+            boton.addEventListener('click', async function() {
+                const idImagen = this.dataset.idImagen;
+                const nombreImagen = this.dataset.nombreImagen;
+                try {
+                    const respuesta = await fetch("index.php?c=Galeria&m=desvincularImagen", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
+                    });
+
+                    this.datos = await respuesta.json();
+
+                    if (this.datos.imagenDesvinculada) {
+                        const div = this.parentElement.parentElement; // obtiene el div padre del boton que se clickeó
+
+                        div.classList.remove('no-disponible');
+                        div.classList.add('disponible');
+
+                        const botonVincular = div.querySelector(".desvincular");
+
+                        botonVincular.classList.remove("desvincular");
+                        botonVincular.classList.add("vincular");
+                        botonVincular.innerHTML = '<i class="fa-solid fa-link"></i> Vincular';
+                                
+                    } else {
+                        alert("Error: " + this.datos.mensaje);
+                    }
+                } catch (error) {
+                    console.error("Error al llamar a PHP" + this.datos.mensaje);
+                    alert("Error al eliminar la imagen." + this.datos.mensaje);
+                }
+            });
         });
     }
 } 
