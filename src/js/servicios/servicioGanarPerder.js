@@ -36,7 +36,6 @@ class ServicioGanarPerder{
     }
 
     /**
-     * 
      * @returns {String} El nombre de la asociacion correcta
      */
     mandarIdAsociacionCorrecta(){
@@ -63,18 +62,37 @@ class ServicioGanarPerder{
         return this.asociacionCorrecta.pista_facil;
     }
 
+    /**
+     * Método encargado de registar la victoria, este realiza una llamada al controlador de php que hará el insert
+     * @param {*} fecha_intento 
+     * @param {*} tiempo_empleado 
+     * @param {*} idAsoc 
+     * @returns 
+     */
     async registrarVictoria(fecha_intento, tiempo_empleado, idAsoc) {
-        const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                fecha_intento,
-                tiempo_empleado,
-                idAsoc
-            })
-        });
+        
+        try {
+            // Realizamos una petición al la siguiente URL usando fetch
+            const res = await fetch("index.php?c=Juego&m=registrarVictoria", {
+                // Indicamos que la petición será de tipo POST
+                method: "POST",
+                // Indicamos que el contenido enviado es un JSON
+                headers: { "Content-Type": "application/json" },
+                // Enviamos los datos al servidor convertidos a JSON
+                body: JSON.stringify({
+                    fecha_intento,
+                    tiempo_empleado,
+                    idAsoc
+                })
+            });
 
-        return await res.json();
+            // Conviertimos la respuesta del servidor a formato JSON y la devolvemos
+            return await res.json();
+        } catch (e) {
+            // Mostramos por consola cualquier error ocurrido durante la petición
+            console.log('ERROR: '+e);
+        }
+        
     }
 
 }

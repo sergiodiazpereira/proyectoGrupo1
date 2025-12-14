@@ -10,6 +10,10 @@
             $this->modeloU = new ModUsuarios();
 
         }
+        /**
+         * Summary of borrar
+         * @return string esta funcion borra el usuario indicado con el id 
+         */
         public function borrar(){
             $idUsuarioBor =$_GET['idUsuario'];
             if($this->modeloU->borrarUsu($idUsuarioBor)){
@@ -19,8 +23,11 @@
                 $this->vista="admin/mensajeIncorrecto.php";
                 return "Algo fallo al borrar";
             };
-
         }
+        /**
+         * Summary of cargarPagina
+         * @return array carga la pagina con los usuarios en la lista
+         */
         public function cargarPagina(){
             // Obtenemos los datos
             $datos = $this->modeloU->listar();

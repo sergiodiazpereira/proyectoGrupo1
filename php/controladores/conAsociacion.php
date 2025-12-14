@@ -314,13 +314,6 @@ class ConAsociacion {
         $this->vista="admin/vistaAgregarAsociacion.php";
         return $arrayAsoc;
     }
-
-
-
-
-
-
-
     /**
      * Summary of borrarCarpeta
      * Este método borra una carpeta que le es pasada, pero antes mueve sus archivos internos un nivel por encima para que no se pierdan. Además tambien los renombra si al moverlos existen archivos con el mismo nombre

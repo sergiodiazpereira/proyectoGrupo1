@@ -11,10 +11,19 @@
                 session_start();
             }
         }
+
+        /**
+         * Summary of cargarPagina
+         * @return void Esta función recoge la vista de cambioAdmin.php
+         */
         public function cargarPagina(){
             $this->vista="admin/cambioAdmin.php";
         }
         
+        /**
+         * Summary of cambiarContrasenia
+         * @return void Esta función hace las validaciones para el cambio de contraseña 
+         */
         public function cambiarContrasenia()
         {
 

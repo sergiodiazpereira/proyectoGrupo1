@@ -20,21 +20,21 @@
         <div id="pantalla-informacion" class="pantalla-popup">
             <div class="guia-modal" id="modal-info">
                 <button id="boton-cerrar" class="x-cerrar">X</button>
-                <h2>GUÍA DE INDICADORES</h2>
+                <h2 id="tituloPop">GUÍA DE INDICADORES</h2>
                 <div class="fila-top">
                     <div class="indicador-box celda">
                         <div class="circulo verde"></div>
-                        <p class="textoCentrado"><strong>CORRECTO</strong></p>
+                        <p class="textoCentrado1"><strong>CORRECTO</strong></p>
                         <p class="textoCentrado">Has acertado el atributo.</p>
                     </div>
                     <div class="indicador-box celda">
-                        <div class="circulo celda amarillo"></div>
-                        <p class="textoCentrado"><strong>PARCIAL</strong></p>
+                        <div class="circulo amarillo"></div>
+                        <p class="textoCentrado1"><strong>PARCIAL</strong></p>
                         <p class="textoCentrado">El atributo contiene una parte.</p>
                     </div>
                     <div class="indicador-box celda">
                         <div class="circulo rojo"></div>
-                        <p class="textoCentrado"><strong>INCORRECTO</strong></p>
+                        <p class="textoCentrado1"><strong>INCORRECTO</strong></p>
                         <p class="textoCentrado">El atributo no es el correcto.</p>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <span class="flecha-down">▼</span>
                     </div>
                     <p class="textoCentrado"><strong>AÑO DE FUNDACIÓN</strong></p>
-                    <p class="desc-menor textoCentrado">Las flechas indican si el año de fundacion de la asociacion correcta es mayor & o menor ¥ que el de tu intento.</p>
+                    <p class="desc-menor textoCentrado">Las flechas indican si el año de fundacion de la asociacion correcta es mayor ▲ o menor ▼ que el de tu intento.</p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
 
 
         <!-- POP-UP DE PISTAS -->
-         <div id="pantalla-pistas" class="pantalla-popup">
+        <div id="pantalla-pistas" class="pantalla-popup">
             <div class="guia-modal" id="modal-pistas">
                 <button id="boton-cerrar-pistas" class="x-cerrar">X</button>
                 <h2>PISTAS</h2>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
         <!-- FIN DE POP-UP DE PISTAS -->
 
 
@@ -82,6 +82,7 @@
         <div id="pantalla-victoria" class="pantalla-popup">
             <div class="guia-modal" id="modal-ganar">
                 <h2>¡HAS GANADO!</h2>
+                <img id="danceGif" src="../src/img/dance.gif">
                 <div class="fila-top">
                     <div class="indicador-box quitarBorde">
                         <p id="texto-tiempo-victoria" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>

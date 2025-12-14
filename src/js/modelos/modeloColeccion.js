@@ -12,7 +12,7 @@ export class ModeloColeccion {
             return datosBD.map(item => ({
                 nombre: item.nombre,
                 imagen: item.imagen,
-                // Si idIntento NO es nulo, es que la has acertado -> Desbloqueada
+                // Si idIntento no es nulo, es que la has acertado -> Desbloqueada
                 estaBloqueada: (item.idIntento == null),
                 datos: {
                     fundacion: item.fecha_fun,

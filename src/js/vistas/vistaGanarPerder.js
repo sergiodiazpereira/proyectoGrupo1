@@ -28,12 +28,17 @@ class VistaGanarPerder{
             const asociacionCorrecta = this.servicio.mandarNombreAsociacionCorrecta(); /* nombre de la asociacion correcta */
             if (valor === asociacionCorrecta) {
                 this.mostrarPantallaVictoria();
+                // Obtenemos el ID de la asociación correcta
                 let idAsoc = this.servicio.mandarIdAsociacionCorrecta();
+                // Recogemos el tiempo que ha tardado
                 let tiempo = this.textoCronometro.innerText;
+                // Establecemos la fecha
                 let fecha_intento = new Date();
+                // Formateamos el tiempo del cronometro
                 let [m, s] = tiempo.split(":");
-                // Convertir a HH:MM:SS
+                // Lo convertimos a HH:MM:SS para pasarselo a la BDD
                 let tiempoFormateado = `00:${m}:${s}`;
+                // Le pasamos los datos al método del controlador que registrará los datos
                 this.servicio.registrarVictoria(fecha_intento,tiempoFormateado,idAsoc);
                 contadorIntentos = 1; /* reiniciar intentos */
             } else {
@@ -55,8 +60,6 @@ class VistaGanarPerder{
         });
     }
 
-
-
     mostrarPantallaVictoria(){
         let tiempo = this.textoCronometro.innerText;
         this.victoriaAsociacionEra.innerText = this.servicio.mandarNombreAsociacionCorrecta();
@@ -69,14 +72,10 @@ class VistaGanarPerder{
         this.contenidoPopupGanar.style.display = "block";
     }
 
-
-
     ocultarPantallaVictoria(){
         this.popupGanar.style.display = "none";
         this.contenidoPopupGanar.classList.remove("mostrar");
     }
-
-
 
     mostrarPantallaDerrota(){
         this.derrotaAsociacionEra.innerText = this.servicio.mandarNombreAsociacionCorrecta();
@@ -87,8 +86,6 @@ class VistaGanarPerder{
         }, 1); /* timeout para que dé tiempo a hacer la animacion */
         this.contenidoPopupPerder.style.display = "block";
     }
-
-
 
     ocultarPantallaDerrota(){
         this.popupPerder.style.display = "none";

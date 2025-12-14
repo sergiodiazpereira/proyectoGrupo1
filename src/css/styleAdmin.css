@@ -1748,26 +1748,26 @@
 /* MEDIA QUERY PC (Min-width: 769px) */
 @media screen and (min-width: 769px) {
 
-  .asociacionContribucion {
-    max-width: 1024px;
-    padding-left: 25%;
-  }
+    .asociacionContribucion {
+        max-width: 1024px;
+        padding-left: 256px;
+    }
 
-  .asociacionContribucion nav {
-    width: 25%;
-    height: 100vh;
-    position: fixed;
-  }
+    .asociacionContribucion {
+        .nav-admin{
+            width: 256px;
+        }
 
-  .asociacionContribucion header {
-    width: 75%;
-    left: 25%;
-    position: fixed;
-  }
+        header {
+            width: 75%;
+            left: 256px;
+            position: fixed;
+        }
 
-  .asociacionContribucion main {
-    padding-top: 64px;
-  }
+        main {
+            padding-top: 64px;
+        }
+    }
 
   #bloqueGestionContribuciones {
 

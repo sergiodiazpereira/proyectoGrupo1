@@ -16,7 +16,7 @@
          */
         public function listar() {
             $sql = "SELECT a.*,
-                   t.nombre AS tipo_asociacion
+                t.nombre AS tipo_asociacion
                 FROM asociacion a
                 INNER JOIN tipo_asoc t 
                     ON a.idTipoAsoc = t.idTipoAsoc
@@ -114,7 +114,7 @@
                 $stmt->execute();
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 return false;
             }
         }
@@ -157,7 +157,7 @@
                 }
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 return false;
             }
         
@@ -191,7 +191,7 @@
                 $this->conexion->commit();
                 return true;
 
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 // Si hubo algun error en las consultas se hace un rollback y se descartan los cambios
                 $this->conexion->rollBack();
                 return false;

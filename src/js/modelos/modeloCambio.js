@@ -1,4 +1,10 @@
 export class ModeloCambio {
+    /**
+     * 
+     * @param {*} pwdAntigua variable que recoje la password antigua
+     * @param {*} pwdNueva variable que recoje la password nueva
+     * @returns devuelve mensake de confirmacion o fallo
+     */
     async cambiarPwd(pwdAntigua, pwdNueva) {
         
         const datos = new FormData();

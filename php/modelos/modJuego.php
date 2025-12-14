@@ -6,9 +6,11 @@
         function __construct(){
             parent::__construct();
         }
-        
+        /**
+         * Summary of datosAsociaciones
+         * @return array recoge todos los datos de las asociaciones
+         */
         public function datosAsociaciones(){
-            // 1. PRIMERO: Sacamos las asociaciones limpias (sin mezclar contribuciones aun)
             $sql = "SELECT asociacion.idAsoc, asociacion.nombre, asociacion.fecha_fun, asociacion.pista_facil, 
                         asociacion.pista_media, 
                         asociacion.pista_dificil, 
@@ -23,15 +25,13 @@
             $consulta = $this->conexion->prepare($sql);
             $consulta->execute();
             
-            // Convertimos a Array Asociativo
+            // En esta variable recogemos la consulta y la hacemos en array asociativo
             $listaAsociaciones = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            // 2. SEGUNDO: Vamos una por una buscándole sus contribuciones
             foreach ($listaAsociaciones as $key => $asoc) {
                 
                 $id = $asoc['idAsoc'];
                 
-                // Buscamos las contribuciones SOLO para este ID
                 $sqlContri = "SELECT c.descripcion 
                     FROM contribucion c
                     INNER JOIN asoc_contribucion ac ON c.idContribucion = ac.idContribucion
@@ -41,11 +41,8 @@
                 $stmt->bindParam(':id', $id);
                 $stmt->execute();
                 
-                // Obtenemos lista simple: ['Salud', 'Educación']
                 $nombresContribuciones = $stmt->fetchAll(PDO::FETCH_COLUMN);
                 
-                // 3. TERCERO: Convertimos la lista en un String separado por comas
-                // Si la lista está vacía, ponemos un texto por defecto
                 if (!empty($nombresContribuciones)) {
                     $listaAsociaciones[$key]['contribuciones'] = implode(',', $nombresContribuciones);
                 } else {
@@ -57,29 +54,35 @@
         }
 
         /**
-         * Summary of insertar
+         * Esta método inserta las asociaciones adivinadas, el tiempo, la fecha y el jugador en la tabla intentos
          * @return bool esta funcion retornara o true o false dependiendo si la insercion ha sido exitosa
          */
         public function insertar(){
             try{
+                // Lee el JSON enviado desde fetch y lo convierte en un array asociativo de PHP
                 $data = json_decode(file_get_contents("php://input"), true);
 
-                $sql="INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?,?)";
+                // Consulta para insertar los aciertos de asociaciones
+                $sql = "INSERT INTO intento (fecha_intento, tiempo_empleado, idUsuario, idAsoc) VALUES (?,?,?,?)";
 
-                $stmt=$this->conexion->prepare($sql);
+                // Preparamos la consulta
+                $stmt = $this->conexion->prepare($sql);
                 
-                $stmt->bindParam(1,$data["fecha_intento"]);
-                $stmt->bindParam(2,$data["tiempo_empleado"]);
-                $stmt->bindParam(3,$_SESSION["idUsuario"]);
-                $stmt->bindParam(4,$data["idAsoc"]);
+                // Asociamos los parametros
+                $stmt->bindParam(1, $data["fecha_intento"]);
+                $stmt->bindParam(2, $data["tiempo_empleado"]);
+                $stmt->bindParam(3, $_SESSION["idUsuario"]);
+                $stmt->bindParam(4, $data["idAsoc"]);
                 
+                // Ejecutamos la consulta
                 $stmt->execute();
 
-                echo json_encode(["exito" => true]);
+                // Retornamos true si todo fue correcto
                 return true;
+
             }catch(PDOException $e){
-                echo json_encode(["exito" => false, "error" => $e->getMessage()]);
-                return false;
+                // Si salta excepción
+                return $e->getMessage();
             }
         }
 

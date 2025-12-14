@@ -10,8 +10,6 @@
             
         }
 
-
-
         public function contarVisitas(){
             $sql = "SELECT SUM(visitas) AS total FROM usuario WHERE permiso = 'U'";
             $stmt = $this->conexion->prepare($sql);
@@ -20,8 +18,6 @@
 
             return (int)$resultado['total'];
         }
-
-
 
         public function datosUsuariosNuevos(){
             $sql = "SELECT nombre, fecha_registro FROM usuario ORDER BY fecha_registro DESC LIMIT 10;";
@@ -32,8 +28,6 @@
             return $resultado;
         }
 
-
-
         public function contarAsociaciones(){
             $sql = "SELECT COUNT(*) as total FROM asociacion";
             $stmt = $this->conexion->prepare($sql);
@@ -43,8 +37,6 @@
             return (int)$resultado['total']; 
         }
 
-
-
         public function contarUsuarios(){
             $sql = "SELECT COUNT(*) as total FROM usuario";
             $stmt = $this->conexion->prepare($sql);
@@ -53,8 +45,6 @@
 
             return (int)$resultado['total']; 
         }
-
-
 
         public function contarContribuciones(){
             $sql = "SELECT COUNT(*) as total FROM contribucion";

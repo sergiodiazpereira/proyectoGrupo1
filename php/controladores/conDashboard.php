@@ -5,13 +5,9 @@
         public $modeloJ;
         public $vista;
 
-
-
         function __construct(){
             $this->modeloJ = new ModDashboard();
         }
-
-
 
         public function cargarPagina(){
             $visitas = $this->modeloJ->contarVisitas(); // Este metodo del modelo solo trae las visitas totales
@@ -33,7 +29,6 @@
                 "visitas" => $visitas,
                 "usuariosNuevos" => $usuariosNuevos
             ];
-
 
             return $datos;
         }

@@ -7,6 +7,11 @@
             $this->modelo = new ModLogin();
         }
 
+        /**
+         * Summary of cargarLogin
+         * @return void Esta función valida los campos que hay en el formulario del usuario 
+         *  y al usuario que loguea en la aplicación y carga su sesión 
+         */
         public function cargarLogin(){
             $correo = $_POST['correo'];
             $pwd = $_POST['pwd'];
@@ -34,12 +39,20 @@
                 ]);
             }
         }
-
+        /**
+         * Summary of traerRol
+         * @return never devuelve el rol del usuario
+         */
         public function traerRol(){
             echo json_encode($_SESSION["permiso"]);
             exit();
         }
         
+        /**
+         * Summary of cerrarSesion
+         * @return never Esta función comprueba primero si no hay ninguna sesión iniciada, si no la hay, la recoge para
+         * poder eliminar las variables y luego destruir la sesión, para que luego rediriga de vuelta al login
+         */
         public function cerrarSesion()
         {
             /* Lo que hacemos aquí es recoger o recuperar la sesión para poder eliminarla */

@@ -8,6 +8,11 @@ export class VistaRanking {
         this.fecha = document.getElementsByClassName('posicion');
         this.tiempo = document.getElementsByClassName('posicion');
     }
+    /**
+     * 
+     * @param {*} ranking esta variable contiene todo el ranking
+     * Voy sacando los datos del ranking por pantalla y le pongo un trofeo de diferente color a los primeros
+     */
     crearRanking(ranking) {
         ranking.forEach((puesto, indice) => {
             const div = document.createElement('div');
@@ -28,8 +33,12 @@ export class VistaRanking {
             div.innerHTML = `<h4 class="posicion">${posicion}</h4><h4 class="posicion">${puesto.jugador}</h4><h4 class="posicion">${puesto.asociacion}</h4><h4 class="posicion">${puesto.fecha}</h4><h4 class="tiempo">${puesto.tiempo}</h4>`;
             this.caja.appendChild(div);
         });
-
     }
+    /**
+     * 
+     * @param {*} errores trae el error
+     * Muestra los errores
+     */
     mostrarErrores(errores) {
         let errorHTML = '';
         for (const campo in errores) {

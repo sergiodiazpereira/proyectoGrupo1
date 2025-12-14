@@ -31,6 +31,10 @@ import { ModeloLogin } from "./modelos/modeloLogin.js";
 import { VistaLogin } from "./vistas/vistaLogin.js";
 import { ControladorLogin } from "./servicios/controladorLogin.js";
 
+import { ModeloRegistro } from "./modelos/modeloRegistro.js";
+import { VistaRegistro } from "./vistas/vistaRegistro.js";
+import { ControladorRegistro } from "./servicios/controladorRegistro.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializamos el menú de usuario si existe el botón en el DOM
     if (document.getElementById('usuario')) {
@@ -146,12 +150,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const vistaGaleria = new VistaGaleria(servicioGaleria);
             }
 
-            /** Validaciones Login */
+            // Validaciones Login y Registro
             if (document.getElementById('formLoginRegis')) {
-                const modelo = new ModeloLogin();
-                const controlador = new ControladorLogin(modelo);
-                const vista = new VistaLogin(controlador);
-                controlador.vista = vista;
+
+                // Si existe el input "nombre" es el formulario de registro, si no, es el de login
+                if (document.querySelector("input[name='nombre']")) {
+                    // Instanciamos el modelo
+                    const modelo = new ModeloRegistro();
+                    // Instanciamos el controlador y le pasamos el modelo
+                    const controlador = new ControladorRegistro(modelo);
+                    // Instanciamos la vista y le pasamos el controlador
+                    const vista = new VistaRegistro(controlador);
+                    // Establecemos la vista en el controlador
+                    controlador.vista = vista;
+                } else {
+                    // Instanciamos el modelo
+                    const modelo = new ModeloLogin();
+                    // Instanciamos el controlador y le pasamos el modelo
+                    const controlador = new ControladorLogin(modelo);
+                    // Instanciamos la vista y le pasamos el controlador
+                    const vista = new VistaLogin(controlador);
+                    // Establecemos la vista en el controlador
+                    controlador.vista = vista;
+                }
             }
 
         } catch (error) {

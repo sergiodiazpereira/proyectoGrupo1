@@ -1,7 +1,6 @@
 export class ModeloJuego {
     
     constructor(asociacionCorrecta, listaTodas) {
-        // Blindaje contra listas vacías
         const listaSegura = listaTodas || [];
 
         // Mapeamos los datos (Aquí traduciremos la 'L' a 'Local')
@@ -23,6 +22,11 @@ export class ModeloJuego {
         this.onCambio = callback;
     }
 
+    /**
+     * 
+     * @param {*} datoBD 
+     * @returns Esta función recoge los datos de nuestra base de datos
+     */
     _mapearDatosBD(datoBD) {
         if (!datoBD) return null;
 
@@ -41,15 +45,18 @@ export class ModeloJuego {
 
             anioFundacion: datoBD.fecha_fun,
 
-            // ALCANCE: Usamos el traducido (Local, Nacional...)
             alcanceGeografico: alcanceTraducido,
 
-            // CONTRIBUCIONES: Convertimos texto "A,B" a lista ["A","B"]
             contribuciones: (datoBD.contribuciones && typeof datoBD.contribuciones === 'string') ? datoBD.contribuciones.split(',') : [],
         };
     }
 
-    /* LÓGICA DEL JUEGO */
+    /**
+     * 
+     * @param {*} nombreIntento 
+     * @returns Esta función se encarga de procesar lo que el usuario ha intentado adivinar, 
+     * validarlo, compararlo y decidir si el juego debe continuar o terminar.
+     */
     registrarIntento(nombreIntento) {
         if (this.juegoTerminado) return null;
 
@@ -72,10 +79,17 @@ export class ModeloJuego {
         return resultado;
     }
 
+    /**
+     * Esta función resetea el tiempo
+     */
     resetearTiempo() {
         this.horaInicio = new Date(); 
     }
 
+    /**
+     * 
+     * @returns Esta función hace el cálculo del cronómetro para devolver el tiempo
+     */
     obtenerTiempoFormateado() {
         const ahora = new Date();
         const diferencia = Math.floor((ahora - this.tiempoInicio) / 1000); 
@@ -84,6 +98,12 @@ export class ModeloJuego {
         return `${minutos}:${segundos}`;
     }
 
+    /**
+     * 
+     * @param {*} intento 
+     * @returns Esta función lo que hace es que a la hora de introducir las filas, vaya comprobando 
+     * si cumplen con que el dato coincida con la asociación que es
+     */
     _compararAsociacion(intento) {
         const correcta = this.asociacionCorrecta;
         
@@ -137,6 +157,12 @@ export class ModeloJuego {
         };
     }
 
+    /**
+     * 
+     * @param {*} intento 
+     * @returns Esta función hace la comprobación de que si la asociación que has introducido coincide
+     * con la correcta
+     */
     verificarVictoria(intento) {
         return intento.nombre === this.asociacionCorrecta.nombre;
     }
@@ -149,8 +175,4 @@ export class ModeloJuego {
         return this.juegoTerminado && this.intentos.length > 0 && this.intentos[this.intentos.length - 1].esCorrecto;
     }
 
-    /* //mio
-    mostrarPista(num) {
-        document.getElementById(`pista${num}`).classList.add("visible");
-    } */
 }

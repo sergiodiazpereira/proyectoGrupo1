@@ -9,6 +9,11 @@ export class VistaJuego {
         this.contadorIntentos = document.getElementById('contador-intentos');
     }
 
+    /**
+     * 
+     * @param {*} manejador Esta función hace que cuando el usuario elige una opción en el select, 
+     *  le avisa al controlador para que procese esa jugada 
+     */
     enlazarIntento(manejador) {
         if (this.selectAsociacion) {
             this.selectAsociacion.addEventListener('change', (e) => {
@@ -20,6 +25,9 @@ export class VistaJuego {
         }
     }
 
+    /**
+     * Esta función controla el abrir y cerrar del menú de usuario 
+     */
     enlazarMenuUsuario() { 
         if (this.botonMenu) {
             this.botonMenu.addEventListener('click', () => {
@@ -28,6 +36,11 @@ export class VistaJuego {
         }
     }
 
+    /**
+     * 
+     * @param {*} modelo Esta función recibe el modelo del juego y 
+     * actualiza toda la pantalla para que reflejen esos datos
+     */
     renderizar(modelo) {
         if (this.spanCronometro) {
             this.spanCronometro.innerText = modelo.obtenerTiempoFormateado();
@@ -52,6 +65,12 @@ export class VistaJuego {
         this.renderizarTabla(modelo.intentosRealizados);
     }
     
+    /**
+     * 
+     * @param {*} intentos 
+     * @returns Esta función se encarga de dibujar el contenedor de las filas de colores 
+     * con los resultados de los intentos 
+     */
     renderizarTabla(intentos) {
         if (!this.contenedorResultados) return;
         
@@ -67,7 +86,9 @@ export class VistaJuego {
         });
     }
 
-    // Método que muestra el pop-up de pistas automaticamente
+    /**
+     * Método que muestra el pop-up de pistas automaticamente al llegar al intento correspondiente
+     */
     mostrarPopupAutomatico() {
         // Obtenemos el contenedor del popup
         const popup = document.getElementById("pantalla-pistas");

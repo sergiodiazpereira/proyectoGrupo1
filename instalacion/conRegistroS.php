@@ -3,9 +3,9 @@
 
     class conRegistroS{
         public $modelo;
+        public $vista;
 
-        function __construct()
-        {
+        function __construct(){
             $this->modelo = new ModRegistroS();
         }
         private function functionValidar(){
@@ -18,10 +18,24 @@
         }
         public function cargarSuper(){
             if($this->functionValidar()){
-                $this->modelo->insertarSuper();
-                
+                if($this->modelo->insertarSuper()){
+                    if($this->modelo->ejecutarScript()){
+                        // Redirect to the external cleanup script to avoid file lock issues
+                        $this->vista="REDIRECT";
+                        return "Felicidades Juego Instalado";
+                    }else{
+                        $this->vista="Incorrecto.php";
+                        return "Fallo al ejecutar la carga de datos";
+                    }
+                }else{
+                    $this->vista="Incorrecto.php";
+                    return "No se pudo crear el Super Admin";
+                }
+            }else{
+                $this->vista="Incorrecto.php";
+                return "Alguno dato no es valido";
             }
         }
+        // Function removed as deletion is handled by ../php/exito_instalacion.php
     }
-
 ?>

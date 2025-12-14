@@ -1,4 +1,8 @@
 export class ModeloRanking{
+    /**
+     * 
+     * @returns devuelve los datos del ranking 
+     */
     async obtenerRanking(){
         try{
             /*pido los datos al server del ranking */

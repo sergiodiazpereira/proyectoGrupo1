@@ -107,9 +107,6 @@
                 <div  id="contenedorImagenes" class="grid-imagenes">
                 </div>
             </section>
-
-
-
             <!-- Modal para agregar Categorías -->
             <div class="fondo oculto" id="modal-galeria">
                 <form action="index.php?c=Galeria&m=insertarImagen" method="post" class="modal" enctype="multipart/form-data">

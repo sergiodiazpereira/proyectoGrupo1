@@ -12,6 +12,11 @@ export class ControladorJuego {
         this.iniciarReloj(); 
     }
     
+    /**
+     * 
+     * @param {*} intento 
+     * @returns Esta función lo que hace es que una vez que se acabe el juego, se restablezca el tiempo
+     */
     manejarIntento = (intento) => {
         if (!this.juegoEmpezado) {
             this.juegoEmpezado = true;
@@ -22,18 +27,21 @@ export class ControladorJuego {
             return;
         }
 
+        // Guardamos en la variable resultado el intento
         const resultado = this.modelo.registrarIntento(intento);
-
         // Recogemos el numero de intentos realizados
         const totalIntentos = this.modelo.intentosRealizados.length;
-
         // Si el numero de intentos es de 3,5 u 8 mostramos un popup de forma automatica
         if (!resultado.esCorrecto && (totalIntentos === 3 || totalIntentos === 5 || totalIntentos === 8)) {
+            // Llamamos a la vista para que puestre el pop-up
             this.vista.mostrarPopupAutomatico();
         }
         
     }
 
+    /**
+     * Esta función lo que hace es iniciar el cronómetro
+     */
     iniciarReloj() {
         setInterval(() => {
             if (this.juegoEmpezado && !this.modelo.juegoGanado) {

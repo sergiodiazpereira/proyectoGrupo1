@@ -9,6 +9,10 @@
             parent::__construct();
             
         }
+        /**
+         * Summary of sacarRanking
+         * @return array obtener los datos de la tabla intentos para crear un ranking
+         */
         public function sacarRanking(){
             $sql="SELECT u.nombre AS jugador, a.nombre AS asociacion, i.fecha_intento AS fecha, i.tiempo_empleado AS tiempo
                 FROM intento i INNER JOIN usuario u
