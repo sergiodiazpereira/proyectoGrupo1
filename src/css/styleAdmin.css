@@ -454,6 +454,10 @@
         color: #c0d9ff;
     }
 
+    .no-hover .btn.desvincular:hover {
+        color: #005fcc !important;    
+    }
+
     .btn.desvincular {
         background-color: #eaeaea;
         color: #5a5a5a;
@@ -464,6 +468,10 @@
     .btn.desvincular:hover {
         background-color: #5a5a5a;
         color: #eaeaea;
+    }
+
+    .no-hover .btn.desvincular:hover {
+        color: #5a5a5a !important;    
     }
 
     .acciones {

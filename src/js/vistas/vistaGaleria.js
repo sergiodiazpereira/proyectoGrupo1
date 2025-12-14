@@ -67,7 +67,7 @@ class VistaGaleria{
 
     /**
      * Esta funcion muestra en la vista todas las imagenes de la galería
-     * @param {array} imagenesAMostrar 
+     * @param {array} imagenesAMostrar El array que lleva todos los datos de todas las imagenes
      */
     async mostrarTodasLasImagenes(imagenesAMostrar){
         for (const imagen of imagenesAMostrar) {
@@ -103,7 +103,8 @@ class VistaGaleria{
 
     /**
      * Esta funcion muestra en la vista todas las imagenes asociadas a una asociacion
-     * @param {array} imagenesAMostrar 
+     * @param {array} imagenesAMostrar Array con los datos de todas las imagenes
+     * @param {string} nombreAsociacion String con el nombre de la asociacion con las imagenes vinculadas
      */
     mostrarImagenesDeAsociacion(imagenesAMostrar, nombreAsociacion){
         this.organizarPorDisponibilidad(imagenesAMostrar);
@@ -127,7 +128,7 @@ class VistaGaleria{
                     <img src="`+this.ruta + nombreAsociacion + `/` + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
                         <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                        <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
+                        <button class="btn desvincular" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-link-slash"></i> Desvincular</button>
                     </div>
                 `;
                 contenedorImagenes.appendChild(tarjeta);
@@ -156,8 +157,8 @@ class VistaGaleria{
 
 
     /**
-     * Esta funcion muestra por primera vez la galería
-     * @param {array} imagenes Este array contiene todas las imagenes 
+     * Esta funcion muestra por primera vez la galería y la logica de los botones
+     * Este array contiene todas las imagenes 
      */
     async desplegarGaleriaTodasImagenes(){
         await this.mostrarTodasLasImagenes(this.servicio.datosImagenes);
@@ -197,8 +198,8 @@ class VistaGaleria{
 
 
     /**
-     * Esta funcion muestra la galería cuando se cambia de asociacion
-     * @param {array} datosImagenes Este array contiene todas las imagenes
+     * Esta funcion muestra la galería cuando se cambia de asociacion y añade tambien toda la logica de los botones
+     * @param {array} datosImagenes Este array contiene todas las imagenes a mostrar
      * @param {string}  nombreAsociacion Este string contiene el nombre de la asociacion
      */
     desplegarGaleriaDeAsociacion(datosImagenes, nombreAsociacion){
@@ -262,10 +263,16 @@ class VistaGaleria{
                         div.classList.add('no-disponible');
 
                         const botonVincular = div.querySelector(".vincular");
-                        
+
                         botonVincular.classList.remove("vincular");
                         botonVincular.classList.add("desvincular");
-                        botonVincular.innerHTML = '<i class="fa-solid fa-link-slash"></i> Desvincular';
+                        botonVincular.disabled = true;
+                        botonVincular.style.backgroundColor = '#d3d3d3';
+                        botonVincular.style.color = '#5a5a5a';
+                        botonVincular.style.cursor = 'default';
+                        botonVincular.innerHTML = '<i class="fa-solid fa-link"></i> Vinculado';
+
+                        this.botonesDesvincularincularImagen = document.querySelectorAll('.desvincular'); // Asignamos el nuevo boton desvincular
                                 
                     } else {
                         alert("Error: " + this.datos.mensaje);
@@ -292,7 +299,6 @@ class VistaGaleria{
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: `idImagen=${encodeURIComponent(idImagen)}&nombreImagen=${encodeURIComponent(nombreImagen)}`
                     });
-
                     this.datos = await respuesta.json();
 
                     if (this.datos.imagenDesvinculada) {
@@ -305,14 +311,20 @@ class VistaGaleria{
 
                         botonVincular.classList.remove("desvincular");
                         botonVincular.classList.add("vincular");
-                        botonVincular.innerHTML = '<i class="fa-solid fa-link"></i> Vincular';
+                        botonVincular.disabled = true;
+                        botonVincular.style.backgroundColor = 'var(--blanco-fondo-main)';
+                        botonVincular.style.color = '#005fcc';
+                        botonVincular.style.cursor = 'default';
+                        botonVincular.innerHTML = '<i class="fa-solid fa-link-slash"></i> Desvinculado';
+
+                        this.botonesVincularImagen = document.querySelectorAll('.vincular'); // Asignamos el nuevo boton vincular
                                 
                     } else {
-                        alert("Error: " + this.datos.mensaje);
+                        alert("Error: " + this.datos);
                     }
                 } catch (error) {
-                    console.error("Error al llamar a PHP" + this.datos.mensaje);
-                    alert("Error al eliminar la imagen." + this.datos.mensaje);
+                    console.error("Error al llamar a PHP" + error + "=============================" + this.datos);
+                    alert("Error al eliminar la imagen."  + error + "=============================" + this.datos);
                 }
             });
         });

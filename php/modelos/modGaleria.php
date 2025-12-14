@@ -16,6 +16,7 @@
 
         /**
          * Esta funcion devuelve los datos de las imagenes de la BD
+         * @return bool|PDOStatement Devuelve el resultado de la consulta
          */
         public function datosImagenes(){
             $sql = "SELECT * FROM galeria;";
@@ -32,6 +33,7 @@
 
         /**
          * Esta funcion devuelve el id y nombre de las asociaciones de la BD
+         * @return bool|PDOStatement Devuelve el resultado de la consulta
          */
         public function datosAsociaciones(){
             $sql = "SELECT idAsoc, nombre FROM asociacion;";
@@ -48,6 +50,7 @@
 
         /**
          * Esta funcion inserta una imagen en la BD
+         * @return int|boolean Devuelve el código de error de la consulta si esta falla o true si es exitosa
          */
         public function insertarImagenEnBD(){
             try{
@@ -58,6 +61,7 @@
                 $stmt->bindParam(':nombreImagen', $_FILES["archivo"]["name"]);
 
                 $stmt->execute();
+                return true;
             }catch (PDOException $e){
                 return $e->errorInfo[1]; // En la segunda posicion del array errorInfo se encuentra el numero de error, que es lo que voy a utilizar para controlar las excepciones
             }
@@ -69,6 +73,7 @@
 
         /**
          * Este método se encarga de borrar la imagen de la base de datos
+         * @return boolean True si la consulta es exitosa o false si da error
          */
         public function borrarImagenBD(){
             try{
@@ -91,6 +96,7 @@
 
         /**
          * Este método se encarga de vincularle a la imagen la asociación correspondiente
+         * @return boolean True si la consulta es exitosa o false si da error
          */
         public function vincularImagenBD(){
             try{
@@ -114,6 +120,7 @@
 
         /**
          * Este método se encarga de vincularle a la imagen la asociación correspondiente
+         * @return boolean True si la consulta es exitosa o false si da error
          */
         public function desvincularImagenBD(){
             try{
@@ -136,6 +143,7 @@
 
         /**
          * Este método se encarga de sacar el nombre de la asociacion
+         * @return boolean|PDOStatement Devuelve el resultado del select si la consulta es exitosa o false si da error
          */
         public function obtenerNombrePorId(){
             try{

@@ -168,7 +168,7 @@
 
 
         /**
-         * Este metodo se encarga de borrar la imagen tanto de la base de datos como de la carpeta de imagenes del servidor donde esté
+         * Este metodo se encarga de borrar la imagen tanto de la base de datos como de la carpeta de imagenes del servidor donde esté, y devuelve un json al navegador
          */
         public function borrarImagen(){
             try{
@@ -201,6 +201,7 @@
         /**
          * Este método borra la imagen de la ruta que se le pasa
          * @param string Es la ruta que el método se encargará de borrar
+         * @return boolean Retorna true si ha sido exitoso o false si ha habido algun error
          */
         public function borrarImagenCarpeta($archivo){
             if (unlink($archivo)) {
@@ -214,6 +215,9 @@
 
 
 
+        /**
+         * Esta funcion se encarga de vincular la imagen que se le envía por navegador desde JavaScript a la asociacion correspondiente, tanto en la base de datos como añadir la imagen a la carpeta del servidor
+         */
         public function vincularImagen(){
             try{
                 $respuestaBD = $this->modeloGal->vincularImagenBD();
@@ -250,6 +254,12 @@
 
 
 
+        /**
+         * Este método mueve el archivo que se pasa como parámetro, a la carpeta que tenga el mismo nombre que el otro parámetro
+         * @param string Es la ruta del archivo que el método debe mover
+         * @param string Es el nombre de la asociacion (y por ende, de la carpeta destino) a la que el método debe mover el archivo
+         * @return boolean Devuelve true si fue exitoso y false si hubo algun eror
+        */
         public function moverImagenCarpeta($archivo, $nombreAsociacion){
             $carpetaDestino = $nombreAsociacion;
             $nombreArchivo = basename($archivo); // Obtenemos nombre del archivo
@@ -275,16 +285,19 @@
 
 
 
+        /**
+         * Esta funcion se encarga de desvincular la imagen que se le envía por navegador desde JavaScript, tanto en la base de datos como sacar la imagen de la carpeta de su asociación
+         */
         public function desvincularImagen(){
             try{
                 $respuestaBD = $this->modeloGal->desvincularImagenBD();
                 if (!$respuestaBD) {
-                    throw new Exception (" no se ha podido vincular la imagen de la base de datos");
+                    throw new Exception (" no se ha podido desvincular la imagen de la base de datos");
                 }
 
                 $ruta = $this->obtenerRutaImagen($_POST["nombreImagen"]);
                 if (!$ruta) {
-                    throw new Exception(" no se encontró la imagen en el servidor");
+                    throw new Exception(" no se encontró la imagen en el servidor".$_POST["nombreImagen"].$_POST["idImagen"]);
                 }
                 $respuesta = $this->sacarImagenCarpeta($ruta, $_POST["nombreImagen"]);
                 if(!$respuesta){
@@ -303,9 +316,15 @@
 
 
 
+        /**
+         * Este método se encarga de sacar el archivo (pasado por parámetro) de la carpeta que tenga el mismo nombre que el otro parámetro
+         * @param string Es la ruta del archivo que se desea mover
+         * @param string Es el nombre del archivo que se desea mover
+         * @return boolean Devuelve true si fue exitoso o false si hubo algun error
+         */
         public function sacarImagenCarpeta($ruta, $nombreArchivo){
             // Obtener la ruta del directorio padre
-            $directorioDestino = dirname(dirname($archivo));  // Subimos dos niveles
+            $directorioDestino = dirname(dirname($ruta));  // Subimos dos niveles
             $rutaDestinoFinal = $directorioDestino . DIRECTORY_SEPARATOR . $nombreArchivo; // Creamos la ruta destino completa
 
             // Verificamos si el archivo ya existe en el destino
@@ -314,7 +333,7 @@
             }
 
             // Mover el archivo
-            $movido = rename($archivo, $rutaDestinoFinal);
+            $movido = rename($ruta, $rutaDestinoFinal);
 
             // Verificar si el archivo fue movido correctamente
             if ($movido) {
@@ -328,6 +347,9 @@
 
 
 
+        /**
+         * Este método se encarga de obtener el nombre de una asociacion a través de su id. Envía el resultado por JSON al navegador
+         */
         public function obtenerNombreAsociacionPorId(){
             try{
                 $respuestaBD = $this->modeloGal->obtenerNombrePorId();
