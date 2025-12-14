@@ -50,7 +50,7 @@
 
         /**
          * Esta funcion inserta una imagen en la BD
-         * @return int|boolean Devuelve el código de error de la consulta si esta falla o true si es exitosa
+         * @return int Devuelve el código de error de la consulta si esta falla
          */
         public function insertarImagenEnBD(){
             try{
@@ -61,7 +61,6 @@
                 $stmt->bindParam(':nombreImagen', $_FILES["archivo"]["name"]);
 
                 $stmt->execute();
-                return true;
             }catch (PDOException $e){
                 return $e->errorInfo[1]; // En la segunda posicion del array errorInfo se encuentra el numero de error, que es lo que voy a utilizar para controlar las excepciones
             }

@@ -172,7 +172,7 @@ class ConAsociacion {
         $this->modeloAsoc->borrar();
         
         // Borramos la carpeta de esa asociacion
-        $this->borrarCarpeta(RUTAIMG."galeria/".$datos["nombre"]);
+        $this->moverArchivos(RUTAIMG."galeria/".$datos["nombre"]);
 
         // Redirigimos a la lista de asociaciones
         header("Location: index.php?c=Asociacion&m=listar");
@@ -323,34 +323,44 @@ class ConAsociacion {
 
     /**
      * Summary of borrarCarpeta
-     * @param string dirección de la carpeta que hay que borrar
-     * Esta función borra una carpeta y los archivos que tenga dentro
+     * Este método borra una carpeta que le es pasada, pero antes mueve sus archivos internos un nivel por encima para que no se pierdan. Además tambien los renombra si al moverlos existen archivos con el mismo nombre
+     * @param string Es la ruta de la carpeta que va a borrar
      */
 
-    private function borrarCarpeta($ruta) {
+    private function moverArchivos($ruta) {
         $archivosCarpeta = scandir($ruta); // Devuelve todos los archivos y carpetas de dentro de la carpeta
 
         /* Por defecto, cuando se hace un scandir a una ruta, siempre devuelve '.' y '..' junto
         con los archivos de la carpeta (son referencias a niveles superiores de la carpeta) */
 
-        $archivosABorrar = array_diff($archivosCarpeta, ['.', '..']); // Esta funcion quita esos niveles superiores de nuestro array de archivos y nos deja solo los archivos a borrar
+        $archivosABorrar = array_diff($archivosCarpeta, ['.', '..']); // Esta funcion quita esos niveles superiores de nuestro array de archivos y nos deja solo los archivos a mover
 
+        // Establecer la ruta destino, que será la carpeta principal de 'galeria'
+        $carpetaDestino = realpath(__DIR__ . "/../../src/img/galeria") . DIRECTORY_SEPARATOR; // Asegúrate de que esta ruta sea correcta
 
+        foreach ($archivosABorrar as $archivo) {
+            $pathOrigen = $ruta . "/" . $archivo; // Ruta del archivo en la subcarpeta
+            $pathDestino = $carpetaDestino . "/" . $archivo; // Ruta destino dentro de la carpeta 'galeria'
 
-        foreach ($archivosABorrar as $archivo) { // Tratamos a cada archivo individualmente
-            $path = $ruta . "/" . $archivo; // Construimos la ruta donde está localizado ese archivo
-
-            if (is_dir($path)) {
-                $this->borrarCarpeta($path); // Como es una carpeta, le volvemos a aplicar borrarCarpeta()
+            if (!file_exists($pathDestino)) {
+                // Si el archivo ya no existe en la carpeta destino, lo movemos
+                rename($pathOrigen, $pathDestino);
             } else {
-                unlink($path); // Es un archivo asi que lo borramos sencillamente
+                // Si el archivo ya existe en la carpeta destino, renombramos el archivo para evitar sobrescrituras
+                $i = 1;
+                $nuevoNombre = pathinfo($archivo, PATHINFO_FILENAME) . "_" . $i . "." . pathinfo($archivo, PATHINFO_EXTENSION);
+                $pathDestino = $carpetaDestino . "/" . $nuevoNombre;
+                while (file_exists($pathDestino)) {
+                    $i++;
+                    $nuevoNombre = pathinfo($archivo, PATHINFO_FILENAME) . "_" . $i . "." . pathinfo($archivo, PATHINFO_EXTENSION);
+                    $pathDestino = $carpetaDestino . "/" . $nuevoNombre;
+                }
+                rename($pathOrigen, $pathDestino);
             }
         }
 
-
-        rmdir($ruta); // Una vez está vacía, borra la carpeta
+        rmdir($ruta); // Elimina la carpeta vacía
     }
-
     
 }
 ?>

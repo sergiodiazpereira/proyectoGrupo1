@@ -297,7 +297,7 @@
 
                 $ruta = $this->obtenerRutaImagen($_POST["nombreImagen"]);
                 if (!$ruta) {
-                    throw new Exception(" no se encontró la imagen en el servidor".$_POST["nombreImagen"].$_POST["idImagen"]);
+                    throw new Exception(" no se encontró la imagen en el servidor");
                 }
                 $respuesta = $this->sacarImagenCarpeta($ruta, $_POST["nombreImagen"]);
                 if(!$respuesta){
