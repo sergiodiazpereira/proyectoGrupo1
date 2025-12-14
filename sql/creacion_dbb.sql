@@ -52,6 +52,7 @@ CREATE TABLE intento(
 CREATE TABLE galeria(
     idImagen SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombreImagen VARCHAR(20),
-    idAsoc SMALLINT UNSIGNED NULL,
-    CONSTRAINT fk_idAsoc FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE SET NULL -- Si se borra la asociacion, la imagen queda disponible para asignar pero no se borra
+    idAsoc SMALLINT UNSIGNED DEFAULT NULL,
+    CONSTRAINT fk_idAsoc FOREIGN KEY (idAsoc) REFERENCES asociacion(idAsoc) ON DELETE SET NULL, -- Si se borra la asociacion, la imagen queda disponible para asignar pero no se borra
+    CONSTRAINT unique_nombreImagen UNIQUE (nombreImagen)
 );

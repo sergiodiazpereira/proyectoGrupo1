@@ -108,6 +108,7 @@
                         <div class="campo">
                             <label>Nombre:</label>
                             <input type="text" name="nombre" value="<?= $datos['nombre'] ?>">
+                            <input type="hidden" name="antiguoNombre" value="<?=$datos['nombre']?>">
                         </div>
 
                         <div class="campo">

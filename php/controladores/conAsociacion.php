@@ -86,9 +86,9 @@ class ConAsociacion {
             // Actualizamos la tabla contribuciones
             $this->modeloAsoc->modificarContribuciones();
             
-            // Comrpovamos si se ha hecho el modificar de las asociciaciones y contribuciones
+            // Comprobamos si se ha hecho el modificar de las asociciaciones y contribuciones
             if($this->modeloAsoc->modificar() && $this->modeloAsoc->modificarContribuciones()){
-
+                $this->renombrarCarpeta(); // Se renombra la carpeta de la asociacion con el nuevo nombre
                 // Comprobamos que la imagen exista para guardarla
                 if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
                     // Si se ha hecho se guarda la imagen
@@ -134,6 +134,23 @@ class ConAsociacion {
             return "Datos no validos";
         };
     }
+
+
+    private function renombrarCarpeta(){
+        $antiguoNombre = $_POST["antiguoNombre"];
+        $nuevoNombre = $_POST["nombre"];
+        $rutaBase = realpath(__DIR__ . '/../../src/img/galeria');
+        
+        
+        $carpetaAntigua = $rutaBase . DIRECTORY_SEPARATOR . $antiguoNombre;
+        $carpetaNueva   = $rutaBase . DIRECTORY_SEPARATOR . $nuevoNombre;
+
+        rename($carpetaAntigua, $carpetaNueva);
+    }   
+
+
+
+
 
     /**
      * Muestra la vista para confirmar el borrado.
