@@ -65,7 +65,7 @@ class VistaGaleria{
                 contenedorImagenes.innerHTML = "";
                 let textoDeSelect = this.select.options[this.select.selectedIndex].text; // Coge el texto del option que tiene el value enviado
                 this.h2.innerText = "Lista de imagenes de " + textoDeSelect;
-                this.mostrarImagenesDeAsociacion(this.servicio.datosImagenes);
+                this.mostrarImagenesDeAsociacion(this.servicio.datosImagenes, this.select.options[this.select.selectedIndex].text);
             }
 
             // =================================================== LÓGICA DE BOTONES DE ELIMINAR ============================================================= //
@@ -196,19 +196,32 @@ class VistaGaleria{
      * Esta funcion muestra en la vista todas las imagenes de la galería
      * @param {array} imagenesAMostrar 
      */
-    mostrarTodasLasImagenes(imagenesAMostrar){
-        imagenesAMostrar.forEach(imagen => {
+    async mostrarTodasLasImagenes(imagenesAMostrar){
+        for (const imagen of imagenesAMostrar) {
             const tarjeta = document.createElement("div");
-            tarjeta.classList.add("tarjeta", "disponible");
+            if (imagen.idAsoc == null){
+                tarjeta.classList.add("tarjeta", "disponible");
 
-            tarjeta.innerHTML = `
-                <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
-                <div class="acciones">
-                    <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
-                </div>
-        `;
-        contenedorImagenes.appendChild(tarjeta);
-        });
+                tarjeta.innerHTML = `
+                    <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
+                    <div class="acciones">
+                        <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                    </div>
+                `;
+                contenedorImagenes.appendChild(tarjeta);
+            } else{
+                const asociacion = await this.servicio.obtenerNombrePorIdAsoc(imagen.idAsoc);
+                tarjeta.classList.add("tarjeta", "disponible");
+
+                tarjeta.innerHTML = `
+                    <img src="`+this.ruta + asociacion.nombre + "/" + imagen.nombreImagen + `" alt="Imagen">
+                    <div class="acciones">
+                        <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                    </div>
+                `;
+                contenedorImagenes.appendChild(tarjeta);
+            }
+        };
     }
 
 
@@ -219,7 +232,7 @@ class VistaGaleria{
      * Esta funcion muestra en la vista todas las imagenes asociadas a una asociacion
      * @param {array} imagenesAMostrar 
      */
-    mostrarImagenesDeAsociacion(imagenesAMostrar){
+    mostrarImagenesDeAsociacion(imagenesAMostrar, nombreAsociacion){
         this.organizarPorDisponibilidad(imagenesAMostrar);
         imagenesAMostrar.forEach(imagen => {
             const tarjeta = document.createElement("div");
@@ -238,7 +251,7 @@ class VistaGaleria{
                 tarjeta.classList.add("tarjeta", "no-disponible");
 
                 tarjeta.innerHTML = `
-                    <img src="`+this.ruta + imagen.nombreImagen + `" alt="Imagen">
+                    <img src="`+this.ruta + nombreAsociacion + `/` + imagen.nombreImagen + `" alt="Imagen">
                     <div class="acciones">
                         <button class="btn eliminar" data-id-imagen="`+imagen.idImagen+`" data-nombre-imagen="`+imagen.nombreImagen+`"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         <button class="btn desvincular"><i class="fa-solid fa-link-slash"></i> Desvincular</button>

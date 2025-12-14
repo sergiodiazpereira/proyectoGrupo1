@@ -286,23 +286,15 @@
                 if (!$ruta) {
                     throw new Exception(" no se encontró la imagen en el servidor");
                 }
-                $datoAsociacion = $this->modeloGal->obtenerNombrePorId();
-                if (empty($datoAsociacion)) {
-                    throw new Exception("No se encontró la asociación con el id proporcionado.");
-                } else {
-                    if (!isset($datoAsociacion['nombre'])) {
-                        throw new Exception("No se encontró el nombre de la asociación.");
-                    }
-                    $respuesta = $this->moverImagenCarpeta($ruta, $datoAsociacion["nombre"]);
-                    if(!$respuesta){
-                        throw new Exception (" no se ha podido mover la imagen de la carpeta de servidor");
-                    }
-                echo json_encode(['imagenVinculada' => true, "mensaje" => "La imagen se ha movido correctamente"]);
-                exit;
+                $respuesta = $this->sacarImagenCarpeta($ruta, $_POST["nombreImagen"]);
+                if(!$respuesta){
+                    throw new Exception (" no se ha podido mover la imagen de la carpeta de servidor");
                 }
+                echo json_encode(['imagenDesvinculada' => true, "mensaje" => "La imagen se ha movido correctamente"]);
+                exit;
 
             }catch (Exception $e){
-                echo json_encode(['imagenVinculada' => false, "mensaje" => $e->getMessage()]);
+                echo json_encode(['imagenDesvinculada' => false, "mensaje" => $e->getMessage()]);
                 exit;
             }
         }
@@ -311,5 +303,44 @@
 
 
 
+        public function sacarImagenCarpeta($ruta, $nombreArchivo){
+            // Obtener la ruta del directorio padre
+            $directorioDestino = dirname(dirname($archivo));  // Subimos dos niveles
+            $rutaDestinoFinal = $directorioDestino . DIRECTORY_SEPARATOR . $nombreArchivo; // Creamos la ruta destino completa
+
+            // Verificamos si el archivo ya existe en el destino
+            if (file_exists($rutaDestinoFinal)) {
+                return true;  // El archivo ya existe en el directorio destino asi que no seguimos ejecutando
+            }
+
+            // Mover el archivo
+            $movido = rename($archivo, $rutaDestinoFinal);
+
+            // Verificar si el archivo fue movido correctamente
+            if ($movido) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+
+
+        public function obtenerNombreAsociacionPorId(){
+            try{
+                $respuestaBD = $this->modeloGal->obtenerNombrePorId();
+                if (!$respuestaBD) {
+                    throw new Exception (" no se ha obtenido nada de la BD");
+                }
+
+                echo json_encode($respuestaBD);
+                exit;
+            }catch (Exception $e){
+                echo json_encode($e->getMessage());
+                exit;
+            }
+        }
     }
 ?>
