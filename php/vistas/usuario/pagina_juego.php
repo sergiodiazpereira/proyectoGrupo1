@@ -82,7 +82,7 @@
         <div id="pantalla-victoria" class="pantalla-popup">
             <div class="guia-modal" id="modal-ganar">
                 <h2>¡HAS GANADO!</h2>
-                <img id="danceGif" src="../../../src/img/dance.gif">
+                <img id="danceGif" src="../src/img/dance.gif">
                 <div class="fila-top">
                     <div class="indicador-box quitarBorde">
                         <p id="texto-tiempo-victoria" class="textoCentrado celda">Has adivinado la asociación en 00:06.</p>

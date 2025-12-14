@@ -16,7 +16,6 @@
             $correo = $_POST['correo'];
             $pwd = $_POST['pwd'];
 
-            
             $usuarioEncontrado = $this->modelo->validarUsuario($correo,$pwd);
 
             if ($usuarioEncontrado)
