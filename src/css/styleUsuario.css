@@ -769,6 +769,27 @@ input[type=submit] {
 
 .azul {
     background-color: var(--azulPastel);
+    color: #333;
+}
+
+#boton-pistas{
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+#boton-pistas:hover {
+    transform: scale(1.2);
+}
+
+#boton-info{
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+#boton-info:hover {
+    transform: scale(1.2);
 }
 
 .neutro {
@@ -789,6 +810,7 @@ input[type=submit] {
     background-color: var(--azulPastel);
     border-radius: 1rem;
     text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* Estilos de Iconos/Imágenes */
@@ -1065,11 +1087,13 @@ button {
     .encabezado {
         font-size: 1em;
         padding: 0.5rem 0.5rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
     .celda {
         font-size: 0.9rem;
         padding: 0.5rem 0.5rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); 
     }
 
     select {
